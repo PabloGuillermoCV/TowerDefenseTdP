@@ -29,7 +29,7 @@ public abstract class entidad {
 	public abstract void efecto();
 	/**
 	 * Elimina a la entidad del mapa
-	 * @return
+	 * @return la recompensa en oro
 	 */
 	public abstract int morir();
 	/**
