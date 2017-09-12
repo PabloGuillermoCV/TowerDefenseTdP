@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
+@SuppressWarnings("unused")
 public class juego {
 
 	private JFrame frame;
