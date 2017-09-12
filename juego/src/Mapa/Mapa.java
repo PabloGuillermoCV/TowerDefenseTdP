@@ -8,6 +8,7 @@ public class Mapa {
 	private int maxX;
 	private int maxY;
 	private Graphics fondo;
+	@SuppressWarnings("unused")
 	private Posicion[][] grilla1; //calculo que a esto se referian el Ayudante y marcos con lo de la grilla
 	
 	public Mapa(String dir, int X, int Y){

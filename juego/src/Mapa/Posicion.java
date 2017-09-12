@@ -2,7 +2,9 @@ package Mapa;
 
 public class Posicion {
 	
+	@SuppressWarnings("unused")
 	private int X;
+	@SuppressWarnings("unused")
 	private int Y;
 	
 	/**
