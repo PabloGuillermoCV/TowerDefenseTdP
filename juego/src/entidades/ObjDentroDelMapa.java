@@ -1,16 +1,25 @@
-package Mapa;
+package entidades;
 
-import entidades.entidad;
-import entidades.fisico;
+import java.awt.Graphics;
 
-public abstract class objDentroDelMapa extends fisico {
+import javax.swing.JLabel;
 
-	protected int probabilidad;
+import Mapa.Posicion;
+
+public abstract class ObjDentroDelMapa extends fisico {
 	
+	protected int Probabilidad;
+	
+	public ObjDentroDelMapa (String nombre, Graphics label, JLabel getLabel, Posicion Pos, int Width,
+			int Height, int Probabilidad) {
+		super (nombre,label,getLabel,Pos,Width,Height);
+		this.Probabilidad = Probabilidad;
+	}
 	
 	public int getProb(){
-		return probabilidad;
+		return Probabilidad;
 	}
+	
 	/* No se si as operaciones que hereda de la clase "entidad" deben ser implementadas acá (y para cualquier clase que herede de entidad) 
 	 * o si las implementaremos en las clases concretas
 	@Override
@@ -61,5 +70,4 @@ public abstract class objDentroDelMapa extends fisico {
 
 	}
 	*/
-
 }

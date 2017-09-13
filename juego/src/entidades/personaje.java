@@ -1,23 +1,53 @@
 package entidades;
 
-public class personaje extends fisico {
+import java.awt.Graphics;
+
+import javax.swing.JLabel;
+
+import Mapa.Posicion;
+
+public abstract class personaje extends fisico {
 
 	protected int vida;
 	protected int alcance;
-	protected powerUpDelMapa powerUp;
+	protected PowerUpDelMapa powerUp;
 	protected int ataque;
 	protected int defensa;
+	
+	public personaje (String nombre, Graphics label, JLabel getLabel, Posicion Pos, int Width, int Height,
+			int vida, int alcance, PowerUpDelMapa powerUp, int ataque, int defensa) {
+		super (nombre,label,getLabel,Pos,Width,Height);
+		this.vida = vida;
+		this.alcance = alcance;
+		this.powerUp = powerUp;
+		this.ataque = ataque;
+		this.defensa = defensa;
+	}
+	
+	public int getVida () {
+		return vida;
+	}
+	
+	public int getAlcance () {
+		return alcance;
+	}
+	
+	public PowerUpDelMapa getPoder () {
+		return powerUp;
+	}
+	
+	public int getAtaque () {
+		return ataque;
+	}
+	
+	public int getDefensa () {
+		return defensa;
+	}
 	
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getCod() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nombre;
 	}
 
 	@Override
@@ -55,5 +85,4 @@ public class personaje extends fisico {
 		// TODO Auto-generated method stub
 
 	}
-
 }

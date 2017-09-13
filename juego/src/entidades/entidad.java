@@ -8,16 +8,17 @@ public abstract class entidad {
 	protected Graphics label;
 	protected JLabel getLabel;
 	
+	public entidad (String nombre, Graphics label, JLabel getLabel) {
+		this.nombre = nombre;
+		this.label = label;
+		this.getLabel = getLabel;
+	}
+	
 	/**
 	 * metodo que devuelve el nombre de la Entidad
 	 * @return nombre de la Entidad
 	 */
 	public abstract String getNombre();
-	/**
-	 * obteine el (Codigo?) de la Entidad
-	 * @return
-	 */
-	public abstract int getCod();
 	/**
 	 * metodo que señala a la Entidad atacar a otra entidad
 	 * @param e Entidad a atacar
