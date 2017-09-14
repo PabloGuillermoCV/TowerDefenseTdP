@@ -1,6 +1,8 @@
 package entidades;
 
-public class personaje extends fisico {
+import Mapa.powerUpDelMapa;
+
+public abstract class personaje extends fisico {
 
 	protected int vida;
 	protected int alcance;
@@ -8,52 +10,25 @@ public class personaje extends fisico {
 	protected int ataque;
 	protected int defensa;
 	
-	@Override
-	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+	public abstract void serAtacado(Controlable a);
+	
+	public abstract void serAtacado(enemigo e);
+	
+	public int getVida(){
+		return vida;
 	}
-
-	@Override
-	public int getCod() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void atacar(personaje p){
+		p.serAtacado(this);
 	}
-
-	@Override
-	public void atacar(entidad e) {
-		// TODO Auto-generated method stub
-
+	public void setVida(int v){
+		vida = v;
 	}
-
-	@Override
-	public void efecto() {
-		// TODO Auto-generated method stub
-
+	public int getAtaque(){
+		return ataque;
 	}
-
-	@Override
-	public int morir() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int vender() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void iniciarAtaque() {
-		// TODO Auto-generated method stub
-
+	
+	public int getDefensa(){
+		return defensa;
 	}
 
 }

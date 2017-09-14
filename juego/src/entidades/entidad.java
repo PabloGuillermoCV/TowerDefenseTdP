@@ -19,30 +19,18 @@ public abstract class entidad {
 	 */
 	public abstract int getCod();
 	/**
-	 * metodo que señala a la Entidad atacar a otra entidad
-	 * @param e Entidad a atacar
+	 * metodo que señala a la Entidad que ha sido atacada por algo (que luego resuelve el Visitor)
 	 */
-	public abstract void atacar(entidad e);
+	public abstract void serAtacado(personaje p);
 	/**
 	 * obtiene un Efecto para la Entidad
 	 */
 	public abstract void efecto();
-	/**
-	 * Elimina a la entidad del mapa
-	 * @return la recompensa en oro
-	 */
-	public abstract int morir();
-	/**
-	 * vende la Entidad por oro
-	 * @return valor en oro de la Entidad vendida
-	 */
-	public abstract int vender();
-	/**
-	 * cambia la posicion XY de la entidad
-	 */
+	
 	public abstract void mover();
-	/**
-	 * Comanda el inicio de un ataque
-	 */
-	public abstract void iniciarAtaque();
+	
+	public abstract int morir();
+	
+	public abstract int vender();
+	
 }

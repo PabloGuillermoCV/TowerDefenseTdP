@@ -17,6 +17,10 @@ import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+import javax.swing.JLayeredPane;
+import java.awt.Color;
 
 @SuppressWarnings("unused")
 public class juego {
@@ -116,6 +120,13 @@ public class juego {
 		Autores.setText("TdP 2017");
 		panel.add(Autores, "16, 18, center, bottom");
 		Autores.setColumns(10);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{jugar, Opciones, EXIT, Autores}));
+		
+		JPanel panel_Mapa = new JPanel();
+		panel_Mapa.setBackground(Color.LIGHT_GRAY);
+		panel_Mapa.setForeground(Color.BLACK);
+		frame.getContentPane().add(panel_Mapa, BorderLayout.CENTER);
+		panel_Mapa.setLayout(null);
 	}
 
 }
