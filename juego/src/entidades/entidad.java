@@ -1,17 +1,22 @@
 package entidades;
-import java.awt.Graphics;
+
 import javax.swing.JLabel;
 
 public abstract class entidad {
 
-	protected String nombre;
-	protected Graphics label;
-	protected JLabel getLabel;
+	protected String Nombre;
+	protected JLabel Label;
+	
+	public entidad (String Nombre, JLabel Label) {
+		this.Nombre = Nombre;
+		this.Label = Label;
+	}
 	
 	/**
 	 * metodo que devuelve el nombre de la Entidad
 	 * @return nombre de la Entidad
 	 */
+<<<<<<< HEAD
 	public abstract String getNombre();
 	/**
 	 * obteine el (Codigo?) de la Entidad
@@ -33,4 +38,17 @@ public abstract class entidad {
 	
 	public abstract int vender();
 	
+=======
+	public String getNombre () {
+		return Nombre;
+	}
+	
+	public JLabel getLabel () {
+		return Label;
+	}
+	
+	public void iniciarAtaque() {
+		
+	}
+>>>>>>> e8b91c34bc6416b919ae85cd6a0df95cdd345ad1
 }

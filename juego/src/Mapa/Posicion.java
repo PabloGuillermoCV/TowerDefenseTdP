@@ -2,9 +2,7 @@ package Mapa;
 
 public class Posicion {
 	
-	@SuppressWarnings("unused")
 	private int X;
-	@SuppressWarnings("unused")
 	private int Y;
 	
 	/**
@@ -17,7 +15,23 @@ public class Posicion {
 		Y = y;
 	}
 	
-	//comandos
+	//Comandos
+	/**
+	 * Retorna el atributo X
+	 * @return Un entero X
+	 */
+	public int getX () {
+		return X;
+	}
+	
+	/**
+	 * Retorna el atributo Y
+	 * @return Un entero Y
+	 */
+	public int getY () {
+		return Y;
+	}
+	
 	/**
 	 * modifica la posicion X
 	 * @param x nueva posicion x
