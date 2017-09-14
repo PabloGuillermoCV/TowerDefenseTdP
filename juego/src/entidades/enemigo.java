@@ -1,9 +1,6 @@
 package entidades;
 
-import java.awt.Graphics;
-
 import javax.swing.JLabel;
-
 import Mapa.Posicion;
 
 public abstract class enemigo extends personaje {
@@ -11,19 +8,22 @@ public abstract class enemigo extends personaje {
 	protected int VelocidadMov;
 	protected boolean EfectoEspecial;
 	
-	public enemigo (String nombre, Graphics label, JLabel getLabel, Posicion Pos, int Width, int Height,
-			int vida, int alcance, PowerUpDelMapa powerUp, int ataque, int defensa, int VelocidadMov,
-			boolean EfectoEspecial) {
-		super (nombre,label,getLabel,Pos,Width,Height,vida,alcance,powerUp,ataque,defensa);
+	public enemigo (String Nombre, JLabel Label, Posicion Pos, int Vida, int Alcance,
+			PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov,boolean EfectoEspecial) {
+		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
 		this.VelocidadMov = VelocidadMov;
 		this.EfectoEspecial = EfectoEspecial;
 	}
 	
 	public int getVelMov () {
-		return 0;
+		return VelocidadMov;
 	}
 	
 	public boolean getEfecto () {
-		return true;
+		return EfectoEspecial;
+	}
+	
+	public void serAtacado (enemigo e) {
+		
 	}
 }

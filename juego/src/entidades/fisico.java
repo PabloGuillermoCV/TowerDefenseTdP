@@ -1,9 +1,6 @@
 package entidades;
 
-import java.awt.Graphics;
-
 import javax.swing.JLabel;
-
 import Mapa.Posicion;
 
 /**
@@ -14,25 +11,13 @@ import Mapa.Posicion;
 public abstract class fisico extends entidad {
 
 	protected Posicion Pos;
-	protected int Width;
-	protected int Height;
 	
-	public fisico (String nombre, Graphics label, JLabel getLabel, Posicion Pos, int Width, int Height) {
-		super (nombre,label,getLabel);
+	public fisico (String Nombre, JLabel Label, Posicion Pos) {
+		super (Nombre,Label);
 		this.Pos = Pos;
-		this.Width = Width;
-		this.Height = Height;
 	}
 	
 	public Posicion getPos () {
 		return Pos;
-	}
-	
-	public int getWidth () {
-		return Width;
-	}
-	
-	public int getHeight () {
-		return Height;
 	}
 }

@@ -1,88 +1,55 @@
 package entidades;
 
-import java.awt.Graphics;
-
 import javax.swing.JLabel;
-
 import Mapa.Posicion;
 
 public abstract class personaje extends fisico {
 
-	protected int vida;
-	protected int alcance;
-	protected PowerUpDelMapa powerUp;
-	protected int ataque;
-	protected int defensa;
+	protected int Vida;
+	protected int Alcance;
+	protected PowerUpDelMapa PowerUp;
+	protected int Ataque;
+	protected int Defensa;
 	
-	public personaje (String nombre, Graphics label, JLabel getLabel, Posicion Pos, int Width, int Height,
-			int vida, int alcance, PowerUpDelMapa powerUp, int ataque, int defensa) {
-		super (nombre,label,getLabel,Pos,Width,Height);
-		this.vida = vida;
-		this.alcance = alcance;
-		this.powerUp = powerUp;
-		this.ataque = ataque;
-		this.defensa = defensa;
+	public personaje (String Nombre, JLabel Label, Posicion Pos,int Vida, int Alcance,
+			PowerUpDelMapa PowerUp, int Ataque, int Defensa) {
+		super (Nombre,Label,Pos);
+		this.Vida = Vida;
+		this.Alcance = Alcance;
+		this.PowerUp = PowerUp;
+		this.Ataque = Ataque;
+		this.Defensa = Defensa;
 	}
 	
 	public int getVida () {
-		return vida;
+		return Vida;
 	}
 	
 	public int getAlcance () {
-		return alcance;
+		return Alcance;
 	}
 	
 	public PowerUpDelMapa getPoder () {
-		return powerUp;
+		return PowerUp;
 	}
 	
 	public int getAtaque () {
-		return ataque;
+		return Ataque;
 	}
 	
 	public int getDefensa () {
-		return defensa;
+		return Defensa;
 	}
 	
-	@Override
-	public String getNombre() {
-		// TODO Auto-generated method stub
-		return nombre;
+	public void setVida (int V) {
+		Vida = V;
 	}
-
-	@Override
-	public void atacar(entidad e) {
-		// TODO Auto-generated method stub
-
+	
+	public void serAtacado (personaje P) {
+		
 	}
-
-	@Override
-	public void efecto() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int morir() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int vender() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void iniciarAtaque() {
-		// TODO Auto-generated method stub
-
+	
+	public void Atacar (personaje P) {
+		P.serAtacado (this);
 	}
 }

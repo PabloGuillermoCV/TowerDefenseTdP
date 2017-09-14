@@ -1,9 +1,6 @@
 package entidades;
 
-import java.awt.Graphics;
-
 import javax.swing.JLabel;
-
 import Mapa.Posicion;
 
 public abstract class Controlable extends personaje {
@@ -12,10 +9,10 @@ public abstract class Controlable extends personaje {
 	protected int Espacio [];
 	protected int VelocidadAt;
 	
-	public Controlable (String nombre, Graphics label, JLabel getLabel, Posicion Pos, int Width, int Height,
-			int vida, int alcance, PowerUpDelMapa powerUp, int ataque, int defensa, int Precio,
+	public Controlable (String Nombre, JLabel Label, Posicion Pos,
+			int Vida, int Alcance, PowerUpDelMapa PowerUp, int Ataque, int Defensa, int Precio,
 			int Espacio [], int VelocidadAt) {
-		super (nombre,label,getLabel,Pos,Width,Height,vida,alcance,powerUp,ataque,defensa);
+		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
 		this.Precio = Precio;
 		this.Espacio = Espacio;
 		this.VelocidadAt = VelocidadAt;
@@ -31,5 +28,13 @@ public abstract class Controlable extends personaje {
 	
 	public int getVelAt () {
 		return VelocidadAt;
+	}
+	
+	public void serAtacado (Controlable C) {
+		//Hacer nada, NO hay fuego amigo.
+	}
+	
+	public void serAtacado (enemigo E) {
+		this.setVida(this.Vida - (this.Defensa - E.getAtaque ()));
 	}
 }

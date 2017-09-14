@@ -1,15 +1,13 @@
 package entidades;
 
-import java.awt.Graphics;
-
 import javax.swing.JLabel;
 
 public abstract class Conceptual extends entidad {
 	
 	protected int Costo;
 	
-	public Conceptual (String nombre, Graphics label, JLabel getLabel, int Costo) {
-		super (nombre,label,getLabel);
+	public Conceptual (String Nombre, JLabel Label, int Costo) {
+		super (Nombre,Label);
 		this.Costo = Costo;
 	}
 	
