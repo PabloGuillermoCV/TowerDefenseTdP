@@ -1,19 +1,8 @@
 package entidades;
 
-<<<<<<< HEAD
-public abstract class Controlable extends personaje{
-
-	public void serAtacado(Controlable a){
-		//Hace nada, NO hay fuego amigo
-	}
-	
-	public void serAtacado(enemigo e){
-		this.setVida(this.vida -  (this.defensa - e.getAtaque()) );
-	}
-}
-=======
 import javax.swing.JLabel;
 import Mapa.Posicion;
+import Mapa.PowerUpDelMapa;
 
 public abstract class Controlable extends personaje {
 	
@@ -33,7 +22,7 @@ public abstract class Controlable extends personaje {
 	public int getPrecio () {
 		return Precio;
 	}
-	
+		
 	public int [] getEspacio () {
 		return Espacio;
 	}
@@ -50,4 +39,4 @@ public abstract class Controlable extends personaje {
 		this.setVida(this.Vida - (this.Defensa - E.getAtaque ()));
 	}
 }
->>>>>>> e8b91c34bc6416b919ae85cd6a0df95cdd345ad1
+

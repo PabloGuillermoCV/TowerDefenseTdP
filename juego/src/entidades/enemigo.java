@@ -3,14 +3,6 @@ package entidades;
 import javax.swing.JLabel;
 import Mapa.Posicion;
 
-<<<<<<< HEAD
-	public void serAtacado(Controlable a){
-		this.setVida(this.vida -  (this.defensa - a.getAtaque()) );
-	}
-	
-	public  void serAtacado(enemigo e){}
-}
-=======
 public abstract class enemigo extends personaje {
 	
 	protected int VelocidadMov;
@@ -34,5 +26,8 @@ public abstract class enemigo extends personaje {
 	public void serAtacado (enemigo e) {
 		
 	}
+	public void serAtacado(Controlable a){
+		this.setVida(this.Vida -  (this.Defensa - a.getAtaque()) );
+	}
 }
->>>>>>> e8b91c34bc6416b919ae85cd6a0df95cdd345ad1
+
