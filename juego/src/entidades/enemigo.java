@@ -1,6 +1,5 @@
 package entidades;
 
-import javax.swing.JLabel;
 import Mapa.Posicion;
 
 public abstract class enemigo extends personaje {
@@ -8,8 +7,8 @@ public abstract class enemigo extends personaje {
 	protected int VelocidadMov;
 	protected boolean EfectoEspecial;
 	
-	public enemigo (String Nombre, JLabel Label, Posicion Pos, int Vida, int Alcance,
-			PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov,boolean EfectoEspecial) {
+	public enemigo (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
+		   PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov,boolean EfectoEspecial) {
 		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
 		this.VelocidadMov = VelocidadMov;
 		this.EfectoEspecial = EfectoEspecial;

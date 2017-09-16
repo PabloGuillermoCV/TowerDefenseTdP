@@ -1,11 +1,6 @@
 package entidades;
 
-
-import Mapa.PowerUpDelMapa;
-
-import javax.swing.JLabel;
 import Mapa.Posicion;
-
 
 public abstract class personaje extends fisico {
 
@@ -15,11 +10,7 @@ public abstract class personaje extends fisico {
 	protected int Ataque;
 	protected int Defensa;
 	
-	public abstract void serAtacado(Controlable a);
-	
-	public abstract void serAtacado(enemigo e);
-	
-	public personaje (String Nombre, JLabel Label, Posicion Pos,int Vida, int Alcance,
+	public personaje (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
 			PowerUpDelMapa PowerUp, int Ataque, int Defensa) {
 		super (Nombre,Label,Pos);
 		this.Vida = Vida;
@@ -52,6 +43,10 @@ public abstract class personaje extends fisico {
 	public void setVida (int V) {
 		Vida = V;
 	}
+	
+	public abstract void serAtacado(Controlable a);
+	
+	public abstract void serAtacado(enemigo e);
 	
 	public void serAtacado (personaje P) {}
 	

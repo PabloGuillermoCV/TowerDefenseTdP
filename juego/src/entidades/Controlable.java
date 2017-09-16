@@ -1,8 +1,6 @@
 package entidades;
 
-import javax.swing.JLabel;
 import Mapa.Posicion;
-import Mapa.PowerUpDelMapa;
 
 public abstract class Controlable extends personaje {
 	
@@ -10,12 +8,19 @@ public abstract class Controlable extends personaje {
 	protected int Espacio [];
 	protected int VelocidadAt;
 	
-	public Controlable (String Nombre, JLabel Label, Posicion Pos,
+	public Controlable (String Nombre, String Label, Posicion Pos,
 			int Vida, int Alcance, PowerUpDelMapa PowerUp, int Ataque, int Defensa, int Precio,
-			int Espacio [], int VelocidadAt) {
+			boolean DosEspacios, int VelocidadAt) {
 		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
 		this.Precio = Precio;
-		this.Espacio = Espacio;
+		this.Espacio = new int [2];
+		Espacio [0] = 1;
+		if (DosEspacios) {
+			Espacio [1] = 1;
+		}
+		else {
+			Espacio [1] = 0;
+		}
 		this.VelocidadAt = VelocidadAt;
 	}
 	

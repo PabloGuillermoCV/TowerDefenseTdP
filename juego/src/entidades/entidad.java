@@ -1,5 +1,6 @@
 package entidades;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public abstract class entidad {
@@ -7,41 +8,32 @@ public abstract class entidad {
 	protected String Nombre;
 	protected JLabel Label;
 	
-	public entidad (String Nombre, JLabel Label) {
+	public entidad (String Nombre, String File) {
 		this.Nombre = Nombre;
-		this.Label = Label;
+		this.Label = new JLabel (new ImageIcon (getClass ().getResource(File)));
 	}
 	
 	/**
-	 * metodo que devuelve el nombre de la Entidad
+	 * Metodo que devuelve el nombre de la Entidad
 	 * @return nombre de la Entidad
 	 */
-
-	public abstract String getNombre();
+	public String getNombre() {
+		return Nombre;
+	}
+	
 	/**
-	 * obteine el (Codigo?) de la Entidad
-	 * @return
+	 * Metodo que devuelve el label (una imagen) de la Entidad
+	 * @return una imagen de la Entidad
 	 */
-	public abstract int getCod();
-	/**
-	 * metodo que señala a la Entidad que ha sido atacada por algo (que luego resuelve el Visitor)
-	 */
-	public abstract void serAtacado(personaje p);
-	/**
-	 * obtiene un Efecto para la Entidad
-	 */
-	public abstract void efecto();
-	
-	public abstract void mover();
-	
-	public abstract int morir();
-	
-	public abstract int vender();
-	
-
-	
 	public JLabel getLabel () {
 		return Label;
 	}
-
+	
+	/**
+	 * Metodo que cambia la imagen de la Entidad
+	 * @param una direccion al archivo donde esta la imagen
+	 */
+	public void setLabel (String File) {
+		this.Label = new JLabel (new ImageIcon (getClass ().getResource(File)));
+	}
 }

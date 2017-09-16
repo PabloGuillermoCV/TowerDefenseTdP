@@ -1,13 +1,12 @@
 package entidades;
 
-import javax.swing.JLabel;
 import Mapa.Posicion;
 
 public abstract class ObjetoTemporal extends ObjDentroDelMapa {
 	
 	protected int Tiempo;
 	
-	public ObjetoTemporal (String Nombre, JLabel Label, Posicion Pos, int Probabilidad, int Tiempo) {
+	public ObjetoTemporal (String Nombre, String Label, Posicion Pos, int Probabilidad, int Tiempo) {
 		super (Nombre,Label,Pos,Probabilidad);
 		this.Tiempo = Tiempo;
 	}
