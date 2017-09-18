@@ -1,6 +1,6 @@
 package entidades;
 
-import Mapa.Posicion;
+import Logica.Posicion;
 
 /**
  * Clase que mantiene la posicion XY de una entidad cualquiera en el Mapa
@@ -9,14 +9,18 @@ import Mapa.Posicion;
  */
 public abstract class fisico extends entidad {
 
-	protected Posicion Pos;
+	protected Posicion pos;
 	
 	public fisico (String Nombre, String Label, Posicion Pos) {
 		super (Nombre,Label);
-		this.Pos = Pos;
+		this.pos = Pos;
 	}
 	
 	public Posicion getPos () {
-		return Pos;
+		return pos;
+	}
+	
+	public void setPos (Posicion P) {
+		this.pos = P;
 	}
 }

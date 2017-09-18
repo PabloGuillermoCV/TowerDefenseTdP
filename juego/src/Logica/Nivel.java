@@ -1,7 +1,10 @@
 package Logica;
 
-import entidades.enemigo;
+import java.util.LinkedList;
+
+//import entidades.enemigo;
 import GUI.GUI;
+import entidades.*;
 /**
  * 
 import mapa.Celda;
@@ -15,22 +18,20 @@ import personajes.Malo;
 
 public class Nivel {
 	//Son las medidas del mapaVisual
-	private static int width=500;
-	private static int height=320;
-	private static String direccion= "C:\\Users\\Franco Sacomani\\Desktop\\Tower Defense\\MapaRecortado.png";
-	private enemigo malo;
+	//private static int width=500;
+	//private static int height=320;
+	//private static String direccion= "/imagen mapa/MapaRecortado.png";
+	//private enemigo malo;
 	private MapaLogico mapaLog;
 	private Posicion [] camino;
-	//variable de control del arreglo camino
-	int i =0;
 	private GUI gui;
+	
+	
 	public Nivel (GUI gui) {
 		this.gui=gui;
-		//mapaLog= new MapaLogico(gui.getMapaVisual().getWidth,gui.getMapaVisual().getHeight);
-		// generarCamino()--> crea el arreglo Camino con las Posiciones Correspondientes
-			
-		//crearEnemigos();
-		
+		mapaLog= new MapaLogico(gui.getMapaVisual().getWidth(),gui.getMapaVisual().getHeight());
+		generarCamino();
+		crearEnemigos();
 	}
 	/**
 	 * el metodo crearEnemigos(), carga la lista de enemigos con los enemigos concretos,(este metodo
@@ -63,14 +64,59 @@ public class Nivel {
 		i++;
 	}
 	**/
-	public String getRutaMapa() {
+	/*public String getRutaMapa() {
 		return direccion;
-	}
-	public int anchoMapa() {
+	}*/
+	/*public int anchoMapa() {
 		return width;
 	}
 	public int largoMapa() {
 		return height;
+	}*/
+	
+	private void generarCamino () {
+		camino = new Posicion [37];
+		int I = 0;
+		int X = 0;
+		int Y = 0;
+		while (I < 37) {
+			if (X < 460) {
+				camino [I] = new Posicion (X,Y);
+				X += 20;
+			}
+			else {
+				camino [I] = new Posicion (X,Y);
+				Y += 20;
+			}
+			I++;
+		}
 	}
-
+	
+	public void mover () {
+		Celda c;
+		LinkedList <enemigo> Aux;
+		LinkedList <enemigo> Movidos = new LinkedList <enemigo> ();
+		for (int I = 0; I < camino.length; I++) {
+			c = mapaLog.getCelda(camino [I].getX (), camino [I].getY ());
+			Aux = c.getEnemigos ();
+			if (!Aux.isEmpty ()) {
+				enemigo Actual = Aux.getFirst (); 
+				if(!fueMovido(Aux.getFirst(), Movidos)){
+					Movidos.addLast(Actual);
+					Actual.MoverA(camino [I+1]);
+				}
+			}
+		}
+	}
+	
+	private boolean fueMovido (enemigo E, LinkedList <enemigo> Movidos) {
+		return Movidos.contains(E);
+	}
+	
+	private void crearEnemigos () {
+		APie E = new APie (camino [0]);
+		Celda c = mapaLog.getCelda(camino [0].getX (),camino [0].getY ());
+		c.getEnemigos().addLast(E);
+		gui.getMapaVisual().add(E.getGrafico());
+	}
 }

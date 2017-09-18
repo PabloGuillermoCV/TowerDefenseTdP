@@ -1,9 +1,8 @@
 package GUI;
 
 import Logica.*;
-import java.awt.Point;
-
-import javax.swing.Icon;
+//import java.awt.Point;
+//import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -40,8 +39,8 @@ public class EntidadGrafica {
 		catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
 	}
-}
 	public JLabel getGrafico() {
 		return grafico;
 	}

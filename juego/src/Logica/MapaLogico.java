@@ -1,6 +1,6 @@
 package Logica;
-import java.util.*;
-import Mapa.*;
+//import java.util.*;
+//import Mapa.*;
 
 public class MapaLogico {
 	private Celda[][] matriz;
@@ -18,11 +18,7 @@ public class MapaLogico {
 	
 	
 	public Celda getCelda(int x,int y) {
-		return matriz[x][y];	
+		return matriz[x/20][y/20];	
 		
 	}
-	
-	
-
 }
-

@@ -1,6 +1,6 @@
 package entidades;
 
-import Mapa.Posicion;
+import Logica.Posicion;
 
 public abstract class Controlable extends personaje {
 	

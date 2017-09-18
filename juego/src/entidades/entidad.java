@@ -6,11 +6,13 @@ import javax.swing.JLabel;
 public abstract class entidad {
 
 	protected String Nombre;
-	protected JLabel Label;
+	protected JLabel grafico;
 	
 	public entidad (String Nombre, String File) {
 		this.Nombre = Nombre;
-		this.Label = new JLabel (new ImageIcon (getClass ().getResource(File)));
+		this.grafico = new JLabel (new ImageIcon (File));
+		//this.grafico.setBounds(80, 60, 20, 20);
+		this.grafico.setVisible(true);
 	}
 	
 	/**
@@ -25,15 +27,15 @@ public abstract class entidad {
 	 * Metodo que devuelve el label (una imagen) de la Entidad
 	 * @return una imagen de la Entidad
 	 */
-	public JLabel getLabel () {
-		return Label;
+	public JLabel getGrafico () {
+		return grafico;
 	}
 	
 	/**
 	 * Metodo que cambia la imagen de la Entidad
 	 * @param una direccion al archivo donde esta la imagen
 	 */
-	public void setLabel (String File) {
-		this.Label = new JLabel (new ImageIcon (getClass ().getResource(File)));
+	public void setGrafico (String File) {
+		this.grafico = new JLabel (new ImageIcon ((File)));
 	}
 }

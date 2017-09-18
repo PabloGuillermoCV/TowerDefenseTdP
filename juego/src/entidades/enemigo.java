@@ -1,6 +1,6 @@
 package entidades;
 
-import Mapa.Posicion;
+import Logica.Posicion;
 
 public abstract class enemigo extends personaje {
 	
@@ -25,8 +25,29 @@ public abstract class enemigo extends personaje {
 	public void serAtacado (enemigo e) {
 		
 	}
+	
 	public void serAtacado(Controlable a){
 		this.setVida(this.Vida -  (this.Defensa - a.getAtaque()) );
 	}
+	
+	public void MoverA (Posicion pos) {
+		try {
+			if(this.pos.getX()!= pos.getX()) {
+				while(this.pos.getX()!=pos.getX())
+					this.grafico.setBounds(this.pos.getX()+VelocidadMov, this.pos.getY(),20, 20);
+				    Thread.sleep(100);
+			}
+			else {
+				while(this.pos.getY()!=pos.getY()) {
+					this.grafico.setBounds(this.pos.getX(), this.pos.getY()+VelocidadMov,20, 20);
+				    Thread.sleep(100);
+				}
+			}		
+			this.pos=pos;
+			}
+			
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	}
 }
-
