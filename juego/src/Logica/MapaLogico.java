@@ -1,5 +1,6 @@
-package Mapa;
+package Logica;
 import java.util.*;
+import Mapa.*;
 
 public class MapaLogico {
 	private Celda[][] matriz;

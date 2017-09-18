@@ -1,5 +1,7 @@
-package Mapa;
-import   entidades.*;
+package Logica;
+
+
+import entidades.*;
 import java.util.*;
 
 

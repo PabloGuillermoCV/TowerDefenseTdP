@@ -1,5 +1,6 @@
-package Mapa;
+package GUI;
 
+import Logica.*;
 import java.awt.Point;
 
 import javax.swing.Icon;

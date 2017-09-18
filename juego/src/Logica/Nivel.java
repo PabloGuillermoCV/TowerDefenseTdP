@@ -1,4 +1,4 @@
-package Mapa;
+package Logica;
 
 import entidades.enemigo;
 import GUI.GUI;

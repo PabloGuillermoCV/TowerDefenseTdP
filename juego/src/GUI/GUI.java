@@ -1,6 +1,6 @@
 package GUI;
 
-import  Mapa.*;
+import  Logica.*;
 
 import java.awt.EventQueue;
 

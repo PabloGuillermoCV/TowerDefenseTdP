@@ -1,4 +1,4 @@
-package Mapa;
+package Logica;
 
 public class Posicion {
 	
