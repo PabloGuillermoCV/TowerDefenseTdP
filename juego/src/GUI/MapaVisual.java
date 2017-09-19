@@ -23,10 +23,13 @@ public class MapaVisual extends JPanel {
 		
 	}
 
+	public JLabel getFondo () {
+		return fondo;
+	}
+	
 	private void cargarFondo(ImageIcon im) {
-		fondo= new JLabel(im);
+		fondo = new JLabel(im);
 		fondo.setBounds(0, 0, width, height);
-		
 		this.add(fondo);
 	}
 

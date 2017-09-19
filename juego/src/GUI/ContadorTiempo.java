@@ -5,7 +5,7 @@ import Logica.Nivel;
 public class ContadorTiempo extends Thread {
 
 	private Nivel nivel;
-	private GUI gui;
+	//private GUI gui;
 
 	ContadorTiempo(Nivel j) {
 		this.nivel = j;

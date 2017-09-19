@@ -33,16 +33,20 @@ public abstract class enemigo extends personaje {
 	public void MoverA (Posicion pos) {
 		try {
 			if(this.pos.getX()!= pos.getX()) {
-				while(this.pos.getX()!=pos.getX())
+				while(this.pos.getX()!=pos.getX()) {
 					this.grafico.setBounds(this.pos.getX()+VelocidadMov, this.pos.getY(),20, 20);
+					this.pos.setX(this.pos.getX()+VelocidadMov);
 				    Thread.sleep(100);
+				}
 			}
 			else {
 				while(this.pos.getY()!=pos.getY()) {
 					this.grafico.setBounds(this.pos.getX(), this.pos.getY()+VelocidadMov,20, 20);
+					this.pos.setY(this.pos.getY()+VelocidadMov);
 				    Thread.sleep(100);
 				}
 			}		
+			
 			this.pos=pos;
 			}
 			

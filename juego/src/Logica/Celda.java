@@ -20,7 +20,9 @@ public class Celda {
 		
 	}
 	
-	
+	public void add (enemigo E) {
+		enemigos.addLast(E);
+	}
 	
 	public LinkedList<enemigo> getEnemigos(){
 		return enemigos;

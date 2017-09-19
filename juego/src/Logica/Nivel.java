@@ -18,20 +18,21 @@ import personajes.Malo;
 
 public class Nivel {
 	//Son las medidas del mapaVisual
-	//private static int width=500;
-	//private static int height=320;
-	//private static String direccion= "/imagen mapa/MapaRecortado.png";
-	//private enemigo malo;
+	private static int width = 500;
+	private static int height = 320;
+	private static String direccion = "/imagen mapa/MapaRecortado.png";
+	@SuppressWarnings("unused")
+	private enemigo malo;
 	private MapaLogico mapaLog;
 	private Posicion [] camino;
 	private GUI gui;
 	
 	
 	public Nivel (GUI gui) {
-		this.gui=gui;
-		mapaLog= new MapaLogico(gui.getMapaVisual().getWidth(),gui.getMapaVisual().getHeight());
-		generarCamino();
-		crearEnemigos();
+		this.gui = gui;
+		mapaLog = new MapaLogico (width,height);
+		generarCamino ();
+		crearEnemigos ();
 	}
 	/**
 	 * el metodo crearEnemigos(), carga la lista de enemigos con los enemigos concretos,(este metodo
@@ -64,15 +65,18 @@ public class Nivel {
 		i++;
 	}
 	**/
-	/*public String getRutaMapa() {
+	
+	public String getRutaMapa() {
 		return direccion;
-	}*/
-	/*public int anchoMapa() {
+	}
+	
+	public int anchoMapa() {
 		return width;
 	}
+	
 	public int largoMapa() {
 		return height;
-	}*/
+	}
 	
 	private void generarCamino () {
 		camino = new Posicion [37];
@@ -104,6 +108,8 @@ public class Nivel {
 				if(!fueMovido(Aux.getFirst(), Movidos)){
 					Movidos.addLast(Actual);
 					Actual.MoverA(camino [I+1]);
+					mapaLog.getCelda(camino[I+1].getX(), camino[I+1].getY()).add(c.getEnemigos().removeFirst());
+					Movidos.removeLast();
 				}
 			}
 		}
@@ -117,6 +123,6 @@ public class Nivel {
 		APie E = new APie (camino [0]);
 		Celda c = mapaLog.getCelda(camino [0].getX (),camino [0].getY ());
 		c.getEnemigos().addLast(E);
-		gui.getMapaVisual().add(E.getGrafico());
+		gui.getMapaVisual().getFondo().add(E.getGrafico());
 	}
 }
