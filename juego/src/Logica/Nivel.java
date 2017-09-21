@@ -2,6 +2,7 @@ package Logica;
 
 import java.util.LinkedList;
 
+import Enemigos.APie;
 //import entidades.enemigo;
 import GUI.GUI;
 import entidades.*;

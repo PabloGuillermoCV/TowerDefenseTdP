@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 
 public class EntidadGrafica {
 	private JLabel grafico;
-	private String dir= "C:\\Users\\Franco Sacomani\\Desktop\\Tower Defense\\recorte.png";
+	private String dir= "recorte.png";
 	private Posicion pos;
 	
 	
