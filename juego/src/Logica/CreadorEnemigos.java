@@ -1,4 +1,5 @@
 package Logica;
+
 import Enemigos.*;
 
 public abstract class CreadorEnemigos {

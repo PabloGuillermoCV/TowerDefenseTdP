@@ -46,5 +46,4 @@ public class Posicion {
 	public void setY(int y){
 		Y = y;
 	}
-	
 }

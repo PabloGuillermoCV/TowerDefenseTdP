@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -17,7 +16,6 @@ import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-
 import java.awt.Component;
 import javax.swing.JLayeredPane;
 import java.awt.Color;
@@ -128,5 +126,4 @@ public class juego {
 		frame.getContentPane().add(panel_Mapa, BorderLayout.CENTER);
 		panel_Mapa.setLayout(null);
 	}
-
 }

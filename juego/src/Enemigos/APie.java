@@ -7,8 +7,8 @@ public class APie extends enemigo {
 	
 	/*
 	Nombre = "APie"
-	JLabel = GifSoldado.gif
-	Posicion = null
+	JLabel = APie.gif
+	Posicion = pos
 	Vida = 50
 	Alcance = 1
 	PowerUpDelMapa = null
@@ -19,7 +19,7 @@ public class APie extends enemigo {
 	*/
 	
 	public APie (Posicion pos) {
-		super ("APie","SpriteBlanco2.gif",pos,50,1,null,50,100,5,false);
-		this.grafico.setBounds(getPos ().getX (), getPos ().getY (), 20, 20);
+		super ("APie", "src\\Enemigos\\Sprites Enemigos\\APie.gif", pos, 50, 1, null, 50, 100, 5, false);
+		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

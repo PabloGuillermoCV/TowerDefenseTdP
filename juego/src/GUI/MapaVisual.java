@@ -1,10 +1,8 @@
 package GUI;
+
 import javax.swing.ImageIcon;
-//import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-//import javax.swing.border.EmptyBorder;
-
 
 @SuppressWarnings("serial")
 public class MapaVisual extends JPanel {
@@ -19,12 +17,18 @@ public class MapaVisual extends JPanel {
 		this.width=width;
 		ImageIcon imagen = new ImageIcon(direccion);
 		cargarFondo(imagen);
-		
-		
 	}
 
 	public JLabel getFondo () {
 		return fondo;
+	}
+	
+	public int getHeight () {
+		return height;
+	}
+	
+	public int getWidth () {
+		return width;
 	}
 	
 	private void cargarFondo(ImageIcon im) {
@@ -32,5 +36,4 @@ public class MapaVisual extends JPanel {
 		fondo.setBounds(0, 0, width, height);
 		this.add(fondo);
 	}
-
 }

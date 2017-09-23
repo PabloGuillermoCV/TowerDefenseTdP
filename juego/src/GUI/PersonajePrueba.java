@@ -1,6 +1,6 @@
 package GUI;
 
-import javax.swing.ImageIcon;
+/*import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,4 +18,4 @@ public class PersonajePrueba extends JPanel {
 		Grafico.setBounds(80, 60, 20, 20);
 		gui.getMapaVisual().getFondo().add(Grafico);
 	}
-}
+}*/

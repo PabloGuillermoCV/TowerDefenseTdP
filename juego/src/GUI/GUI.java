@@ -1,17 +1,12 @@
 package GUI;
 
-import  Logica.*;
+import Logica.*;
 import entidades.*;
-
+import Enemigos.*;
+import Controlables.*;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-//import javax.swing.border.EmptyBorder;
-
-import Enemigos.APie;
-
-
 
 @SuppressWarnings({ "serial", "unused" })
 public class GUI extends JFrame {
@@ -19,15 +14,15 @@ public class GUI extends JFrame {
 	private ContadorTiempo tiempo;
 	private static int width=500;
 	private static int height=320;
-	private static String direccion= "C:\\Users\\tomi_\\Desktop\\Sprites\\MapaRecortado.png";
+	private static String direccion= "src\\GUI\\Sprites Mapas\\Mapa1.png";
 	private MapaVisual mapa;
 	private Nivel nivel;
-	//private ContadorTiempo contadorTiempo;
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater (new Runnable() {
 			public void run() {
 				try {
 					GUI frame = new GUI();
@@ -40,7 +35,7 @@ public class GUI extends JFrame {
 	}
 	
 	
-	public GUI() {
+	public GUI () {
 		this.getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(517, 360);
@@ -52,17 +47,14 @@ public class GUI extends JFrame {
 		tiempo.start();
 		//ver();
 	}
-
 	
 	public MapaVisual getMapaVisual() {
 		return mapa;
 	}
 	
-	@SuppressWarnings("unused")
 	private void ver() {
 		APie E = new APie(new Posicion (80,60));
 		E.getGrafico().setVisible(true);
 		this.getContentPane().add(E.getGrafico());
 	}
-
 }

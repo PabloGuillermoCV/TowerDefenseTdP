@@ -46,12 +46,10 @@ public abstract class enemigo extends personaje {
 				    Thread.sleep(100);
 				}
 			}		
-			
 			this.pos=pos;
-			}
-			
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

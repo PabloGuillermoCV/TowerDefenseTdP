@@ -1,11 +1,10 @@
 package Logica;
 
 import java.util.LinkedList;
-
-import Enemigos.APie;
-//import entidades.enemigo;
+import Enemigos.*;
 import GUI.GUI;
 import entidades.*;
+
 /**
  * 
 import mapa.Celda;
@@ -16,18 +15,17 @@ import personajes.Malo;
  *
  */
 
-
 public class Nivel {
 	//Son las medidas del mapaVisual
 	private static int width = 500;
 	private static int height = 320;
-	private static String direccion = "/imagen mapa/MapaRecortado.png";
+	//direccion no es usada/no es necesaria. se pide la ruta al mapa desde GUI
+	private static String direccion = "src\\GUI\\Sprites Mapas\\Mapa1.png";
 	@SuppressWarnings("unused")
 	private enemigo malo;
 	private MapaLogico mapaLog;
 	private Posicion [] camino;
 	private GUI gui;
-	
 	
 	public Nivel (GUI gui) {
 		this.gui = gui;
@@ -35,6 +33,7 @@ public class Nivel {
 		generarCamino ();
 		crearEnemigos ();
 	}
+	
 	/**
 	 * el metodo crearEnemigos(), carga la lista de enemigos con los enemigos concretos,(este metodo
 	 * podria recibir una abstracFactory que cree a todos los enemigos). En el constructor de cada enem
@@ -77,6 +76,18 @@ public class Nivel {
 	
 	public int largoMapa() {
 		return height;
+	}
+	
+	public MapaLogico getMapaLog () {
+		return mapaLog;
+	}
+	
+	public Posicion [] getCamino () {
+		return camino;
+	}
+	
+	public GUI getGui () {
+		return gui;
 	}
 	
 	private void generarCamino () {

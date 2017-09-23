@@ -1,17 +1,13 @@
 package GUI;
 
 import Logica.*;
-//import java.awt.Point;
-//import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 
 public class EntidadGrafica {
 	private JLabel grafico;
 	private String dir= "recorte.png";
 	private Posicion pos;
-	
 	
 	public EntidadGrafica(Posicion pos) {
 		this.pos=pos;
@@ -37,12 +33,11 @@ public class EntidadGrafica {
 		}
 		
 		catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
 	public JLabel getGrafico() {
 		return grafico;
 	}
-
 }

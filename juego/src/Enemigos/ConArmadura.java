@@ -4,9 +4,22 @@ import Logica.Posicion;
 import entidades.enemigo;
 
 public class ConArmadura extends enemigo {
-
-	public ConArmadura(Posicion pos){
-		super ("ConArmadura","SpriteBlanco2.gif",pos,150,1,null,50,100,10,false);
-		this.grafico.setBounds(getPos ().getX (), getPos ().getY (), 20, 20);
+	
+	/*
+	Nombre = "ConArmadura"
+	JLabel = ConArmadura.gif
+	Posicion = pos
+	Vida = 450
+	Alcance = 1
+	PowerUpDelMapa = null
+	Ataque = 200
+	Defensa = 75
+	VelocidadMov = 3
+	PowerUp = False
+	*/
+	
+	public ConArmadura (Posicion pos) {
+		super ("ConArmadura", "src\\Enemigos\\Sprites Enemigos\\ConArmadura.gif", pos, 450, 1, null, 200, 75, 3, false);
+		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }
