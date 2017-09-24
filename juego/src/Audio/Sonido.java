@@ -51,6 +51,10 @@ public class Sonido extends JFrame implements ActionListener{
         new Sonido();
     }
     
+    /**
+	 * metodo que reproduce sonidos (para botones en particular, tengo entendido que para lo que seria BGM tenemos que hacer un Thread)
+	 * @param nombreSonido direccion al archivo de sonido (DEBE SER UN .wav, NO funciona con otros formatos)
+	 */
     public void ReproducirSonido(String nombreSonido){
         try {
     	    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
