@@ -1,9 +1,12 @@
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -12,19 +15,27 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
- 
+
 public class Sonido extends JFrame implements ActionListener{
-    JButton boton1 = new JButton();
-    ImageIcon cara = new ImageIcon("src/GUI/Sprites Botones/caraBoton.png");
+    JButton[] boton1 = new JButton[5];
+    Random x = new Random();
+    ImageIcon[] cara = new ImageIcon[5];
     public Sonido(){
-        super("Pulse el boton");
+    	super("Pulse el boton");
+    	for(int i = 0; i < 5; i++){
+    		cara[i] = new ImageIcon("src/GUI/Sprites Botones/cara" + (i+1) + ".png");
+    		boton1[i] = new JButton();
+    		boton1[i].setLayout(new GridLayout());
+    		boton1[i].setIcon(cara[i]);
+    		boton1[i].setText("" + x.nextInt(500));
+    		boton1[i].addActionListener(this);
+    		add(boton1[i]);
+    	}
         setSize(400,400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
-        boton1.setIcon(cara);
-        add(boton1);
-        boton1.addActionListener(this);
+        
         setVisible(true);
     }
     public static void main(String[] Dar10){
@@ -42,8 +53,6 @@ public class Sonido extends JFrame implements ActionListener{
      }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == boton1){
             ReproducirSonido("src/GUI/Sonidos/TestSound.wav");
-        }
     }
 }
