@@ -7,7 +7,6 @@ import Controlables.*;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -41,7 +40,6 @@ public class GUI extends JFrame {
 		});
 	}
 	
-	
 	public GUI () {
 		this.getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,16 +61,17 @@ public class GUI extends JFrame {
 	 * metodo que reproduce sonidos (para botones en particular, tengo entendido que para lo que seria BGM tenemos que hacer un Thread)
 	 * @param nombreSonido direccion al archivo de sonido (DEBE SER UN .wav, NO funciona con otros formatos)
 	 */
-	private void ReproducirSonido(String nombreSonido){
-	       try {
+	private void ReproducirSonido(String nombreSonido) {
+		try {
 	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
-	       } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-	         System.out.println("Error al reproducir el sonido.");
-	       }
-	     }
+	    }
+		catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+	        System.out.println("Error al reproducir el sonido.");
+	    }
+	}
 	
 	private void ver() {
 		APie E = new APie(new Posicion (80,60));
