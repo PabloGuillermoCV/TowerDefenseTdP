@@ -20,7 +20,7 @@ public class Caballero extends Controlable {
 	*/
 	
 	public Caballero (Posicion pos) {
-		super ("Caballero", "src\\Controlables\\Sprites Controlables\\Caballero.gif", pos, 50, 2, null, 75, 90, 500, false, 9);
+		super ("Caballero", "src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif", pos, 50, 2, null, 75, 90, 500, false, 9);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

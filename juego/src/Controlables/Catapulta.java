@@ -20,7 +20,7 @@ public class Catapulta extends Controlable {
 	*/
 	
 	public Catapulta (Posicion pos) {
-		super ("Caballero", "src\\Controlables\\Sprites Controlables\\Catapulta.gif", pos, 200, 3, null, 200, 100, 5200, false, 2);
+		super ("Caballero", "src\\Controlables\\Sprites Controlables\\CatapultaStatic.gif", pos, 200, 3, null, 200, 100, 5200, false, 2);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

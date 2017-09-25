@@ -20,7 +20,7 @@ public class Soldado extends Controlable {
 	*/
 	
 	public Soldado (Posicion pos) {
-		super ("Soldado", "src\\Controlables\\Sprites Controlables\\Soldado.gif", pos, 100, 1, null, 50, 100, 200, false, 4);
+		super ("Soldado", "src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif", pos, 100, 1, null, 50, 100, 200, false, 4);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

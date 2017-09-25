@@ -20,7 +20,7 @@ public class Arquero extends Controlable {
 	*/
 	
 	public Arquero (Posicion pos) {
-		super ("Arquero", "src\\Controlables\\Sprites Controlables\\Arquero.gif", pos, 100, 5, null, 50, 100, 300, false, 7);
+		super ("Arquero", "src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif", pos, 100, 5, null, 50, 100, 300, false, 7);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

@@ -20,7 +20,7 @@ public class Elite extends Controlable {
 	*/
 	
 	public Elite (Posicion pos) {
-		super ("Elite", "src\\Controlables\\Sprites Controlables\\Elite.gif", pos, 350, 1, null, 150, 300, 650, false, 6);
+		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", pos, 350, 1, null, 150, 300, 650, false, 6);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }
