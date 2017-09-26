@@ -120,7 +120,7 @@ public class Nivel {
 				if(!fueMovido(Aux.getFirst(), Movidos)){
 					Movidos.addLast(Actual);
 					Actual.MoverA(camino [I+1]);
-					mapaLog.getCelda(camino[I+1].getX(), camino[I+1].getY()).add(c.getEnemigos().removeFirst());
+					mapaLog.getCelda(camino[I+1].getX(), camino[I+1].getY()).addEnemigo(c.getEnemigos().removeFirst());
 					Movidos.removeLast();
 				}
 			}

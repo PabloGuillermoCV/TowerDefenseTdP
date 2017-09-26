@@ -17,10 +17,11 @@ public class Elite extends Controlable {
 	Precio = 650
 	DosEspacios = False
 	VelocidadAt = 6
+	PowerUpComprado = null
 	*/
 	
 	public Elite (Posicion pos) {
-		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", pos, 350, 1, null, 150, 300, 650, false, 6);
+		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", pos, 350, 1, null, 150, 300, 650, false, 6, null);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

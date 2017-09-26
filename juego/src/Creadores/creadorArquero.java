@@ -1,14 +1,14 @@
 package Creadores;
 
+import Controlables.Arquero;
 import Logica.Celda;
 import entidades.Controlable;
 
 public class creadorArquero extends Factory{
 
-	@Override
-	public Controlable crear(Celda C) {
-		// TODO Auto-generated method stub
-		return null;
+	public Controlable crear (Celda C) {
+		Arquero A = new Arquero (C.getEsquinaIzq());
+		C.addPersonaje (A);
+		return A;
 	}
-
 }

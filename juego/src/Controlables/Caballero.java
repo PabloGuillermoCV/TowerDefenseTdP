@@ -17,10 +17,11 @@ public class Caballero extends Controlable {
 	Precio = 500
 	DosEspacios = False
 	VelocidadAt = 9
+	PowerUpComprado = null
 	*/
 	
 	public Caballero (Posicion pos) {
-		super ("Caballero", "src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif", pos, 50, 2, null, 75, 90, 500, false, 9);
+		super ("Caballero", "src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif", pos, 50, 2, null, 75, 90, 500, false, 9, null);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

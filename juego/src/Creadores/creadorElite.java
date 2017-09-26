@@ -9,7 +9,7 @@ public class creadorElite extends Factory {
 	
 	public Controlable crear(Celda C) {
 		Elite E = new Elite(C.getEsquinaIzq());
-		C.addP(E);
+		C.addPersonaje (E);
 		return E;
 	}
 

@@ -12,24 +12,29 @@ public class Celda {
 	public Celda (int x, int y,MapaLogico mapa) {
 		esquinaIzq = new Posicion(x*20,y*20);
 		enemigos = new LinkedList<enemigo>();
-		this.mapa=mapa;
+		this.mapa = mapa;
 		personaje = null;
 	}
 	
-	public void add (enemigo E) {
+	public void addEnemigo (enemigo E) {
 		enemigos.addLast(E);
 	}
 	
-	public void addP(Controlable C){
+	public void addPersonaje (Controlable C){
 		personaje = C;
 	}
+	
+	public void addObjeto (Conceptual C) {
+		personaje.setPowerUpComprado (C);
+	}
+	
 	public LinkedList<enemigo> getEnemigos(){
 		return enemigos;
 	}
+	
 	public Controlable getPersonaje() {
 		return personaje;
 	}
-	
 	
 	public Posicion getEsquinaIzq () {
 		return esquinaIzq;

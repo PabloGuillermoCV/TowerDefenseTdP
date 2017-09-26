@@ -44,6 +44,10 @@ public abstract class personaje extends fisico {
 		Vida = V;
 	}
 	
+	public void setPowerUp (PowerUpDelMapa P) {
+		PowerUp = P;
+	}
+	
 	public abstract void serAtacado(Controlable a);
 	
 	public abstract void serAtacado(enemigo e);
