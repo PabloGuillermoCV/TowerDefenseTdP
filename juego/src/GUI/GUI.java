@@ -23,6 +23,7 @@ public class GUI extends JFrame {
 	private static String direccion= "src\\GUI\\Sprites Mapas\\Mapa1.png";
 	private MapaVisual mapa;
 	private Nivel nivel;
+	private Tienda shop;
 	
 	/**
 	 * Launch the application.
