@@ -6,12 +6,15 @@ public abstract class enemigo extends personaje {
 	
 	protected int VelocidadMov;
 	protected boolean EfectoEspecial;
+	protected int Puntaje;
 	
 	public enemigo (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
-		   PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov,boolean EfectoEspecial) {
+		   PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
+		   int Puntaje) {
 		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
 		this.VelocidadMov = VelocidadMov;
 		this.EfectoEspecial = EfectoEspecial;
+		this.Puntaje = Puntaje;
 	}
 	
 	public int getVelMov () {
@@ -20,6 +23,10 @@ public abstract class enemigo extends personaje {
 	
 	public boolean getEfecto () {
 		return EfectoEspecial;
+	}
+	
+	public int getPuntaje () {
+		return Puntaje;
 	}
 	
 	public void serAtacado (enemigo e) {

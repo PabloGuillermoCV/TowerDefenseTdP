@@ -4,7 +4,12 @@ import Controlables.Arquero;
 import Logica.Celda;
 import entidades.Controlable;
 
-public class creadorArquero extends Factory{
+@SuppressWarnings("serial")
+public class creadorArquero extends Factory {
+	
+	public creadorArquero () {
+		super ("src\\GUI\\Sprites Botones\\Arquero.png", "Arquero", 300);
+	}
 
 	public Controlable crear (Celda C) {
 		Arquero A = new Arquero (C.getEsquinaIzq());

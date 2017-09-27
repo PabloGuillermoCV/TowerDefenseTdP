@@ -18,12 +18,15 @@ import javax.swing.*;
 public class GUI extends JFrame {
 	private JFrame ventana;
 	private ContadorTiempo tiempo;
-	private static int width=500;
-	private static int height=320;
-	private static String direccion= "src\\GUI\\Sprites Mapas\\Mapa1.png";
+	private static int widthM = 500;
+	private static int heightM = 320;
+	private static int widthS = 200;
+	private static int heightS = 120;
+	private static String direccionM = "src\\GUI\\Sprites Mapas\\Mapa1.png";
+	private static String direccionS = "src\\GUI\\Sprites Shop\\Shop.png";
 	private MapaVisual mapa;
+	private TiendaVisual shop;
 	private Nivel nivel;
-	private Tienda shop;
 	
 	/**
 	 * Launch the application.
@@ -41,21 +44,33 @@ public class GUI extends JFrame {
 		});
 	}
 	
-	public GUI () {
-		this.getContentPane().setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(517, 360);
-		mapa = new MapaVisual(width,height,direccion);
-		nivel= new Nivel(this);
-		this.getContentPane().add(mapa);
-		this.add(mapa);
-		tiempo = new ContadorTiempo(nivel);
-		tiempo.start();
+	public GUI () { //comente los cambios que quiza usemos para agregar la tienda al frame
+		this.getContentPane ().setLayout (null);
+		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+		//this.setSize (517, 360);
+		this.setSize (517, 480);
+		mapa = new MapaVisual (widthM, heightM, direccionM);
+		shop = new TiendaVisual (widthS, heightS, direccionS);
+		nivel = new Nivel (this);
+		this.getContentPane ().add (mapa);
+		this.getContentPane ().add (shop);
+		this.add (mapa);
+		this.add(shop);
+		tiempo = new ContadorTiempo (nivel);
+		tiempo.start ();
 		//ver();
 	}
 	
 	public MapaVisual getMapaVisual() {
 		return mapa;
+	}
+	
+	public TiendaVisual getTiendaVisual () {
+		return shop;
+	}
+	
+	public Nivel getNivel () {
+		return nivel;
 	}
 	
 	private void ver() {

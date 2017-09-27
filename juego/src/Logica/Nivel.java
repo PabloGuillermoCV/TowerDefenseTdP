@@ -17,19 +17,23 @@ import personajes.Malo;
 
 public class Nivel {
 	//Son las medidas del mapaVisual
-	private static int width = 500;
-	private static int height = 320;
-	//direccion no es usada/no es necesaria. se pide la ruta al mapa desde GUI
-	private static String direccion = "src\\GUI\\Sprites Mapas\\Mapa1.png";
+	private static int widthM = 500;
+	private static int heightM = 320;
+	//Son las medidas de tiendaVisual
+	private static int widthS = 200;
+	private static int heightS = 120;
 	@SuppressWarnings("unused")
 	private enemigo malo;
 	private MapaLogico mapaLog;
+	@SuppressWarnings("unused")
+	private TiendaLogica tiendaLog;
 	private Posicion [] camino;
 	private GUI gui;
 	
 	public Nivel (GUI gui) {
 		this.gui = gui;
-		mapaLog = new MapaLogico (width,height);
+		mapaLog = new MapaLogico (widthM,heightM);
+		tiendaLog = new TiendaLogica (widthS,heightS);
 		generarCamino ();
 		crearEnemigos ();
 	}
@@ -66,16 +70,20 @@ public class Nivel {
 	}
 	**/
 	
-	public String getRutaMapa() {
-		return direccion;
+	public int anchoMapa () {
+		return widthM;
 	}
 	
-	public int anchoMapa() {
-		return width;
+	public int largoMapa () {
+		return heightM;
 	}
 	
-	public int largoMapa() {
-		return height;
+	public int anchoTienda () {
+		return widthS;
+	}
+	
+	public int largoTienda () {
+		return heightS;
 	}
 	
 	public MapaLogico getMapaLog () {

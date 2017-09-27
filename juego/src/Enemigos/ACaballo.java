@@ -16,10 +16,11 @@ public class ACaballo extends enemigo {
 	Defensa = 90
 	VelocidadMov = 6
 	PowerUp = False
+	Puntaje = 5000
 	*/
 	
 	public ACaballo (Posicion pos) {
-		super ("ACaballo", "src\\Enemigos\\Sprites Enemigos\\ACaballo.gif", pos, 200, 2, null, 100, 90, 6, false);
+		super ("ACaballo", "src\\Enemigos\\Sprites Enemigos\\ACaballo.gif", pos, 200, 2, null, 100, 90, 6, false, 5000);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

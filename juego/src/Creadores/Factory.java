@@ -1,9 +1,20 @@
 package Creadores;
 
+import java.awt.GridLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import Logica.*;
 import entidades.Controlable;
 
-public abstract class Factory {
+@SuppressWarnings("serial")
+public abstract class Factory extends JButton {
+	
+	public Factory (String direccionIcono, String Nombre, int Costo) {
+		setLayout (new GridLayout ());
+		setIcon (new ImageIcon (direccionIcono));
+		setText (Nombre + Costo);
+	}
+	
 	/**
 	 * Crea una unidad del jugador en al posicion especificada
 	 * @param C Posicion en donde insertar el personaje
