@@ -2,6 +2,8 @@ package Logica;
 
 import Creadores.Factory;
 import Logica.Jugador;
+import entidades.Controlable;
+import entidades.entidad;
 
 public class TiendaLogica {
 	
@@ -11,11 +13,18 @@ public class TiendaLogica {
 	public TiendaLogica (int w, int h) { //por ahora no hace nada con las medidas
 		creator = null;
 	}
-	
-	public Factory getCreador () {
-		return creator;
+	/*
+	public entidad getControlable () {
+		if(creator == null)
+			return null;
+		else {
+			entidad e=  creator.crear();
+			creator =null;
+			return e;
+		}
+			
 	}
-	
+	*/
 	public Jugador getP () {
 		return P;
 	}

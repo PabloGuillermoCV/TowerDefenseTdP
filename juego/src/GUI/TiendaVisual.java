@@ -19,6 +19,7 @@ public class TiendaVisual extends JPanel implements ActionListener {
 	private Jugador P; //En esta clase se encarga de tomar los numeros y modificar el display
 	private JLabel displayMonedas;
 	private JLabel displayPuntos;
+	//private TiendaLogica Market;
 	
 	public TiendaVisual (int width, int height, String direccion) {
 		this.setLayout (null);
@@ -29,6 +30,7 @@ public class TiendaVisual extends JPanel implements ActionListener {
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
 		setBotones ();
+		//Market = new
 		//setNumeros (); //Agrega el puntaje y las monedas pero tira error cuando se ejecuta
 		
 	}

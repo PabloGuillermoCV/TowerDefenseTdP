@@ -4,6 +4,7 @@ public class MapaLogico {
 	
 	private Celda [][] matriz;
 	private static int tamaño = 20;
+	private TiendaLogica market;
 	
 	public MapaLogico (int w, int h) {
 		matriz = new Celda [w/tamaño][h/tamaño];
@@ -12,6 +13,7 @@ public class MapaLogico {
 				matriz [i][j] = new Celda (i,j,this);
 			}
 		}
+		//TiendaLogica market = new TiendaLogica();
 	}
 	
 	public Celda getCelda (int x,int y) {
@@ -21,4 +23,12 @@ public class MapaLogico {
 	public int getTamaño () {
 		return tamaño;
 	}
+	/*
+	public void agregarPersonaje(int x,int y) {
+		market.getControlable();
+		//if(Market.getCreador() != null)
+			//modificar no recibe la celda --> Market.getCreador().crear(C);
+		
+	}
+*/
 }

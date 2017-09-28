@@ -1,11 +1,14 @@
 package GUI;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class MapaVisual extends JPanel {
+public class MapaVisual extends JPanel{
 	private JLabel fondo;
 	private int height;
 	private int width;
@@ -17,8 +20,44 @@ public class MapaVisual extends JPanel {
 		this.width = width;
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
+		//this.addMouseListener(new Tendero);
 	}
 
+	private class Tendero implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
+	}
+	
 	public JLabel getFondo () {
 		return fondo;
 	}
