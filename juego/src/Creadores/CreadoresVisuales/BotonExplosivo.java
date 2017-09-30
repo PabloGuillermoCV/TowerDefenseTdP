@@ -1,9 +1,9 @@
 package Creadores.CreadoresVisuales;
 
 @SuppressWarnings("serial")
-public class CreadorExplosivoBoton extends FactoryVisual {
+public class BotonExplosivo extends FactoryVisual {
 
-	public CreadorExplosivoBoton () {
+	public BotonExplosivo () {
 		super ("src\\GUI\\Sprites Botones\\Elite.png", "Explosivo", 450);
 	}
 }

@@ -1,6 +1,5 @@
 package Controlables;
 
-import Logica.Posicion;
 import Logica.Visitor;
 import entidades.Controlable;
 import entidades.Enemigo;
@@ -22,8 +21,8 @@ public class Elite extends Controlable {
 	PowerUpComprado = null
 	*/
 	
-	public Elite (Posicion pos) {
-		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", pos, 350, 1, null, 150, 300, 650, false, 6, null);
+	public Elite () {
+		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", null, 350, 1, null, 150, 300, 650, false, 6, null);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 

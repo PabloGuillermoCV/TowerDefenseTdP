@@ -3,12 +3,12 @@ package entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public abstract class entidad {
+public abstract class Entidad {
 
 	protected String Nombre;
 	protected JLabel grafico;
 	
-	public entidad (String Nombre, String File) {
+	public Entidad (String Nombre, String File) {
 		this.Nombre = Nombre;
 		this.grafico = new JLabel (new ImageIcon (File));
 		//this.grafico.setBounds(80, 60, 20, 20);

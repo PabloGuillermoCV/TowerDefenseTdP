@@ -5,16 +5,6 @@ import Enemigos.*;
 import GUI.GUI;
 import entidades.*;
 
-/**
- * 
-import mapa.Celda;
-import mapa.Mapa;
-import personajes.Jugador;
-import personajes.Malo;
- * 
- *
- */
-
 public class Nivel {
 	//Son las medidas del mapaVisual
 	private static int widthM = 500;
@@ -33,7 +23,7 @@ public class Nivel {
 	public Nivel (GUI gui) {
 		this.gui = gui;
 		mapaLog = new MapaLogico (widthM,heightM);
-		tiendaLog = new TiendaLogica (widthS,heightS);
+		tiendaLog = new TiendaLogica ();
 		generarCamino ();
 		crearEnemigos ();
 	}

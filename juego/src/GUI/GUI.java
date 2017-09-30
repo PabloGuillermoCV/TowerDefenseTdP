@@ -5,6 +5,7 @@ import entidades.*;
 import Enemigos.*;
 import Controlables.*;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
@@ -20,8 +21,8 @@ public class GUI extends JFrame {
 	private ContadorTiempo tiempo;
 	private static int widthM = 500;
 	private static int heightM = 320;
-	private static int widthS = 200;
-	private static int heightS = 120;
+	private static int widthS = 500;
+	private static int heightS = 400;
 	private static String direccionM = "src\\GUI\\Sprites Mapas\\Mapa1.png";
 	private static String direccionS = "src\\GUI\\Sprites Shop\\Shop.png";
 	private MapaVisual mapa;
@@ -31,7 +32,7 @@ public class GUI extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		EventQueue.invokeLater (new Runnable() {
 			public void run() {
 				try {
@@ -45,17 +46,16 @@ public class GUI extends JFrame {
 	}
 	
 	public GUI () { //comente los cambios que quiza usemos para agregar la tienda al frame
-		this.getContentPane ().setLayout (null);
+		this.getContentPane ().setLayout (new GridLayout (2,1));
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		//this.setSize (517, 360);
-		this.setSize (517, 480);
+		this.setSize (517, 800);
 		mapa = new MapaVisual (widthM, heightM, direccionM);
 		shop = new TiendaVisual (widthS, heightS, direccionS);
 		nivel = new Nivel (this);
 		this.getContentPane ().add (mapa);
 		this.getContentPane ().add (shop);
 		this.add (mapa);
-		this.add(shop);
+		this.add (shop);
 		tiempo = new ContadorTiempo (nivel);
 		tiempo.start ();
 		//ver();

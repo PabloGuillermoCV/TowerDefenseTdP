@@ -1,9 +1,9 @@
 package Creadores.CreadoresVisuales;
 
 @SuppressWarnings("serial")
-public class CreadorSoldadoBoton extends FactoryVisual {
+public class BotonSoldado extends FactoryVisual {
 	
-	public CreadorSoldadoBoton () {
+	public BotonSoldado () {
 		super ("src\\GUI\\Sprites Botones\\Soldado.png", "Soldado", 200);
 	}
 }

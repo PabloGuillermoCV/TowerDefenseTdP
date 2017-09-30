@@ -1,9 +1,9 @@
 package Creadores.CreadoresVisuales;
 
 @SuppressWarnings("serial")
-public class CreadorKitMedicoBoton extends FactoryVisual {
+public class BotonKitMedico extends FactoryVisual {
 	
-	public CreadorKitMedicoBoton () {
+	public BotonKitMedico () {
 		super ("src\\GUI\\Sprites Botones\\KitMedico.png", "KitMedico", 220);
 	}
 }

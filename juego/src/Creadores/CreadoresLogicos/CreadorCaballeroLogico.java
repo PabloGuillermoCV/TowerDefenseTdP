@@ -1,14 +1,12 @@
 package Creadores.CreadoresLogicos;
 
 import Controlables.Caballero;
-import Logica.Celda;
 import entidades.Controlable;
 
-public class CreadorCaballeroLogico extends FactoryLogica {
+public class CreadorCaballeroLogico implements FactoryLogica {
 	
-	public Controlable crear (Celda C) {
-		Caballero c = new Caballero (C.getEsquinaIzq());
-		C.addPersonaje (c);
+	public Controlable crear () {
+		Caballero c = new Caballero ();
 		return c;
 	}
 }

@@ -8,7 +8,7 @@ import Logica.Visitor;
  * @author Pablo Guillermo Ceballos Vitale
  *
  */
-public abstract class Fisico extends entidad {
+public abstract class Fisico extends Entidad {
 
 	protected Posicion pos;
 	

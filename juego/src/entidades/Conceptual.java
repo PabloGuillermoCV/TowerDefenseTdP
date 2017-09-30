@@ -1,6 +1,6 @@
 package entidades;
 
-public abstract class Conceptual extends entidad {
+public abstract class Conceptual extends Entidad {
 	
 	protected int Costo;
 	

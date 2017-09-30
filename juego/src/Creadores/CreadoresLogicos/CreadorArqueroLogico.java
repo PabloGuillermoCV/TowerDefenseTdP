@@ -1,14 +1,12 @@
 package Creadores.CreadoresLogicos;
 
 import Controlables.Arquero;
-import Logica.Celda;
 import entidades.Controlable;
 
-public class CreadorArqueroLogico extends FactoryLogica {
+public class CreadorArqueroLogico implements FactoryLogica {
 	
-	public Controlable crear (Celda C) {
-		Arquero A = new Arquero (C.getEsquinaIzq());
-		C.addPersonaje (A);
+	public Controlable crear () {
+		Arquero A = new Arquero ();
 		return A;
 	}
 }

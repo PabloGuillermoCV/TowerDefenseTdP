@@ -1,9 +1,8 @@
 package Creadores.CreadoresLogicos;
 
-import Logica.*;
 import entidades.Controlable;
 
-public abstract class FactoryLogica {
+public interface FactoryLogica {
 	
 	/**
 	 * Crea una unidad del jugador en al posicion especificada
@@ -11,5 +10,5 @@ public abstract class FactoryLogica {
 	 * @return el nuevo personaje creado
 	 * NOTA: Podriamos hacer que el descuento del Oro ocurra directamente aquí, pero tecnicamente NO tengo acceso a la Tienda aquí
 	 */
-	public abstract Controlable crear (Celda C);
+	public Controlable crear ();
 }

@@ -10,6 +10,7 @@ public class FactoryVisual extends JButton {
 	public FactoryVisual (String direccionIcono, String Nombre, int Costo) {
 		setLayout (new GridLayout ());
 		setIcon (new ImageIcon (direccionIcono));
-		setText (Nombre + Costo);
+		setText (Nombre + " " + Costo);
+		setSize (30, 20);
 	}
 }

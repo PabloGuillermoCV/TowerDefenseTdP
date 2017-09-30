@@ -1,14 +1,12 @@
 package Creadores.CreadoresLogicos;
 
 import Controlables.Elite;
-import Logica.Celda;
 import entidades.Controlable;
 
-public class CreadorEliteLogico extends FactoryLogica {
+public class CreadorEliteLogico implements FactoryLogica {
 	
-	public Controlable crear(Celda C) {
-		Elite E = new Elite(C.getEsquinaIzq());
-		C.addPersonaje (E);
+	public Controlable crear() {
+		Elite E = new Elite ();
 		return E;
 	}
 }

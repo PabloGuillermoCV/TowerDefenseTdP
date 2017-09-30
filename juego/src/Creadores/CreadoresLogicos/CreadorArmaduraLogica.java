@@ -1,14 +1,13 @@
 package Creadores.CreadoresLogicos;
 
 import Objetos.Armadura;
-import Logica.Celda;
 import entidades.Controlable;
 
-public class CreadorArmaduraLogica extends FactoryLogica {
+public class CreadorArmaduraLogica implements FactoryLogica {
 
-	public Controlable crear (Celda C) {
-		Armadura A = new Armadura (C.getEsquinaIzq());
-		C.addObjeto (A);
+	@SuppressWarnings("unused")
+	public Controlable crear () {
+		Armadura A = new Armadura ();
 		return null;
 	}
 }

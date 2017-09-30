@@ -3,7 +3,7 @@ package Logica;
 import Creadores.CreadoresLogicos.FactoryLogica;
 import Logica.Jugador;
 import entidades.Controlable;
-import entidades.entidad;
+import entidades.Entidad;
 import GUI.TiendaVisual;
 
 @SuppressWarnings("unused")
@@ -13,22 +13,19 @@ public class TiendaLogica {
 	protected FactoryLogica creator;
 	protected Jugador P; //En esta clase se encarga de verificar que las monedas sean suficientes
 	
-	public TiendaLogica (int w, int h) { //por ahora no hace nada con las medidas
+	public TiendaLogica () { //por ahora no hace nada con las medidas
 		creator = null;
 	}
 	
-	/*
-	public entidad getControlable () {
+	public Entidad createControlable () {
 		if(creator == null)
 			return null;
 		else {
-			entidad e =  creator.crear ();
+			Entidad e =  creator.crear ();
 			creator = null;
 			return e;
 		}
-			
 	}
-	*/
 	
 	public TiendaVisual getMarket () {
 		return market;

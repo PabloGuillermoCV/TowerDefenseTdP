@@ -1,11 +1,10 @@
 package Objetos;
 
-import Logica.Posicion;
 import entidades.Conceptual;
 
 public class KitMedico extends Conceptual {
 	
-	public KitMedico (Posicion P) {
+	public KitMedico () {
 		super ("KitMedico", "Direccion Icono", 200);
 	}
 }

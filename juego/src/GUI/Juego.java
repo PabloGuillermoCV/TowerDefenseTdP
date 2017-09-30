@@ -21,7 +21,7 @@ import javax.swing.JLayeredPane;
 import java.awt.Color;
 
 @SuppressWarnings("unused")
-public class juego {
+public class Juego {
 
 	private JFrame frame;
 	private JTextField Autores;
@@ -33,7 +33,7 @@ public class juego {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					juego window = new juego();
+					Juego window = new Juego();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class juego {
 	/**
 	 * Create the application.
 	 */
-	public juego() {
+	public Juego() {
 		initialize();
 	}
 
