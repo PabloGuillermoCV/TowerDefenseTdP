@@ -13,5 +13,5 @@ public abstract class Proyectil {
 	protected ImageIcon[] sprite = new ImageIcon[8]; 
 	
 	//usando el patrón Strategy, este método deberia despues ser llamado en alguna de las clases concretas de proyectil
-	protected abstract void volarAEnemigo(enemigo E);
+	protected abstract void volarAEnemigo(Enemigo E);
 }

@@ -1,9 +1,9 @@
 package Enemigos;
 
 import Logica.Posicion;
-import entidades.enemigo;
+import entidades.Enemigo;
 
-public class JefeFinal extends enemigo {
+public class JefeFinal extends Enemigo {
 	
 	/*
 	Nombre = "JefeFinal"

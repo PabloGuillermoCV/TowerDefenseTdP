@@ -8,9 +8,7 @@ public class Flecha extends Proyectil {
 	}
 
 	@Override
-	protected void volarAEnemigo(enemigo E) {
+	protected void volarAEnemigo(Enemigo E) {
 		// TODO Auto-generated method stub
-		
 	}
-	
 }

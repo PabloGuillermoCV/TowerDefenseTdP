@@ -4,19 +4,19 @@ import entidades.*;
 import java.util.*;
 
 public class Celda {
-	private LinkedList<enemigo> enemigos;
+	private LinkedList <Enemigo> enemigos;
 	private Controlable personaje;
 	private Posicion esquinaIzq;
 	private MapaLogico mapa;
 	
 	public Celda (int x, int y,MapaLogico mapa) {
 		esquinaIzq = new Posicion(x*20,y*20);
-		enemigos = new LinkedList<enemigo>();
+		enemigos = new LinkedList<Enemigo>();
 		this.mapa = mapa;
 		personaje = null;
 	}
 	
-	public void addEnemigo (enemigo E) {
+	public void addEnemigo (Enemigo E) {
 		enemigos.addLast(E);
 	}
 	
@@ -28,7 +28,7 @@ public class Celda {
 		personaje.setPowerUpComprado (C);
 	}
 	
-	public LinkedList<enemigo> getEnemigos(){
+	public LinkedList<Enemigo> getEnemigos(){
 		return enemigos;
 	}
 	

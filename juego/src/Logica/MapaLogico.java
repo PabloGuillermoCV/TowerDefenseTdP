@@ -4,6 +4,7 @@ public class MapaLogico {
 	
 	private Celda [][] matriz;
 	private static int tamaño = 20;
+	@SuppressWarnings("unused")
 	private TiendaLogica market;
 	
 	public MapaLogico (int w, int h) {

@@ -2,13 +2,13 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class enemigo extends personaje {
+public abstract class Enemigo extends Personaje {
 	
 	protected int VelocidadMov;
 	protected boolean EfectoEspecial;
 	protected int Puntaje;
 	
-	public enemigo (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
+	public Enemigo (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
 		   PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
 		   int Puntaje) {
 		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
@@ -29,7 +29,7 @@ public abstract class enemigo extends personaje {
 		return Puntaje;
 	}
 	
-	public void serAtacado (enemigo e) {
+	public void serAtacado (Enemigo e) {
 		
 	}
 	

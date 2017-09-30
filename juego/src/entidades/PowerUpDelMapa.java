@@ -4,15 +4,15 @@ import Logica.Posicion;
 
 public abstract class PowerUpDelMapa extends ObjDentroDelMapa {
 	
-	protected enemigo ContieneEnemigo;
+	protected Enemigo ContieneEnemigo;
 	
 	public PowerUpDelMapa (String Nombre, String Label, Posicion Pos, int Probabilidad,
-			enemigo ContieneEnemigo) {
+			Enemigo ContieneEnemigo) {
 		super (Nombre,Label,Pos,Probabilidad);
 		this.ContieneEnemigo = ContieneEnemigo;
 	}
 	
-	public enemigo getEnem () {
+	public Enemigo getEnem () {
 		return ContieneEnemigo;
 	}
 }

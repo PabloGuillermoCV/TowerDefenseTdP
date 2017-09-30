@@ -23,7 +23,7 @@ public class Nivel {
 	private static int widthS = 200;
 	private static int heightS = 120;
 	@SuppressWarnings("unused")
-	private enemigo malo;
+	private Enemigo malo;
 	private MapaLogico mapaLog;
 	@SuppressWarnings("unused")
 	private TiendaLogica tiendaLog;
@@ -118,13 +118,13 @@ public class Nivel {
 	
 	public void mover () {
 		Celda c;
-		LinkedList <enemigo> Aux;
-		LinkedList <enemigo> Movidos = new LinkedList <enemigo> ();
+		LinkedList <Enemigo> Aux;
+		LinkedList <Enemigo> Movidos = new LinkedList <Enemigo> ();
 		for (int I = 0; I < camino.length; I++) {
 			c = mapaLog.getCelda(camino [I].getX (), camino [I].getY ());
 			Aux = c.getEnemigos ();
 			if (!Aux.isEmpty ()) {
-				enemigo Actual = Aux.getFirst (); 
+				Enemigo Actual = Aux.getFirst (); 
 				if(!fueMovido(Aux.getFirst(), Movidos)){
 					Movidos.addLast(Actual);
 					Actual.MoverA(camino [I+1]);
@@ -135,7 +135,7 @@ public class Nivel {
 		}
 	}
 	
-	private boolean fueMovido (enemigo E, LinkedList <enemigo> Movidos) {
+	private boolean fueMovido (Enemigo E, LinkedList <Enemigo> Movidos) {
 		return Movidos.contains(E);
 	}
 	

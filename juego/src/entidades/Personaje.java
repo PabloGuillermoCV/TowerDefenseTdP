@@ -2,7 +2,7 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class personaje extends fisico {
+public abstract class Personaje extends Fisico {
 
 	protected int Vida;
 	protected int Alcance;
@@ -10,7 +10,7 @@ public abstract class personaje extends fisico {
 	protected int Ataque;
 	protected int Defensa;
 	
-	public personaje (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
+	public Personaje (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
 			PowerUpDelMapa PowerUp, int Ataque, int Defensa) {
 		super (Nombre,Label,Pos);
 		this.Vida = Vida;
@@ -50,11 +50,11 @@ public abstract class personaje extends fisico {
 	
 	public abstract void serAtacado(Controlable a);
 	
-	public abstract void serAtacado(enemigo e);
+	public abstract void serAtacado(Enemigo e);
 	
-	public void serAtacado (personaje P) {}
+	public void serAtacado (Personaje P) {}
 	
-	public void Atacar (personaje P) {
+	public void Atacar (Personaje P) {
 		P.serAtacado (this);
 	}
 }

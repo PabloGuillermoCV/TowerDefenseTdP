@@ -2,7 +2,7 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class Controlable extends personaje {
+public abstract class Controlable extends Personaje {
 	
 	protected int Precio;
 	protected int Espacio [];
@@ -50,8 +50,7 @@ public abstract class Controlable extends personaje {
 		//Hacer nada, NO hay fuego amigo.
 	}
 	
-	public void serAtacado (enemigo E) {
+	public void serAtacado (Enemigo E) {
 		this.setVida(this.Vida - (this.Defensa - E.getAtaque ()));
 	}
 }
-

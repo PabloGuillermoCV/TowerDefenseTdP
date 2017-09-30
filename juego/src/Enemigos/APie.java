@@ -1,9 +1,9 @@
 package Enemigos;
 
 import Logica.Posicion;
-import entidades.enemigo;
+import entidades.Enemigo;
 
-public class APie extends enemigo {
+public class APie extends Enemigo {
 	
 	/*
 	Nombre = "APie"

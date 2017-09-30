@@ -7,11 +7,11 @@ import Logica.Posicion;
  * @author Pablo Guillermo Ceballos Vitale
  *
  */
-public abstract class fisico extends entidad {
+public abstract class Fisico extends entidad {
 
 	protected Posicion pos;
 	
-	public fisico (String Nombre, String Label, Posicion Pos) {
+	public Fisico (String Nombre, String Label, Posicion Pos) {
 		super (Nombre,Label);
 		this.pos = Pos;
 	}

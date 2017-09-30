@@ -2,7 +2,6 @@ package GUI;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,6 +22,7 @@ public class MapaVisual extends JPanel{
 		//this.addMouseListener(new Tendero);
 	}
 
+	@SuppressWarnings("unused")
 	private class Tendero implements MouseListener{
 
 		@Override

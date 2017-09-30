@@ -1,15 +1,10 @@
-package Creadores;
+package Creadores.CreadoresLogicos;
 
 import Controlables.Caballero;
 import Logica.Celda;
 import entidades.Controlable;
 
-@SuppressWarnings("serial")
-public class creadorCaballero extends Factory {
-	
-	public creadorCaballero () {
-		super ("src\\GUI\\Sprites Botones\\Caballero.png", "Caballero", 500);
-	}
+public class CreadorCaballeroLogico extends FactoryLogica {
 	
 	public Controlable crear (Celda C) {
 		Caballero c = new Caballero (C.getEsquinaIzq());

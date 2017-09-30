@@ -2,7 +2,7 @@ package GUI;
 
 import Logica.Jugador;
 import Audio.Sonido;
-import Creadores.*;
+import Creadores.CreadoresVisuales.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -11,15 +11,14 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class TiendaVisual extends JPanel implements ActionListener {
-	private JLabel fondo; //le puse un jlabel porque quiza le pongamos un fondo para que no quede medio vacio
+	private JLabel fondo;
 	private int height;
 	private int width;
-	private Factory [] botones = new Factory [8];
+	private FactoryVisual [] botones = new FactoryVisual [8];
 	private Sonido efectos;
 	private Jugador P; //En esta clase se encarga de tomar los numeros y modificar el display
 	private JLabel displayMonedas;
 	private JLabel displayPuntos;
-	//private TiendaLogica Market;
 	
 	public TiendaVisual (int width, int height, String direccion) {
 		this.setLayout (null);
@@ -30,9 +29,7 @@ public class TiendaVisual extends JPanel implements ActionListener {
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
 		setBotones ();
-		//Market = new
 		//setNumeros (); //Agrega el puntaje y las monedas pero tira error cuando se ejecuta
-		
 	}
 	
 	public JLabel getFondo () {
@@ -47,7 +44,7 @@ public class TiendaVisual extends JPanel implements ActionListener {
 		return width;
 	}
 	
-	public Factory [] getBotones () {
+	public FactoryVisual [] getBotones () {
 		return botones;
 	}
 	
@@ -70,14 +67,14 @@ public class TiendaVisual extends JPanel implements ActionListener {
 	}
 	
 	private void setBotones () {
-        botones [0] = new creadorSoldado ();
-        botones [1] = new creadorArquero ();
-        botones [2] = new creadorCaballero ();
-        botones [3] = new creadorCatapulta ();
-        botones [4] = new creadorElite ();
-        botones [5] = new creadorExplosivo ();
-        botones [6] = new creadorKitMedico ();
-        botones [7] = new creadorArmadura ();
+        botones [0] = new CreadorSoldadoBoton ();
+        botones [1] = new CreadorArqueroBoton ();
+        botones [2] = new CreadorCaballeroBoton ();
+        botones [3] = new CreadorCatapultaBoton ();
+        botones [4] = new CreadorEliteBoton ();
+        botones [5] = new CreadorExplosivoBoton ();
+        botones [6] = new CreadorKitMedicoBoton ();
+        botones [7] = new CreadorArmaduraBoton ();
         for (int i = 0; i < 8; i++) {
     		botones [i].addActionListener(this);
     		add (botones [i]);
