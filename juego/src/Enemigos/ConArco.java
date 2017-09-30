@@ -1,6 +1,8 @@
 package Enemigos;
 
 import Logica.Posicion;
+import Logica.Visitor;
+import entidades.Controlable;
 import entidades.Enemigo;
 
 public class ConArco extends Enemigo {
@@ -22,5 +24,17 @@ public class ConArco extends Enemigo {
 	public ConArco (Posicion pos) {
 		super ("ConArco", "src\\Enemigos\\Sprites Enemigos\\ConArco.gif", pos, 200, 5, null, 100, 125, 5, false, 2500);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+	}
+
+	@Override
+	public void accept(Visitor V, Controlable P) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void accept(Visitor V, Enemigo E) {
+		// TODO Auto-generated method stub
+		
 	}
 }

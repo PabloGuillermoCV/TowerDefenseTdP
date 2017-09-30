@@ -1,6 +1,7 @@
 package entidades;
 
 import Logica.Posicion;
+import Logica.Visitor;
 
 /**
  * Clase que mantiene la posicion XY de una entidad cualquiera en el Mapa
@@ -23,4 +24,7 @@ public abstract class Fisico extends entidad {
 	public void setPos (Posicion P) {
 		this.pos = P;
 	}
+	
+	public abstract void accept(Visitor V,Controlable P);
+	public abstract void accept(Visitor V, Enemigo E);
 }

@@ -1,7 +1,9 @@
 package Controlables;
 
 import Logica.Posicion;
+import Logica.Visitor;
 import entidades.Controlable;
+import entidades.Enemigo;
 
 public class Elite extends Controlable {
 	
@@ -23,5 +25,17 @@ public class Elite extends Controlable {
 	public Elite (Posicion pos) {
 		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", pos, 350, 1, null, 150, 300, 650, false, 6, null);
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+	}
+
+	@Override
+	public void accept(Visitor V, Controlable P) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void accept(Visitor V, Enemigo E) {
+		// TODO Auto-generated method stub
+		
 	}
 }
