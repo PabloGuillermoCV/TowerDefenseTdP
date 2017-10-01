@@ -46,6 +46,10 @@ public abstract class Controlable extends Personaje {
 		PowerUpComprado = PUC;
 	}
 	
+	public int getDefensa(){
+		return Defensa;
+	}
+	
 	public void serAtacado (Controlable C) {
 		//Hacer nada, NO hay fuego amigo.
 	}

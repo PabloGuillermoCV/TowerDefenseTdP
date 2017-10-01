@@ -18,6 +18,7 @@ public class Nivel {
 	@SuppressWarnings("unused")
 	private TiendaLogica tiendaLog;
 	private Posicion [] camino;
+	private VisitorConcreto Ataques;
 	private GUI gui;
 	
 	public Nivel (GUI gui) {
