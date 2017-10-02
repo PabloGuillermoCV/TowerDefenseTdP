@@ -10,20 +10,20 @@ import Logica.Visitor;
  */
 public abstract class Fisico extends Entidad {
 
-	protected Posicion pos;
+	//protected Posicion pos;
 	
 	public Fisico (String Nombre, String Label, Posicion Pos) {
-		super (Nombre,Label);
-		this.pos = Pos;
+		super (Nombre,Label,Pos);
+		//this.pos = Pos;
 	}
 	
-	public Posicion getPos () {
+	/*public Posicion getPos () {
 		return pos;
 	}
 	
 	public void setPos (Posicion P) {
 		this.pos = P;
-	}
+	}*/
 	
 	public abstract void accept(Visitor V,Controlable P);
 	public abstract void accept(Visitor V, Enemigo E);

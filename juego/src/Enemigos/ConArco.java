@@ -23,7 +23,7 @@ public class ConArco extends Enemigo {
 	
 	public ConArco (Posicion pos) {
 		super ("ConArco", "src\\Enemigos\\Sprites Enemigos\\ConArco.gif", pos, 200, 5, null, 100, 125, 5, false, 2500);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	@Override

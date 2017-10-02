@@ -3,16 +3,20 @@ package entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Logica.Posicion;
+
 public abstract class Entidad {
 
 	protected String Nombre;
 	protected JLabel grafico;
+	protected Posicion pos;
 	
-	public Entidad (String Nombre, String File) {
+	public Entidad (String Nombre, String File, Posicion pos) {
 		this.Nombre = Nombre;
 		this.grafico = new JLabel (new ImageIcon (File));
 		//this.grafico.setBounds(80, 60, 20, 20);
 		this.grafico.setVisible(true);
+		this.pos = pos;
 	}
 	
 	/**
@@ -37,5 +41,14 @@ public abstract class Entidad {
 	 */
 	public void setGrafico (String File) {
 		this.grafico = new JLabel (new ImageIcon ((File)));
+	}
+	
+	public Posicion getPos () {
+		return pos;
+	}
+	
+	public void setPos (Posicion P) {
+		this.pos = P;
+		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 }

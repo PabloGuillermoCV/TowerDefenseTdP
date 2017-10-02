@@ -23,7 +23,7 @@ public class APie extends Enemigo {
 	
 	public APie (Posicion pos) {
 		super ("APie", "src\\Enemigos\\Sprites Enemigos\\APie.gif", pos, 50, 1, null, 50, 100, 5, false, 1000);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	@Override

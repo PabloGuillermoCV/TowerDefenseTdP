@@ -68,6 +68,10 @@ public class TiendaVisual extends JPanel {
 		return displayPuntos;
 	}
 	
+	public TiendaLogica getMarket () {
+		return market;
+	}
+	
 	private void cargarFondo(ImageIcon im) {
 		fondo = new JLabel(im);
 		fondo.setBounds(0, 0, width, height);
@@ -126,6 +130,12 @@ public class TiendaVisual extends JPanel {
 	private void setBotonesOff () {
 		for (int i = 0; i < 8; i++) {
     		botones [i].setEnabled (false);
+    	}
+	}
+	
+	public void setBotonesOn () {
+		for (int i = 0; i < 8; i++) {
+    		botones [i].setEnabled (true);
     	}
 	}
 	

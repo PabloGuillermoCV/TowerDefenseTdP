@@ -23,7 +23,7 @@ public class Elite extends Controlable {
 	
 	public Elite () {
 		super ("Elite", "src\\Controlables\\Sprites Controlables\\EliteStatic.gif", null, 350, 1, null, 150, 300, 650, false, 6, null);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	@Override

@@ -5,47 +5,47 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import Creadores.CreadoresLogicos.CreadorSoldadoLogico;
+import Logica.Posicion;
+import Logica.TiendaLogica;
+import entidades.Entidad;
 
 @SuppressWarnings("serial")
-public class MapaVisual extends JPanel{
+public class MapaVisual extends JPanel {
 	private JLabel fondo;
 	private int height;
 	private int width;
+	private TiendaLogica marketL;
 	
 	public MapaVisual (int width, int height, String direccion) {
 		this.setLayout (null);
 		this.setSize (width, height);
 		this.height = height;
 		this.width = width;
+		marketL = new TiendaLogica ();
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
-		//this.addMouseListener(new Tendero);
+		this.addMouseListener (new Tendero ());
 	}
 
-	@SuppressWarnings("unused")
-	private class Tendero implements MouseListener{
+	private class Tendero implements MouseListener {
 
-		public void mouseClicked(MouseEvent arg0) {
-			
+		public void mouseClicked (MouseEvent E) {
+			int X = E.getX ();
+			int Y = E.getY ();
+			marketL.setCreador (new CreadorSoldadoLogico ());
+			Posicion P = new Posicion (X,Y);
+			Entidad Ent;
+			Ent = marketL.createEntidad ();
+			Ent.setPos (P);
+			fondo.add (Ent.getGrafico ());
+			//marketL.getMarket ().setBotonesOn (); //Manda nullpointerexception
 		}
 
-		public void mouseEntered(MouseEvent arg0) {
-			
-		}
-
-		public void mouseExited(MouseEvent arg0) {
-			
-		}
-
-		public void mousePressed(MouseEvent arg0) {
-			
-		}
-
-		public void mouseReleased(MouseEvent arg0) {
-			
-		}
-		
-		
+		public void mouseEntered(MouseEvent E) {}
+		public void mouseExited(MouseEvent E) {}
+		public void mousePressed(MouseEvent E) {}
+		public void mouseReleased(MouseEvent E) {}
 	}
 	
 	public JLabel getFondo () {

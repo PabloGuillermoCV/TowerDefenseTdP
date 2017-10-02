@@ -23,7 +23,7 @@ public class Arquero extends Controlable {
 	
 	public Arquero () {
 		super ("Arquero", "src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif", null, 100, 5, null, 50, 100, 300, false, 7, null);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	public void accept(Visitor V, Controlable P) {

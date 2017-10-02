@@ -23,7 +23,7 @@ public class Soldado extends Controlable {
 	
 	public Soldado () {
 		super ("Soldado", "src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif", null, 100, 1, null, 50, 100, 200, false, 4, null);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	@Override

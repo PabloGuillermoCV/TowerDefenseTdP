@@ -5,6 +5,6 @@ import entidades.Conceptual;
 public class Armadura extends Conceptual {
 	
 	public Armadura () {
-		super ("Armadura", "Direccion Icono", 200);
+		super ("Armadura", "Direccion Icono", null, 200);
 	}
 }

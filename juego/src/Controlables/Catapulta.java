@@ -23,7 +23,7 @@ public class Catapulta extends Controlable {
 	
 	public Catapulta () {
 		super ("Caballero", "src\\Controlables\\Sprites Controlables\\CatapultaStatic.gif", null, 200, 3, null, 200, 100, 5200, false, 2, null);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	@Override

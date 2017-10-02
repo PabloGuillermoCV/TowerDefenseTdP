@@ -5,6 +5,6 @@ import entidades.Conceptual;
 public class Explosivo extends Conceptual {
 	
 	public Explosivo () {
-		super ("Explosivo", "Direccion Icono", 200);
+		super ("Explosivo", "Direccion Icono", null, 200);
 	}
 }

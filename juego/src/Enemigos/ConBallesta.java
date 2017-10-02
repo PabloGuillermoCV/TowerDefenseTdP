@@ -23,7 +23,7 @@ public class ConBallesta extends Enemigo {
 	
 	public ConBallesta (Posicion pos) {
 		super ("ConBallesta", "src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif", pos, 150, 2, null, 150, 200, 2, false, 3000);
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
 
 	@Override
