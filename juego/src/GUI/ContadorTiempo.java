@@ -21,7 +21,7 @@ public class ContadorTiempo extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			nivel.mover();
+			nivel.moverEnemigos();
 		}
 	}
 }

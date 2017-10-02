@@ -51,7 +51,7 @@ public class GUI extends JFrame {
 		this.setSize (517, 800);
 		mapa = new MapaVisual (widthM, heightM, direccionM);
 		shop = new TiendaVisual (widthS, heightS, direccionS);
-		nivel = new Nivel (this);
+		nivel = new Nivel1 (this);
 		this.getContentPane ().add (mapa);
 		this.getContentPane ().add (shop);
 		this.add (mapa);
