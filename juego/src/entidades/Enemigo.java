@@ -1,6 +1,12 @@
 package entidades;
 
 import Logica.Posicion;
+import Objetos.Roca;
+
+import java.util.Collection;
+import java.util.LinkedList;
+
+import Controlables.*;
 
 public abstract class Enemigo extends Personaje {
 	
@@ -29,12 +35,57 @@ public abstract class Enemigo extends Personaje {
 		return Puntaje;
 	}
 	
-	public void serAtacado (Enemigo e) {
-		
+	public int calcularGolpe(Controlable C){
+		return C.getVida() - (C.getDefensa() - this.Ataque);
 	}
 	
-	public void serAtacado(Controlable a){
-		this.setVida(this.Vida -  (this.Defensa - a.getAtaque()) );
+	/**
+	 * metodo de visitor que permite a un enemigo ser atacado por algo que desconoce
+	 * @param C Visitante a aceptar
+	 */
+	public abstract void serAtacado(Controlable C);
+	
+	/**
+	 * metodo de visitor que permite a un enemigo atacar a una unidad concreata
+	 * @param A Arquero a atacar
+	 */
+	public abstract void atacar(Arquero A);
+	
+	/**
+	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
+	 * @param C soldado a Caballo a atacar
+	 */
+	public abstract void atacar(Caballero C);
+	
+	/**
+	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
+	 * @param E soldado de Elite a atacar
+	 */
+	public abstract void atacar(Elite E);
+	
+	/**
+	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
+	 * @param S soldado a atacar
+	 */
+	public abstract void atacar(Soldado S);
+	
+	/**
+	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
+	 * @param soldado Catapulta a atacar
+	 */
+	public abstract void atacar(Catapulta C);
+	
+	/**
+	 * metodo de visitor que permite a un enemigo atacar el objeto que bloquea su camino
+	 * @param R Roca a atacar
+	 */
+	public abstract void atacar(Roca R);
+	
+	public Collection<Posicion> verficiarAliadosEnRango(){
+		Collection<Posicion> PosicionesaAtacar = new LinkedList<Posicion>();
+		
+		return PosicionesaAtacar;
+		
 	}
 	
 	public void MoverA (Posicion pos) {

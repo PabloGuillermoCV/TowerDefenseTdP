@@ -2,6 +2,7 @@ package entidades;
 
 import Logica.Posicion;
 
+
 public abstract class Personaje extends Fisico {
 
 	protected int Vida;
@@ -36,6 +37,7 @@ public abstract class Personaje extends Fisico {
 		return Ataque;
 	}
 	
+	
 	public int getDefensa () {
 		return Defensa;
 	}
@@ -47,14 +49,6 @@ public abstract class Personaje extends Fisico {
 	public void setPowerUp (PowerUpDelMapa P) {
 		PowerUp = P;
 	}
+		
 	
-	public abstract void serAtacado(Controlable a);
-	
-	public abstract void serAtacado(Enemigo e);
-	
-	public void serAtacado (Personaje P) {}
-	
-	public void Atacar (Personaje P) {
-		P.serAtacado (this);
-	}
 }

@@ -8,7 +8,6 @@ import GUI.*;
 
 public abstract class Nivel {
 	protected AbstractFactory fabrica;
-	protected Visitor visitor;
 	protected Collection <Enemigo> enemigos;
 	protected Camino camino;
 	protected MapaLogico mapaLogico;

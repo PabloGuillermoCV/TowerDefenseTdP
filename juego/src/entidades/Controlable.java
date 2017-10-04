@@ -1,6 +1,7 @@
 package entidades;
 
 import Logica.Posicion;
+import Enemigos.*;
 
 public abstract class Controlable extends Personaje {
 	
@@ -8,6 +9,8 @@ public abstract class Controlable extends Personaje {
 	protected int Espacio [];
 	protected int VelocidadAt;
 	protected Conceptual PowerUpComprado;
+	
+	
 	
 	public Controlable (String Nombre, String Label, Posicion Pos,
 			int Vida, int Alcance, PowerUpDelMapa PowerUp, int Ataque, int Defensa, int Precio,
@@ -30,6 +33,15 @@ public abstract class Controlable extends Personaje {
 		return Precio;
 	}
 		
+	/**
+	 * metedo que calcula cuanto daño hará una unidad aliada contra cierto enemigo
+	 * @param e enemigo que es atacado
+	 * @return daño a generar en el enemigo
+	 */
+	public int calcularGolpe(Enemigo e){
+		return e.getVida() - (e.getDefensa() - this.Ataque);
+	}
+	
 	public int [] getEspacio () {
 		return Espacio;
 	}
@@ -50,11 +62,45 @@ public abstract class Controlable extends Personaje {
 		return Defensa;
 	}
 	
-	public void serAtacado (Controlable C) {
-		//Hacer nada, NO hay fuego amigo.
-	}
+	/**
+	 * metodo que permite al controlable ser atacado por una unidad enemiga
+	 * @param e visitor que efectua el ataque
+	 */
+	public abstract void serAtacado(Enemigo e);
 	
-	public void serAtacado (Enemigo E) {
-		this.setVida(this.Vida - (this.Defensa - E.getAtaque ()));
-	}
+	/**
+	 * metodo de visitor que permite a un controlable atacar una unidad concreta
+	 * @param AC enemigo a Caballo a atacar
+	 */
+	public abstract void atacar(ACaballo AC);
+	
+	/**
+	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
+	 * @param AP enemigo a Pie a atacar
+	 */
+	public abstract void atacar(APie AP);
+	
+	/**
+	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
+	 * @param AC enemigo Con Arco a atacar
+	 */
+	public abstract void atacar(ConArco AC);
+	
+	/**
+	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
+	 * @param CA enemigo Con Armadura a atacar
+	 */
+	public abstract void atacar(ConArmadura CA);
+	
+	/**
+	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
+	 * @param CB enemigo con Ballesta a atacar
+	 */
+	public abstract void atacar(ConBallesta CB);
+	
+	/**
+	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
+	 * @param JF Jefe Final a atacar (Este método deberia ser el que dispara las transiciones especiales)
+	 */
+	public abstract void atacar(JefeFinal JF);
 }
