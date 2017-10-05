@@ -46,4 +46,9 @@ public class Posicion {
 	public void setY(int y){
 		Y = y;
 	}
+	public String toString () {
+		String resp=""+ X+ " "+Y;
+		
+		return resp;
+	}
 }

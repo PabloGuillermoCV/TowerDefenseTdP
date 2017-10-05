@@ -8,7 +8,7 @@ import GUI.*;
 
 public abstract class Nivel {
 	protected AbstractFactory fabrica;
-	protected Visitor visitor;
+	//protected Visitor visitor;
 	protected Collection <Enemigo> enemigos;
 	protected Camino camino;
 	protected MapaLogico mapaLogico;
@@ -16,6 +16,11 @@ public abstract class Nivel {
 	protected GUI miGui;
 	protected Posicion posFinalEnemys;
 	
+	
+	/**
+	 * es una prueba
+	 */
+	public abstract void mover();
 	/**
 	 * genera la lista de enemigos que van a estar en el nivel
 	 */

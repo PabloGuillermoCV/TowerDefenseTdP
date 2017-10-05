@@ -12,12 +12,14 @@ import entidades.Entidad;
 
 @SuppressWarnings("serial")
 public class MapaVisual extends JPanel {
+	private GUI miGui;
 	private JLabel fondo;
 	private int height;
 	private int width;
 	private TiendaLogica marketL;
 	
-	public MapaVisual (int width, int height, String direccion) {
+	public MapaVisual (int width, int height, String direccion,GUI gui) {
+		miGui=gui;
 		this.setLayout (null);
 		this.setSize (width, height);
 		this.height = height;
@@ -37,9 +39,11 @@ public class MapaVisual extends JPanel {
 			Posicion P = new Posicion (X,Y);
 			Entidad Ent;
 			Ent = marketL.createEntidad ();
-			Ent.setPos (P);
+			
 			fondo.add (Ent.getGrafico ());
-			//marketL.getMarket ().setBotonesOn (); //Manda nullpointerexception
+			Ent.setPos (P);
+			
+			miGui.getTiendaVisual().setBotonesOn (); //Manda nullpointerexception
 		}
 
 		public void mouseEntered(MouseEvent E) {}

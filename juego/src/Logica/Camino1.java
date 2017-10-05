@@ -10,6 +10,7 @@ import java.util.Random;
 public class Camino1 implements Camino {
 	private ArrayList<Posicion> camino;
 	private static final int constante =20;
+	private int cantidad;
 	
 	/**
 	 * Constructor que inicializa el arreglo
@@ -23,14 +24,17 @@ public class Camino1 implements Camino {
 	 * genera el camino
 	 */
 	public void generarCaminoA(Posicion pos) {
+		
 		int x1 =0;		int y1=0;
 		int x2 = pos.getX(); 		int y2= pos.getY();
-		int auxX=x1; 			int auxY=y1;
+		camino.add(new Posicion(x1,y1));
+		cantidad =1;
 		Random r = new Random();
 		
 		while(x1<x2 || y1<y2) {
-			auxX=x1; auxY=y1;
-			int dir = r.nextInt(3)+1;
+			
+			int dir = r.nextInt(2);
+			System.out.println(dir);
 			if (dir==1) {
 				if(x1<x2) x1+=constante;
 				else y1+=constante;
@@ -39,7 +43,10 @@ public class Camino1 implements Camino {
 				if(y1<y2) y1+=constante;
 				else x1+=constante;
 			}	
-			camino.add(new Posicion (auxX,auxY));
+			Posicion toAdd= new Posicion(x1,y1);
+			
+			camino.add(toAdd);
+			cantidad++;
 		}
 	
 		
@@ -83,6 +90,9 @@ public class Camino1 implements Camino {
 			}
 	}
 		return null;
+	}
+	public int cantidad() {
+		return cantidad;
 	}
 
 }

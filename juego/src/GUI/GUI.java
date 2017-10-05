@@ -49,7 +49,7 @@ public class GUI extends JFrame {
 		this.getContentPane ().setLayout (new GridLayout (2,1));
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		this.setSize (517, 800);
-		mapa = new MapaVisual (widthM, heightM, direccionM);
+		mapa = new MapaVisual (widthM, heightM, direccionM,this);
 		shop = new TiendaVisual (widthS, heightS, direccionS);
 		nivel = new Nivel1 (this);
 		this.getContentPane ().add (mapa);

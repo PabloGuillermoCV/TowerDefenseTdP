@@ -21,4 +21,6 @@ public interface Camino {
 	 * @return la siguiente posicion que le sigue a la pasada por parametro
 	 */
 	public Posicion getNext (Posicion pos);
+	
+	public int cantidad () ;
 }

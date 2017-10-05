@@ -54,6 +54,7 @@ public abstract class Enemigo extends Personaje {
 				}
 			}		
 			this.pos=pos;
+			this.grafico.setVisible(false);
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();

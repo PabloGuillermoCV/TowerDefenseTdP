@@ -17,13 +17,14 @@ public class MapaLogico {
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz [0].length; j++) {
 				matriz [i][j] = new Celda (i*tamaño,j*tamaño,this);
+				
 			}
 		}
 		//TiendaLogica market = new TiendaLogica();
 	}
 	
 	public Celda getCelda (int x,int y) {
-		return matriz [x/20] [y/20];
+		return matriz [x/tamaño] [y/tamaño];
 	}
 	
 	public int getTamaño () {

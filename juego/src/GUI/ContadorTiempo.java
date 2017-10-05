@@ -17,11 +17,12 @@ public class ContadorTiempo extends Thread {
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 			} catch (InterruptedException e) {
+				System.out.println("error en el thread");
 				e.printStackTrace();
 			}
-			nivel.moverEnemigos();
+			nivel.mover();
 		}
 	}
 }
