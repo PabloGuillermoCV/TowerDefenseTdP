@@ -1,7 +1,12 @@
 package Enemigos;
 
+import Controlables.Arquero;
+import Controlables.Caballero;
+import Controlables.Catapulta;
+import Controlables.Elite;
+import Controlables.Soldado;
 import Logica.Posicion;
-import Logica.Visitor;
+import Objetos.Roca;
 import entidades.Controlable;
 import entidades.Enemigo;
 
@@ -27,14 +32,42 @@ public class ConArmadura extends Enemigo {
 	}
 
 	@Override
-	public void accept(Visitor V, Controlable P) {
-		// TODO Auto-generated method stub
+	public void serAtacado(Controlable C) {
+		C.atacar(this);
 		
 	}
 
 	@Override
-	public void accept(Visitor V, Enemigo E) {
-		// TODO Auto-generated method stub
+	public void atacar(Arquero A) {
+		A.setVida(A.getVida() - calcularGolpe(A));
 		
 	}
+
+	@Override
+	public void atacar(Caballero C) {
+		C.setVida(C.getVida() - calcularGolpe(C));		
+	}
+
+	@Override
+	public void atacar(Elite E) {
+		E.setVida(E.getVida() - calcularGolpe(E));		
+	}
+
+	@Override
+	public void atacar(Soldado S) {
+		S.setVida(S.getVida() - calcularGolpe(S));
+	}
+
+	@Override
+	public void atacar(Catapulta C) {
+		C.setVida(C.getVida() - calcularGolpe(C));
+		
+	}
+
+	@Override
+	public void atacar(Roca R) {
+		R.setVida(R.getVida() - Ataque); 
+		
+	}
+
 }

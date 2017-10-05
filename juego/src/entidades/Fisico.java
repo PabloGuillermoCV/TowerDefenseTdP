@@ -1,7 +1,6 @@
 package entidades;
 
 import Logica.Posicion;
-import Logica.Visitor;
 
 /**
  * Clase que mantiene la posicion XY de una entidad cualquiera en el Mapa
@@ -17,6 +16,7 @@ public abstract class Fisico extends Entidad {
 		//this.pos = Pos;
 	}
 	
+	//QUE HACEN ESTOS METODOS??! DECIDAN PA QUE ESTAN O SI SIREVEN PORQUE A LAS PROXIMA LOS VUELO
 	/*public Posicion getPos () {
 		return pos;
 	}
@@ -24,7 +24,4 @@ public abstract class Fisico extends Entidad {
 	public void setPos (Posicion P) {
 		this.pos = P;
 	}*/
-	
-	public abstract void accept(Visitor V,Controlable P);
-	public abstract void accept(Visitor V, Enemigo E);
 }
