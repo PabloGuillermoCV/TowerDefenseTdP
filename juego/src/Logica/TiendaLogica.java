@@ -13,6 +13,7 @@ public class TiendaLogica {
 	
 	public TiendaLogica () {
 		creator = null;
+		P = new Jugador();
 	}
 	
 	public Entidad createEntidad () {
@@ -36,5 +37,14 @@ public class TiendaLogica {
 	
 	public void setCreador (FactoryLogica f) {
 		creator = f;
+	}
+	
+	/**
+	 * metodo que devuelve el Factory asociado a la Tienda en un determinado momento (Lo usaria MapaLogico)
+	 * @return FactoryLogica al momento de la consulta
+	 */
+	public FactoryLogica getCreator(){
+		
+		return creator;
 	}
 }

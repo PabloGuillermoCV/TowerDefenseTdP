@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Creadores.CreadoresLogicos.CreadorSoldadoLogico;
+import Logica.Jugador;
 import Logica.Posicion;
 import Logica.TiendaLogica;
 import entidades.Entidad;
@@ -44,10 +45,29 @@ public class MapaVisual extends JPanel {
 			Ent.setPos (P);
 			
 			miGui.getTiendaVisual().setBotonesOn (); //Manda nullpointerexception
+			
+			marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); //No me actualiza el label de las monedas...
+			miGui.getTiendaVisual().modificarMonedas();
 		}
-
-		public void mouseEntered(MouseEvent E) {}
-		public void mouseExited(MouseEvent E) {}
+		/**
+		 * metodo que cuando detecta el mouse el creador NO es nulo, resalta la celda donde esta posado el mouse
+		 * Problema: NO pinta el recuadro, creo que tengo el problema que teniamos con los personajes
+		 */
+		public void mouseEntered(MouseEvent E) {
+			if(marketL.getCreator() != null){
+				int X = E.getX();
+				int Y = E.getY();
+				ImageIcon cuadro = new ImageIcon("RecuadroCeldas.png");
+				cuadro.paintIcon(fondo, fondo.getGraphics(), X, Y);
+			}
+			
+		}
+		/**
+		 * metodo que detecta si el mouse salió de una celda y su creador NO era Nulo, elimina el recuadro creado anteriormente por mouseEntered
+		 */
+		public void mouseExited(MouseEvent E) {
+			if(marketL.getCreator() != null){}
+		}
 		public void mousePressed(MouseEvent E) {}
 		public void mouseReleased(MouseEvent E) {}
 	}

@@ -11,4 +11,5 @@ public interface FactoryLogica {
 	 * NOTA: Podriamos hacer que el descuento del Oro ocurra directamente aquí, pero tecnicamente NO tengo acceso a la Tienda aquí
 	 */
 	public Controlable crear ();
+	
 }
