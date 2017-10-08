@@ -1,16 +1,14 @@
 package Logica;
 
-
 import java.util.*;
-
 import entidades.*;
-import Objetos.*;
+//import Objetos.*;
 
 public class Celda {
 	private LinkedList<Enemigo> enemigos;
 	private Controlable personaje;
 	// podria ser en vez de una lista de objetos un solo objeto noMas
-	private LinkedList<ObjDentroDelMapa> objetos;
+	//private LinkedList<ObjDentroDelMapa> objetos;
 	private Posicion esquinaIzq;
 	private MapaLogico mapa;
 	

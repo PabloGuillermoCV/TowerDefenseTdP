@@ -2,7 +2,7 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class ObjDentroDelMapa extends Fisico {
+public abstract class ObjDentroDelMapa extends Entidad {
 	
 	protected int Probabilidad;
 	

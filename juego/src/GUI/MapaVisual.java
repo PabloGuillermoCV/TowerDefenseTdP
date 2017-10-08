@@ -11,7 +11,7 @@ import Logica.Posicion;
 import Logica.TiendaLogica;
 import entidades.Entidad;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class MapaVisual extends JPanel {
 	private GUI miGui;
 	private JLabel fondo;
@@ -44,13 +44,14 @@ public class MapaVisual extends JPanel {
 			fondo.add (Ent.getGrafico ());
 			Ent.setPos (P);
 			
-			miGui.getTiendaVisual().setBotonesOn (); //Manda nullpointerexception
+			miGui.getTiendaVisual().setBotonesOn ();
 			
-			marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); //No me actualiza el label de las monedas...
-			miGui.getTiendaVisual().modificarMonedas();
+			//marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); //No me actualiza el label de las monedas...
+			//miGui.getTiendaVisual().modificarMonedas();
 		}
 		/**
-		 * metodo que cuando detecta el mouse el creador NO es nulo, resalta la celda donde esta posado el mouse
+		 * metodo que cuando detecta el mouse el creador NO es nulo, resalta la celda 
+		 * donde esta posado el mouse
 		 * Problema: NO pinta el recuadro, creo que tengo el problema que teniamos con los personajes
 		 */
 		public void mouseEntered(MouseEvent E) {
@@ -60,10 +61,10 @@ public class MapaVisual extends JPanel {
 				ImageIcon cuadro = new ImageIcon("RecuadroCeldas.png");
 				cuadro.paintIcon(fondo, fondo.getGraphics(), X, Y);
 			}
-			
 		}
 		/**
-		 * metodo que detecta si el mouse salió de una celda y su creador NO era Nulo, elimina el recuadro creado anteriormente por mouseEntered
+		 * metodo que detecta si el mouse salió de una celda y su creador NO era Nulo, 
+		 * elimina el recuadro creado anteriormente por mouseEntered
 		 */
 		public void mouseExited(MouseEvent E) {
 			if(marketL.getCreator() != null){}

@@ -8,7 +8,7 @@ import Logica.Posicion;
 public abstract class Entidad {
 
 	protected String Nombre;
-	protected JLabel grafico;
+	protected JLabel grafico; //Posiblemente saquemos esto y usemos EntidadesGraficas
 	protected Posicion pos;
 	
 	public Entidad (String Nombre, String File, Posicion pos) {

@@ -1,8 +1,6 @@
 package Logica;
 
-import java.util.Collection;
-
-
+//import java.util.Collection;
 
 public interface Camino {
 	/**

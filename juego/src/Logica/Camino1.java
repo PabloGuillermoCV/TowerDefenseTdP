@@ -1,11 +1,8 @@
 package Logica;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
-
-
 
 public class Camino1 implements Camino {
 	private ArrayList<Posicion> camino;
@@ -76,7 +73,6 @@ public class Camino1 implements Camino {
 	
 	public Posicion getNext(Posicion pos) {
 		if (!camino.isEmpty()) {
-			Posicion resp;
 			boolean aviso=false;
 			Iterator <Posicion> it =(Iterator <Posicion>) camino.iterator();
 			while(it.hasNext()) {

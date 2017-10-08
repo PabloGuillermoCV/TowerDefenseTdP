@@ -1,6 +1,5 @@
 package Controlables;
 
-
 import Enemigos.*;
 import entidades.Controlable;
 import entidades.Enemigo;

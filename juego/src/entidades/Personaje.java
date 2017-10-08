@@ -2,8 +2,7 @@ package entidades;
 
 import Logica.Posicion;
 
-
-public abstract class Personaje extends Fisico {
+public abstract class Personaje extends Entidad {
 
 	protected int Vida;
 	protected int Alcance;
