@@ -14,13 +14,8 @@ public interface EstadoDeMovimiento {
 	 */
 	public void moverA(Posicion pos);
 	
-	
-	/**
-	 * este metodo seria muy Similar al de arriba, solo que seria un movimiento mas lento
-	 * y se daria por ejemplo cuando un enemigo va a una celda destino la cual tiene un Lago.
-	 * @param pos Recibe la Posicion de destino
-	 */
-	//public void moverAlentizados (Posicion pos);
+	//NOTA: el metodo "moverRalentizado(Posicion pos)" ya esta implementado 
+	//en la clase "CaminarMermado"
 	
 
 

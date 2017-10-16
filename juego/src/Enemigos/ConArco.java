@@ -1,10 +1,5 @@
 package Enemigos;
 
-import Controlables.Arquero;
-import Controlables.Caballero;
-import Controlables.Catapulta;
-import Controlables.Elite;
-import Controlables.Soldado;
 import Logica.Posicion;
 import Objetos.Roca;
 import entidades.Controlable;
@@ -38,29 +33,8 @@ public class ConArco extends Enemigo {
 	}
 
 	@Override
-	public void atacar(Arquero A) {
+	public void atacar(Controlable A) {
 		A.setVida(A.getVida() - calcularGolpe(A));
-		
-	}
-
-	@Override
-	public void atacar(Caballero C) {
-		C.setVida(C.getVida() - calcularGolpe(C));		
-	}
-
-	@Override
-	public void atacar(Elite E) {
-		E.setVida(E.getVida() - calcularGolpe(E));		
-	}
-
-	@Override
-	public void atacar(Soldado S) {
-		S.setVida(S.getVida() - calcularGolpe(S));
-	}
-
-	@Override
-	public void atacar(Catapulta C) {
-		C.setVida(C.getVida() - calcularGolpe(C));
 		
 	}
 
