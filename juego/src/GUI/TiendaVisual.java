@@ -1,6 +1,7 @@
 package GUI;
 
 import Logica.Jugador;
+import Logica.MapaLogico;
 import Logica.TiendaLogica;
 import Audio.Sonido;
 import Creadores.CreadoresLogicos.*;
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 
 @SuppressWarnings({ "serial", "unused" })
 public class TiendaVisual extends JPanel {
+	
+	private static TiendaVisual Instancia;
 	private JLabel fondo;
 	private int height;
 	private int width;
@@ -25,19 +28,26 @@ public class TiendaVisual extends JPanel {
 	private JLabel displayPuntos;
 	private TiendaLogica market;
 	
-	public TiendaVisual (int width, int height, String direccion) {
+	private TiendaVisual (int width, int height, String direccion) {
 		this.setLayout (new FlowLayout ());
 		this.setSize (width, height);
 		this.height = height;
 		this.width = width;
 		this.efectos = new Sonido ();
-		this.market = new TiendaLogica ();
+		this.market = TiendaLogica.InstanciaTiendaLogica ();
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
 		P = new Jugador ();
 		setNumeros ();
 		setCreadores ();
 		setBotones ();
+	}
+	
+	public static TiendaVisual InstanciaTiendaVisual (int width, int height, String direccion) {
+		if (Instancia == null) {
+			Instancia = new TiendaVisual (width, height, direccion);
+		}
+		return Instancia;
 	}
 	
 	public JLabel getFondo () {

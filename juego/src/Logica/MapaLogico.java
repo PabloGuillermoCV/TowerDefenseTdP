@@ -8,6 +8,7 @@ import entidades.Enemigo;
 
 public class MapaLogico {
 	
+	private static MapaLogico Instancia;
 	private Celda [][] matriz;
 	private static int tamaño = 20;
 	//private TiendaLogica market;
@@ -18,7 +19,7 @@ public class MapaLogico {
 	 * creamos cada Celda perteneciente a la matriz y le enviamos la posicion de su esquina izq.
 	 */
 	
-	public MapaLogico (int w, int h) {
+	private MapaLogico (int w, int h) {
 		matriz = new Celda [w/tamaño][h/tamaño];
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz [0].length; j++) {
@@ -27,6 +28,13 @@ public class MapaLogico {
 			}
 		}
 		//TiendaLogica market = new TiendaLogica();
+	}
+	
+	public static MapaLogico InstanciaMapaLogico (int w, int h) {
+		if (Instancia == null) {
+			Instancia = new MapaLogico (w, h);
+		}
+		return Instancia;
 	}
 	
 	public Celda getCelda (int x,int y) {

@@ -13,19 +13,19 @@ import entidades.*;
 
 public class Nivel1 extends Nivel {
 	
-	public Nivel1(GUI gui) {
-		miGui=gui;
-		mapaLogico= new MapaLogico(miGui.getMapaVisual().getWidth(),miGui.getMapaVisual().getHeight());
-		tiendaLogica = new TiendaLogica();
-		fabrica= new FabricaEnemigos();
-		enemigos = new ArrayList<Enemigo>();
-		camino = new Camino1();
-		unidadesEnMapa = new LinkedList<Controlable>();
+	public Nivel1 (GUI gui) {
+		miGui = gui;
+		mapaLogico = MapaLogico.InstanciaMapaLogico (miGui.getMapaVisual().getWidth(),miGui.getMapaVisual().getHeight());
+		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
+		fabrica = new FabricaEnemigos ();
+		enemigos = new ArrayList <Enemigo> ();
+		camino = new Camino1 ();
+		unidadesEnMapa = new LinkedList <Controlable> ();
 		posFinalEnemys = new Posicion (480,300);
-		camino.generarCaminoA(posFinalEnemys);
-		mostrarCamino();
+		camino.generarCaminoA (posFinalEnemys);
+		mostrarCamino ();
 		
-		generarListaEnemigos();
+		generarListaEnemigos ();
 	}
 	
 	private  void mostrarCamino() {

@@ -7,13 +7,21 @@ import GUI.TiendaVisual;
 
 public class TiendaLogica {
 	
+	private static TiendaLogica Instancia;
 	protected TiendaVisual market;
 	protected FactoryLogica creator;
 	protected Jugador P; //En esta clase se encarga de verificar que las monedas sean suficientes
 	
-	public TiendaLogica () {
+	private TiendaLogica () {
 		creator = null;
 		P = new Jugador();
+	}
+	
+	public static TiendaLogica InstanciaTiendaLogica () {
+		if (Instancia == null) {
+			Instancia = new TiendaLogica ();
+		}
+		return Instancia;
 	}
 	
 	public Controlable createEntidad () {

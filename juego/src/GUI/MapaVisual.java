@@ -17,6 +17,8 @@ import entidades.Entidad;
 
 @SuppressWarnings({ "serial", "unused" })
 public class MapaVisual extends JPanel {
+	
+	private static MapaVisual Instancia;
 	private GUI miGui;
 	private JLabel fondo;
 	private int height;
@@ -24,35 +26,44 @@ public class MapaVisual extends JPanel {
 	private TiendaLogica marketL;
 	
 	
-	public MapaVisual (int width, int height, String direccion,GUI gui) {
+	private MapaVisual (int width, int height, String direccion, GUI gui) {
 		miGui=gui;
 		this.setLayout (null);
 		this.setSize (width, height);
 		this.height = height;
 		this.width = width;
-		marketL = new TiendaLogica ();
+		marketL = TiendaLogica.InstanciaTiendaLogica ();
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
 		this.addMouseListener (new Tendero ());
 	}
-
+	
+	public static MapaVisual InstanciaMapaVisual (int width, int height, String direccion,GUI gui) {
+		if (Instancia == null) {
+			Instancia = new MapaVisual (width, height, direccion, gui);
+		}
+		return Instancia;
+	}
+	
 	private class Tendero implements MouseListener {
 
 		public void mouseClicked (MouseEvent E) {
 			int X = E.getX ();
 			int Y = E.getY ();
-			marketL.setCreador (new CreadorSoldadoLogico ());
 			Posicion P = new Posicion (X,Y);
 			Controlable Ent;
 			Ent = marketL.createEntidad ();
 			
-			fondo.add (Ent.getGrafico ());
-			Ent.setPos (P);
-			miGui.getNivel().agregarUnidadAliada(Ent);
-			miGui.getTiendaVisual().setBotonesOn ();
-			
-			//marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); //No me actualiza el label de las monedas...
-			//miGui.getTiendaVisual().modificarMonedas();
+			if (Ent != null) {
+				fondo.add (Ent.getGrafico ());
+				Ent.setPos (P);
+				miGui.getNivel().agregarUnidadAliada(Ent);
+				miGui.getTiendaVisual().setBotonesOn ();
+				
+				//No me actualiza el label de las monedas...
+				//marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); 
+				//miGui.getTiendaVisual().modificarMonedas();
+			}
 		}
 		/**
 		 * metodo que cuando detecta el mouse el creador NO es nulo, resalta la celda 
