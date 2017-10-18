@@ -2,10 +2,6 @@ package entidades;
 
 import Logica.Posicion;
 
-import java.util.Collection;
-import java.util.LinkedList;
-
-
 public abstract class Controlable extends Personaje {
 	
 	protected int Precio;

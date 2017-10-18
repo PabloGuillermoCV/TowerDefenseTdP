@@ -59,7 +59,7 @@ public abstract class Nivel {
 					g.serAtacado(E); //le pido al enemigo que se ataque y delego en el Visitor
 					if(g.getVida() <= 0) //si el enemigo murió
 						aEliminarE.add(g);
-					if(!aEliminarE.contains(g) && g.estaEnRango(E)){ //si el Enemigo NO se murio y puede atacar al Aliado que lo atacó
+					if(!aEliminarE.contains(g) && mapaLogico.estaEnRango(g,E)){ //si el Enemigo NO se murio y puede atacar al Aliado que lo atacó
 						E.serAtacado(g); //le pido al aliado que se ataque y delego en el Visitor
 					}
 					if(E.getVida() <= 0){ //si el aliado murió
@@ -73,6 +73,7 @@ public abstract class Nivel {
 			for(Enemigo E : aEliminarE){
 				//hay que eliminarlo graficamente primero
 				//dar Oro y puntos al Jugador
+				System.out.println("Murio un Enemigo");
 				enemigos.remove(E); //esto sacaria a la unidad de la lista, pero creo que sigue dando vueltas por alguna parte del juego y NO lo puedo borrar con finalize() de Object
 			}
 		}

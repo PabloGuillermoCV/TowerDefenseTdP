@@ -79,20 +79,4 @@ public abstract class Enemigo extends Personaje{
 	public void MoverA (Posicion pos) {
 		EstadoCaminar.moverA(pos);
 	}
-
-	/**
-	 * Metodo que verifica si el enemigo esta en rango como para atacar a la unidad Aliada que lo atacó
-	 * @param e Aliado a buscar por el rango
-	 * @return si el Aliado es atacable
-	 */
-	public boolean estaEnRango(Controlable e) {
-		boolean ret = false;
-		/*NOTA: estoy teniendo un problema en COMO recorrer el rango efectivo de la unidad
-		 * calculo que se deberia hacer con un for doble anidado para que recorra primero el eje X y despues el Eje Y, 
-		 * pero el drama viene que tendria que hacer DOS for dobles anidados, uno que verifique la parte de X y otro que verifique la parte de Y
-		 * para esto, subiré una foto de un dibujo que hice para que se entienda el problema, veanlo en el Drive
-		 * aunque este apenas encuentro a la unidad que busco deberia cortar
-		*/
-		return ret;
-	}
 }

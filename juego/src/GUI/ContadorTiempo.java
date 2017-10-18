@@ -23,6 +23,7 @@ public class ContadorTiempo extends Thread {
 				e.printStackTrace();
 			}
 			nivel.mover();
+			nivel.verificarUnidadesEnRango();
 		}
 	}
 }

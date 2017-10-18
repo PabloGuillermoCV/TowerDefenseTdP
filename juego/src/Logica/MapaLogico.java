@@ -58,12 +58,83 @@ public class MapaLogico {
 		 * para esto, subiré una foto de un dibujo que hice para que se entienda el problema, veanlo en el Drive
 		 * dejo este código incompleto ya que es una idea de como se me ocurrió empezar, la referencia se entenderá mejor con la foto del Drive
 		*/
-		for(int Y = e.getPos().getY(); Y > e.getAlcance() - e.getPos().getX(); Y++){
-			for(int i = e.getPos().getX() - e.getAlcance() + e.getPos().getY() ; i != e.getPos().getX() - e.getAlcance() + e.getPos().getY(); i-- ){
-				if(getCelda())
+		int X;
+		int Y;
+		for(int r = e.getAlcance(); r > 0; r--) {
+			X = r;
+			for(Y = r; Y > 0; Y--) {
+				if(!getCelda(-X,Y).getEnemigos().isEmpty())
+					ret.add(getCelda(-X,Y).getEnemigos().getFirst());
+				else {
+					if(!getCelda(X,-Y).getEnemigos().isEmpty())
+						ret.add(getCelda(X,-Y).getEnemigos().getFirst());
+					else
+						if(!getCelda(X,Y).getEnemigos().isEmpty())
+							ret.add(getCelda(X,Y).getEnemigos().getFirst());
+						else
+							if(!getCelda(-X,-Y).getEnemigos().isEmpty())
+								ret.add(getCelda(-X,-Y).getEnemigos().getFirst());
+				}
+			}
+			Y = r;
+			for(X = r; X > 0; X--) {
+				if(!getCelda(-X,Y).getEnemigos().isEmpty())
+					ret.add(getCelda(-X,Y).getEnemigos().getFirst());
+				else {
+					if(!getCelda(X,-Y).getEnemigos().isEmpty())
+						ret.add(getCelda(X,-Y).getEnemigos().getFirst());
+					else
+						if(!getCelda(X,Y).getEnemigos().isEmpty())
+							ret.add(getCelda(X,Y).getEnemigos().getFirst());
+						else
+							if(!getCelda(-X,-Y).getEnemigos().isEmpty())
+								ret.add(getCelda(-X,-Y).getEnemigos().getFirst());
 			}
 		}
 		
-		return ret;
+		
+		}
+	return ret;
+	}
+
+	public boolean estaEnRango(Enemigo g, Controlable e) {
+		boolean esta = false;
+		int X;
+		int Y;
+		for(int r = g.getAlcance(); r > 0 && !esta; r--) {
+			X = r;
+			for(Y = r; Y > 0 && !esta; Y--) {
+				if(getCelda(-X,Y).getPersonaje() == e)
+					esta = true;
+				else {
+					if(getCelda(X,-Y).getPersonaje() == e)
+						esta = true;
+					else
+						if(getCelda(X,Y).getPersonaje() == e)
+							esta = true;
+						else
+							if(getCelda(-X,-Y).getPersonaje() == e)
+								esta = true;
+				}
+			}
+			Y = r;
+			for(X = r; X > 0 && !esta; X--) {
+				if(getCelda(-X,Y).getPersonaje() == e)
+					esta = true;
+				else {
+					if(getCelda(X,-Y).getPersonaje() == e)
+						esta = true;
+					else
+						if(getCelda(X,Y).getPersonaje() == e)
+							esta = true;
+						else
+							if(getCelda(-X,-Y).getPersonaje() == e)
+								esta = true;
+			}
+		}
+		
+		
+		}
+		return esta;
 	}
 }
