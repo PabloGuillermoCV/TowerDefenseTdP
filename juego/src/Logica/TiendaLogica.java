@@ -2,6 +2,7 @@ package Logica;
 
 import Creadores.CreadoresLogicos.FactoryLogica;
 import Logica.Jugador;
+import entidades.Controlable;
 import entidades.Entidad;
 import GUI.TiendaVisual;
 
@@ -16,12 +17,12 @@ public class TiendaLogica {
 		P = new Jugador();
 	}
 	
-	public Entidad createEntidad () {
+	public Controlable createEntidad () {
 		if (creator == null) {
 			return null;
 		}
 		else {
-			Entidad E =  creator.crear ();
+			Controlable E =  creator.crear ();
 			creator = null;
 			return E;
 		}

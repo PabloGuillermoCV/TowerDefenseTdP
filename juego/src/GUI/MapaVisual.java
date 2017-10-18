@@ -2,6 +2,9 @@ package GUI;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Collection;
+import java.util.LinkedList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +12,7 @@ import Creadores.CreadoresLogicos.CreadorSoldadoLogico;
 import Logica.Jugador;
 import Logica.Posicion;
 import Logica.TiendaLogica;
+import entidades.Controlable;
 import entidades.Entidad;
 
 @SuppressWarnings({ "serial", "unused" })
@@ -18,6 +22,7 @@ public class MapaVisual extends JPanel {
 	private int height;
 	private int width;
 	private TiendaLogica marketL;
+	
 	
 	public MapaVisual (int width, int height, String direccion,GUI gui) {
 		miGui=gui;
@@ -38,12 +43,12 @@ public class MapaVisual extends JPanel {
 			int Y = E.getY ();
 			marketL.setCreador (new CreadorSoldadoLogico ());
 			Posicion P = new Posicion (X,Y);
-			Entidad Ent;
+			Controlable Ent;
 			Ent = marketL.createEntidad ();
 			
 			fondo.add (Ent.getGrafico ());
 			Ent.setPos (P);
-			
+			miGui.getNivel().agregarUnidadAliada(Ent);
 			miGui.getTiendaVisual().setBotonesOn ();
 			
 			//marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); //No me actualiza el label de las monedas...

@@ -20,7 +20,7 @@ public class Nivel1 extends Nivel {
 		fabrica= new FabricaEnemigos();
 		enemigos = new ArrayList<Enemigo>();
 		camino = new Camino1();
-		
+		unidadesEnMapa = new LinkedList<Controlable>();
 		posFinalEnemys = new Posicion (480,300);
 		camino.generarCaminoA(posFinalEnemys);
 		mostrarCamino();

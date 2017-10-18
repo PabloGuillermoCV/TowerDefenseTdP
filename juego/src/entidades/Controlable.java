@@ -1,7 +1,10 @@
 package entidades;
 
 import Logica.Posicion;
-import Enemigos.*;
+
+import java.util.Collection;
+import java.util.LinkedList;
+
 
 public abstract class Controlable extends Personaje {
 	
@@ -66,41 +69,16 @@ public abstract class Controlable extends Personaje {
 	 * metodo que permite al controlable ser atacado por una unidad enemiga
 	 * @param e visitor que efectua el ataque
 	 */
-	public abstract void serAtacado(Enemigo e);
+	public void serAtacado(Enemigo e){
+		e.atacar(this);
+	}
 	
 	/**
 	 * metodo de visitor que permite a un controlable atacar una unidad concreta
-	 * @param AC enemigo a Caballo a atacar
+	 * @param E enemigo a atacar
 	 */
-	public abstract void atacar(ACaballo AC);
+	public void atacar(Enemigo E){
+		E.setVida( E.getVida() - calcularGolpe(E));
+	}
 	
-	/**
-	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
-	 * @param AP enemigo a Pie a atacar
-	 */
-	public abstract void atacar(APie AP);
-	
-	/**
-	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
-	 * @param AC enemigo Con Arco a atacar
-	 */
-	public abstract void atacar(ConArco AC);
-	
-	/**
-	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
-	 * @param CA enemigo Con Armadura a atacar
-	 */
-	public abstract void atacar(ConArmadura CA);
-	
-	/**
-	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
-	 * @param CB enemigo con Ballesta a atacar
-	 */
-	public abstract void atacar(ConBallesta CB);
-	
-	/**
-	 * metodo de visitor que permite a un controlable atacar a una unidad concreta
-	 * @param JF Jefe Final a atacar (Este método deberia ser el que dispara las transiciones especiales)
-	 */
-	public abstract void atacar(JefeFinal JF);
 }

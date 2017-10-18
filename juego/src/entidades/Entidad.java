@@ -51,4 +51,6 @@ public abstract class Entidad {
 		this.pos = P;
 		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
+
+	
 }
