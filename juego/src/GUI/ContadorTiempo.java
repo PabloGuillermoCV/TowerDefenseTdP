@@ -18,12 +18,13 @@ public class ContadorTiempo extends Thread {
 		while(true){
 			try {
 				Thread.sleep(3000);
+				nivel.verificarUnidadesEnRango();
 			} catch (InterruptedException e) {
 				System.out.println("error en el thread");
 				e.printStackTrace();
 			}
 			nivel.mover();
-			nivel.verificarUnidadesEnRango();
+			
 		}
 	}
 }

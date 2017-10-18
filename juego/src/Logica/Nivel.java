@@ -56,6 +56,7 @@ public abstract class Nivel {
 			Collection<Enemigo> att = mapaLogico.getUnidadesEnRango(E); 
 			if(!att.isEmpty()){ //si la lista de enemigos a atacar NO es vacia
 				for(Enemigo g: att){
+					System.out.println("Unenemigo ha sido atacado");
 					g.serAtacado(E); //le pido al enemigo que se ataque y delego en el Visitor
 					if(g.getVida() <= 0) //si el enemigo murió
 						aEliminarE.add(g);

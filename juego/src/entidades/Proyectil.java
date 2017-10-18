@@ -3,7 +3,7 @@ package entidades;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public abstract class Proyectil {
+public abstract class Proyectil extends Thread {
 
 	//que tan rápido se mueve el proyectil
 	protected int velocidadMovimiento;
