@@ -56,11 +56,12 @@ public abstract class Nivel {
 			Collection<Enemigo> att = mapaLogico.getUnidadesEnRango(E); 
 			if(!att.isEmpty()){ //si la lista de enemigos a atacar NO es vacia
 				for(Enemigo g: att){
-					System.out.println("Unenemigo ha sido atacado");
+					System.out.println("Un enemigo ha sido atacado");
 					g.serAtacado(E); //le pido al enemigo que se ataque y delego en el Visitor
 					if(g.getVida() <= 0) //si el enemigo murió
 						aEliminarE.add(g);
 					if(!aEliminarE.contains(g) && mapaLogico.estaEnRango(g,E)){ //si el Enemigo NO se murio y puede atacar al Aliado que lo atacó
+						System.out.println("Un aliado ha sido atacado");
 						E.serAtacado(g); //le pido al aliado que se ataque y delego en el Visitor
 					}
 					if(E.getVida() <= 0){ //si el aliado murió
@@ -81,6 +82,7 @@ public abstract class Nivel {
 		if(!aEliminarC.isEmpty()){
 			for(Controlable C: aEliminarC){
 				//hay que elminarlo graficamente primero
+				System.out.println("Murió un aliado");
 				unidadesEnMapa.remove(C); //esto sacaria a la unidad de la lista, pero creo que sigue dando vueltas por alguna parte del juego y NO lo puedo borrar con finalize() de Object
 			}
 		}
