@@ -1,4 +1,7 @@
-package entidades;
+package Controlables.Disparos;
+
+import entidades.Proyectil;
+import entidades.Enemigo;
 
 public class CargaCatapulta extends Proyectil {
 
