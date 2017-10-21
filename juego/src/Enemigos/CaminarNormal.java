@@ -14,6 +14,7 @@ public class CaminarNormal implements EstadoDeMovimiento {
 	
 	public void moverA(Posicion pos) {
 		try {
+			if(pos.getX() != 0 && pos.getY()!=0) {
 			if(e.getPos().getX()!= pos.getX()) {
 				while(e.getPos().getX()!=pos.getX()) {
 					e.getGrafico().setBounds(e.getPos().getX()+e.getVelMov(), e.getPos().getY(),20, 20);
@@ -30,6 +31,11 @@ public class CaminarNormal implements EstadoDeMovimiento {
 			}		
 			e.setPos(pos);
 			e.getGrafico().setVisible(false);
+			}
+			else {
+				e.getGrafico().setBounds(0,0,20,20);
+				e.setPos(pos);
+			}
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();

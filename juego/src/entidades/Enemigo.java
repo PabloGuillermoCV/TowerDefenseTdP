@@ -35,6 +35,10 @@ public abstract class Enemigo extends Personaje{
 		return EfectoEspecial;
 	}
 	
+	public void morir() {
+		grafico.setVisible(false);
+	}
+	
 	public int getPuntaje () {
 		return Puntaje;
 	}

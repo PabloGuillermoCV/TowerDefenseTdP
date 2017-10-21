@@ -56,8 +56,8 @@ public class Nivel1 extends Nivel {
 		c.getEnemigos().addLast(APie);
 		miGui.getMapaVisual().getFondo().add(APie.getGrafico());
 		Random r1= new Random();
-		Posicion pos1= new Posicion (460,0);
-		Posicion pos2= new Posicion(0,280);
+		Posicion pos1= new Posicion (460,20);
+		Posicion pos2= new Posicion(0,0);
 		int dir= r1.nextInt(2);
 		if (dir==0) 
 		APie.MoverA(pos1);

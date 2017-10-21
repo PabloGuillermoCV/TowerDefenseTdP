@@ -76,6 +76,8 @@ public abstract class Nivel {
 				//hay que eliminarlo graficamente primero
 				//dar Oro y puntos al Jugador
 				System.out.println("Murio un Enemigo");
+				E.morir();
+				mapaLogico.getCelda(E.getPos().getX(), E.getPos().getY()).getEnemigos().remove(E);
 				enemigos.remove(E); //esto sacaria a la unidad de la lista, pero creo que sigue dando vueltas por alguna parte del juego y NO lo puedo borrar con finalize() de Object
 			}
 		}
