@@ -1,13 +1,18 @@
 package Creadores.CreadoresLogicos;
 
-import Objetos.KitMedico;
+import Logica.Posicion;
+import Objetos.ObjsDeLaTienda.KitMedico;
 import entidades.Controlable;
+import entidades.ObjDeLaTienda;
 
 public class CreadorKitMedicoLogico implements FactoryLogica {
 
-	@SuppressWarnings("unused")
-	public Controlable crear () {
+	public ObjDeLaTienda crearObj (Posicion pos) {
 		KitMedico KM = new KitMedico ();
+		return KM;
+	}
+	
+	public Controlable crearCont (Posicion pos) {
 		return null;
 	}
 }

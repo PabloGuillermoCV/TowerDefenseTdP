@@ -1,9 +1,9 @@
 package Logica;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
+//import java.util.Map;
 import java.util.Random;
 
 import javax.swing.JLabel;
@@ -15,20 +15,18 @@ public class Nivel1 extends Nivel {
 	
 	public Nivel1 (GUI gui) {
 		miGui = gui;
-		mapaLogico = MapaLogico.InstanciaMapaLogico (miGui.getMapaVisual().getWidth(),miGui.getMapaVisual().getHeight());
+		posFinalEnemies = new Posicion (480,300);
+		mapaLogico = MapaLogico.InstanciaMapaLogico ();
+		mapaLogico.generarCaminoA (posFinalEnemies);
 		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
 		fabrica = new FabricaEnemigos ();
 		enemigos = new ArrayList <Enemigo> ();
-		camino = new Camino1 ();
 		unidadesEnMapa = new LinkedList <Controlable> ();
-		posFinalEnemys = new Posicion (480,300);
-		camino.generarCaminoA (posFinalEnemys);
-		mostrarCamino ();
 		
 		generarListaEnemigos ();
 	}
 	
-	private  void mostrarCamino() {
+	/*private  void mostrarCamino() {
 		Posicion pos = new Posicion (0,0);
 		int i=0;
 		System.out.println("estoy aca");
@@ -37,7 +35,8 @@ public class Nivel1 extends Nivel {
 			pos= camino.getNext(pos);
 			System.out.println(i++);
 		}
-	}
+	}*/
+	
 	/**
 	 * modificar para que cree uno de cada uno
 	 */
@@ -46,7 +45,7 @@ public class Nivel1 extends Nivel {
 		enemigos.add(APie);
 		Celda c = mapaLogico.getCelda(0,0);
 		c.getEnemigos().addLast(APie);
-		miGui.getMapaVisual().getFondo().add(APie.getGrafico());
+		//miGui.getMapaVisual().getFondo().add(APie.getGrafico());
 			
 	
 	}
@@ -54,7 +53,7 @@ public class Nivel1 extends Nivel {
 		Enemigo APie = fabrica.crearAPie();
 		Celda c = mapaLogico.getCelda(0,0);
 		c.getEnemigos().addLast(APie);
-		miGui.getMapaVisual().getFondo().add(APie.getGrafico());
+		//miGui.getMapaVisual().getFondo().add(APie.getGrafico());
 		Random r1= new Random();
 		Posicion pos1= new Posicion (460,20);
 		Posicion pos2= new Posicion(0,0);
@@ -121,7 +120,7 @@ public class Nivel1 extends Nivel {
 	**/
 
 	
-	public  void moverEnemigos() {
+	/*public  void moverEnemigos() {
 		Posicion pos = new Posicion (0,0);
 		LinkedList<Enemigo> aux;
 		Map<Enemigo,Boolean> mapeo = new HashMap<Enemigo,Boolean>();
@@ -158,12 +157,7 @@ public class Nivel1 extends Nivel {
 		}	
 		
 		
-	}
-	
-	public Camino getCamino() {
-		
-		return camino;
-	}
+	}*/
 	
 	public MapaLogico getMapa() {
 		
@@ -174,7 +168,4 @@ public class Nivel1 extends Nivel {
 		
 		return tiendaLogica;
 	}
-
-
-
 }

@@ -1,6 +1,6 @@
 package Logica;
 
-public class Posicion {
+public class Posicion implements Prototype {
 	
 	private int X;
 	private int Y;
@@ -50,5 +50,9 @@ public class Posicion {
 		String resp=""+ X+ " "+Y;
 		
 		return resp;
+	}
+	
+	public Prototype clone () {
+		return new Posicion (X, Y);
 	}
 }

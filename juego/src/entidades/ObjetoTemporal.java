@@ -2,12 +2,12 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class ObjetoTemporal extends ObjDentroDelMapa {
+public abstract class ObjetoTemporal extends Objeto {
 	
 	protected int Tiempo;
 	
-	public ObjetoTemporal (String Nombre, String Label, Posicion Pos, int Probabilidad, int Tiempo) {
-		super (Nombre,Label,Pos,Probabilidad);
+	public ObjetoTemporal (String Nombre, Posicion Pos, int Tiempo) {
+		super (Nombre,Pos);
 		this.Tiempo = Tiempo;
 	}
 	

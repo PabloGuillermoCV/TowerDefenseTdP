@@ -6,15 +6,13 @@ import java.util.LinkedList;
 import entidades.*;
 import GUI.*;
 
-
 public abstract class Nivel {
 	protected AbstractFactory fabrica;
 	protected Collection <Enemigo> enemigos;
-	protected Camino camino;
 	protected MapaLogico mapaLogico;
 	protected TiendaLogica tiendaLogica;
 	protected GUI miGui;
-	protected Posicion posFinalEnemys;
+	protected Posicion posFinalEnemies;
 	protected Collection<Controlable> unidadesEnMapa; //unidades aliadas
 	
 	/**
@@ -29,9 +27,7 @@ public abstract class Nivel {
 	/**
 	 * utilizando el camino generado movera a cada enemigo a la siguiente Celda
 	 */
-	public abstract void moverEnemigos();
-	
-	public abstract Camino getCamino();
+	//public abstract void moverEnemigos();
 	
 	public abstract MapaLogico getMapa();
 	
@@ -58,13 +54,13 @@ public abstract class Nivel {
 				for(Enemigo g: att){
 					System.out.println("Un enemigo ha sido atacado");
 					g.serAtacado(E); //le pido al enemigo que se ataque y delego en el Visitor
-					if(g.getVida() <= 0) //si el enemigo murió
+					if(g.getEstado().getVida() <= 0) //si el enemigo murió
 						aEliminarE.add(g);
 					if(!aEliminarE.contains(g) && mapaLogico.estaEnRango(g,E)){ //si el Enemigo NO se murio y puede atacar al Aliado que lo atacó
 						System.out.println("Un aliado ha sido atacado");
 						E.serAtacado(g); //le pido al aliado que se ataque y delego en el Visitor
 					}
-					if(E.getVida() <= 0){ //si el aliado murió
+					if(E.getEstado().getVida() <= 0){ //si el aliado murió
 						aEliminarC.add(E);
 					}
 					
@@ -76,7 +72,7 @@ public abstract class Nivel {
 				//hay que eliminarlo graficamente primero
 				//dar Oro y puntos al Jugador
 				System.out.println("Murio un Enemigo");
-				E.morir();
+				//E.morir();
 				mapaLogico.getCelda(E.getPos().getX(), E.getPos().getY()).getEnemigos().remove(E);
 				enemigos.remove(E); //esto sacaria a la unidad de la lista, pero creo que sigue dando vueltas por alguna parte del juego y NO lo puedo borrar con finalize() de Object
 			}
@@ -89,9 +85,4 @@ public abstract class Nivel {
 			}
 		}
 	}
-	
-	
-	
-
-
 }

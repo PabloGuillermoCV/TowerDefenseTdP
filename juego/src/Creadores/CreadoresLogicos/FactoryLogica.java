@@ -1,6 +1,8 @@
 package Creadores.CreadoresLogicos;
 
+import Logica.Posicion;
 import entidades.Controlable;
+import entidades.ObjDeLaTienda;
 
 public interface FactoryLogica {
 	
@@ -10,6 +12,7 @@ public interface FactoryLogica {
 	 * @return el nuevo personaje creado
 	 * NOTA: Podriamos hacer que el descuento del Oro ocurra directamente aquí, pero tecnicamente NO tengo acceso a la Tienda aquí
 	 */
-	public Controlable crear ();
+	public Controlable crearCont (Posicion pos);
 	
+	public ObjDeLaTienda crearObj (Posicion pos);
 }

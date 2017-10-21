@@ -4,6 +4,7 @@ import Logica.Posicion;
 import Objetos.Roca;
 import entidades.Controlable;
 import entidades.Enemigo;
+import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
 
 public class ConBallesta extends Enemigo {
 	
@@ -13,7 +14,6 @@ public class ConBallesta extends Enemigo {
 	Posicion = pos
 	Vida = 150
 	Alcance = 5
-	PowerUpDelMapa = null
 	Ataque = 150
 	Defensa = 200
 	VelocidadMov = 2
@@ -22,8 +22,8 @@ public class ConBallesta extends Enemigo {
 	*/
 	
 	public ConBallesta (Posicion pos) {
-		super ("ConBallesta", "src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif", pos, 150, 2, null, 150, 200, 2, false, 3000);
-		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		super ("ConBallesta", pos, 150, 2, 150, 200, 2, false, 3000);
+		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif",pos);
 	}
 
 	@Override
@@ -34,13 +34,13 @@ public class ConBallesta extends Enemigo {
 
 	@Override
 	public void atacar(Controlable A) {
-		A.setVida(A.getVida() - calcularGolpe(A));
+		A.getEstado().setVida(A.getEstado().getVida() - calcularGolpe(A));
 		
 	}
 
 	@Override
 	public void atacar(Roca R) {
-		R.setVida(R.getVida() - Ataque); 
+		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
 		
 	}
 }

@@ -1,6 +1,8 @@
 package Controlables;
 
+import Logica.Posicion;
 import entidades.Controlable;
+import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class Soldado extends Controlable {
 	
@@ -10,18 +12,15 @@ public class Soldado extends Controlable {
 	Posicion = pos
 	Vida = 100
 	Alcance = 1
-	PowerUpDelMapa = null
 	Ataque = 50
 	Defensa = 100
 	Precio = 200
-	DosEspacios = False
 	VelocidadAt = 4
-	PowerUpComprado = null
 	*/
 	
 	
-	public Soldado () {
-		super ("Soldado", "src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif", null, 100, 1, null, 50, 100, 200, false, 4, null);
-		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+	public Soldado (Posicion pos) {
+		super ("Soldado", pos, 100, 1, 50, 100, 200, 4);
+		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif",pos);
 	}
 }

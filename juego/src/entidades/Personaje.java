@@ -1,53 +1,30 @@
 package entidades;
 
 import Logica.Posicion;
+import entidades.Estados.Estado;
+import entidades.Estados.EstadoNormal;
 
 public abstract class Personaje extends Entidad {
-
-	protected int Vida;
-	protected int Alcance;
-	protected PowerUpDelMapa PowerUp;
-	protected int Ataque;
-	protected int Defensa;
 	
-	public Personaje (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
-			PowerUpDelMapa PowerUp, int Ataque, int Defensa) {
-		super (Nombre,Label,Pos);
-		this.Vida = Vida;
+	protected Estado miEstadoActual;
+	protected int Alcance;
+	
+	public Personaje (String Nombre, Posicion Pos, int Vida, int Alcance, 
+			int Ataque, int Defensa) {
+		super (Nombre, Pos);
 		this.Alcance = Alcance;
-		this.PowerUp = PowerUp;
-		this.Ataque = Ataque;
-		this.Defensa = Defensa;
+		this.miEstadoActual = new EstadoNormal (Vida, Ataque, Defensa);
 	}
 	
-	public int getVida () {
-		return Vida;
+	public Estado getEstado () {
+		return miEstadoActual;
 	}
 	
 	public int getAlcance () {
 		return Alcance;
 	}
 	
-	public PowerUpDelMapa getPoder () {
-		return PowerUp;
+	public void setEstado (Estado e) {
+		miEstadoActual = e;
 	}
-	
-	public int getAtaque () {
-		return Ataque;
-	}
-	
-	
-	public int getDefensa () {
-		return Defensa;
-	}
-	
-	public void setVida (int V) {
-		Vida = V;
-	}
-	
-	public void setPowerUp (PowerUpDelMapa P) {
-		PowerUp = P;
-	}
-		
-	
 }

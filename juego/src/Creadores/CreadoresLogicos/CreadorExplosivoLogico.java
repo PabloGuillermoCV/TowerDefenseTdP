@@ -1,13 +1,18 @@
 package Creadores.CreadoresLogicos;
 
-import Objetos.Explosivo;
+import Logica.Posicion;
+import Objetos.ObjsDeLaTienda.Explosivo;
 import entidades.Controlable;
+import entidades.ObjDeLaTienda;
 
 public class CreadorExplosivoLogico implements FactoryLogica {
 
-	@SuppressWarnings("unused")
-	public Controlable crear () {
+	public ObjDeLaTienda crearObj (Posicion pos) {
 		Explosivo E = new Explosivo ();
+		return E;
+	}
+	
+	public Controlable crearCont (Posicion pos) {
 		return null;
 	}
 }

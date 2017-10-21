@@ -75,7 +75,7 @@ public class GUI extends JFrame {
 	
 	private void ver() {
 		APie E = new APie(new Posicion (80,60));
-		E.getGrafico().setVisible(true);
-		this.getContentPane().add(E.getGrafico());
+		//E.getGrafico().setVisible(true);
+		//this.getContentPane().add(E.getGrafico());
 	}
 }

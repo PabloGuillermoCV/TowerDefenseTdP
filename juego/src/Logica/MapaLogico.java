@@ -11,7 +11,7 @@ public class MapaLogico {
 	private static MapaLogico Instancia;
 	private Celda [][] matriz;
 	private static int tamaño = 20;
-	//private TiendaLogica market;
+	private Camino miCamino;
 	
 	/**
 	 * constructor : inicializa la matriz de Celdas con un total de (el Ancho del Mapa)/20 por
@@ -23,16 +23,15 @@ public class MapaLogico {
 		matriz = new Celda [w/tamaño][h/tamaño];
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz [0].length; j++) {
-				matriz [i][j] = new Celda (i*tamaño,j*tamaño,this);
-				
+				matriz [i][j] = new Celda (i*tamaño,j*tamaño);
 			}
 		}
-		//TiendaLogica market = new TiendaLogica();
+		miCamino = new Camino1 ();
 	}
 	
-	public static MapaLogico InstanciaMapaLogico (int w, int h) {
+	public static MapaLogico InstanciaMapaLogico () {
 		if (Instancia == null) {
-			Instancia = new MapaLogico (w, h);
+			Instancia = new MapaLogico (500,320);
 		}
 		return Instancia;
 	}
@@ -44,14 +43,25 @@ public class MapaLogico {
 	public int getTamaño () {
 		return tamaño;
 	}
-	/*
-	public void agregarPersonaje(int x,int y) {
-		market.getControlable();
-		//if(Market.getCreador() != null)
-			//modificar no recibe la celda --> Market.getCreador();
-		
+	
+	public Camino getCamino () {
+		return miCamino;
 	}
-*/
+	
+	public void generarCaminoA (Posicion pos) {
+		miCamino.generarCaminoA (pos);
+	}
+	
+	public boolean puedoInsertarPersonaje (Posicion pos) {
+		boolean puedo;
+		if (!miCamino.perteneceAlCamino (pos) && matriz [pos.getX()/tamaño][pos.getY()/tamaño].getPersonaje () == null) {
+			puedo = true;
+		}
+		else {
+			puedo = false;
+		}
+		return puedo;
+	}
 
 	/**
 	 * metodo que verifica las unidades que un Aliado puede atacar

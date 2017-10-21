@@ -3,7 +3,7 @@ package Enemigos;
 import Logica.Posicion;
 import entidades.Enemigo;
 
-public class CaminarNormal implements EstadoDeMovimiento {
+public class CaminarNormal implements EstrategiaDeMovimiento {
 
 	private Enemigo e;
 	
@@ -11,36 +11,11 @@ public class CaminarNormal implements EstadoDeMovimiento {
 		this.e = e;
 	}
 	
-	
-	public void moverA(Posicion pos) {
-		try {
-			if(pos.getX() != 0 && pos.getY()!=0) {
-			if(e.getPos().getX()!= pos.getX()) {
-				while(e.getPos().getX()!=pos.getX()) {
-					e.getGrafico().setBounds(e.getPos().getX()+e.getVelMov(), e.getPos().getY(),20, 20);
-					e.getPos().setX(e.getPos().getX()+e.getVelMov());
-				    Thread.sleep(100);
-				}
-			}
-			else {
-				while(e.getPos().getY()!=pos.getY()) {
-					e.getGrafico().setBounds(e.getPos().getX(), e.getPos().getY()+e.getVelMov(),20, 20);
-					e.getPos().setY(e.getPos().getY()+e.getVelMov());
-				    Thread.sleep(100);
-				}
-			}		
-			e.setPos(pos);
-			e.getGrafico().setVisible(false);
-			}
-			else {
-				e.getGrafico().setBounds(0,0,20,20);
-				e.setPos(pos);
-			}
-		}
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public void moverA (Posicion pos) {
+		e.getMapa ().getCelda (pos.getX(),pos.getY()).EliminarEnemigo(e);
+		e.getGrafico ().moverA (pos, e.getVelMov ());
+		e.getPos ().setX (pos.getX ());
+		e.getPos ().setY (pos.getY ());
+		e.getMapa ().getCelda (pos.getX(),pos.getY()).addEnemigo(e);
 	}
-	
-
 }

@@ -5,27 +5,13 @@ import Logica.Posicion;
 public abstract class Controlable extends Personaje {
 	
 	protected int Precio;
-	protected int Espacio [];
 	protected int VelocidadAt;
-	protected Conceptual PowerUpComprado;
 	
-	
-	
-	public Controlable (String Nombre, String Label, Posicion Pos,
-			int Vida, int Alcance, PowerUpDelMapa PowerUp, int Ataque, int Defensa, int Precio,
-			boolean DosEspacios, int VelocidadAt, Conceptual PowerUpComprado) {
-		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
+	public Controlable (String Nombre, Posicion Pos,
+			int Vida, int Alcance, int Ataque, int Defensa, int Precio,int VelocidadAt) {
+		super (Nombre,Pos,Vida,Alcance,Ataque,Defensa);
 		this.Precio = Precio;
-		this.Espacio = new int [2];
-		Espacio [0] = 1;
-		if (DosEspacios) {
-			Espacio [1] = 1;
-		}
-		else {
-			Espacio [1] = 0;
-		}
 		this.VelocidadAt = VelocidadAt;
-		this.PowerUpComprado = PowerUpComprado;
 	}
 	
 	public int getPrecio () {
@@ -38,27 +24,11 @@ public abstract class Controlable extends Personaje {
 	 * @return daño a generar en el enemigo
 	 */
 	public int calcularGolpe(Enemigo e){
-		return e.getVida() - (e.getDefensa() - this.Ataque);
-	}
-	
-	public int [] getEspacio () {
-		return Espacio;
+		return e.getEstado().getVida() - (e.getEstado().getDefensa() - miEstadoActual.getAtaque());
 	}
 	
 	public int getVelAt () {
 		return VelocidadAt;
-	}
-	
-	public Conceptual getPowerUpComprado () {
-		return PowerUpComprado;
-	}
-	
-	public void setPowerUpComprado (Conceptual PUC) {
-		PowerUpComprado = PUC;
-	}
-	
-	public int getDefensa(){
-		return Defensa;
 	}
 	
 	/**
@@ -74,7 +44,6 @@ public abstract class Controlable extends Personaje {
 	 * @param E enemigo a atacar
 	 */
 	public void atacar(Enemigo E){
-		E.setVida( E.getVida() - calcularGolpe(E));
+		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 	}
-	
 }

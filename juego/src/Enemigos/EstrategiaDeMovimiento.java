@@ -1,7 +1,8 @@
 package Enemigos;
+
 import Logica.Posicion;
 
-public interface EstadoDeMovimiento {
+public interface EstrategiaDeMovimiento {
 	
 	/**
 	 * el metodo moverA , deberia implementarse de la misma manera que implementamos el metodo
@@ -12,11 +13,8 @@ public interface EstadoDeMovimiento {
 	 * donde la ejecución de c/u depende del estado en que se encuentre la unidad que se está moviemndo
 	 * 
 	 */
-	public void moverA(Posicion pos);
+	public void moverA (Posicion pos);
 	
 	//NOTA: el metodo "moverRalentizado(Posicion pos)" ya esta implementado 
 	//en la clase "CaminarMermado"
-	
-
-
 }

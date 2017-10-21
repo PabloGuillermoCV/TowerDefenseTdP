@@ -1,42 +1,31 @@
 package entidades;
 
+import Logica.MapaLogico;
 import Logica.Posicion;
 import Enemigos.*;
 import Objetos.Roca;
-
 import java.util.Collection;
 import java.util.LinkedList;
 
-import javax.swing.JLabel;
-
-
-public abstract class Enemigo extends Personaje{
+public abstract class Enemigo extends Personaje {
 	
 	protected int VelocidadMov;
-	protected boolean EfectoEspecial;
-	protected EstadoDeMovimiento EstadoCaminar;
+	protected EstrategiaDeMovimiento EstadoCaminar;
 	protected int Puntaje;
+	protected MapaLogico miMapa;
 	
-	public Enemigo (String Nombre, String Label, Posicion Pos, int Vida, int Alcance,
-		   PowerUpDelMapa PowerUp, int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
+	public Enemigo (String Nombre, Posicion Pos, int Vida, int Alcance,
+		   int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
 		   int Puntaje) {
-		super (Nombre,Label,Pos,Vida,Alcance,PowerUp,Ataque,Defensa);
+		super (Nombre,Pos,Vida,Alcance,Ataque,Defensa);
 		this.VelocidadMov = VelocidadMov;
-		this.EfectoEspecial = false;
 		this.Puntaje = Puntaje;
 		this.EstadoCaminar = new CaminarNormal(this);
+		miMapa = MapaLogico.InstanciaMapaLogico ();
 	}
 	
 	public int getVelMov () {
 		return VelocidadMov;
-	}
-	
-	public boolean getEfecto () {
-		return EfectoEspecial;
-	}
-	
-	public void morir() {
-		grafico.setVisible(false);
 	}
 	
 	public int getPuntaje () {
@@ -44,14 +33,19 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public int calcularGolpe(Controlable C){
-		return C.getVida() - (C.getDefensa() - this.Ataque);
-	}
-	public Posicion getPos() {
-		return pos;
+		return C.getEstado().getVida() - (C.getEstado().getDefensa() - miEstadoActual.getAtaque());
 	}
 	
-	public JLabel getGrafico() {
-		return grafico;
+	public MapaLogico getMapa () {
+		return miMapa;
+	}
+	
+	public EstrategiaDeMovimiento getEstadoCaminar () {
+		return EstadoCaminar;
+	}
+	
+	public void setEstado (EstrategiaDeMovimiento estado) {
+		EstadoCaminar = estado;
 	}
 	
 	/**
@@ -66,7 +60,6 @@ public abstract class Enemigo extends Personaje{
 	 */
 	public abstract void atacar(Controlable C);
 	
-	
 	/**
 	 * metodo de visitor que permite a un enemigo atacar el objeto que bloquea su camino
 	 * @param R Roca a atacar
@@ -75,9 +68,7 @@ public abstract class Enemigo extends Personaje{
 	
 	public Collection<Posicion> verficiarAliadosEnRango(){
 		Collection<Posicion> PosicionesaAtacar = new LinkedList<Posicion>();
-		
 		return PosicionesaAtacar;
-		
 	}
 	
 	public void MoverA (Posicion pos) {

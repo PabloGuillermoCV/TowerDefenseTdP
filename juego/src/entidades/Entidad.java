@@ -1,21 +1,16 @@
 package entidades;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import Logica.Posicion;
+import entidades.EntidadesGraficas.EntidadGrafica;
 
 public abstract class Entidad {
 
 	protected String Nombre;
-	protected JLabel grafico; //Posiblemente saquemos esto y usemos EntidadesGraficas
+	protected EntidadGrafica grafico;
 	protected Posicion pos;
 	
-	public Entidad (String Nombre, String File, Posicion pos) {
+	public Entidad (String Nombre, Posicion pos) {
 		this.Nombre = Nombre;
-		this.grafico = new JLabel (new ImageIcon (File));
-		//this.grafico.setBounds(80, 60, 20, 20);
-		this.grafico.setVisible(true);
 		this.pos = pos;
 	}
 	
@@ -31,7 +26,7 @@ public abstract class Entidad {
 	 * Metodo que devuelve el label (una imagen) de la Entidad
 	 * @return una imagen de la Entidad
 	 */
-	public JLabel getGrafico () {
+	public EntidadGrafica getGrafico () {
 		return grafico;
 	}
 	
@@ -39,9 +34,9 @@ public abstract class Entidad {
 	 * Metodo que cambia la imagen de la Entidad
 	 * @param una direccion al archivo donde esta la imagen
 	 */
-	public void setGrafico (String File) {
+	/*public void setGrafico (String File) {
 		this.grafico = new JLabel (new ImageIcon ((File)));
-	}
+	}*/
 	
 	public Posicion getPos () {
 		return pos;
@@ -49,8 +44,6 @@ public abstract class Entidad {
 	
 	public void setPos (Posicion P) {
 		this.pos = P;
-		this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+		this.grafico.getGrafico().setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
 	}
-
-	
 }

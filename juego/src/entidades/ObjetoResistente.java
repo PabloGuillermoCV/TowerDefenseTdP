@@ -2,12 +2,12 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class ObjetoResistente extends ObjDentroDelMapa {
+public abstract class ObjetoResistente extends Objeto {
 	
 	protected int Vida;
 	
-	public ObjetoResistente (String Nombre, String Label, Posicion Pos, int Probabilidad, int Vida) {
-		super (Nombre,Label,Pos,Probabilidad);
+	public ObjetoResistente (String Nombre, Posicion Pos, int Vida) {
+		super (Nombre,Pos);
 		this.Vida = Vida;
 	}
 	

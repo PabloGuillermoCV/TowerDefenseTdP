@@ -1,7 +1,8 @@
 package Controlables;
 
+import Logica.Posicion;
 import entidades.Controlable;
-
+import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class Arquero extends Controlable {
 	
@@ -11,17 +12,14 @@ public class Arquero extends Controlable {
 	Posicion = pos
 	Vida = 100
 	Alcance = 5
-	PowerUpDelMapa = null
 	Ataque = 50
 	Defensa = 100
 	Precio = 300
-	DosEspacios = False
 	VelocidadAt = 7
-	PowerUpComprado = null
 	*/
 	
-	public Arquero () {
-		super ("Arquero", "src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif", null, 100, 5, null, 50, 100, 300, false, 7, null);
-		//this.grafico.setBounds (getPos ().getX (), getPos ().getY (), 20, 20);
+	public Arquero (Posicion pos) {
+		super ("Arquero", pos, 100, 5, 50, 100, 300, 7);
+		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 }

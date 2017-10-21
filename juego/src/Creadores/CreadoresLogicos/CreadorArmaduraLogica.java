@@ -1,13 +1,18 @@
 package Creadores.CreadoresLogicos;
 
-import Objetos.Armadura;
+import Logica.Posicion;
+import Objetos.ObjsDeLaTienda.Armadura;
 import entidades.Controlable;
+import entidades.ObjDeLaTienda;
 
 public class CreadorArmaduraLogica implements FactoryLogica {
 
-	@SuppressWarnings("unused")
-	public Controlable crear () {
+	public ObjDeLaTienda crearObj (Posicion pos) {
 		Armadura A = new Armadura ();
+		return A;
+	}
+	
+	public Controlable crearCont (Posicion pos) {
 		return null;
 	}
 }

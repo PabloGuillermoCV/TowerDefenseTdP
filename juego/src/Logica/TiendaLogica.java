@@ -3,6 +3,7 @@ package Logica;
 import Creadores.CreadoresLogicos.FactoryLogica;
 import Logica.Jugador;
 import entidades.Controlable;
+import entidades.ObjDeLaTienda;
 import GUI.TiendaVisual;
 
 public class TiendaLogica {
@@ -24,14 +25,25 @@ public class TiendaLogica {
 		return Instancia;
 	}
 	
-	public Controlable createEntidad () {
+	public Controlable createPersonaje (Posicion pos) {
 		if (creator == null) {
 			return null;
 		}
 		else {
-			Controlable E =  creator.crear ();
+			Controlable E = creator.crearCont (pos);
 			creator = null;
 			return E;
+		}
+	}
+	
+	public ObjDeLaTienda createObjeto (Posicion pos) {
+		if (creator == null) {
+			return null;
+		}
+		else {
+			ObjDeLaTienda O = creator.crearObj (pos);
+			creator = null;
+			return O;
 		}
 	}
 	

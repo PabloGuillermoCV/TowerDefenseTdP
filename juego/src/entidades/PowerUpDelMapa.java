@@ -2,13 +2,12 @@ package entidades;
 
 import Logica.Posicion;
 
-public abstract class PowerUpDelMapa extends ObjDentroDelMapa {
+public abstract class PowerUpDelMapa extends Objeto {
 	
 	protected Enemigo ContieneEnemigo;
 	
-	public PowerUpDelMapa (String Nombre, String Label, Posicion Pos, int Probabilidad,
-			Enemigo ContieneEnemigo) {
-		super (Nombre,Label,Pos,Probabilidad);
+	public PowerUpDelMapa (String Nombre, Posicion Pos, Enemigo ContieneEnemigo) {
+		super (Nombre,Pos);
 		this.ContieneEnemigo = ContieneEnemigo;
 	}
 	

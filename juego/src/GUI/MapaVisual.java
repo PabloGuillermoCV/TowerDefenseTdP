@@ -52,10 +52,10 @@ public class MapaVisual extends JPanel {
 			int Y = E.getY ();
 			Posicion P = new Posicion (X,Y);
 			Controlable Ent;
-			Ent = marketL.createEntidad ();
+			Ent = marketL.createPersonaje (P);
 			
 			if (Ent != null) {
-				fondo.add (Ent.getGrafico ());
+				fondo.add (Ent.getGrafico ().getGrafico ());
 				Ent.setPos (P);
 				miGui.getNivel().agregarUnidadAliada(Ent);
 				miGui.getTiendaVisual().setBotonesOn ();

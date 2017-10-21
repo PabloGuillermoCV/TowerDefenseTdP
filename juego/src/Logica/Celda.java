@@ -2,48 +2,47 @@ package Logica;
 
 import java.util.*;
 import entidades.*;
-//import Objetos.*;
 
 public class Celda {
-	private LinkedList<Enemigo> enemigos;
+	private LinkedList <Enemigo> enemigos;
 	private Controlable personaje;
-	// podria ser en vez de una lista de objetos un solo objeto noMas
-	//private LinkedList<ObjDentroDelMapa> objetos;
+	private Objeto objeto;
 	private Posicion esquinaIzq;
-	private MapaLogico mapa;
+	private static MapaLogico mapa = MapaLogico.InstanciaMapaLogico ();
 	
 	/**
-	 * Constructor : recibe el x e y que son las coordenadas de la esquina izquierda y el
-	 * mapa al que pertenece.
+	 * Constructor : recibe el x e y que son las coordenadas de la esquina izquierda
 	 */
-	
-	public Celda (int x, int y,MapaLogico mapa) {
+	public Celda (int x, int y) {
 		esquinaIzq = new Posicion(x,y);
 		enemigos = new LinkedList<Enemigo>();
-		this.mapa = mapa;
 		personaje = null;
 	}
 	
-	
 	public void addEnemigo (Enemigo e) {
-		enemigos.addLast(e);
+		enemigos.addLast (e);
 	}
 	
-	public void addPersonaje (Controlable c){
-		personaje = c;
+	public void addPersonaje (Controlable c) {
+		if (personaje != null) {
+			personaje = c;
+		}
 	}
-	/**
-	public void addObjeto (Conceptual o) {
-		personaje.setPowerUpComprado (o);
-	}
-	**/
 	
-	public LinkedList<Enemigo> getEnemigos(){
+	public void addObjeto (Objeto o) {
+		objeto = o;
+	}
+	
+	public LinkedList <Enemigo> getEnemigos () {
 		return enemigos;
 	}
 	
-	public Controlable getPersonaje() {
+	public Controlable getPersonaje () {
 		return personaje;
+	}
+	
+	public Objeto getObjeto () {
+		return objeto;
 	}
 	
 	public Posicion getEsquinaIzq () {
@@ -52,5 +51,11 @@ public class Celda {
 	
 	public MapaLogico getMapa () {
 		return mapa;
+	}
+	
+	public void EliminarEnemigo (Enemigo e) {
+		if (enemigos.contains (e)) {
+			enemigos.remove (e);
+		}
 	}
 }
