@@ -1,12 +1,21 @@
 package Logica;
 
 public class Jugador {
+	
+	private static Jugador Instancia;
 	protected int Monedas;
 	protected int Puntos;
 	
-	public Jugador () {
+	private Jugador () {
 		Monedas = 200;
 		Puntos = 0;
+	}
+	
+	public static Jugador InstanciaJugador () {
+		if (Instancia == null) {
+			Instancia = new Jugador ();
+		}
+		return Instancia;
 	}
 	
 	public int getMonedas () {

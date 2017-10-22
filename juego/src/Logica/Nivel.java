@@ -1,10 +1,9 @@
 package Logica;
 
-import java.util.Collection;
-import java.util.LinkedList;
-
-import entidades.*;
 import GUI.*;
+/*import java.util.Collection;
+import java.util.LinkedList;
+import entidades.*;*/
 
 public abstract class Nivel {
 	protected AbstractFactory fabrica;

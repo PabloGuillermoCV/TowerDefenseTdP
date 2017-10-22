@@ -1,21 +1,11 @@
 package GUI;
 
 import Logica.*;
-import entidades.*;
-import Enemigos.*;
-import Controlables.*;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
-import java.io.File;
-import java.io.IOException;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings("serial")
 public class GUI extends JFrame {
 	private JFrame ventana;
 	private ContadorTiempo tiempo;
@@ -73,9 +63,13 @@ public class GUI extends JFrame {
 		return nivel;
 	}
 	
-	private void ver() {
+	public JFrame getVentana () {
+		return ventana;
+	}
+	
+	/*private void ver() {
 		APie E = new APie(new Posicion (80,60));
 		//E.getGrafico().setVisible(true);
 		//this.getContentPane().add(E.getGrafico());
-	}
+	}*/
 }

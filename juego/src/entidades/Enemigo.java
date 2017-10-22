@@ -3,7 +3,7 @@ package entidades;
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Enemigos.*;
-import Objetos.Roca;
+import Objetos.ObjResistente.Roca;
 import java.util.Collection;
 import java.util.LinkedList;
 

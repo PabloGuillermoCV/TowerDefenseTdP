@@ -1,7 +1,6 @@
 package GUI;
 
 import Logica.Jugador;
-import Logica.MapaLogico;
 import Logica.TiendaLogica;
 import Audio.Sonido;
 import Creadores.CreadoresLogicos.*;
@@ -13,7 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings("serial")
 public class TiendaVisual extends JPanel {
 	
 	private static TiendaVisual Instancia;
@@ -37,7 +36,7 @@ public class TiendaVisual extends JPanel {
 		this.market = TiendaLogica.InstanciaTiendaLogica ();
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
-		P = new Jugador ();
+		P = Jugador.InstanciaJugador ();
 		setNumeros ();
 		setCreadores ();
 		setBotones ();
@@ -64,6 +63,10 @@ public class TiendaVisual extends JPanel {
 	
 	public FactoryVisual [] getBotones () {
 		return botones;
+	}
+	
+	public Sonido getAudio () {
+		return efectos;
 	}
 	
 	public Jugador getP () {

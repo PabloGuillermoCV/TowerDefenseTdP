@@ -6,15 +6,11 @@ import entidades.PowerUpDelMapa;
 
 public class EscudoPlus extends PowerUpDelMapa {
 
-	public EscudoPlus(String Nombre, Posicion Pos, Enemigo ContieneEnemigo) {
-		super(Nombre, Pos, ContieneEnemigo);
-		// TODO Auto-generated constructor stub
+	public EscudoPlus (String Nombre, Posicion Pos, Enemigo ContieneEnemigo) {
+		super (Nombre, Pos, ContieneEnemigo);
 	}
 
-	@Override
-	public void Afectar() {
-		// TODO Auto-generated method stub
+	public void Afectar () {
 		
 	}
-
 }

@@ -1,7 +1,5 @@
 package Enemigos;
 
-import Logica.Posicion;
-
 public interface EstrategiaDeMovimiento {
 	
 	/**

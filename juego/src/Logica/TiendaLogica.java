@@ -15,7 +15,7 @@ public class TiendaLogica {
 	
 	private TiendaLogica () {
 		creator = null;
-		P = new Jugador();
+		P = Jugador.InstanciaJugador ();
 	}
 	
 	public static TiendaLogica InstanciaTiendaLogica () {
