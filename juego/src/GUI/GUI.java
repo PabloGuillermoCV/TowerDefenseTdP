@@ -14,7 +14,7 @@ public class GUI extends JFrame {
 	private static int widthS = 500;
 	private static int heightS = 400;
 	private static String direccionM = "src\\GUI\\Sprites Mapas\\Mapa1.png";
-	private static String direccionS = "src\\GUI\\Sprites Shop\\Shop.png";
+	private static String direccionS = "src\\GUI\\Sprites Mapas\\FondoTienda.png";
 	private MapaVisual mapa;
 	private TiendaVisual shop;
 	private Nivel nivel;
