@@ -46,4 +46,9 @@ public abstract class Controlable extends Personaje {
 	public void atacar(Enemigo E){
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 	}
+		
+	public Enemigo verificarUnidad() {
+		return null;
+	}
+
 }

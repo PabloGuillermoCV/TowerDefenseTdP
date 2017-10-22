@@ -16,12 +16,13 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 	 * le saca 5 de vida cada vez que se mueve
 	 * @param pos la posicion donde se moverá el enemigo
 	 */
-	public void moverA (Posicion pos) {
-		e.getMapa ().getCelda (pos.getX(),pos.getY()).EliminarEnemigo(e);
-		e.getGrafico ().moverA (pos, e.getVelMov ());
-		e.getPos ().setX (pos.getX ());
-		e.getPos ().setY (pos.getY ());
-		e.getMapa ().getCelda (pos.getX(),pos.getY()).addEnemigo(e);
+	public void mover () {
+		Posicion posSig= e.getMapa().getCamino().getNext(e.getPos());
+		e.getMapa ().getCelda (e.getPos()).EliminarEnemigo(e);
+		e.getGrafico ().moverA ((posSig), e.getVelMov ());
+		e.getPos ().setX (posSig.getX());
+		e.getPos ().setY (posSig.getY ());
+		e.getMapa ().getCelda (posSig).addEnemigo(e);
 		afectarVida ();
 	}
 	

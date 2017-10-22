@@ -16,11 +16,12 @@ public class CaminarMermado implements EstrategiaDeMovimiento {
 	 * hace que se mueva a la mitad de la velocidad
 	 * @param pos posicion a la que se moverá el enemigo
 	 */
-	public void moverA (Posicion pos) {
-		e.getMapa ().getCelda (pos.getX(),pos.getY()).EliminarEnemigo(e);
-		e.getGrafico ().moverA (pos, 2);
-		e.getPos ().setX (pos.getX ());
-		e.getPos ().setY (pos.getY ());
-		e.getMapa ().getCelda (pos.getX(),pos.getY()).addEnemigo(e);
+	public void mover(){
+		Posicion posSig= e.getMapa().getCamino().getNext(e.getPos());
+		e.getMapa ().getCelda (e.getPos()).EliminarEnemigo(e);
+		e.getGrafico ().moverA ((posSig), 2);
+		e.getPos ().setX (posSig.getX());
+		e.getPos ().setY (posSig.getY ());
+		e.getMapa ().getCelda (posSig).addEnemigo(e);
 	}
 }

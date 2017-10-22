@@ -71,7 +71,7 @@ public abstract class Enemigo extends Personaje {
 		return PosicionesaAtacar;
 	}
 	
-	public void MoverA (Posicion pos) {
-		EstadoCaminar.moverA(pos);
+	public void Mover () {
+		EstadoCaminar.mover();
 	}
 }

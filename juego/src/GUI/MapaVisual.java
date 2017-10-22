@@ -57,7 +57,7 @@ public class MapaVisual extends JPanel {
 			if (Ent != null) {
 				fondo.add (Ent.getGrafico ().getGrafico ());
 				Ent.setPos (P);
-				miGui.getNivel().agregarUnidadAliada(Ent);
+				miGui.getNivel().getMapa().agregarControlable(Ent, P);
 				miGui.getTiendaVisual().setBotonesOn ();
 				
 				//No me actualiza el label de las monedas...

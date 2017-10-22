@@ -13,7 +13,7 @@ public interface EstrategiaDeMovimiento {
 	 * donde la ejecución de c/u depende del estado en que se encuentre la unidad que se está moviemndo
 	 * 
 	 */
-	public void moverA (Posicion pos);
+	public void mover();
 	
 	//NOTA: el metodo "moverRalentizado(Posicion pos)" ya esta implementado 
 	//en la clase "CaminarMermado"

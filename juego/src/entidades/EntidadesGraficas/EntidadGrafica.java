@@ -11,7 +11,7 @@ public abstract class EntidadGrafica { //En este paquete estarán todos los gráfi
 	protected Posicion pos;
 	
 	public EntidadGrafica (String File, Posicion pos) {
-		this.grafico = new JLabel (new ImageIcon (this.getClass ().getResource (File)));
+		this.grafico = new JLabel (new ImageIcon (File));
 		this.pos = pos;
 		this.grafico.setBounds (pos.getX (), pos.getY (), 20, 20);
 		this.grafico.setVisible (true);

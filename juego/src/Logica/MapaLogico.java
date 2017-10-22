@@ -7,10 +7,13 @@ import entidades.Controlable;
 import entidades.Enemigo;
 
 public class MapaLogico {
-	
+	protected Collection<Controlable> unidadesEnMapa;
+	protected Collection <Enemigo> enemigos;
 	private static MapaLogico Instancia;
 	private Celda [][] matriz;
 	private static int tamaño = 20;
+	private static int width=500;
+	private static int height =320;
 	private Camino miCamino;
 	
 	/**
@@ -36,8 +39,11 @@ public class MapaLogico {
 		return Instancia;
 	}
 	
-	public Celda getCelda (int x,int y) {
-		return matriz [x/tamaño] [y/tamaño];
+	public Celda getCelda (Posicion pos) {
+		if (posicionValida(pos))
+		return matriz [pos.getX()/tamaño] [pos.getY()/tamaño];
+		
+		else return null;
 	}
 	
 	public int getTamaño () {
@@ -63,96 +69,32 @@ public class MapaLogico {
 		return puedo;
 	}
 
-	/**
-	 * metodo que verifica las unidades que un Aliado puede atacar
-	 * @param e Aliado en cuestion a verficar Rango
-	 * @return Colección de enemigos a atacar
-	 */
-	public Collection<Enemigo> getUnidadesEnRango(Controlable e) {
-		Collection<Enemigo> ret = new LinkedList<Enemigo>();
-		/*NOTA: estoy teniendo un problema en COMO recorrer el rango efectivo de la unidad
-		 * calculo que se deberia hacer con un for doble anidado para que recorra primero el eje X y despues el Eje Y, 
-		 * pero el drama viene que tendria que hacer DOS for dobles anidados, uno que verifique la parte de X y otro que verifique la parte de Y
-		 * para esto, subiré una foto de un dibujo que hice para que se entienda el problema, veanlo en el Drive
-		 * dejo este código incompleto ya que es una idea de como se me ocurrió empezar, la referencia se entenderá mejor con la foto del Drive
-		*/
-		int X;
-		int Y;
-		for(int r = e.getAlcance(); r > 0; r--) {
-			X = r;
-			for(Y = r; Y > 0; Y--) {
-				if(!getCelda(-X,Y).getEnemigos().isEmpty())
-					ret.add(getCelda(-X,Y).getEnemigos().getFirst());
-				else {
-					if(!getCelda(X,-Y).getEnemigos().isEmpty())
-						ret.add(getCelda(X,-Y).getEnemigos().getFirst());
-					else
-						if(!getCelda(X,Y).getEnemigos().isEmpty())
-							ret.add(getCelda(X,Y).getEnemigos().getFirst());
-						else
-							if(!getCelda(-X,-Y).getEnemigos().isEmpty())
-								ret.add(getCelda(-X,-Y).getEnemigos().getFirst());
-				}
-			}
-			Y = r;
-			for(X = r; X > 0; X--) {
-				if(!getCelda(-X,Y).getEnemigos().isEmpty())
-					ret.add(getCelda(-X,Y).getEnemigos().getFirst());
-				else {
-					if(!getCelda(X,-Y).getEnemigos().isEmpty())
-						ret.add(getCelda(X,-Y).getEnemigos().getFirst());
-					else
-						if(!getCelda(X,Y).getEnemigos().isEmpty())
-							ret.add(getCelda(X,Y).getEnemigos().getFirst());
-						else
-							if(!getCelda(-X,-Y).getEnemigos().isEmpty())
-								ret.add(getCelda(-X,-Y).getEnemigos().getFirst());
-			}
-		}
-		
-		
-		}
-	return ret;
+	public Collection<Controlable> getListaControlables(){
+		return unidadesEnMapa;
 	}
 
-	public boolean estaEnRango(Enemigo g, Controlable e) {
-		boolean esta = false;
-		int X;
-		int Y;
-		for(int r = g.getAlcance(); r > 0 && !esta; r--) {
-			X = r;
-			for(Y = r; Y > 0 && !esta; Y--) {
-				if(getCelda(-X,Y).getPersonaje() == e)
-					esta = true;
-				else {
-					if(getCelda(X,-Y).getPersonaje() == e)
-						esta = true;
-					else
-						if(getCelda(X,Y).getPersonaje() == e)
-							esta = true;
-						else
-							if(getCelda(-X,-Y).getPersonaje() == e)
-								esta = true;
-				}
-			}
-			Y = r;
-			for(X = r; X > 0 && !esta; X--) {
-				if(getCelda(-X,Y).getPersonaje() == e)
-					esta = true;
-				else {
-					if(getCelda(X,-Y).getPersonaje() == e)
-						esta = true;
-					else
-						if(getCelda(X,Y).getPersonaje() == e)
-							esta = true;
-						else
-							if(getCelda(-X,-Y).getPersonaje() == e)
-								esta = true;
-			}
-		}
-		
-		
-		}
-		return esta;
+	public Collection<Enemigo> getListaEnemigos(){
+		return enemigos;
 	}
+	
+	public void agregarControlable(Controlable c, Posicion pos) {
+		
+		if (!miCamino.perteneceAlCamino(pos) && this.getCelda(pos)!=null)
+			unidadesEnMapa.add(c);
+			
+	}
+	
+	
+	public void agregarEnemigo (Enemigo e) {
+		Posicion pos= e.getPos();
+		if (posicionValida(pos)) {
+		enemigos.add(e);
+		matriz[pos.getX()][pos.getY()].getEnemigos().add(e);
+		}
+	}
+
+	private boolean posicionValida(Posicion pos) {
+		return pos.getX()>=0 && pos.getX()<=width && pos.getY()>=0 && pos.getY()<= height;
+	}
+
 }
