@@ -16,6 +16,7 @@ public class Nivel1 extends Nivel {
 		miGui = gui;
 		posFinalEnemies = new Posicion (480,300);
 		mapaLogico = MapaLogico.InstanciaMapaLogico ();
+		mapaLogico.setMapaVisual(gui.getMapaVisual());
 		mapaLogico.generarCaminoA (posFinalEnemies);
 		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
 		fabrica = new FabricaEnemigos ();
@@ -37,9 +38,13 @@ public class Nivel1 extends Nivel {
 	
 	}
 	public void moverEnemigos() {
-		for (Enemigo e : mapaLogico.getListaEnemigos())
+		
+		for (Enemigo e : mapaLogico.getListaEnemigos()) {
+			
 			e.Mover();
-	}
+			
+		}	
+		}
 		
 	public void InteraccionControlableEnemigo() {
 		Enemigo e;

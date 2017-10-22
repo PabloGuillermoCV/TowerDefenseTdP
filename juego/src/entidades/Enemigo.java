@@ -83,6 +83,7 @@ public abstract class Enemigo extends Personaje {
 	}
 	
 	public void Mover () {
+		
 		EstadoCaminar.mover();
 	}
 }

@@ -19,14 +19,18 @@ public class ContadorTiempo extends Thread {
 		// para despues cambiar de nivel
 		while(true){
 			try {
-				nivel.InteraccionControlableEnemigo();
+				
+				nivel.moverEnemigos();
+				System.out.println("estoy en ContadorTiempo");
 				Thread.sleep(3000);
+				nivel.InteraccionControlableEnemigo();
+				
 				
 			} catch (InterruptedException e) {
 				System.out.println("error en el thread");
 				e.printStackTrace();
 			}
-			nivel.moverEnemigos();
+			
 			
 		}
 	

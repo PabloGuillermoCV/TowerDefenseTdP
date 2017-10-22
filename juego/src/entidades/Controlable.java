@@ -5,10 +5,10 @@ import Logica.MapaLogico;
 import Logica.Posicion;
 
 public abstract class Controlable extends Personaje {
-	
+	//protected MapaLogico miMapa;
 	protected int Precio;
 	protected int VelocidadAt;
-	protected MapaLogico miMapa;
+	
 	
 	public Controlable (String Nombre, Posicion Pos,
 			int Vida, int Alcance, int Ataque, int Defensa, int Precio,int VelocidadAt) {

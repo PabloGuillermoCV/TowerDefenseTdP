@@ -41,11 +41,14 @@ public class GUI extends JFrame {
 		this.setSize (517, 800);
 		mapa = MapaVisual.InstanciaMapaVisual (widthM, heightM, direccionM,this);
 		shop = TiendaVisual.InstanciaTiendaVisual (widthS, heightS, direccionS);
-		nivel = new Nivel1 (this);
+		
 		this.getContentPane ().add (mapa);
 		this.getContentPane ().add (shop);
 		this.add (mapa);
 		this.add (shop);
+		
+		nivel = new Nivel1 (this);
+		
 		tiempo = new ContadorTiempo (nivel);
 		tiempo.start ();
 		//ver();

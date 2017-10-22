@@ -3,16 +3,23 @@ package entidades.EntidadesGraficas;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import GUI.MapaVisual;
 import Logica.Posicion;
 
 public abstract class EntidadGrafica { //En este paquete estarán todos los gráficos de las entidades
 	
 	protected JLabel grafico;
 	protected Posicion pos;
+	protected MapaVisual mapaVisual;
 	
 	public EntidadGrafica (String File, Posicion pos) {
 		this.grafico = new JLabel (new ImageIcon (File));
 		this.pos = pos;
+		
+	}
+	public void setMapaVisual(MapaVisual mapa) {
+		mapaVisual = mapa;
+		mapaVisual.add(grafico);
 		this.grafico.setBounds (pos.getX (), pos.getY (), 20, 20);
 		this.grafico.setVisible (true);
 	}

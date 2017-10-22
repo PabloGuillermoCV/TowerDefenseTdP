@@ -3,10 +3,12 @@ package Logica;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import GUI.MapaVisual;
 import entidades.Controlable;
 import entidades.Enemigo;
 
 public class MapaLogico {
+	private MapaVisual mapaVisual;
 	protected Collection<Controlable> unidadesEnMapa;
 	protected Collection <Enemigo> enemigos;
 	private static MapaLogico Instancia;
@@ -32,6 +34,7 @@ public class MapaLogico {
 		miCamino = new Camino1 ();
 		enemigos = new LinkedList<Enemigo>();
 		unidadesEnMapa = new LinkedList<Controlable>();
+		
 	}
 	
 	public static MapaLogico InstanciaMapaLogico () {
@@ -41,6 +44,13 @@ public class MapaLogico {
 		return Instancia;
 	}
 	
+	public void setMapaVisual (MapaVisual mapaVi) {
+		this.mapaVisual = mapaVi;
+	}
+	
+	public MapaVisual getMapaVisual() {
+		return mapaVisual;
+	}
 	public Celda getCelda (int X, int Y) {
 		if (posicionValida(X,Y))
 		return matriz [X/tamaño] [Y/tamaño];
@@ -90,7 +100,9 @@ public class MapaLogico {
 	public void agregarEnemigo (Enemigo e) {
 		Posicion pos= e.getPos();
 		if (posicionValida(pos.getX(), pos.getY())) {
-		 enemigos.add(e);
+		System.out.println("estoy aca");
+		e.setMapaLogico(this); 
+		enemigos.add(e);
 		matriz[pos.getX()/20][pos.getY()/20].getEnemigos().add(e);
 		}
 	}
