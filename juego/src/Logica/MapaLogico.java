@@ -30,6 +30,8 @@ public class MapaLogico {
 			}
 		}
 		miCamino = new Camino1 ();
+		enemigos = new LinkedList<Enemigo>();
+		unidadesEnMapa = new LinkedList<Controlable>();
 	}
 	
 	public static MapaLogico InstanciaMapaLogico () {
@@ -88,8 +90,8 @@ public class MapaLogico {
 	public void agregarEnemigo (Enemigo e) {
 		Posicion pos= e.getPos();
 		if (posicionValida(pos)) {
-		enemigos.add(e);
-		matriz[pos.getX()][pos.getY()].getEnemigos().add(e);
+		 enemigos.add(e);
+		matriz[pos.getX()/20][pos.getY()/20].getEnemigos().add(e);
 		}
 	}
 
