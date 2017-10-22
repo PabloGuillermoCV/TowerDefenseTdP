@@ -18,10 +18,10 @@ public class CaminarMermado implements EstrategiaDeMovimiento {
 	 */
 	public void mover(){
 		Posicion posSig= e.getMapa().getCamino().getNext(e.getPos());
-		e.getMapa ().getCelda (e.getPos()).EliminarEnemigo(e);
+		e.getMapa ().getCelda (e.getPos().getX(), e.getPos().getY()).EliminarEnemigo(e);
 		e.getGrafico ().moverA ((posSig), 2);
 		e.getPos ().setX (posSig.getX());
 		e.getPos ().setY (posSig.getY ());
-		e.getMapa ().getCelda (posSig).addEnemigo(e);
+		e.getMapa ().getCelda (posSig.getX(), posSig.getY()).addEnemigo(e);
 	}
 }

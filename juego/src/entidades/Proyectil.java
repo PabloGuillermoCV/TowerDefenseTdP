@@ -13,5 +13,7 @@ public abstract class Proyectil extends Thread {
 	protected ImageIcon[] sprite = new ImageIcon[8]; 
 	
 	//usando el patrón Strategy, este método deberia despues ser llamado en alguna de las clases concretas de proyectil
-	protected abstract void volarAEnemigo(Enemigo E);
+	public abstract void volarAEnemigo(Enemigo E);
+	public abstract void volarAAliado(Controlable C);
+	public abstract void volarAObjeto(Objeto O);
 }

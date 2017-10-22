@@ -15,8 +15,11 @@ public class ContadorTiempo extends Thread {
 	}
 
 	public void run() {
+		//!nivel.getMapa().getListaEnemigos().isEmpty() seria la condición para el while
+		// para despues cambiar de nivel
 		while(true){
 			try {
+				nivel.InteraccionControlableEnemigo();
 				Thread.sleep(3000);
 				
 			} catch (InterruptedException e) {
@@ -26,5 +29,6 @@ public class ContadorTiempo extends Thread {
 			nivel.moverEnemigos();
 			
 		}
+	
 	}
 }

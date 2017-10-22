@@ -41,9 +41,9 @@ public class MapaLogico {
 		return Instancia;
 	}
 	
-	public Celda getCelda (Posicion pos) {
-		if (posicionValida(pos))
-		return matriz [pos.getX()/tamaño] [pos.getY()/tamaño];
+	public Celda getCelda (int X, int Y) {
+		if (posicionValida(X,Y))
+		return matriz [X/tamaño] [Y/tamaño];
 		
 		else return null;
 	}
@@ -81,7 +81,7 @@ public class MapaLogico {
 	
 	public void agregarControlable(Controlable c, Posicion pos) {
 		
-		if (!miCamino.perteneceAlCamino(pos) && this.getCelda(pos)!=null)
+		if (!miCamino.perteneceAlCamino(pos) && this.getCelda(pos.getX(), pos.getY())!=null)
 			unidadesEnMapa.add(c);
 			
 	}
@@ -89,14 +89,14 @@ public class MapaLogico {
 	
 	public void agregarEnemigo (Enemigo e) {
 		Posicion pos= e.getPos();
-		if (posicionValida(pos)) {
+		if (posicionValida(pos.getX(), pos.getY())) {
 		 enemigos.add(e);
 		matriz[pos.getX()/20][pos.getY()/20].getEnemigos().add(e);
 		}
 	}
 
-	private boolean posicionValida(Posicion pos) {
-		return pos.getX()>=0 && pos.getX()<=width && pos.getY()>=0 && pos.getY()<= height;
+	private boolean posicionValida(int X, int Y) {
+		return X>=0 && X<=width && Y>=0 && Y<= height;
 	}
 
 }

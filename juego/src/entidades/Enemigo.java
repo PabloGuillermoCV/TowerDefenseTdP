@@ -1,11 +1,12 @@
 package entidades;
 
+import Logica.Celda;
+
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Enemigos.*;
 import Objetos.ObjResistente.Roca;
-import java.util.Collection;
-import java.util.LinkedList;
+
 
 public abstract class Enemigo extends Personaje {
 	
@@ -66,9 +67,19 @@ public abstract class Enemigo extends Personaje {
 	 */
 	public abstract void atacar(Roca R);
 	
-	public Collection<Posicion> verficiarAliadosEnRango(){
-		Collection<Posicion> PosicionesaAtacar = new LinkedList<Posicion>();
-		return PosicionesaAtacar;
+	public boolean verficiarAliadoEnRango(Controlable C){
+		boolean is = false;
+		for(int X = Alcance; X > -Alcance && !is; X--) {
+			for(int Y = Alcance; Y > -Alcance && !is; Y--) {
+				Celda cel = miMapa.getCelda(pos.getX()*20,pos.getY()*20);
+				if(C != null) {
+					if(cel.getPersonaje() == C) {
+						is = true;
+					}
+				}
+			}
+		}
+		return is;
 	}
 	
 	public void Mover () {

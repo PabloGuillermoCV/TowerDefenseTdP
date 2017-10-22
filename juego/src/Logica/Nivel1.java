@@ -42,11 +42,12 @@ public class Nivel1 extends Nivel {
 	}
 		
 	public void InteraccionControlableEnemigo() {
-		/*Enemigo e;
-		for (  Controlable C  : mapaLogico.getListaControlables())
+		Enemigo e;
+		for (  Controlable C  : mapaLogico.getListaControlables()) {
 			 e = C.verificarUnidad();
 			if (e!=null)
-				e.serAtacado(C);*/
+				e.serAtacado(C);
+		}
 	}
 	
 	

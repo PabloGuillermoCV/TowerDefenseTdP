@@ -1,11 +1,14 @@
 package entidades;
 
+import Logica.Celda;
+import Logica.MapaLogico;
 import Logica.Posicion;
 
 public abstract class Controlable extends Personaje {
 	
 	protected int Precio;
 	protected int VelocidadAt;
+	protected MapaLogico miMapa;
 	
 	public Controlable (String Nombre, Posicion Pos,
 			int Vida, int Alcance, int Ataque, int Defensa, int Precio,int VelocidadAt) {
@@ -48,7 +51,19 @@ public abstract class Controlable extends Personaje {
 	}
 		
 	public Enemigo verificarUnidad() {
-		return null;
+		Enemigo ret = null;
+		for(int X = Alcance; X > -Alcance && ret == null; X--) {
+			for(int Y = Alcance; Y > -Alcance && ret == null; Y--) {
+				Celda C = miMapa.getCelda(pos.getX()*20,pos.getY()*20);
+				if(C != null) {
+					if(!C.getEnemigos().isEmpty()) {
+						ret = C.getEnemigos().getFirst();
+					}
+				}
+			}
+		}
+		
+		return ret;
 	}
 
 }
