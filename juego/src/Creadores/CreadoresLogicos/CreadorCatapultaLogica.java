@@ -15,4 +15,8 @@ public class CreadorCatapultaLogica implements FactoryLogica {
 	public ObjDeLaTienda crearObj (Posicion pos) {
 		return null;
 	}
+	
+	public int getCosto () {
+		return 500;
+	}
 }

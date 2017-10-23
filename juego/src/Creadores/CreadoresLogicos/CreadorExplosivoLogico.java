@@ -15,4 +15,8 @@ public class CreadorExplosivoLogico implements FactoryLogica {
 	public Controlable crearCont (Posicion pos) {
 		return null;
 	}
+	
+	public int getCosto () {
+		return 450;
+	}
 }

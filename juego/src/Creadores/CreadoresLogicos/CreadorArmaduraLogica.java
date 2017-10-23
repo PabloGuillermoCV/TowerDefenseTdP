@@ -15,4 +15,8 @@ public class CreadorArmaduraLogica implements FactoryLogica {
 	public Controlable crearCont (Posicion pos) {
 		return null;
 	}
+	
+	public int getCosto () {
+		return 400;
+	}
 }

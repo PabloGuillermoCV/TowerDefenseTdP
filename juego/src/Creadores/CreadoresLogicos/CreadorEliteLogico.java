@@ -15,4 +15,8 @@ public class CreadorEliteLogico implements FactoryLogica {
 	public ObjDeLaTienda crearObj (Posicion pos) {
 		return null;
 	}
+	
+	public int getCosto () {
+		return 650;
+	}
 }

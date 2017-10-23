@@ -9,7 +9,6 @@ import Logica.Posicion;
 import Logica.TiendaLogica;
 import entidades.Controlable;
 
-
 @SuppressWarnings("serial")
 public class MapaVisual extends JPanel {
 	
@@ -33,7 +32,7 @@ public class MapaVisual extends JPanel {
 		this.addMouseListener (new Tendero ());
 	}
 	
-	public static MapaVisual InstanciaMapaVisual (int width, int height, String direccion,GUI gui) {
+	public static MapaVisual InstanciaMapaVisual (int width, int height, String direccion, GUI gui) {
 		if (Instancia == null) {
 			Instancia = new MapaVisual (width, height, direccion, gui);
 		}
@@ -55,8 +54,9 @@ public class MapaVisual extends JPanel {
 				miGui.getNivel().getMapa().agregarControlable(Ent, P);
 				miGui.getTiendaVisual().setBotonesOn ();
 				
-				marketL.getP().setMonedas(marketL.getP().getMonedas() - 100); 
-				miGui.getTiendaVisual().modificarMonedas();
+				marketL.getP().setMonedas(marketL.getP ().getMonedas () - Ent.getPrecio ()); 
+				miGui.getTiendaVisual ().modificarMonedas ();
+				miGui.getTiendaVisual ().updateBotones ();
 			}
 		}
 		/**

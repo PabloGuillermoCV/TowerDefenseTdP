@@ -7,7 +7,7 @@ public class Jugador {
 	protected int Puntos;
 	
 	private Jugador () {
-		Monedas = 200;
+		Monedas = 1000;
 		Puntos = 0;
 	}
 	

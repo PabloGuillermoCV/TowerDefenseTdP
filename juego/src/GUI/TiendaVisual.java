@@ -138,6 +138,8 @@ public class TiendaVisual extends JPanel {
         for (int i = 0; i < 8; i++) {
     		add (botones [i]);
     	}
+        
+        updateBotones ();
 	}
 	
 	private void setBotonesOff () {
@@ -220,6 +222,22 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [7]);
 			setBotonesOff ();
+		}
+	}
+	
+	/**
+	 * Prende y apaga los botones despues de cada compra dependiendo de las monedas restantes
+	 */
+	public void updateBotones () {
+		int Precio;
+		for (int I = 0; I < 8; I++) {
+			Precio = creadores [I].getCosto ();
+			if (Precio > P.getMonedas ()) {
+				botones [I].setEnabled (false);
+			}
+			else {
+				botones [I].setEnabled (true);
+			}
 		}
 	}
 }

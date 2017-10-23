@@ -15,4 +15,6 @@ public interface FactoryLogica {
 	public Controlable crearCont (Posicion pos);
 	
 	public ObjDeLaTienda crearObj (Posicion pos);
+	
+	public int getCosto ();
 }
