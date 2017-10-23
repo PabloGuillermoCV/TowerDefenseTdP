@@ -25,23 +25,4 @@ public class JefeFinal extends Enemigo {
 		super ("JefeFinal", pos, 500, 2, 250, 500, 7, false, 10000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\JefeFinal.gif",pos);
 	}
-
-	@Override
-	public void serAtacado(Controlable C) {
-		C.atacar(this);
-		
-	}
-
-	@Override
-	public void atacar(Controlable A) {
-		A.getEstado().setVida(A.getEstado().getVida() - calcularGolpe(A));
-		
-	}
-
-	@Override
-	public void atacar(Roca R) {
-		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
-		
-	}
-
 }

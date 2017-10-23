@@ -47,6 +47,12 @@ public abstract class Controlable extends Personaje {
 	 * @param E enemigo a atacar
 	 */
 	public void atacar(Enemigo E){
+		miBala.volarAEnemigo(E); //le digo a mi proyectil que vuele hacia el enemigo que me pasan
+		try {
+			miBala.join();  //espero hasta que la bala haya llegado al enemigo y muera
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 	}
 		

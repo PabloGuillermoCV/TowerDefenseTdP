@@ -25,23 +25,4 @@ public class ConArco extends Enemigo {
 		super ("ConArco", pos, 200, 5, 100, 125, 5, false, 2500);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConArco.gif",pos);
 	}
-
-	@Override
-	public void serAtacado(Controlable C) {
-		C.atacar(this);
-		
-	}
-
-	@Override
-	public void atacar(Controlable A) {
-		A.getEstado().setVida(A.getEstado().getVida() - calcularGolpe(A));
-		
-	}
-
-	@Override
-	public void atacar(Roca R) {
-		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
-		
-	}
-
 }

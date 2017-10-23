@@ -53,19 +53,25 @@ public abstract class Enemigo extends Personaje {
 	 * metodo de visitor que permite a un enemigo ser atacado por algo que desconoce
 	 * @param C Visitante a aceptar
 	 */
-	public abstract void serAtacado(Controlable C);
+	public void serAtacado(Controlable C){
+		C.atacar(this);
+	}
 	
 	/**
 	 * metodo de visitor que permite a un enemigo atacar a una unidad concreata
 	 * @param C Controlable a atacar
 	 */
-	public abstract void atacar(Controlable C);
+	public void atacar(Controlable C){
+		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
+	}
 	
 	/**
 	 * metodo de visitor que permite a un enemigo atacar el objeto que bloquea su camino
 	 * @param R Roca a atacar
 	 */
-	public abstract void atacar(Roca R);
+	public void atacar(Roca R){
+		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
+	}
 	
 	public boolean verficiarAliadoEnRango(Controlable C){
 		boolean is = false;

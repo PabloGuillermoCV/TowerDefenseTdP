@@ -25,22 +25,4 @@ public class ConBallesta extends Enemigo {
 		super ("ConBallesta", pos, 150, 2, 150, 200, 2, false, 3000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif",pos);
 	}
-
-	@Override
-	public void serAtacado(Controlable C) {
-		C.atacar(this);
-		
-	}
-
-	@Override
-	public void atacar(Controlable A) {
-		A.getEstado().setVida(A.getEstado().getVida() - calcularGolpe(A));
-		
-	}
-
-	@Override
-	public void atacar(Roca R) {
-		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
-		
-	}
 }

@@ -26,22 +26,4 @@ public class APie extends Enemigo {
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\APie.gif",pos);
 	}
 
-	@Override
-	public void serAtacado(Controlable C) {
-		C.atacar(this);
-		
-	}
-
-	@Override
-	public void atacar(Controlable A) {
-		A.getEstado().setVida(A.getEstado().getVida() - calcularGolpe(A));
-		
-	}
-
-	@Override
-	public void atacar(Roca R) {
-		 R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
-		
-	}
-
 }
