@@ -1,9 +1,11 @@
 package Enemigos;
 
+import Controlables.Disparos.Flecha;
 import Logica.Posicion;
 import Objetos.ObjResistente.Roca;
 import entidades.Controlable;
 import entidades.Enemigo;
+import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
 
 public class ConArco extends Enemigo {
@@ -24,5 +26,6 @@ public class ConArco extends Enemigo {
 	public ConArco (Posicion pos) {
 		super ("ConArco", pos, 200, 5, 100, 125, 5, false, 2500);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConArco.gif",pos);
+		miBala = new Flecha();
 	}
 }
