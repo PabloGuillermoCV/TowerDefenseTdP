@@ -12,7 +12,8 @@ public abstract class Proyectil extends Thread {
 	protected String direccionDibujo;
 	protected JLabel dibujo;
 	protected Posicion posActual;
-	protected boolean vivo;
+	protected boolean vivo; //serviria para detectar cuando impactó la bala y matar el proyectil
+							//pero dudo de su utilidad
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	protected ImageIcon[] sprite = new ImageIcon[8]; 
 	

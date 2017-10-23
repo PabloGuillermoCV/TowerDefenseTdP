@@ -5,9 +5,10 @@ import Logica.Posicion;
 
 public class Flecha extends Proyectil {
 
-	public Flecha(){
+	public Flecha(Posicion P){
 		direccionDibujo = "Flecha.GIF";
 		velocidadMovimiento = 5;
+		posActual = P;
 	}
 
 	@Override
@@ -21,6 +22,15 @@ public class Flecha extends Proyectil {
 			if(x1 > x2) { //la Posicion del disparador es mayor que la del disparado en X
 				if(y1 > y2) { //la Posicion del disparador es mayor que la del disparado en Y
 					//Hacer que la flecha viaje haciendo uso de los x e y dados (usar setBounds()?)
+					dibujo.setBounds(posActual.getX() - velocidadMovimiento, posActual.getY() - velocidadMovimiento, dibujo.getWidth(), dibujo.getHeight());
+					try {
+						this.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					posActual.setX(posActual.getX() - velocidadMovimiento);
+					posActual.setY(posActual.getY() - velocidadMovimiento);
 					//acá, el disparado estaria en el segundo cuadrante de coordenadas
 				}
 				else { //la posicion del disparado es mayor que la del disparador en Y
