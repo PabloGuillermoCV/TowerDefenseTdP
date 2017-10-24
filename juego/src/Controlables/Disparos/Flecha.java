@@ -5,10 +5,9 @@ import Logica.Posicion;
 
 public class Flecha extends Proyectil {
 
-	public Flecha(Posicion P){
+	public Flecha(){
 		direccionDibujo = "Flecha.GIF";
 		velocidadMovimiento = 5;
-		posActual = P;
 	}
 
 	@Override

@@ -23,4 +23,8 @@ public abstract class Proyectil extends Thread {
 	 * NOTA: Esto se hace en un contexto gráfico
 	 */
 	public abstract void volarAPosicion(Posicion p);
+	
+	public void setPosicion(Posicion p) {
+		posActual = p;
+	}
 }
