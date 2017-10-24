@@ -5,8 +5,10 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import javax.swing.*;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial","unused"})
 public class GUI extends JFrame {
+	
+	private static GUI Instancia;
 	private JFrame ventana;
 	private ContadorTiempo tiempo;
 	private static int widthM = 500;
@@ -35,12 +37,13 @@ public class GUI extends JFrame {
 		});
 	}
 	
-	public GUI () { //comente los cambios que quiza usemos para agregar la tienda al frame
+	private GUI () {
 		this.getContentPane ().setLayout (new GridLayout (2,1));
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		this.setSize (517, 800);
-		mapa = MapaVisual.InstanciaMapaVisual (widthM, heightM, direccionM,this);
+		mapa = MapaVisual.InstanciaMapaVisual ();
 		shop = TiendaVisual.InstanciaTiendaVisual (widthS, heightS, direccionS);
+		mapa.setGUI (this);
 		
 		this.getContentPane ().add (mapa);
 		this.getContentPane ().add (shop);
@@ -51,7 +54,13 @@ public class GUI extends JFrame {
 		
 		tiempo = new ContadorTiempo (nivel);
 		tiempo.start ();
-		//ver();
+	}
+	
+	public static GUI InstanciaGUI () {
+		if (Instancia == null) {
+			Instancia = new GUI ();
+		}
+		return Instancia;
 	}
 	
 	public MapaVisual getMapaVisual() {

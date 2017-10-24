@@ -1,8 +1,5 @@
 package GUI;
 
-import java.util.Collection;
-import java.util.LinkedList;
-
 import Logica.*;
 
 /**
@@ -13,11 +10,12 @@ import Logica.*;
 public class ManejadorGUI {
 	
 	private Nivel[] Niveles;
+	@SuppressWarnings("unused")
 	private Juego menuppal;
 	private GUI mapa;
 	
 	public ManejadorGUI() {
-		mapa = new GUI();
+		mapa = GUI.InstanciaGUI ();
 		Niveles = new Nivel[3];
 		Niveles[0] = new Nivel1(mapa);
 		Niveles[1] = new Nivel2();

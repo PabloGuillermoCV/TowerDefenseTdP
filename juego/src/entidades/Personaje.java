@@ -17,12 +17,9 @@ public abstract class Personaje extends Entidad {
 		super (Nombre, Pos);
 		this.Alcance = Alcance;
 		this.miEstadoActual = new EstadoNormal (Vida, Ataque, Defensa);
+		this.miMapa = MapaLogico.InstanciaMapaLogico ();
 	}
 	
-	public void setMapaLogico(MapaLogico mapa) {
-		miMapa= mapa;
-		grafico.setMapaVisual(mapa.getMapaVisual());
-	}
 	public Estado getEstado () {
 		return miEstadoActual;
 	}

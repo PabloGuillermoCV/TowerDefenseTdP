@@ -11,13 +11,13 @@ public class EntidadGraficaEnemigo  extends EntidadGrafica {
 	public void moverA (Posicion pos, int vel) {
 		try {
 			
+			System.out.println("moverA X: "+pos.getX()+" Y: "+pos.getY());
 			if(this.pos.getX()!= pos.getX()) {
-				
-				while(this.pos.getX()!=pos.getX())
-					System.out.println("moverA");
+				while(this.pos.getX()!=pos.getX()) {
 					this.grafico.setBounds(this.pos.getX()+vel, this.pos.getY(), 20, 20);
 				    this.pos.setX(this.pos.getX()+vel);
 					Thread.sleep(100);
+				}
 			}
 			else {
 				while(this.pos.getY()!=pos.getY()) {

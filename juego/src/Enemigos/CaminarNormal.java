@@ -14,6 +14,7 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 	public void mover() {
 		
 		Posicion posSig= e.getMapa().getCamino().getNext(e.getPos());
+		System.out.println ("X: "+posSig.getX()+" Y: "+posSig.getY());
 		e.getMapa ().getCelda (e.getPos().getX(), e.getPos().getY()).EliminarEnemigo(e);
 		e.getGrafico ().moverA ((posSig), e.getVelMov ());
 		

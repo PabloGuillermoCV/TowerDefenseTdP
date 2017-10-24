@@ -13,7 +13,6 @@ public abstract class Enemigo extends Personaje {
 	protected int VelocidadMov;
 	protected EstrategiaDeMovimiento EstadoCaminar;
 	protected int Puntaje;
-	protected MapaLogico miMapa;
 	
 	public Enemigo (String Nombre, Posicion Pos, int Vida, int Alcance,
 		   int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
@@ -22,7 +21,6 @@ public abstract class Enemigo extends Personaje {
 		this.VelocidadMov = VelocidadMov;
 		this.Puntaje = Puntaje;
 		this.EstadoCaminar = new CaminarNormal(this);
-		miMapa = MapaLogico.InstanciaMapaLogico ();
 	}
 	
 	public int getVelMov () {
@@ -53,7 +51,7 @@ public abstract class Enemigo extends Personaje {
 	 * metodo de visitor que permite a un enemigo ser atacado por algo que desconoce
 	 * @param C Visitante a aceptar
 	 */
-	public void serAtacado(Controlable C){
+	public void serAtacado(Controlable C) {
 		C.atacar(this);
 	}
 	
@@ -77,7 +75,7 @@ public abstract class Enemigo extends Personaje {
 		boolean is = false;
 		for(int X = Alcance; X > -Alcance && !is; X--) {
 			for(int Y = Alcance; Y > -Alcance && !is; Y--) {
-				Celda cel = miMapa.getCelda(pos.getX()*20,pos.getY()*20);
+				Celda cel = miMapa.getCelda(pos.getX(),pos.getY());
 				if(C != null) {
 					if(cel.getPersonaje() == C) {
 						is = true;
@@ -88,8 +86,7 @@ public abstract class Enemigo extends Personaje {
 		return is;
 	}
 	
-	public void Mover () {
-		
+	public void Mover () {		
 		EstadoCaminar.mover();
 	}
 }

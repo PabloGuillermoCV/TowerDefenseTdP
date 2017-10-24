@@ -34,7 +34,6 @@ public class MapaLogico {
 		miCamino = new Camino1 ();
 		enemigos = new LinkedList<Enemigo>();
 		unidadesEnMapa = new LinkedList<Controlable>();
-		
 	}
 	
 	public static MapaLogico InstanciaMapaLogico () {
@@ -44,8 +43,8 @@ public class MapaLogico {
 		return Instancia;
 	}
 	
-	public void setMapaVisual (MapaVisual mapaVi) {
-		this.mapaVisual = mapaVi;
+	public void setMapaVisual (MapaVisual MV) {
+		this.mapaVisual = MV;
 	}
 	
 	public MapaVisual getMapaVisual() {
@@ -89,26 +88,45 @@ public class MapaLogico {
 		return enemigos;
 	}
 	
+	public boolean puedoAgregarControlable (Posicion pos) {
+		boolean Puedo;
+		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
+				matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null) {
+			Puedo = true;
+		}
+		else {
+			Puedo = false;
+		}
+		return Puedo;
+	}
+	
+	public boolean puedoAgregarObjeto (Posicion pos) {
+		boolean Puedo;
+		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
+				matriz[pos.getX()/20][pos.getY()/20].getPersonaje() != null) {
+			Puedo = true;
+		}
+		else {
+			Puedo = false;
+		}
+		return Puedo;
+	}
+	
 	public void agregarControlable(Controlable c, Posicion pos) {
-		
-		if (!miCamino.perteneceAlCamino(pos) && this.getCelda(pos.getX(), pos.getY())!=null)
-			unidadesEnMapa.add(c);
-			
+		matriz[pos.getX()/20][pos.getY()/20].addPersonaje(c);
+		unidadesEnMapa.add(c);	
 	}
 	
 	
 	public void agregarEnemigo (Enemigo e) {
 		Posicion pos= e.getPos();
 		if (posicionValida(pos.getX(), pos.getY())) {
-		System.out.println("estoy aca");
-		e.setMapaLogico(this); 
-		enemigos.add(e);
-		matriz[pos.getX()/20][pos.getY()/20].getEnemigos().add(e);
+			enemigos.add(e);
+			matriz[pos.getX()/20][pos.getY()/20].getEnemigos().add(e);
 		}
 	}
 
 	private boolean posicionValida(int X, int Y) {
 		return X>=0 && X<=width && Y>=0 && Y<= height;
 	}
-
 }

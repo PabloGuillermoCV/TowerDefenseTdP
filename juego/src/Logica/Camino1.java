@@ -76,19 +76,22 @@ public class Camino1 implements Camino {
 			boolean aviso=false;
 			Iterator <Posicion> it =(Iterator <Posicion>) camino.iterator();
 			while(it.hasNext()) {
-				if (aviso) 
-					return  it.next(); 
+				if (aviso) { 
+					Posicion P = it.next ();
+					return new Posicion (P.getX(),P.getY());
+				}
 				else {
-				Posicion pos2= it.next();
-				if (pos2.getX()==pos.getX() && pos2.getY()==pos.getY())
-					aviso=true;
+					Posicion pos2= it.next();
+					if (pos2.getX()==pos.getX() && pos2.getY()==pos.getY()) {
+						aviso=true;
+					}
 				}
 			}
-	}
+		}
 		return null;
 	}
+	
 	public int cantidad() {
 		return cantidad;
 	}
-
 }

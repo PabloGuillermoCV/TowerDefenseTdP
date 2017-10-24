@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
 import entidades.Controlable;
@@ -18,25 +20,30 @@ public class MapaVisual extends JPanel {
 	private int height;
 	private int width;
 	private TiendaLogica marketL;
+	private MapaLogico mapL;
 	
 	
-	private MapaVisual (int width, int height, String direccion, GUI gui) {
-		miGui=gui;
+	private MapaVisual (int width, int height, String direccion) {
 		this.setLayout (null);
 		this.setSize (width, height);
 		this.height = height;
 		this.width = width;
 		marketL = TiendaLogica.InstanciaTiendaLogica ();
+		mapL = MapaLogico.InstanciaMapaLogico ();
 		ImageIcon imagen = new ImageIcon (direccion);
 		cargarFondo (imagen);
 		this.addMouseListener (new Tendero ());
 	}
 	
-	public static MapaVisual InstanciaMapaVisual (int width, int height, String direccion, GUI gui) {
+	public static MapaVisual InstanciaMapaVisual () {
 		if (Instancia == null) {
-			Instancia = new MapaVisual (width, height, direccion, gui);
+			Instancia = new MapaVisual (500, 320, "src\\GUI\\Sprites Mapas\\Mapa1.png");
 		}
 		return Instancia;
+	}
+	
+	public void setGUI (GUI miGui) {
+		this.miGui = miGui;
 	}
 	
 	private class Tendero implements MouseListener {
@@ -46,19 +53,16 @@ public class MapaVisual extends JPanel {
 			int Y = E.getY ();
 			Posicion P = new Posicion (X,Y);
 			Controlable Ent;
-			Ent = marketL.createPersonaje (P);
-			
-			if (Ent != null) {
-				fondo.add (Ent.getGrafico ().getGrafico ());
-				Ent.setPos (P);
-				miGui.getNivel().getMapa().agregarControlable(Ent, P);
-				miGui.getTiendaVisual().setBotonesOn ();
-				
-				marketL.getP().setMonedas(marketL.getP ().getMonedas () - Ent.getPrecio ()); 
-				miGui.getTiendaVisual ().modificarMonedas ();
-				miGui.getTiendaVisual ().updateBotones ();
+			if (mapL.puedoAgregarControlable (P)) {
+				Ent = marketL.createPersonaje (P);
+				if (Ent != null) {
+					marketL.getP().setMonedas(marketL.getP ().getMonedas () - Ent.getPrecio ()); 
+					miGui.getTiendaVisual ().modificarMonedas ();
+					miGui.getTiendaVisual ().updateBotones ();
+				}
 			}
 		}
+		
 		/**
 		 * metodo que cuando detecta el mouse el creador NO es nulo, resalta la celda 
 		 * donde esta posado el mouse

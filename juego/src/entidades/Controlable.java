@@ -1,11 +1,9 @@
 package entidades;
 
 import Logica.Celda;
-import Logica.MapaLogico;
 import Logica.Posicion;
 
 public abstract class Controlable extends Personaje {
-	//protected MapaLogico miMapa;
 	protected int Precio;
 	protected int VelocidadAt;
 	
@@ -15,6 +13,7 @@ public abstract class Controlable extends Personaje {
 		super (Nombre,Pos,Vida,Alcance,Ataque,Defensa);
 		this.Precio = Precio;
 		this.VelocidadAt = VelocidadAt;
+		this.miMapa.getListaControlables().add(this);
 	}
 	
 	public int getPrecio () {
@@ -47,20 +46,24 @@ public abstract class Controlable extends Personaje {
 	 * @param E enemigo a atacar
 	 */
 	public void atacar(Enemigo E){
-		miBala.volarAPosicion(E.getPos()); //le digo a mi proyectil que vuele hacia el enemigo que me pasan
-		try {
+		//miBala.volarAPosicion(E.getPos()); //le digo a mi proyectil que vuele hacia el enemigo que me pasan
+		/*try {
 			miBala.join();  //espero hasta que la bala haya llegado al enemigo y muera
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
+		if (E.getEstado().getVida() <= 0) {
+			E.getGrafico().Morir();
+		}
 	}
-		
+	
 	public Enemigo verificarUnidad() {
 		Enemigo ret = null;
 		for(int X = Alcance; X > -Alcance && ret == null; X--) {
 			for(int Y = Alcance; Y > -Alcance && ret == null; Y--) {
-				Celda C = miMapa.getCelda(pos.getX()*20,pos.getY()*20);
+				Celda C = miMapa.getCelda(pos.getX()+(X*20), pos.getY()+(Y*20));
+				//System.out.println ("ENTRO A ---------------------------------------------------");
 				if(C != null) {
 					if(!C.getEnemigos().isEmpty()) {
 						ret = C.getEnemigos().getFirst();
@@ -68,7 +71,6 @@ public abstract class Controlable extends Personaje {
 				}
 			}
 		}
-		
 		return ret;
 	}
 

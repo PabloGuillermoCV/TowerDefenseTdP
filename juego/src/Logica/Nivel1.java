@@ -16,7 +16,7 @@ public class Nivel1 extends Nivel {
 		miGui = gui;
 		posFinalEnemies = new Posicion (480,300);
 		mapaLogico = MapaLogico.InstanciaMapaLogico ();
-		mapaLogico.setMapaVisual(gui.getMapaVisual());
+		mapaLogico.setMapaVisual (miGui.getMapaVisual());
 		mapaLogico.generarCaminoA (posFinalEnemies);
 		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
 		fabrica = new FabricaEnemigos ();
@@ -49,6 +49,7 @@ public class Nivel1 extends Nivel {
 	public void InteraccionControlableEnemigo() {
 		Enemigo e;
 		for (  Controlable C  : mapaLogico.getListaControlables()) {
+			System.out.println ("ESTOY EN INTERACCION-----------------------");
 			 e = C.verificarUnidad();
 			if (e!=null)
 				e.serAtacado(C);

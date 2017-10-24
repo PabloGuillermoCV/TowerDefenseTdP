@@ -10,6 +10,7 @@ public class Flecha extends Proyectil {
 		velocidadMovimiento = 5;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void volarAPosicion(Posicion p) {
 		while(posActual.getX() != p.getX() && posActual.getY() != p.getY()) {
@@ -17,6 +18,8 @@ public class Flecha extends Proyectil {
 			int y1 = posActual.getY();
 			int x2 = p.getX();
 			int y2 = p.getY();
+			
+			//int or = calcularOrientacion(x1,y1,x2,y2);´//1 a 8
 			
 			if(x1 > x2) { //la Posicion del disparador es mayor que la del disparado en X
 				if(y1 > y2) { //la Posicion del disparador es mayor que la del disparado en Y
