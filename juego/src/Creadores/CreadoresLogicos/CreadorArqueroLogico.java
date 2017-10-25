@@ -7,6 +7,8 @@ import entidades.ObjDeLaTienda;
 
 public class CreadorArqueroLogico implements FactoryLogica {
 	
+	private static int Costo = 300;
+	
 	public Controlable crearCont (Posicion pos) {
 		Arquero A = new Arquero (pos);
 		return A;
@@ -17,6 +19,6 @@ public class CreadorArqueroLogico implements FactoryLogica {
 	}
 	
 	public int getCosto () {
-		return 300;
+		return Costo;
 	}
 }

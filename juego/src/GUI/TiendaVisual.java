@@ -17,8 +17,8 @@ public class TiendaVisual extends JPanel {
 	
 	private static TiendaVisual Instancia;
 	private JLabel fondo;
-	private int height;
-	private int width;
+	private static int height = 400;
+	private static int width = 500;
 	private FactoryVisual [] botones = new FactoryVisual [8];
 	private FactoryLogica [] creadores = new FactoryLogica [8];
 	private Sonido efectos;
@@ -27,24 +27,21 @@ public class TiendaVisual extends JPanel {
 	private JLabel displayPuntos;
 	private TiendaLogica market;
 	
-	private TiendaVisual (int width, int height, String direccion) {
+	private TiendaVisual () {
 		this.setLayout (new FlowLayout ());
 		this.setSize (width, height);
-		this.height = height;
-		this.width = width;
 		this.efectos = new Sonido ();
 		this.market = TiendaLogica.InstanciaTiendaLogica ();
-		ImageIcon imagen = new ImageIcon (direccion);
-		cargarFondo (imagen);
 		P = Jugador.InstanciaJugador ();
 		setNumeros ();
 		setCreadores ();
 		setBotones ();
+		setBotonesObjetosOff ();
 	}
 	
-	public static TiendaVisual InstanciaTiendaVisual (int width, int height, String direccion) {
+	public static TiendaVisual InstanciaTiendaVisual () {
 		if (Instancia == null) {
-			Instancia = new TiendaVisual (width, height, direccion);
+			Instancia = new TiendaVisual ();
 		}
 		return Instancia;
 	}
@@ -85,8 +82,9 @@ public class TiendaVisual extends JPanel {
 		return market;
 	}
 	
-	private void cargarFondo(ImageIcon im) {
-		fondo = new JLabel(im);
+	public void cargarFondo (String Direccion) {
+		ImageIcon Imagen = new ImageIcon (Direccion);
+		fondo = new JLabel (Imagen);
 		fondo.setBounds(0, 0, width, height);
 		this.add(fondo);
 	}
@@ -148,10 +146,26 @@ public class TiendaVisual extends JPanel {
     	}
 	}
 	
-	public void setBotonesOn () {
-		for (int i = 0; i < 8; i++) {
-    		botones [i].setEnabled (true);
+	public void setBotonesObjetosOff () { //Se llama cuando no hay personajes aliados en el mapa
+		for (int i = 5; i < 8; i++) {
+    		botones [i].setEnabled (false);
     	}
+	}
+	
+	/**
+	 * Prende y apaga los botones despues de cada compra dependiendo de las monedas restantes
+	 */
+	public void updateBotones () {
+		int Precio;
+		for (int I = 0; I < 8; I++) {
+			Precio = creadores [I].getCosto ();
+			if (Precio > P.getMonedas ()) {
+				botones [I].setEnabled (false);
+			}
+			else {
+				botones [I].setEnabled (true);
+			}
+		}
 	}
 	
 	public void setNumeros () {
@@ -222,22 +236,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [7]);
 			setBotonesOff ();
-		}
-	}
-	
-	/**
-	 * Prende y apaga los botones despues de cada compra dependiendo de las monedas restantes
-	 */
-	public void updateBotones () {
-		int Precio;
-		for (int I = 0; I < 8; I++) {
-			Precio = creadores [I].getCosto ();
-			if (Precio > P.getMonedas ()) {
-				botones [I].setEnabled (false);
-			}
-			else {
-				botones [I].setEnabled (true);
-			}
 		}
 	}
 }

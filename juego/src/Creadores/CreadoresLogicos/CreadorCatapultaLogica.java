@@ -7,6 +7,8 @@ import entidades.ObjDeLaTienda;
 
 public class CreadorCatapultaLogica implements FactoryLogica {
 	
+	private static int Costo = 500;
+	
 	public Controlable crearCont (Posicion pos) {
 		Catapulta C = new Catapulta (pos);
 		return C;
@@ -17,6 +19,6 @@ public class CreadorCatapultaLogica implements FactoryLogica {
 	}
 	
 	public int getCosto () {
-		return 500;
+		return Costo;
 	}
 }

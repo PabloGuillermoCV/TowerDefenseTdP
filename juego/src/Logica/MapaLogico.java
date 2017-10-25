@@ -68,17 +68,6 @@ public class MapaLogico {
 	public void generarCaminoA (Posicion pos) {
 		miCamino.generarCaminoA (pos);
 	}
-	
-	public boolean puedoInsertarPersonaje (Posicion pos) {
-		boolean puedo;
-		if (!miCamino.perteneceAlCamino (pos) && matriz [pos.getX()/tamaño][pos.getY()/tamaño].getPersonaje () == null) {
-			puedo = true;
-		}
-		else {
-			puedo = false;
-		}
-		return puedo;
-	}
 
 	public Collection<Controlable> getListaControlables(){
 		return unidadesEnMapa;
@@ -112,11 +101,10 @@ public class MapaLogico {
 		return Puedo;
 	}
 	
-	public void agregarControlable(Controlable c, Posicion pos) {
-		matriz[pos.getX()/20][pos.getY()/20].addPersonaje(c);
-		unidadesEnMapa.add(c);	
+	public void agregarControlable (Controlable c, Posicion pos) {
+		matriz [pos.getX()/20][pos.getY()/20].addPersonaje (c);
+		unidadesEnMapa.add (c);	
 	}
-	
 	
 	public void agregarEnemigo (Enemigo e) {
 		Posicion pos= e.getPos();

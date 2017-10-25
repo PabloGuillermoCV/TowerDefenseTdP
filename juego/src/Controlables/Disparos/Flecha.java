@@ -12,8 +12,7 @@ public class Flecha extends Proyectil {
 		velocidadMovimiento = 5;
 	}
 	
-	@Override
 	public void setGrafico(Posicion p) {
-		miGrafico =  new objetoGrafico("Flecha.GIF", p);
+		miGrafico =  new objetoGrafico("src\\Controlables\\Disparos\\Sprites Flecha\\Flecha.png", p);
 	}
 }

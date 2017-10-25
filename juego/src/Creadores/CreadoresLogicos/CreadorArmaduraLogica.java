@@ -6,6 +6,8 @@ import entidades.Controlable;
 import entidades.ObjDeLaTienda;
 
 public class CreadorArmaduraLogica implements FactoryLogica {
+	
+	private static int Costo = 400;
 
 	public ObjDeLaTienda crearObj (Posicion pos) {
 		Armadura A = new Armadura ();
@@ -17,6 +19,6 @@ public class CreadorArmaduraLogica implements FactoryLogica {
 	}
 	
 	public int getCosto () {
-		return 400;
+		return Costo;
 	}
 }

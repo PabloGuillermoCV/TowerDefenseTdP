@@ -10,6 +10,7 @@ import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
 import entidades.Controlable;
+import entidades.ObjDeLaTienda;
 
 @SuppressWarnings("serial")
 public class MapaVisual extends JPanel {
@@ -17,27 +18,23 @@ public class MapaVisual extends JPanel {
 	private static MapaVisual Instancia;
 	private GUI miGui;
 	private JLabel fondo;
-	private int height;
-	private int width;
+	private static int height = 320;
+	private static int width = 500;
 	private TiendaLogica marketL;
 	private MapaLogico mapL;
 	
 	
-	private MapaVisual (int width, int height, String direccion) {
+	private MapaVisual () {
 		this.setLayout (null);
 		this.setSize (width, height);
-		this.height = height;
-		this.width = width;
 		marketL = TiendaLogica.InstanciaTiendaLogica ();
 		mapL = MapaLogico.InstanciaMapaLogico ();
-		ImageIcon imagen = new ImageIcon (direccion);
-		cargarFondo (imagen);
 		this.addMouseListener (new Tendero ());
 	}
 	
 	public static MapaVisual InstanciaMapaVisual () {
 		if (Instancia == null) {
-			Instancia = new MapaVisual (500, 320, "src\\GUI\\Sprites Mapas\\Mapa1.png");
+			Instancia = new MapaVisual ();
 		}
 		return Instancia;
 	}
@@ -52,13 +49,25 @@ public class MapaVisual extends JPanel {
 			int X = E.getX ();
 			int Y = E.getY ();
 			Posicion P = new Posicion (X,Y);
-			Controlable Ent;
-			if (mapL.puedoAgregarControlable (P)) {
-				Ent = marketL.createPersonaje (P);
-				if (Ent != null) {
-					marketL.getP().setMonedas(marketL.getP ().getMonedas () - Ent.getPrecio ()); 
+			if (mapL.puedoAgregarControlable (P)) { //Si puedo poner un personaje y apreté el boton correcto
+				Controlable Cont;
+				Cont = marketL.createPersonaje (P);
+				if (Cont != null) {
+					marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Cont.getPrecio ()); 
 					miGui.getTiendaVisual ().modificarMonedas ();
 					miGui.getTiendaVisual ().updateBotones ();
+				}
+			}
+			//No esta entrando al else de abajo
+			else { //Sino verifico si apreté el botón correcto para objeto en un personaje
+				if (mapL.puedoAgregarObjeto (P)) {
+					ObjDeLaTienda Obj;
+					Obj = marketL.createObjeto (P);
+					if (Obj != null) {
+						marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Obj.getPrecio ());
+						miGui.getTiendaVisual ().modificarMonedas ();
+						miGui.getTiendaVisual ().updateBotones ();
+					}
 				}
 			}
 		}
@@ -99,8 +108,9 @@ public class MapaVisual extends JPanel {
 		return width;
 	}
 	
-	private void cargarFondo (ImageIcon im) {
-		fondo = new JLabel (im);
+	public void cargarFondo (String Direccion) {
+		ImageIcon Imagen = new ImageIcon (Direccion);
+		fondo = new JLabel (Imagen);
 		fondo.setBounds (0, 0, width, height);
 		this.add (fondo);
 	}

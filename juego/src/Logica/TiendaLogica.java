@@ -63,8 +63,7 @@ public class TiendaLogica {
 	 * metodo que devuelve el Factory asociado a la Tienda en un determinado momento (Lo usaria MapaLogico)
 	 * @return FactoryLogica al momento de la consulta
 	 */
-	public FactoryLogica getCreator(){
-		
+	public FactoryLogica getCreator () {
 		return creator;
 	}
 }

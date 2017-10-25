@@ -7,6 +7,8 @@ import entidades.ObjDeLaTienda;
 
 public class CreadorEliteLogico implements FactoryLogica {
 	
+	private static int Costo = 650;
+	
 	public Controlable crearCont (Posicion pos) {
 		Elite E = new Elite (pos);
 		return E;
@@ -17,6 +19,6 @@ public class CreadorEliteLogico implements FactoryLogica {
 	}
 	
 	public int getCosto () {
-		return 650;
+		return Costo;
 	}
 }

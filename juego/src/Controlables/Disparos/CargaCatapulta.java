@@ -10,9 +10,8 @@ public class CargaCatapulta extends Proyectil {
 		velocidadMovimiento = 4;
 	}
 
-	@Override
 	public void setGrafico(Posicion p) {
-		miGrafico = new objetoGrafico("Carga.GIF",p);
+		miGrafico = new objetoGrafico("src\\Controlables\\Disparos\\Sprites Carga Catapulta\\CargaCatapulta.png", p);
 		
 	}
 
