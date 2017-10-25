@@ -1,19 +1,18 @@
 package Controlables.Disparos;
 
-import entidades.Proyectil;
 import Logica.Posicion;
-
+import entidades.Proyectil;
+import entidades.EntidadesGraficas.objetoGrafico;
 
 public class CargaCatapulta extends Proyectil {
 
 	public CargaCatapulta () {
-		direccionDibujo = "Carga.GIF";
 		velocidadMovimiento = 4;
 	}
 
 	@Override
-	public void volarAPosicion(Posicion p) {
-		// TODO Auto-generated method stub
+	public void setGrafico(Posicion p) {
+		miGrafico = new objetoGrafico("Carga.GIF",p);
 		
 	}
 
