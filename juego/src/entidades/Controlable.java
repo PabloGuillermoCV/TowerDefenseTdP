@@ -11,9 +11,10 @@ public abstract class Controlable extends Personaje {
 	public Controlable (String Nombre, Posicion Pos,
 			int Vida, int Alcance, int Ataque, int Defensa, int Precio,int VelocidadAt) {
 		super (Nombre,Pos,Vida,Alcance,Ataque,Defensa);
+		
 		this.Precio = Precio;
 		this.VelocidadAt = VelocidadAt;
-		this.miMapa.getListaControlables().add(this);
+		this.miMapa.agregarControlable(this, Pos);
 	}
 	
 	public int getPrecio () {

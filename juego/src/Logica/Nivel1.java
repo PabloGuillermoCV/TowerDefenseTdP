@@ -31,7 +31,7 @@ public class Nivel1 extends Nivel {
 	public void generarListaEnemigos() {
 		Enemigo APie = fabrica.crearAPie();
 		
-		mapaLogico.agregarEnemigo(APie);
+		
 		
 		
 			

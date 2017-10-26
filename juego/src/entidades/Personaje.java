@@ -20,6 +20,7 @@ public abstract class Personaje extends Entidad {
 		this.miMapa = MapaLogico.InstanciaMapaLogico ();
 	}
 	
+	
 	public Estado getEstado () {
 		return miEstadoActual;
 	}

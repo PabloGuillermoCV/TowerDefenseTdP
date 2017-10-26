@@ -21,6 +21,7 @@ public abstract class Enemigo extends Personaje {
 		this.VelocidadMov = VelocidadMov;
 		this.Puntaje = Puntaje;
 		this.EstadoCaminar = new CaminarNormal(this);
+		this.miMapa.agregarEnemigo(this);
 	}
 	
 	public int getVelMov () {

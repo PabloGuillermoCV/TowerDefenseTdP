@@ -35,5 +35,6 @@ public abstract class EntidadGrafica { //En este paquete estarán todos los gráfi
 	public void Morir () {
 		
 		this.grafico.setVisible(false);
+		
 	}
 }

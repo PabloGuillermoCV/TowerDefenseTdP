@@ -79,6 +79,10 @@ public class MapaLogico {
 	
 	public boolean puedoAgregarControlable (Posicion pos) {
 		boolean Puedo;
+		System.out.println("1 "+posicionValida (pos.getX(), pos.getY())); 
+		System.out.println("2 "+ !miCamino.perteneceAlCamino(pos));
+		System.out.println("3 "+matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null);
+		
 		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
 				matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null) {
 			Puedo = true;
@@ -102,6 +106,9 @@ public class MapaLogico {
 	}
 	
 	public void agregarControlable (Controlable c, Posicion pos) {
+		
+		//System.out.println("!! 1"+pos.getX()/20);
+		//System.out.println("!! 2"+pos.getY()/20);
 		matriz [pos.getX()/20][pos.getY()/20].addPersonaje (c);
 		unidadesEnMapa.add (c);	
 	}
