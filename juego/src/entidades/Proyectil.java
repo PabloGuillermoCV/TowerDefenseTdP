@@ -9,8 +9,6 @@ public abstract class Proyectil{
 	protected int velocidadMovimiento;
 	protected objetoGrafico miGrafico;
 	protected Posicion posActual;
-	protected boolean vivo; //serviria para detectar cuando impactó la bala y matar el proyectil
-							//pero dudo de su utilidad
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	
 	
@@ -19,7 +17,7 @@ public abstract class Proyectil{
 	 * @param p posicion a donde ir
 	 * NOTA: Esto se hace en un contexto lógico
 	 */
-	public void volarAPosicion(Posicion p){
+	public boolean volarAPosicion(Posicion p){
 		while(posActual.getX() != p.getX() && posActual.getY() != p.getY()) {
 			int x1 = posActual.getX();
 			int y1 = posActual.getY();
@@ -59,7 +57,7 @@ public abstract class Proyectil{
 		}
 		
 		miGrafico.Morir(); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
-		
+		return false;
 		
 	}
 	
@@ -71,4 +69,6 @@ public abstract class Proyectil{
 	 * @param p posicion inicial de la gráfica
 	 */
 	public abstract void setGrafico(Posicion p);
+	
+	public abstract Proyectil clone();
 }

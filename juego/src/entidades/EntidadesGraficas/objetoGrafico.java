@@ -73,8 +73,6 @@ public  class objetoGrafico extends EntidadGrafica {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
 	
 	

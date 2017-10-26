@@ -124,4 +124,17 @@ public class MapaLogico {
 	private boolean posicionValida(int X, int Y) {
 		return X>=0 && X<=width && Y>=0 && Y<= height;
 	}
+	
+	/**
+	 * metodo que se encarga de, usando un Random, generar un objeto de mapa
+	 * (Lago,campo dañino, etc) y tirarlo en alguna posición del Camino de enemigos
+	 * El MapaVisual debria tener un metodo similar que lo que haga es, 
+	 * recibiendo el item especifico, lo muestre en el mapa donde debe
+	 *  podemos usar el Thread "Contador Tiempo" para contar el tiempo que dura el objeto
+	 *  lo que hace ese Thread es mantener un contador y le va sumando 1 por cada segundo que pasa
+	 *  con un sleep de, justamente, un segundo
+	 */
+	public void generarELementoDeMapa() {
+		
+	}
 }

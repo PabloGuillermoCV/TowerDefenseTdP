@@ -15,4 +15,11 @@ public class CargaCatapulta extends Proyectil {
 		
 	}
 
+	@Override
+	public Proyectil clone() {
+		Proyectil ret = new CargaCatapulta();
+		ret.setGrafico(posActual);
+		return ret;
+	}
+
 }

@@ -12,6 +12,7 @@ public abstract class Enemigo extends Personaje {
 	
 	protected int VelocidadMov;
 	protected EstrategiaDeMovimiento EstadoCaminar;
+	protected Proyectil miBala;
 	protected int Puntaje;
 	
 	public Enemigo (String Nombre, Posicion Pos, int Vida, int Alcance,
@@ -57,10 +58,18 @@ public abstract class Enemigo extends Personaje {
 	}
 	
 	/**
-	 * metodo de visitor que permite a un enemigo atacar a una unidad concreata
+	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
 	 * @param C Controlable a atacar
 	 */
 	public void atacar(Controlable C){
+		Proyectil municion = miBala.clone(); //esto explota para los cuerpo a cuerpo
+											//a menos que agreguemos una grafica pa ellos
+		municion.volarAPosicion(C.getPos());
+		//calculo que por los sleep, el juego esperará hasta que la bala llegue
+		//sino, lo que podemos hacer es que el proyectil sea el que le saque vida al que le pega
+		//pero habria que modificar el visitor y el metodo del proyectil
+		//NO tanto el visitor pero el metodo volarAPosicion deberia obtener más datos
+		//(la fuerza de ataque del que dispara)
 		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
 	}
 	
@@ -69,6 +78,8 @@ public abstract class Enemigo extends Personaje {
 	 * @param R Roca a atacar
 	 */
 	public void atacar(Roca R){
+		Proyectil municion = miBala.clone();
+		municion.volarAPosicion(R.getPos());
 		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
 	}
 	

@@ -47,16 +47,14 @@ public abstract class Controlable extends Personaje {
 	 * @param E enemigo a atacar
 	 */
 	public void atacar(Enemigo E){
-		//miBala.volarAPosicion(E.getPos()); //le digo a mi proyectil que vuele hacia el enemigo que me pasan
-		/*try {
-			miBala.join();  //espero hasta que la bala haya llegado al enemigo y muera
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
+		Proyectil municion = miBala.clone();
+		municion.volarAPosicion(E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		if (E.getEstado().getVida() <= 0) {
+		/*if (E.getEstado().getVida() <= 0) {
 			E.getGrafico().Morir();
 		}
+		*/ //calculo que esto no va ya que el nvel se encarga de verificar
+			//si los enemigos murieron
 	}
 	
 	public Enemigo verificarUnidad() {

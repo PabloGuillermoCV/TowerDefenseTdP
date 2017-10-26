@@ -15,4 +15,11 @@ public class Flecha extends Proyectil {
 	public void setGrafico(Posicion p) {
 		miGrafico =  new objetoGrafico("src\\Controlables\\Disparos\\Sprites Flecha\\Flecha.png", p);
 	}
+
+	@Override
+	public Proyectil clone() {
+		Proyectil ret = new Flecha();
+		ret.setGrafico(posActual);
+		return ret;
+	}
 }
