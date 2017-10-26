@@ -10,39 +10,31 @@ public class FabricaEnemigos implements AbstractFactory {
 	 * solo faltaria completar los otros metodos creando y deolviendo un soldado en pos inicial
 	 */
 	public Enemigo crearAPie() {
-		
-		return new APie(new Posicion(0,0));
+		return new APie (new Posicion (0,0));
 	}
 
 	
 	public Enemigo crearACaballo() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ACaballo (new Posicion (0,0));
 	}
 
 	
 	public Enemigo crearConArmadura() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ConArmadura (new Posicion (0,0));
 	}
 
 	
 	public Enemigo crearConArco() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ConArco (new Posicion (0,0));
 	}
 
 	
 	public Enemigo crearConBallesta() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ConBallesta (new Posicion (0,0));
 	}
 
 	
 	public Enemigo crearJefeFinal() {
-		// TODO Auto-generated method stub
-		return null;
+		return new JefeFinal (new Posicion (0,0));
 	}
-	
-	
 }

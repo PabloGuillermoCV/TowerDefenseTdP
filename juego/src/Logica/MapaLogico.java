@@ -31,7 +31,7 @@ public class MapaLogico {
 				matriz [i][j] = new Celda (i*tamaño,j*tamaño);
 			}
 		}
-		miCamino = new Camino1 ();
+		miCamino = new Camino1Aux ();
 		enemigos = new LinkedList<Enemigo>();
 		unidadesEnMapa = new LinkedList<Controlable>();
 	}
@@ -50,11 +50,16 @@ public class MapaLogico {
 	public MapaVisual getMapaVisual() {
 		return mapaVisual;
 	}
+	
 	public Celda getCelda (int X, int Y) {
-		if (posicionValida(X,Y))
-		return matriz [X/tamaño] [Y/tamaño];
-		
-		else return null;
+		Celda C;
+		if (posicionValida (X,Y)) {
+			C = matriz [X/tamaño] [Y/tamaño];
+		}
+		else  {
+			C = null;
+		}
+		return C;
 	}
 	
 	public int getTamaño () {
@@ -66,7 +71,7 @@ public class MapaLogico {
 	}
 	
 	public void generarCaminoA (Posicion pos) {
-		miCamino.generarCaminoA (pos);
+		miCamino.generarCaminoA ();
 	}
 
 	public Collection<Controlable> getListaControlables(){
@@ -79,9 +84,9 @@ public class MapaLogico {
 	
 	public boolean puedoAgregarControlable (Posicion pos) {
 		boolean Puedo;
-		System.out.println("1 "+posicionValida (pos.getX(), pos.getY())); 
-		System.out.println("2 "+ !miCamino.perteneceAlCamino(pos));
-		System.out.println("3 "+matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null);
+		//System.out.println("1 "+posicionValida (pos.getX(), pos.getY())); 
+		//System.out.println("2 "+ !miCamino.perteneceAlCamino(pos));
+		//System.out.println("3 "+matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null);
 		
 		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
 				matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null) {
@@ -122,7 +127,7 @@ public class MapaLogico {
 	}
 
 	private boolean posicionValida(int X, int Y) {
-		return X>=0 && X<=width && Y>=0 && Y<= height;
+		return X >= 0 && X <= width && Y >= 0 && Y <= height;
 	}
 	
 	/**

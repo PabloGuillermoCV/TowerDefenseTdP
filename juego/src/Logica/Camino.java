@@ -1,6 +1,6 @@
 package Logica;
 
-//import java.util.Collection;
+import java.util.LinkedList;
 
 public interface Camino {
 	/**
@@ -8,10 +8,10 @@ public interface Camino {
 	 * @param pos recibe la posicion final de la base Aliada(osea donde deber terminar los enem) 
 	 * 
 	 */
-	public void generarCaminoA(Posicion pos);
+	public void generarCaminoA ();
 	
 	
-	public boolean perteneceAlCamino(Posicion pos);
+	public boolean perteneceAlCamino (Posicion pos);
 	
 	/**
 	 * 
@@ -20,5 +20,11 @@ public interface Camino {
 	 */
 	public Posicion getNext (Posicion pos);
 	
-	public int cantidad () ;
+	public LinkedList <Posicion> [] getCamino ();
+	
+	public LinkedList <Posicion> getCaminoActual ();
+	
+	public void cambiarCaminoActual (int I);
+	
+	public int getCantidad () ;
 }

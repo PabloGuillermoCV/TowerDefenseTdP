@@ -20,10 +20,9 @@ public class ContadorTiempo extends Thread {
 		while(true){
 			try {
 				nivel.moverEnemigos();
-				System.out.println("estoy en ContadorTiempo");
-				Thread.sleep(1500);
+				//System.out.println("estoy en ContadorTiempo");
+				Thread.sleep(0); //1500
 				nivel.InteraccionControlableEnemigo();
-				
 				
 			} catch (InterruptedException e) {
 				System.out.println("error en el thread");

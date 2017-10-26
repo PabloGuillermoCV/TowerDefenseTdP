@@ -1,12 +1,5 @@
 package Logica;
 
-/*import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Random;
-import javax.swing.JLabel;*/
-
 import GUI.*;
 import entidades.*;
 
@@ -24,47 +17,35 @@ public class Nivel1 extends Nivel {
 		generarListaEnemigos ();
 	}
 	
-	
 	/**
 	 * modificar para que cree uno de cada uno
 	 */
-	public void generarListaEnemigos() {
-		Enemigo APie = fabrica.crearAPie();
-		
-		
-		
-		
-			
-	
+	public void generarListaEnemigos () {
+		fabrica.crearAPie ();
 	}
-	public void moverEnemigos() {
-		
-		for (Enemigo e : mapaLogico.getListaEnemigos()) {
-			
+	
+	public void moverEnemigos () {
+		for (Enemigo e : mapaLogico.getListaEnemigos ()) {
 			e.Mover();
-			
 		}	
-		}
+	}
 		
-	public void InteraccionControlableEnemigo() {
+	public void InteraccionControlableEnemigo () {
 		Enemigo e;
-		for (  Controlable C  : mapaLogico.getListaControlables()) {
+		for (Controlable C : mapaLogico.getListaControlables ()) {
 			System.out.println ("ESTOY EN INTERACCION-----------------------");
-			 e = C.verificarUnidad();
-			if (e!=null)
+			e = C.verificarUnidad();
+			if (e != null) {
 				e.serAtacado(C);
+			}
 		}
 	}
-	
-	
 		
-	public MapaLogico getMapa() {
-		
+	public MapaLogico getMapa () {
 		return mapaLogico;
 	}
 	
-	public TiendaLogica getTienda() {
-		
+	public TiendaLogica getTienda () {
 		return tiendaLogica;
 	}
 }

@@ -2,10 +2,12 @@ package Logica;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Camino1 implements Camino {
-	private ArrayList<Posicion> camino;
+	
+	private ArrayList <Posicion> camino;
 	private static final int constante =20;
 	private int cantidad;
 	
@@ -20,8 +22,8 @@ public class Camino1 implements Camino {
 	/**
 	 * genera el camino
 	 */
-	public void generarCaminoA(Posicion pos) {
-		
+	public void generarCaminoA() {
+		Posicion pos = new Posicion (0,0);
 		int x1 =0;		int y1=0;
 		int x2 = pos.getX(); 		int y2= pos.getY();
 		camino.add(new Posicion(x1,y1));
@@ -91,7 +93,19 @@ public class Camino1 implements Camino {
 		return null;
 	}
 	
-	public int cantidad() {
+	public LinkedList <Posicion> [] getCamino () {
+		return null;
+	}
+	
+	public LinkedList<Posicion> getCaminoActual() {
+		return null;
+	}
+
+	public void cambiarCaminoActual(int I) {
+		
+	}
+	
+	public int getCantidad() {
 		return cantidad;
 	}
 }
