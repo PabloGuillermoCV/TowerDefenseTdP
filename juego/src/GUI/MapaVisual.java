@@ -9,8 +9,10 @@ import javax.swing.JPanel;
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
+import Objetos.ObjResistente.Roca;
 import entidades.Controlable;
 import entidades.ObjDeLaTienda;
+import entidades.Objeto;
 
 @SuppressWarnings("serial")
 public class MapaVisual extends JPanel {
@@ -113,5 +115,16 @@ public class MapaVisual extends JPanel {
 		fondo = new JLabel (Imagen);
 		fondo.setBounds (0, 0, width, height);
 		this.add (fondo);
+	}
+
+	/**
+	 * metodo que se encarga de agregar visualmente al mapa el objeto de mapa pasado por parametro
+	 * @param k objeto a agregar
+	 * @param p posición donde el objeto debe ser agregado
+	 */
+	public void agregarObjeto(Objeto k, Posicion p) {
+		k.getGrafico().getGrafico().setBounds(p.getX(), p.getY(), 20, 20);
+		fondo.add(k.getGrafico().getGrafico());
+		
 	}
 }

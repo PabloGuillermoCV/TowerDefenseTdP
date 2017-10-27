@@ -2,6 +2,7 @@ package Logica;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Camino1Aux implements Camino {
 	
@@ -153,5 +154,13 @@ public class Camino1Aux implements Camino {
 	
 	public int getCantidad () {
 		return Cantidad;
+	}
+
+	@Override
+	public Posicion getPosAleatoria() {
+		int c = CaminoActual.size();
+		Random r = new Random();
+		int k = r.nextInt(c); //tira un numero entre 0 y la cantidad de posiciones del camino, NO se deberia caer del arreglo
+		return CaminoActual.get(k);
 	}
 }

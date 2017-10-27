@@ -6,8 +6,8 @@ import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class CampoDebilitador extends ObjetoTemporal {
 
-	public CampoDebilitador (Posicion Pos, int Tiempo) {
-		super ("CampoDebilitador", Pos, Tiempo);
+	public CampoDebilitador (Posicion Pos) {
+		super ("CampoDebilitador", Pos, 60);
 		grafico = new EntidadGraficaNoEnemigo ("src\\GUI\\Sprites Objetos Mapa\\CampoDebilitador.png",Pos);
 	}
 

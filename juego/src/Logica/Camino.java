@@ -27,4 +27,11 @@ public interface Camino {
 	public void cambiarCaminoActual (int I);
 	
 	public int getCantidad () ;
+
+	/**
+	 * metodo que  devuelve una posición aleatoria del camino donde se insertará un elemento de mapa
+	 * @return Posición perteneciente al camino
+	 */
+	public Posicion getPosAleatoria();
+	
 }

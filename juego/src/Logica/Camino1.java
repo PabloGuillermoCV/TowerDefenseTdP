@@ -108,4 +108,10 @@ public class Camino1 implements Camino {
 	public int getCantidad() {
 		return cantidad;
 	}
+
+	@Override
+	public Posicion getPosAleatoria() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

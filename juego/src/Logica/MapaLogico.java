@@ -2,10 +2,16 @@ package Logica;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Random;
 
 import GUI.MapaVisual;
+import Objetos.ObjResistente.CampoDeDaño;
+import Objetos.ObjResistente.Roca;
+import Objetos.ObjTemporal.CampoDebilitador;
+import Objetos.ObjTemporal.Lago;
 import entidades.Controlable;
 import entidades.Enemigo;
+import entidades.Objeto;
 
 public class MapaLogico {
 	private MapaVisual mapaVisual;
@@ -129,7 +135,6 @@ public class MapaLogico {
 	private boolean posicionValida(int X, int Y) {
 		return X >= 0 && X <= width && Y >= 0 && Y <= height;
 	}
-	
 	/**
 	 * metodo que se encarga de, usando un Random, generar un objeto de mapa
 	 * (Lago,campo dañino, etc) y tirarlo en alguna posición del Camino de enemigos
@@ -139,7 +144,34 @@ public class MapaLogico {
 	 *  lo que hace ese Thread es mantener un contador y le va sumando 1 por cada segundo que pasa
 	 *  con un sleep de, justamente, un segundo
 	 */
-	public void generarELementoDeMapa() {
+	public void generarElementoDeMapa() {
+		Random rand = new Random();
+		Objeto k;
+		int r = rand.nextInt(4);
+		Posicion p = miCamino.getPosAleatoria();
+		switch(r){
+			
+		case 0:
+			k = new Roca(p);
+			matriz[p.getX()][p.getY()].addObjeto(k);
+			mapaVisual.agregarObjeto(k,p);
+			break;
+		case 1:
+			k = new CampoDeDaño(p);
+			matriz[p.getX()][p.getY()].addObjeto(k);
+			mapaVisual.agregarObjeto(k, p);
+			break;
+		case 2:
+			k = new Lago(p); //todos los objetos temporales tendrian asociados un contador Thread para contar el tiempo que tardan en irse
+			matriz[p.getX()][p.getY()].addObjeto(k);
+			mapaVisual.agregarObjeto(k, p);
+			break;
+		case 3:
+			k = new CampoDebilitador(p);
+			matriz[p.getX()][p.getY()].addObjeto(k);
+			mapaVisual.agregarObjeto(k, p);
+			break;
+		}
 		
 	}
 	

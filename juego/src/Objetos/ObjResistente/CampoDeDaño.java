@@ -6,8 +6,8 @@ import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class CampoDeDaño extends ObjetoResistente {
 
-	public CampoDeDaño (Posicion Pos, int Vida) {
-		super ("CampoDeDaño", Pos, Vida);
+	public CampoDeDaño (Posicion Pos) {
+		super ("CampoDeDaño", Pos, 100);
 		grafico = new EntidadGraficaNoEnemigo ("src\\GUI\\Sprites Objetos Mapa\\CampoDeDaño.png",Pos);
 	}
 
