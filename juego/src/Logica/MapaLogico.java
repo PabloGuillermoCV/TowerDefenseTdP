@@ -142,4 +142,15 @@ public class MapaLogico {
 	public void generarELementoDeMapa() {
 		
 	}
+	
+	public void eliminarEnemigo(Enemigo e) {
+		getCelda(e.getPos().getX(),e.getPos().getY()).EliminarEnemigo(e);
+		enemigos.remove(e);
+		
+	}
+	
+	public void eliminarControlable(Controlable c) {
+		getCelda(c.getPos().getX(),c.getPos().getY()).eliminarControlable(c);
+		unidadesEnMapa.remove(c);
+	}
 }

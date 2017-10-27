@@ -50,10 +50,10 @@ public abstract class Controlable extends Personaje {
 		Proyectil municion = miBala.clone();
 		municion.volarAPosicion(E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		/*if (E.getEstado().getVida() <= 0) {
-			E.getGrafico().Morir();
+		if (E.getEstado().getVida() <= 0) {
+			E.morir();
 		}
-		*/ //calculo que esto no va ya que el nvel se encarga de verificar
+		 //calculo que esto no va ya que el nvel se encarga de verificar
 			//si los enemigos murieron
 	}
 	
@@ -73,4 +73,12 @@ public abstract class Controlable extends Personaje {
 		return ret;
 	}
 
+	public void morir() {
+		miMapa.eliminarControlable(this);
+		this.grafico.Morir();
+		this.miMapa=null;
+		this.miEstadoActual=null;
+		this.pos=null;
+		this.grafico=null;
+	}
 }

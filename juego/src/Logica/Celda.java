@@ -58,4 +58,9 @@ public class Celda {
 			enemigos.remove (e);
 		}
 	}
+	
+	public void eliminarControlable(Controlable c) {
+		if(c==personaje)
+			personaje=null;
+	}
 }

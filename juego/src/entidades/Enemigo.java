@@ -71,6 +71,9 @@ public abstract class Enemigo extends Personaje {
 		//NO tanto el visitor pero el metodo volarAPosicion deberia obtener más datos
 		//(la fuerza de ataque del que dispara)
 		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
+		if (C.getEstado().getVida()<0) {
+			C.morir();
+		}
 	}
 	
 	/**
@@ -100,5 +103,15 @@ public abstract class Enemigo extends Personaje {
 	
 	public void Mover () {		
 		EstadoCaminar.mover();
+	}
+	public void morir() {
+		miMapa.eliminarEnemigo(this);
+		this.grafico.Morir();
+		this.miMapa=null;
+		this.EstadoCaminar=null;
+		this.miEstadoActual=null;
+		this.pos=null;
+		this.grafico=null;
+		
 	}
 }

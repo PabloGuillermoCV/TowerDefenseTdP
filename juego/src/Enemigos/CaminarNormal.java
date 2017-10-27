@@ -14,6 +14,7 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 	
 	public void mover () {
 		Posicion posSig;
+		
 		int LastX = e.getMapa ().getCamino ().getCaminoActual ().getLast ().getX ();
 		int LastY = e.getMapa ().getCamino ().getCaminoActual ().getLast ().getY ();
 		if (e.getPos ().getX () == LastX && e.getPos ().getY () == LastY) {
