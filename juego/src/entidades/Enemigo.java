@@ -4,11 +4,14 @@ import Logica.Celda;
 
 import Logica.MapaLogico;
 import Logica.Posicion;
+
+import java.util.Random;
+
 import Enemigos.*;
 import Objetos.ObjResistente.Roca;
 
 
-public abstract class Enemigo extends Personaje {
+public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	protected int VelocidadMov;
 	protected EstrategiaDeMovimiento EstadoCaminar;
@@ -113,5 +116,22 @@ public abstract class Enemigo extends Personaje {
 		this.miEstadoActual = null;
 		this.pos = null;
 		this.grafico = null;
+	}
+	
+	/**
+	 * metodo que se encarga de mejorar al enemigo
+	 */
+	public void mejorar() {
+		Random r = new Random();
+		int vPlus = r.nextInt(50 + 1);
+		int aPlus = r.nextInt(20 + 1);
+		int dPlus = r.nextInt(10 + 1);
+		int velPlus = r.nextInt(5 + 1);
+		miEstadoActual.setVida(miEstadoActual.getVida() + vPlus);
+		miEstadoActual.setAtaque(miEstadoActual.getAtaque() + aPlus);
+		miEstadoActual.setDefensa(miEstadoActual.getDefensa() + dPlus);
+		VelocidadMov += velPlus;
+		
+		
 	}
 }

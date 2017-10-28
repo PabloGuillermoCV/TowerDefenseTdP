@@ -1,5 +1,6 @@
 package Enemigos;
 
+import Controlables.Disparos.Espadazo;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
@@ -21,6 +22,7 @@ public class ConArmadura extends Enemigo {
 	
 	public ConArmadura (Posicion pos) {
 		super ("ConArmadura", pos, 450, 1, 200, 75, 3, false, 4500);
+		miBala = new Espadazo();
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConArmadura.gif",pos);
 	}
 }

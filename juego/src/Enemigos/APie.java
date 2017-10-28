@@ -1,5 +1,6 @@
 package Enemigos;
 
+import Controlables.Disparos.Espadazo;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
@@ -21,6 +22,7 @@ public class APie extends Enemigo {
 	
 	public APie (Posicion pos) {
 		super ("APie", pos, 50, 1, 50, 100, 5, false, 1000);
+		miBala = new Espadazo();
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\APie.gif",pos);
 	}
 

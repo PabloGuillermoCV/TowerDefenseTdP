@@ -26,7 +26,7 @@ public class MenuPrincipal {
 
 	private JFrame frame;
 	private JTextField Autores;
-	private GUI siguienteNivel = GUI.InstanciaGUI();
+	private GUI siguienteNivel;
 
 	/**
 	 * Launch the application.
@@ -72,6 +72,7 @@ public class MenuPrincipal {
 		jugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
+				siguienteNivel = GUI.InstanciaGUI();
 				siguienteNivel.setVisible(true);
 				siguienteNivel.setBounds(100,100,500,750);
 				

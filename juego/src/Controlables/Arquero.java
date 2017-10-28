@@ -1,5 +1,6 @@
 package Controlables;
 
+import Controlables.Disparos.Flecha;
 import Logica.Posicion;
 import entidades.Controlable;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
@@ -20,6 +21,7 @@ public class Arquero extends Controlable {
 	
 	public Arquero (Posicion pos) {
 		super ("Arquero", pos, 100, 5, 50, 100, 300, 7);
+		miBala = new Flecha();
 		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 }

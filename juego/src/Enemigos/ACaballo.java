@@ -1,5 +1,8 @@
 package Enemigos;
 
+import java.util.Random;
+
+import Controlables.Disparos.Espadazo;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
@@ -21,6 +24,7 @@ public class ACaballo extends Enemigo {
 	
 	public ACaballo (Posicion pos) {
 		super ("ACaballo", pos, 200, 2, 100, 90, 6, false, 5000);
+		miBala = new Espadazo();
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ACaballo.gif",pos);
 	}
 

@@ -10,7 +10,7 @@ public  class objetoGrafico extends EntidadGrafica {
 	
 	public objetoGrafico(String File, Posicion pos) {
 		super(File, pos);
-		//llenar el arreglo del sprite, NOTA, tanto la FLecha como la cargad e Catapulta tendran este arreglo
+		//llenar el arreglo del sprite, NOTA, tanto la FLecha como la carga de Catapulta tendran este arreglo
 		
 	}
 
