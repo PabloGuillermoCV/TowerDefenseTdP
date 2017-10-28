@@ -2,14 +2,6 @@ package Logica;
 
 public class Nivel3 extends Nivel {
 
-	public void InteraccionControlableEnemigo() {
-		
-	}
-
-	public void moverEnemigos() {
-		
-	}
-
 	protected void generarListaEnemigos() {
 		
 	}
@@ -18,7 +10,10 @@ public class Nivel3 extends Nivel {
 		return null;
 	}
 
-	public TiendaLogica getTienda() {
-		return null;
+
+	@Override
+	public void siguienteNivel() {
+		//decirle al usuario que ha completado el juego
+		
 	}
 }

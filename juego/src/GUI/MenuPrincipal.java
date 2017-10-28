@@ -22,7 +22,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
-public class Juego {
+public class MenuPrincipal {
 
 	private JFrame frame;
 	private JTextField Autores;
@@ -35,7 +35,7 @@ public class Juego {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Juego window = new Juego();
+					MenuPrincipal window = new MenuPrincipal();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class Juego {
 	/**
 	 * Create the application.
 	 */
-	public Juego() {
+	public MenuPrincipal() {
 		initialize();
 	}
 

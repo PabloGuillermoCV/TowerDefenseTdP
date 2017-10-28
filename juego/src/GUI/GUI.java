@@ -76,4 +76,15 @@ public class GUI extends JFrame {
 	public JFrame getVentana () {
 		return ventana;
 	}
+
+	/**
+	 * metodo que cambia el nivel (en lógica, más o menos?)
+	 * @param n nivel a usar como nuevo nivel
+	 */
+	public void setNivel(Nivel n){
+		nivel = n;
+		mapa.setVisible(false);
+		mapa = nivel.getMapa().getMapaVisual();
+		mapa.setVisible(true);
+	}
 }

@@ -1,15 +1,13 @@
 package Logica;
 
+import GUI.GUI;
+
 public class Nivel2 extends Nivel {
 
-	public void InteraccionControlableEnemigo() {
+	public Nivel2(GUI gui){
 		
 	}
-
-	public void moverEnemigos() {
-		
-	}
-
+	
 	protected void generarListaEnemigos() {
 		
 	}
@@ -18,7 +16,10 @@ public class Nivel2 extends Nivel {
 		return null;
 	}
 
-	public TiendaLogica getTienda() {
-		return null;
+
+	@Override
+	public void siguienteNivel() {
+		// TODO Auto-generated method stub
+		
 	}
 }
