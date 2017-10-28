@@ -1,6 +1,6 @@
 package Controlables;
 
-import Controlables.Disparos.Flecha;
+import entidades.Disparos.Flecha;
 import Logica.Posicion;
 import entidades.Controlable;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;

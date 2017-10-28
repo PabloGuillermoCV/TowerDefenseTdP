@@ -1,6 +1,6 @@
 package Enemigos;
 
-import Controlables.Disparos.Flecha;
+import entidades.Disparos.Flecha;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;

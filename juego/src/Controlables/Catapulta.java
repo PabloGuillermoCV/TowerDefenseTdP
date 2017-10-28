@@ -1,6 +1,6 @@
 package Controlables;
 
-import Controlables.Disparos.CargaCatapulta;
+import entidades.Disparos.CargaCatapulta;
 import Logica.Posicion;
 import entidades.Controlable;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
