@@ -22,6 +22,7 @@ public class Nivel1 extends Nivel {
 	 */
 	public void generarListaEnemigos () {
 		fabrica.crearAPie ();
+		fabrica.crearACaballo ();
 	}
 	
 	public void moverEnemigos () {

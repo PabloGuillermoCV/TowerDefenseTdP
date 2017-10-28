@@ -8,8 +8,7 @@ public interface Camino {
 	 * @param pos recibe la posicion final de la base Aliada(osea donde deber terminar los enem) 
 	 * 
 	 */
-	public void generarCaminoA ();
-	
+	public void generarCamino ();
 	
 	public boolean perteneceAlCamino (Posicion pos);
 	
@@ -20,18 +19,22 @@ public interface Camino {
 	 */
 	public Posicion getNext (Posicion pos);
 	
-	public LinkedList <Posicion> [] getCamino ();
+	public Posicion getNextF (Posicion pos);
 	
-	public LinkedList <Posicion> getCaminoActual ();
+	//public LinkedList <Posicion> [] getCamino ();
 	
-	public void cambiarCaminoActual (int I);
+	//public LinkedList <Posicion> getCaminoActual ();
 	
-	public int getCantidad () ;
+	//public void cambiarCaminoActual (int I);
+	
+	//public int getCantidad () ;
 
 	/**
 	 * metodo que  devuelve una posición aleatoria del camino donde se insertará un elemento de mapa
 	 * @return Posición perteneciente al camino
 	 */
 	public Posicion getPosAleatoria();
+	
+	public LinkedList <Posicion> getFin ();
 	
 }

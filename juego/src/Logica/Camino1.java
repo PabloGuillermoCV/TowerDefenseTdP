@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Camino1 implements Camino {
+public class Camino1 {
 	
 	private ArrayList <Posicion> camino;
 	private static final int constante =20;
@@ -22,7 +22,7 @@ public class Camino1 implements Camino {
 	/**
 	 * genera el camino
 	 */
-	public void generarCaminoA() {
+	public void generarCamino() {
 		Posicion pos = new Posicion (0,0);
 		int x1 =0;		int y1=0;
 		int x2 = pos.getX(); 		int y2= pos.getY();
@@ -109,9 +109,11 @@ public class Camino1 implements Camino {
 		return cantidad;
 	}
 
-	@Override
 	public Posicion getPosAleatoria() {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Posicion getFinA() {
 		return null;
 	}
 }

@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
-import Objetos.ObjResistente.Roca;
 import entidades.Controlable;
 import entidades.ObjDeLaTienda;
 import entidades.Objeto;

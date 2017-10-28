@@ -77,7 +77,7 @@ public class MapaLogico {
 	}
 	
 	public void generarCaminoA (Posicion pos) {
-		miCamino.generarCaminoA ();
+		miCamino.generarCamino ();
 	}
 
 	public Collection<Controlable> getListaControlables(){

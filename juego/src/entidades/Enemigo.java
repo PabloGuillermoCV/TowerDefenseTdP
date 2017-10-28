@@ -102,16 +102,16 @@ public abstract class Enemigo extends Personaje {
 	}
 	
 	public void Mover () {		
-		EstadoCaminar.mover();
+		EstadoCaminar.mover ();
 	}
-	public void morir() {
-		miMapa.eliminarEnemigo(this);
-		this.grafico.Morir();
-		this.miMapa=null;
-		this.EstadoCaminar=null;
-		this.miEstadoActual=null;
-		this.pos=null;
-		this.grafico=null;
-		
+	
+	public void morir () {
+		miMapa.eliminarEnemigo (this);
+		this.grafico.Morir ();
+		this.miMapa = null;
+		this.EstadoCaminar = null;
+		this.miEstadoActual = null;
+		this.pos = null;
+		this.grafico = null;
 	}
 }
