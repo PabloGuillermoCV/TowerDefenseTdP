@@ -26,9 +26,10 @@ public class Espadazo extends Proyectil {
 		miGrafico = new EntidadGraficaAtaque (Graficos, p);
 	}
 
-	public Proyectil clone () {
+	public Proyectil clone (Posicion p) {
 		Proyectil ret = new Espadazo();
-		ret.setGrafico(posActual);
+		ret.setGrafico(p);
+		posActual = new Posicion(p.getX(),p.getY());
 		return ret;
 	}
 }

@@ -65,7 +65,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * @param C Controlable a atacar
 	 */
 	public void atacar(Controlable C){
-		Proyectil municion = miBala.clone(); //esto explota para los cuerpo a cuerpo
+		Proyectil municion = miBala.clone(pos); //esto explota para los cuerpo a cuerpo
 											//a menos que agreguemos una grafica pa ellos
 		municion.volarAPosicion(C.getPos());
 		//calculo que por los sleep, el juego esperará hasta que la bala llegue
@@ -84,7 +84,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * @param R Roca a atacar
 	 */
 	public void atacar(Roca R){
-		Proyectil municion = miBala.clone();
+		Proyectil municion = miBala.clone(pos);
 		municion.volarAPosicion(R.getPos());
 		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
 	}

@@ -34,4 +34,12 @@ public abstract class EntidadGrafica { //En este paquete estarán todos los gráfi
 	public void Morir () {
 		this.grafico.setVisible (false);
 	}
+	
+	/**
+	 * Metodo que setea el gráfico del File
+	 * @param File dirección del Sprite
+	 */
+	public void setFile(String File){
+		grafico = new JLabel(new ImageIcon(File));
+	}
 }

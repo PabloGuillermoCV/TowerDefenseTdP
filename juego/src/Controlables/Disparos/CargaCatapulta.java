@@ -25,9 +25,10 @@ public class CargaCatapulta extends Proyectil {
 		miGrafico = new EntidadGraficaAtaque (Graficos, p);
 	}
 
-	public Proyectil clone () {
+	public Proyectil clone (Posicion p) {
 		Proyectil ret = new CargaCatapulta();
-		ret.setGrafico(posActual);
+		ret.setGrafico(p);
+		posActual = new Posicion(p.getX(),p.getY());
 		return ret;
 	}
 }

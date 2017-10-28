@@ -47,7 +47,7 @@ public abstract class Controlable extends Personaje {
 	 * @param E enemigo a atacar
 	 */
 	public void atacar(Enemigo E){
-		Proyectil municion = miBala.clone();
+		Proyectil municion = miBala.clone(pos);
 		municion.volarAPosicion(E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 		if (E.getEstado().getVida() <= 0) {

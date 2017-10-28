@@ -68,5 +68,5 @@ public abstract class Proyectil {
 	 */
 	public abstract void setGrafico(Posicion p);
 	
-	public abstract Proyectil clone();
+	public abstract Proyectil clone(Posicion p);
 }

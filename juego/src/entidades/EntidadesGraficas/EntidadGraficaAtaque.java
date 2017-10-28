@@ -13,6 +13,7 @@ public class EntidadGraficaAtaque extends EntidadGrafica {
 		for (int I = 0; I < 8; I++) {
 			OrientacionSprite [I] = new ImageIcon (File [I]);
 		}
+		this.setFile(File[0]);
 	}
 
 	public void moverA(Posicion pos, int vel) {
