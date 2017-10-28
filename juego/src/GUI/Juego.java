@@ -19,12 +19,14 @@ import javax.swing.JTextField;
 import java.awt.Component;
 import javax.swing.JLayeredPane;
 import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("unused")
 public class Juego {
 
 	private JFrame frame;
 	private JTextField Autores;
+	private GUI siguienteNivel = GUI.InstanciaGUI();
 
 	/**
 	 * Launch the application.
@@ -57,73 +59,40 @@ public class Juego {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblimagenDelTitulo = new JLabel("*imagen del titulo del juego*");
+		JLabel lblimagenDelTitulo = new JLabel("All your base are NOT belong to us");
+		lblimagenDelTitulo.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
+		lblimagenDelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(lblimagenDelTitulo, BorderLayout.NORTH);
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		JButton jugar = new JButton("Empezar");
+		jugar.setBounds(130, 56, 122, 23);
 		jugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+				siguienteNivel.setVisible(true);
+				siguienteNivel.setBounds(100,100,500,750);
+				
+				
 			}
 		});
-		panel.add(jugar, "14, 6");
+		panel.setLayout(null);
+		panel.add(jugar);
 		
 		JButton Opciones = new JButton("Opciones");
-		panel.add(Opciones, "14, 10");
+		Opciones.setBounds(156, 110, 77, 23);
+		panel.add(Opciones);
 		
 		JButton EXIT = new JButton("Salir");
-		panel.add(EXIT, "14, 14");
+		EXIT.setBounds(156, 164, 77, 23);
+		panel.add(EXIT);
 		
 		Autores = new JTextField();
+		Autores.setBounds(156, 216, 86, 20);
 		Autores.setText("TdP 2017");
-		panel.add(Autores, "16, 18, center, bottom");
+		panel.add(Autores);
 		Autores.setColumns(10);
-		
-		
-		JPanel panel_Mapa = new JPanel();
-		panel_Mapa.setBackground(Color.LIGHT_GRAY);
-		panel_Mapa.setForeground(Color.BLACK);
-		frame.getContentPane().add(panel_Mapa, BorderLayout.CENTER);
-		panel_Mapa.setLayout(null);
 	}
 }
