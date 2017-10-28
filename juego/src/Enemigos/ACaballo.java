@@ -1,7 +1,5 @@
 package Enemigos;
 
-import java.util.Random;
-
 import Controlables.Disparos.Espadazo;
 import Logica.Posicion;
 import entidades.Enemigo;

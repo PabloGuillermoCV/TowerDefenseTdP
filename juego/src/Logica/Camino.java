@@ -3,38 +3,42 @@ package Logica;
 import java.util.LinkedList;
 
 public interface Camino {
+	
 	/**
-	 *  Metodo que se encarca de crear el camino y guardarlo como un atributo de instancia
-	 * @param pos recibe la posicion final de la base Aliada(osea donde deber terminar los enem) 
-	 * 
+	 * Metodo que se encarca de crear el camino entero que va a recorrer el enemigo
 	 */
 	public void generarCamino ();
 	
+	/**
+	 * Metodo que verifica si una posicion pertenece al camino del enemigo
+	 * @param pos La Posicion a verificar
+	 * @return boolean Verdadero si pertenece y falso en caso contrario
+	 */
 	public boolean perteneceAlCamino (Posicion pos);
 	
 	/**
-	 * 
-	 * @param pos una Posicion perteneciente al camino
-	 * @return la siguiente posicion que le sigue a la pasada por parametro
+	 * Metodo que retorna la siguiente posicion en la lista de posiciones del camino
+	 * @param pos Una Posicion perteneciente al camino
+	 * @return Posicion La siguiente Posicion que le sigue a la pasada por parametro
 	 */
 	public Posicion getNext (Posicion pos);
 	
-	public Posicion getNextF (Posicion pos);
-	
-	//public LinkedList <Posicion> [] getCamino ();
-	
-	//public LinkedList <Posicion> getCaminoActual ();
-	
-	//public void cambiarCaminoActual (int I);
-	
-	//public int getCantidad () ;
-
 	/**
-	 * metodo que  devuelve una posición aleatoria del camino donde se insertará un elemento de mapa
-	 * @return Posición perteneciente al camino
+	 * Metodo que retorna la siguiente Posicion de la lista de posiciones clave del camino
+	 * @param pos Una Posicion perteneciente al camino
+	 * @return Posicion La siguiente Posicion que le sigue a la pasada por parametro
 	 */
-	public Posicion getPosAleatoria();
+	public Posicion getNextPC (Posicion pos);
 	
-	public LinkedList <Posicion> getFin ();
+	/**
+	 * Metodo que retorna una lista con posiciones claves del camino
+	 * @return LinkedList <Posicion> La lista con las posiciones importantes
+	 */
+	public LinkedList <Posicion> getPosClave ();
 	
+	/**
+	 * Metodo que  devuelve una posición aleatoria del camino donde se insertará un elemento de mapa
+	 * @return Posicion Una Posicion que perteneciente al camino
+	 */
+	public Posicion getPosAleatoria ();
 }

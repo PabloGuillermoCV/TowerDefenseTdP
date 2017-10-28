@@ -1,91 +1,126 @@
 package Logica;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Camino1 {
+public class Camino1 implements Camino {
 	
-	private ArrayList <Posicion> camino;
-	private static final int constante =20;
-	private int cantidad;
+	private LinkedList <Posicion> Caminos;
+	private LinkedList <Posicion> PosClave;
 	
-	/**
-	 * Constructor que inicializa el arreglo
-	 */
-	public Camino1() {
-		camino = new ArrayList<Posicion>();
-		
+	public Camino1 () {
+		Caminos = new LinkedList <Posicion> ();
+		PosClave = new LinkedList <Posicion> ();
+		generarCamino ();
 	}
 	
-	/**
-	 * genera el camino
-	 */
-	public void generarCamino() {
-		Posicion pos = new Posicion (0,0);
-		int x1 =0;		int y1=0;
-		int x2 = pos.getX(); 		int y2= pos.getY();
-		camino.add(new Posicion(x1,y1));
-		cantidad =1;
-		Random r = new Random();
-		
-		while(x1<x2 || y1<y2) {
-			
-			int dir = r.nextInt(2);
-			System.out.println(dir);
-			if (dir==1) {
-				if(x1<x2) x1+=constante;
-				else y1+=constante;
-			} 
-			else {
-				if(y1<y2) y1+=constante;
-				else x1+=constante;
-			}	
-			Posicion toAdd= new Posicion(x1,y1);
-			
-			camino.add(toAdd);
-			cantidad++;
-		}
-	
-		
+	public void generarCamino () {
+		//Inicio Camino A
+		Caminos.add (new Posicion (0,0));
+		Caminos.add (new Posicion (20,0));
+		Caminos.add (new Posicion (20,20));
+		Caminos.add (new Posicion (20,40));
+		Caminos.add (new Posicion (40,40));
+		Caminos.add (new Posicion (60,40));
+		Caminos.add (new Posicion (60,60));
+		PosClave.add (new Posicion (60,60));
+		//Fin Camino A
+		//Inicio Camino B1
+		Caminos.add (new Posicion (80,60));
+		Caminos.add (new Posicion (100,60));
+		Caminos.add (new Posicion (100,80));
+		Caminos.add (new Posicion (120,80));
+		Caminos.add (new Posicion (140,80));
+		Caminos.add (new Posicion (160,80));
+		Caminos.add (new Posicion (180,80));
+		Caminos.add (new Posicion (200,80));
+		Caminos.add (new Posicion (220,80));
+		Caminos.add (new Posicion (240,80));
+		Caminos.add (new Posicion (260,80));
+		Caminos.add (new Posicion (260,100));
+		Caminos.add (new Posicion (280,100));
+		Caminos.add (new Posicion (300,100));
+		Caminos.add (new Posicion (300,120));
+		Caminos.add (new Posicion (320,120));
+		Caminos.add (new Posicion (320,140));
+		Caminos.add (new Posicion (340,140));
+		PosClave.add (new Posicion (340,140));
+		//Fin Camino B1
+		//Inicio Camino B2
+		Caminos.add (new Posicion (60,80));
+		Caminos.add (new Posicion (60,100));
+		Caminos.add (new Posicion (60,120));
+		Caminos.add (new Posicion (60,140));
+		Caminos.add (new Posicion (60,160));
+		Caminos.add (new Posicion (60,180));
+		Caminos.add (new Posicion (80,180));
+		Caminos.add (new Posicion (100,180));
+		Caminos.add (new Posicion (100,200));
+		Caminos.add (new Posicion (120,200));
+		Caminos.add (new Posicion (140,200));
+		Caminos.add (new Posicion (140,220));
+		Caminos.add (new Posicion (160,220));
+		Caminos.add (new Posicion (160,240));
+		Caminos.add (new Posicion (180,240));
+		Caminos.add (new Posicion (200,240));
+		Caminos.add (new Posicion (220,240));
+		Caminos.add (new Posicion (240,240));
+		Caminos.add (new Posicion (260,240));
+		Caminos.add (new Posicion (280,240));
+		Caminos.add (new Posicion (300,240));
+		Caminos.add (new Posicion (320,240));
+		Caminos.add (new Posicion (340,240));
+		Caminos.add (new Posicion (340,220));
+		Caminos.add (new Posicion (360,220));
+		Caminos.add (new Posicion (360,200));
+		Caminos.add (new Posicion (360,180));
+		Caminos.add (new Posicion (360,160));
+		PosClave.add (new Posicion (360,160));
+		//Fin Camino B2
+		//Inicio Camino C
+		PosClave.add (new Posicion (360,140));
+		Caminos.add (new Posicion (360,140));
+		Caminos.add (new Posicion (380,140));
+		Caminos.add (new Posicion (400,140));
+		Caminos.add (new Posicion (420,140));
+		Caminos.add (new Posicion (440,140));
+		Caminos.add (new Posicion (460,140));
+		Caminos.add (new Posicion (460,160));
+		Caminos.add (new Posicion (460,180));
+		Caminos.add (new Posicion (460,200));
+		Caminos.add (new Posicion (460,220));
+		Caminos.add (new Posicion (460,240));
+		Caminos.add (new Posicion (460,260));
+		//Fin Camino C
+		//(460,260) Es Donde Desaparecen Al Llegar Al Castillo
 	}
-	
-	/**
-	 * retorna true si la posicion pertenece al camino
-	 */
-	
-	public boolean perteneceAlCamino(Posicion pos) {
-		boolean resp= false;
-		if (!camino.isEmpty()) {
-		
-			Iterator <Posicion> it =(Iterator <Posicion>) camino.iterator();
-			while(it.hasNext() && !resp) {
-				Posicion pos2= it.next();
-				resp= pos.getX() == pos2.getX() && pos.getY() == pos2.getY() ;
-				}
+
+	public boolean perteneceAlCamino (Posicion pos) {
+		boolean Pertenece = false;
+		if (!Caminos.isEmpty ()) {
+			Iterator <Posicion> it = (Iterator <Posicion>) Caminos.iterator ();
+			while (it.hasNext() && !Pertenece) {
+				Posicion pos2 = it.next();
+				Pertenece = (pos.getX() == pos2.getX() && pos.getY() == pos2.getY()) ;
 			}
-			
-		return resp;
 		}
-	/**
-	 * retorna la siguiente posicion del camino a la que nos pasaron por paramentro, si no existe
-	 * o es la ultima retorna null
-	 */
-	
-	public Posicion getNext(Posicion pos) {
-		if (!camino.isEmpty()) {
-			boolean aviso=false;
-			Iterator <Posicion> it =(Iterator <Posicion>) camino.iterator();
-			while(it.hasNext()) {
+		return Pertenece;
+	}
+
+	public Posicion getNext (Posicion pos) {
+		if (!Caminos.isEmpty ()) {
+			boolean aviso = false;
+			Iterator <Posicion> it = (Iterator <Posicion>) Caminos.iterator ();
+			while(it.hasNext ()) {
 				if (aviso) { 
 					Posicion P = it.next ();
-					return new Posicion (P.getX(),P.getY());
+					return new Posicion (P.getX (), P.getY ());
 				}
 				else {
-					Posicion pos2= it.next();
-					if (pos2.getX()==pos.getX() && pos2.getY()==pos.getY()) {
-						aviso=true;
+					Posicion pos2 = it.next ();
+					if (pos2.getX () == pos.getX () && pos2.getY () == pos.getY ()) {
+						aviso = true;
 					}
 				}
 			}
@@ -93,27 +128,37 @@ public class Camino1 {
 		return null;
 	}
 	
-	public LinkedList <Posicion> [] getCamino () {
+	public Posicion getNextPC (Posicion pos) {
+		if (!PosClave.isEmpty ()) {
+			boolean aviso = false;
+			Iterator <Posicion> it = (Iterator <Posicion>) PosClave.iterator ();
+			while(it.hasNext ()) {
+				if (aviso) { 
+					Posicion P = it.next ();
+					return new Posicion (P.getX (), P.getY ());
+				}
+				else {
+					Posicion pos2 = it.next ();
+					if (pos2.getX () == pos.getX () && pos2.getY () == pos.getY ()) {
+						aviso = true;
+					}
+				}
+			}
+		}
 		return null;
 	}
 	
-	public LinkedList<Posicion> getCaminoActual() {
-		return null;
+	public LinkedList <Posicion> getPosClave () {
+		return PosClave;
 	}
 
-	public void cambiarCaminoActual(int I) {
-		
-	}
-	
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public Posicion getPosAleatoria() {
-		return null;
-	}
-
-	public Posicion getFinA() {
-		return null;
+	public Posicion getPosAleatoria () {
+		Random Rand = new Random ();
+		int MaxMov = Rand.nextInt (68) + 1;
+		Posicion Objeto = new Posicion (0,0);
+		for (int I = 0; I < MaxMov; I++) {
+			Objeto = getNext (Objeto);
+		}
+		return Objeto;
 	}
 }

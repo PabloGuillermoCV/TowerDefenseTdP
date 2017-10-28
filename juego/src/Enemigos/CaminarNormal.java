@@ -15,11 +15,11 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 	
 	public void mover () {
 		Posicion posSig;
-		LinkedList <Posicion> FinCamino = e.getMapa ().getCamino ().getFin ();
+		LinkedList <Posicion> FinCamino = e.getMapa ().getCamino ().getPosClave ();
 		Posicion A = FinCamino.getFirst(); //Posicion de la separacion en rutas
-		Posicion B1 = e.getMapa ().getCamino ().getNextF (A); //Posicion final de ruta 1
-		Posicion B2 = e.getMapa ().getCamino ().getNextF (B1); //Posicion final de ruta 2
-		Posicion C = e.getMapa ().getCamino ().getNextF (B2); //Posicion de inicio de la interseccion
+		Posicion B1 = e.getMapa ().getCamino ().getNextPC (A); //Posicion final de ruta 1
+		Posicion B2 = e.getMapa ().getCamino ().getNextPC (B1); //Posicion final de ruta 2
+		Posicion C = e.getMapa ().getCamino ().getNextPC (B2); //Posicion de inicio de la interseccion
 		
 		if (e.getPos ().getX () == A.getX () && e.getPos ().getY () == A.getY ()) {
 			//Llego a la interseccion y elijo uno de los dos caminos

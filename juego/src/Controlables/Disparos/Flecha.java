@@ -1,25 +1,33 @@
 package Controlables.Disparos;
 
-import entidades.Proyectil;
-import entidades.EntidadesGraficas.objetoGrafico;
-
 import Logica.Posicion;
+import entidades.Proyectil;
+import entidades.EntidadesGraficas.EntidadGraficaAtaque;
 
 public class Flecha extends Proyectil {
-
 	
-	public Flecha(){ //constructor 
+	private String [] Graficos;
+	
+	public Flecha () {
 		velocidadMovimiento = 5;
+		Graficos = new String [8];
+		Graficos [0] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaAbajo.png";
+		Graficos [1] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaAbajoDerecha.png";
+		Graficos [2] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaAbajoIzquierda.png";
+		Graficos [3] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaArriba.png";
+		Graficos [4] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaArribaDerecha.png";
+		Graficos [5] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaArribaIzquierda.png";
+		Graficos [6] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaDerecha.png";
+		Graficos [7] = "src\\Controlables\\Disparos\\Sprites Flecha\\FlechaIzquierda.png";
 	}
 	
-	public void setGrafico(Posicion p) {
-		miGrafico =  new objetoGrafico("src\\Controlables\\Disparos\\Sprites Flecha\\Flecha.png", p);
+	public void setGrafico (Posicion p) {
+		miGrafico = new EntidadGraficaAtaque (Graficos, p);
 	}
 
-	@Override
-	public Proyectil clone() {
+	public Proyectil clone () {
 		Proyectil ret = new Flecha();
-		ret.setGrafico(posActual);
+		ret.setGrafico (posActual);
 		return ret;
 	}
 }

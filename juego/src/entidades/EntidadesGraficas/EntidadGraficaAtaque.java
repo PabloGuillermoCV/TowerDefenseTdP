@@ -1,25 +1,25 @@
 package entidades.EntidadesGraficas;
 
 import javax.swing.ImageIcon;
-
+import javax.swing.JLabel;
 import Logica.Posicion;
 
-public  class objetoGrafico extends EntidadGrafica {
+public class EntidadGraficaAtaque extends EntidadGrafica {
 	
-	protected ImageIcon[] orientacionsprite = new ImageIcon[8];
+	protected ImageIcon [] OrientacionSprite = new ImageIcon [8];
 	
-	public objetoGrafico(String File, Posicion pos) {
-		super(File, pos);
-		//llenar el arreglo del sprite, NOTA, tanto la FLecha como la carga de Catapulta tendran este arreglo
-		
+	public EntidadGraficaAtaque (String [] File, Posicion pos) {
+		super (File [0], pos);
+		for (int I = 0; I < 8; I++) {
+			OrientacionSprite [I] = new ImageIcon (File [I]);
+		}
 	}
 
-	@Override
 	public void moverA(Posicion pos, int vel) {
 		int orientacion = calcularOrientacion(this.pos.getX(), this.pos.getY(), pos.getX(), pos.getY());
-		grafico.setIcon(orientacionsprite[orientacion]);
+		grafico = new JLabel (OrientacionSprite [orientacion]);
 		while (this.pos.getX() != pos.getX() && this.pos.getY() != pos.getY()){
-			try{
+			try {
 				//como como me muevo depende de la orientacion del proyectil y hay 8 direcciones posibles, es mejor un switch que 8 ifs seguidos
 				//mirar este switch en conjunto con el método "calcularOrientacion" para mejor entendimiento
 				switch(orientacion){

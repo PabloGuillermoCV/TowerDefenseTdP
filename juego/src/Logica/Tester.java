@@ -2,7 +2,7 @@ package Logica;
 
 public class Tester {
 	public static void main (String args[]) {
-		Camino c = new Camino1Aux ();
+		Camino c = new Camino1 ();
 		c.generarCamino(/*new Posicion(480,300)*/);
 		
 		Posicion pos = new Posicion (0,0);

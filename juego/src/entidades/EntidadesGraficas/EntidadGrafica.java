@@ -19,7 +19,6 @@ public abstract class EntidadGrafica { //En este paquete estarán todos los gráfi
 		this.mapaVisual.getFondo().add (grafico);
 		this.grafico.setBounds (pos.getX (), pos.getY (), 20, 20);
 		this.grafico.setVisible (true);
-		
 	}
 	
 	public abstract void moverA (Posicion pos, int vel);

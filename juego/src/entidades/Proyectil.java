@@ -1,16 +1,15 @@
 package entidades;
 
 import Logica.Posicion;
-import entidades.EntidadesGraficas.objetoGrafico;
+import entidades.EntidadesGraficas.EntidadGraficaAtaque;
 
-public abstract class Proyectil{
+public abstract class Proyectil {
 
 	//que tan rápido se mueve el proyectil
 	protected int velocidadMovimiento;
-	protected objetoGrafico miGrafico;
+	protected EntidadGraficaAtaque miGrafico;
 	protected Posicion posActual;
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
-	
 	
 	/**
 	 * metodo que le dice al proyectil donde debe viajar 
@@ -58,7 +57,6 @@ public abstract class Proyectil{
 		
 		miGrafico.Morir(); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
 		return false;
-		
 	}
 	
 	public void setPosicion(Posicion p) {

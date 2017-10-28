@@ -37,7 +37,7 @@ public class MapaLogico {
 				matriz [i][j] = new Celda (i*tamaño,j*tamaño);
 			}
 		}
-		miCamino = new Camino1Aux ();
+		miCamino = new Camino1 ();
 		enemigos = new LinkedList<Enemigo>();
 		unidadesEnMapa = new LinkedList<Controlable>();
 	}
