@@ -21,7 +21,7 @@ public class Espadazo extends Proyectil {
 		Graficos [7] = "src\\GUI\\Sprites Disparos\\Sprites Espadazo\\EspadazoIzquierda.png";
 	}
 	
-	public void setGrafico(Posicion p) { //Necesito el grafico del espadazo en sus 8 variaciones
+	public void setGrafico(Posicion p) {
 		miGrafico = new EntidadGraficaAtaque (Graficos, p);
 	}
 

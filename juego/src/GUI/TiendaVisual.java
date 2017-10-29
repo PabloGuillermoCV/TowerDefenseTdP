@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -132,7 +133,7 @@ public class TiendaVisual extends JPanel {
         botones [7] = new BotonArmadura ();
         OyenteBotonArmadura O7 = new OyenteBotonArmadura ();
         botones [7].addActionListener (O7);
-        
+         
         for (int i = 0; i < 8; i++) {
     		add (botones [i]);
     	}
@@ -182,6 +183,7 @@ public class TiendaVisual extends JPanel {
 	public void modificarPuntaje () {
 		displayMonedas.setText ("Puntos: " + P.getPuntos ());
 	}
+	
 	
 	private class OyenteBotonSoldado implements ActionListener {
 		public void actionPerformed (ActionEvent E) {
