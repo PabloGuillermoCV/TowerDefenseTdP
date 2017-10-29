@@ -33,6 +33,7 @@ public abstract class Proyectil {
 				if(y1 > y2) { //la Posicion del disparador es mayor que la del disparado en Y
 					posActual.setX(posActual.getX() - velocidadMovimiento);
 					posActual.setY(posActual.getY() - velocidadMovimiento);
+					System.out.println(posActual + " " + velocidadMovimiento);
 					miGrafico.moverA(posActual, velocidadMovimiento);  //una vez que me moví lógicamente, le digo a mi entidad gráfica que se mueva
 					//acá, el disparado estaria en el segundo cuadrante de coordenadas
 				}
@@ -71,6 +72,4 @@ public abstract class Proyectil {
 	 * @param p posicion inicial de la gráfica
 	 */
 	public abstract void setGrafico(Posicion p);
-	
-	public abstract Proyectil clone(Posicion p);
 }

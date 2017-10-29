@@ -46,16 +46,7 @@ public abstract class Controlable extends Personaje {
 	 * metodo de visitor que permite a un controlable atacar una unidad concreta
 	 * @param E enemigo a atacar
 	 */
-	public void atacar(Enemigo E){
-		Proyectil municion = miBala.clone(pos);
-		municion.volarAPosicion(E.getPos());
-		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		if (E.getEstado().getVida() <= 0) {
-			E.morir();
-		}
-		 //calculo que esto no va ya que el nvel se encarga de verificar
-			//si los enemigos murieron
-	}
+	public abstract void atacar(Enemigo E);
 	
 	public Enemigo verificarUnidad() {
 		Enemigo ret = null;

@@ -2,7 +2,10 @@ package Enemigos;
 
 import entidades.Disparos.Flecha;
 import Logica.Posicion;
+import Objetos.ObjResistente.Roca;
+import entidades.Controlable;
 import entidades.Enemigo;
+import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
 
 public class ConArco extends Enemigo {
@@ -23,6 +26,20 @@ public class ConArco extends Enemigo {
 	public ConArco (Posicion pos) {
 		super ("ConArco", pos, 200, 5, 100, 125, 5, false, 2500);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConArco.gif",pos);
-		miBala = new Flecha(pos);
+	}
+
+	@Override
+	public void atacar(Controlable C) {
+		Proyectil municion = new Flecha(pos);
+		municion.volarAPosicion(C.getPos());
+		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
+		
+	}
+
+	@Override
+	public void atacar(Roca R) {
+		Proyectil municion = new Flecha(pos);
+		municion.volarAPosicion(R.getPos());
+		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 		
 	}
 }

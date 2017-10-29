@@ -25,11 +25,4 @@ public class Flecha extends Proyectil {
 	public void setGrafico (Posicion p) {
 		miGrafico = new EntidadGraficaAtaque (Graficos, p);
 	}
-
-	public Proyectil clone (Posicion p) {
-		Proyectil ret = new Flecha(p);
-		ret.setGrafico (p);
-		posActual = new Posicion(p.getX(),p.getY());
-		return ret;
-	}
 }

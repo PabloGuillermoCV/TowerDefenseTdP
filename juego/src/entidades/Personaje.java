@@ -9,7 +9,6 @@ public abstract class Personaje extends Entidad {
 	
 	protected Estado miEstadoActual;
 	protected int Alcance;
-	protected Proyectil miBala;
 	protected MapaLogico miMapa;
 	
 	public Personaje (String Nombre, Posicion Pos, int Vida, int Alcance, 

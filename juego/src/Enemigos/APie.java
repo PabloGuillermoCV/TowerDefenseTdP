@@ -2,7 +2,10 @@ package Enemigos;
 
 import entidades.Disparos.Espadazo;
 import Logica.Posicion;
+import Objetos.ObjResistente.Roca;
+import entidades.Controlable;
 import entidades.Enemigo;
+import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaEnemigo;
 
 public class APie extends Enemigo {
@@ -22,8 +25,23 @@ public class APie extends Enemigo {
 	
 	public APie (Posicion pos) {
 		super ("APie", pos, 50, 1, 50, 100, 5, false, 1000);
-		miBala = new Espadazo(pos);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\APie.gif",pos);
+	}
+
+	@Override
+	public void atacar(Controlable C) {
+		Proyectil municion = new Espadazo(pos);
+		municion.volarAPosicion(C.getPos());
+		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
+		
+	}
+
+	@Override
+	public void atacar(Roca R) {
+		Proyectil municion = new Espadazo(pos);
+		municion.volarAPosicion(R.getPos());
+		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
+		
 	}
 
 }

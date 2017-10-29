@@ -3,6 +3,8 @@ package Controlables;
 import entidades.Disparos.Espadazo;
 import Logica.Posicion;
 import entidades.Controlable;
+import entidades.Enemigo;
+import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class Soldado extends Controlable {
@@ -23,6 +25,13 @@ public class Soldado extends Controlable {
 	public Soldado (Posicion pos) {
 		super ("Soldado", pos, 100, 1, 50, 100, 200, 4);
 		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif",pos);
-		miBala = new Espadazo(pos);
+	}
+
+	@Override
+	public void atacar(Enemigo E) {
+		Proyectil municion = new Espadazo(pos);
+		municion.volarAPosicion(E.getPos());
+		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
+		
 	}
 }
