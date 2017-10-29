@@ -8,7 +8,8 @@ public class CargaCatapulta extends Proyectil {
 	
 	private String [] Graficos;
 
-	public CargaCatapulta () {
+	public CargaCatapulta (Posicion pos) {
+		super (pos);
 		velocidadMovimiento = 4;
 		Graficos = new String [8];
 		Graficos [0] = "src\\GUI\\Sprites Disparos\\Sprites Carga Catapulta\\CargaCatapultaAbajo.png";
@@ -26,7 +27,7 @@ public class CargaCatapulta extends Proyectil {
 	}
 
 	public Proyectil clone (Posicion p) {
-		Proyectil ret = new CargaCatapulta();
+		Proyectil ret = new CargaCatapulta(p);
 		ret.setGrafico(p);
 		posActual = new Posicion(p.getX(),p.getY());
 		return ret;

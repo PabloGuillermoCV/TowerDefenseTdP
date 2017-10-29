@@ -8,7 +8,8 @@ public class Flecha extends Proyectil {
 	
 	private String [] Graficos;
 	
-	public Flecha () {
+	public Flecha (Posicion pos) {
+		super (pos);
 		velocidadMovimiento = 5;
 		Graficos = new String [8];
 		Graficos [0] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaAbajo.png";
@@ -26,7 +27,7 @@ public class Flecha extends Proyectil {
 	}
 
 	public Proyectil clone (Posicion p) {
-		Proyectil ret = new Flecha();
+		Proyectil ret = new Flecha(p);
 		ret.setGrafico (p);
 		posActual = new Posicion(p.getX(),p.getY());
 		return ret;

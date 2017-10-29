@@ -9,7 +9,8 @@ import GUI.GUI;
 
 public class OyenteOleada implements ActionListener {
 
-		private  JButton ol;
+		private JButton ol;
+		@SuppressWarnings("unused")
 		private GUI juego;
 		
 		public OyenteOleada(JButton o, GUI jue){

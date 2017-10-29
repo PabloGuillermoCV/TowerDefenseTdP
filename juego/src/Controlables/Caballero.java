@@ -22,7 +22,7 @@ public class Caballero extends Controlable {
 	public Caballero (Posicion pos) {
 		super ("Caballero", pos, 50, 2, 75, 90, 500, 9);
 		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif",pos);
-		miBala = new Espadazo();
+		miBala = new Espadazo(pos);
 	}
 
 }

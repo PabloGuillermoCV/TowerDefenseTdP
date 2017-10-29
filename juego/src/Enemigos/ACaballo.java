@@ -22,7 +22,7 @@ public class ACaballo extends Enemigo {
 	
 	public ACaballo (Posicion pos) {
 		super ("ACaballo", pos, 200, 2, 100, 90, 6, false, 5000);
-		miBala = new Espadazo();
+		miBala = new Espadazo(pos);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ACaballo.gif",pos);
 	}
 

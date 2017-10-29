@@ -8,7 +8,8 @@ public class Espadazo extends Proyectil {
 	
 	private String [] Graficos;
 	
-	public Espadazo () {
+	public Espadazo (Posicion pos) {
+		super (pos);
 		velocidadMovimiento = 10;
 		Graficos = new String [8];
 		Graficos [0] = "src\\GUI\\Sprites Disparos\\Sprites Espadazo\\EspadazoAbajo.png";
@@ -26,7 +27,7 @@ public class Espadazo extends Proyectil {
 	}
 
 	public Proyectil clone (Posicion p) {
-		Proyectil ret = new Espadazo();
+		Proyectil ret = new Espadazo(p);
 		ret.setGrafico(p);
 		posActual = new Posicion(p.getX(),p.getY());
 		return ret;

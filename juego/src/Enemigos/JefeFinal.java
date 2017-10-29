@@ -23,6 +23,6 @@ public class JefeFinal extends Enemigo {
 	public JefeFinal (Posicion pos) {
 		super ("JefeFinal", pos, 500, 2, 250, 500, 7, false, 10000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\JefeFinal.gif",pos);
-		miBala = new Espadazo();
+		miBala = new Espadazo(pos);
 	}
 }

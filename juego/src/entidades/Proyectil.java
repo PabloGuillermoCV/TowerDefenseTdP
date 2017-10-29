@@ -11,6 +11,10 @@ public abstract class Proyectil {
 	protected Posicion posActual;
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	
+	public Proyectil (Posicion posActual) {
+		this.posActual = posActual;
+	}
+	
 	/**
 	 * metodo que le dice al proyectil donde debe viajar 
 	 * @param p posicion a donde ir
