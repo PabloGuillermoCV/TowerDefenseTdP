@@ -17,6 +17,7 @@ public class Camino1 implements Camino {
 	
 	public void generarCamino () {
 		//Inicio Camino A
+		PosClave.add (new Posicion (0,0));
 		Caminos.add (new Posicion (0,0));
 		Caminos.add (new Posicion (20,0));
 		Caminos.add (new Posicion (20,20));
@@ -27,6 +28,7 @@ public class Camino1 implements Camino {
 		PosClave.add (new Posicion (60,60));
 		//Fin Camino A
 		//Inicio Camino B1
+		PosClave.add (new Posicion (80,60));
 		Caminos.add (new Posicion (80,60));
 		Caminos.add (new Posicion (100,60));
 		Caminos.add (new Posicion (100,80));
@@ -48,6 +50,7 @@ public class Camino1 implements Camino {
 		PosClave.add (new Posicion (340,140));
 		//Fin Camino B1
 		//Inicio Camino B2
+		PosClave.add (new Posicion (60,80));
 		Caminos.add (new Posicion (60,80));
 		Caminos.add (new Posicion (60,100));
 		Caminos.add (new Posicion (60,120));
@@ -92,6 +95,7 @@ public class Camino1 implements Camino {
 		Caminos.add (new Posicion (460,220));
 		Caminos.add (new Posicion (460,240));
 		Caminos.add (new Posicion (460,260));
+		PosClave.add (new Posicion (460,260));
 		//Fin Camino C
 		//(460,260) Es Donde Desaparecen Al Llegar Al Castillo
 	}

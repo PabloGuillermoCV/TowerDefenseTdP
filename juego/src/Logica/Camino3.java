@@ -16,7 +16,14 @@ public class Camino3 implements Camino {
 	}
 
 	public void generarCamino () {
-		
+		//Inicio Camino A
+		//Fin Camino A
+		//Inicio Camino B1
+		//Fin Camino B1
+		//Inicio Camino B2
+		//Fin Camino B2
+		//Inicio Camino C
+		//Fin Camino C
 	}
 
 	public boolean perteneceAlCamino (Posicion pos) {
