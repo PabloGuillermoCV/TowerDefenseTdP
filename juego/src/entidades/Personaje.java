@@ -2,6 +2,7 @@ package entidades;
 
 import Logica.MapaLogico;
 import Logica.Posicion;
+import Objetos.ObjsDeLaTienda.Explosivo;
 import entidades.Estados.Estado;
 import entidades.Estados.EstadoNormal;
 
@@ -31,5 +32,10 @@ public abstract class Personaje extends Entidad {
 	
 	public void setEstado (Estado e) {
 		miEstadoActual = e;
+	}
+	
+	
+	public void serAtacado(Explosivo E){
+		E.Atacar(this);
 	}
 }

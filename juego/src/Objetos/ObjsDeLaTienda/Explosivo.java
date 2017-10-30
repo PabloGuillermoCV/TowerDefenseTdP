@@ -1,9 +1,11 @@
 package Objetos.ObjsDeLaTienda;
 
 import entidades.ObjDeLaTienda;
+import entidades.Personaje;
 
 public class Explosivo extends ObjDeLaTienda {
 	
+	protected int Daño = 50;
 	protected int Rango;
 	
 	public Explosivo () {
@@ -12,4 +14,9 @@ public class Explosivo extends ObjDeLaTienda {
 	}
 	
 	public void Afectar () {}
+
+	public void Atacar(Personaje personaje) {
+		personaje.getEstado().setVida(personaje.getEstado().getVida() - Daño);
+		
+	}
 }

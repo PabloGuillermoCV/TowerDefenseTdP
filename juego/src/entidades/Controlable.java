@@ -2,6 +2,7 @@ package entidades;
 
 import Logica.Celda;
 import Logica.Posicion;
+import Objetos.ObjsDeLaTienda.Explosivo;
 
 public abstract class Controlable extends Personaje {
 	protected int Precio;
