@@ -65,6 +65,7 @@ public class ContadorTiempo extends Thread {
 				clip.open (audioInputStream);
 				clip.start ();
 			}
+<<<<<<< HEAD
 		}
 		-<<<<<<< HEAD
 		=======
@@ -77,6 +78,8 @@ public class ContadorTiempo extends Thread {
 				}
 		>>>>>>> 42de22c5cb26e647602b461befa1fa7d9e618853
 			}
+=======
+>>>>>>> da10a520f69cf5d76e93d02af5052e2d310a0639
 		}
 		catch (LineUnavailableException|IOException e) {
 			e.printStackTrace ();

@@ -1,10 +1,15 @@
 package Logica;
+<<<<<<< HEAD
 -<<<<<<< HEAD
 =======
 
 import java.util.Iterator;
 >>>>>>> 42de22c5cb26e647602b461befa1fa7d9e618853
 import java.util.Iterator;
+=======
+
+import java.util.Iterator;
+>>>>>>> da10a520f69cf5d76e93d02af5052e2d310a0639
 import GUI.*;
 import entidades.Controlable;
 
