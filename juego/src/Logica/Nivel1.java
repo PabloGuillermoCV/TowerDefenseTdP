@@ -28,7 +28,6 @@ public class Nivel1 extends Nivel {
 		return mapaLogico;
 	}
 	
-	@Override
 	public void siguienteNivel() {
 		Nivel sig = new Nivel2(miGui);
 		sig.generarListaEnemigos();

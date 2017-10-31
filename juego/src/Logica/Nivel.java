@@ -1,5 +1,7 @@
 package Logica;
 
+import java.util.Iterator;
+
 import GUI.*;
 import entidades.Controlable;
 import entidades.Enemigo;
@@ -30,38 +32,38 @@ public abstract class Nivel {
 		}
 	}
 	
-	public void moverEnemigos(){
-		for (Enemigo e : mapaLogico.getListaEnemigos ()) {
-			e.Mover();
+	public void moverEnemigos () {
+		Iterator <Enemigo> it = mapaLogico.getListaEnemigos ().iterator ();
+		while (it.hasNext ()) {
+			Enemigo e = it.next ();
+			e.Mover ();
 			try {
-				Thread.sleep(100); //si mi teoria es correcta, esto haria que las unidades se muevan con cierta distancia entre ellas
+				Thread.sleep (100); //si mi teoria es correcta, esto haria que las unidades se muevan con cierta distancia entre ellas
 									//Mi teoria era 75% correcta, genera una separación, pero despues se vuelven a juntar
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
 			}
-		}	
+			catch (InterruptedException e1) {
+				e1.printStackTrace ();
+			}
+		}
 	}
+	
 	/**
 	 * genera la lista de enemigos que van a estar en el nivel
 	 */
-	protected abstract void generarListaEnemigos();
+	protected abstract void generarListaEnemigos ();
 	
-	public abstract MapaLogico getMapa();
+	public abstract MapaLogico getMapa ();
 	
 	/**
 	 * Metodo que devuelve la TiendaLogica asociada
 	 * @return TiendaLogica del  nivel (seria única, por eso la mandé para arriba)
 	 */
-	public  TiendaLogica getTienda(){
+	public  TiendaLogica getTienda () {
 		return tiendaLogica;
 	}
 	
 	/**
 	 * Metodo que modifica la ventana para pasar al siguiente Nivel
 	 */
-	public abstract void siguienteNivel();
-	
-	
-	
-	
+	public abstract void siguienteNivel ();
 }
