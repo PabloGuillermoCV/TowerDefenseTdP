@@ -31,8 +31,7 @@ public class Catapulta extends Controlable {
 
 	@Override
 	public void atacar(Enemigo E) {
-		Proyectil municion = new CargaCatapulta(pos);
-		municion.volarAPosicion(E.getPos());
+		Proyectil municion = new CargaCatapulta(pos,E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 		
 	}

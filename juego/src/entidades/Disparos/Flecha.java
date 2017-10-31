@@ -8,9 +8,9 @@ public class Flecha extends Proyectil {
 	
 	private String [] Graficos;
 	
-	public Flecha (Posicion pos) {
-		super (pos);
-		velocidadMovimiento = 5;
+	public Flecha (Posicion posI, Posicion posF) {
+		super (posI, posF);
+		velocidadMovimiento = 10;
 		Graficos = new String [8];
 		Graficos [0] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaAbajo.png";
 		Graficos [1] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaAbajoDerecha.png";
@@ -20,7 +20,10 @@ public class Flecha extends Proyectil {
 		Graficos [5] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaArribaIzquierda.png";
 		Graficos [6] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaDerecha.png";
 		Graficos [7] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaIzquierda.png";
-		miGrafico = new EntidadGraficaAtaque(Graficos, pos);
+		miGrafico = new EntidadGraficaAtaque(Graficos, posI);
+		miThread = miThread.getInstance();
+		miThread.agregarProyectil(this);
+		miThread.notify();
 	}
 	
 	public void setGrafico (Posicion p) {

@@ -30,16 +30,14 @@ public class ACaballo extends Enemigo {
 
 	@Override
 	public void atacar(Controlable C) {
-		Proyectil municion = new Espadazo(pos);
-		municion.volarAPosicion(C.getPos());
+		Proyectil municion = new Espadazo(pos,C.getPos());
 		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
 		
 	}
 
 	@Override
 	public void atacar(Roca R) {
-		Proyectil municion = new Espadazo(pos);
-		municion.volarAPosicion(R.getPos());
+		Proyectil municion = new Espadazo(pos,R.getPos());
 		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
 		
 	}

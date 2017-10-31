@@ -1,5 +1,6 @@
 package entidades;
 
+import GUI.VueloProyectiles;
 import Logica.Posicion;
 import entidades.EntidadesGraficas.EntidadGraficaAtaque;
 
@@ -7,27 +8,34 @@ public abstract class Proyectil {
 
 	//que tan rápido se mueve el proyectil
 	protected int velocidadMovimiento;
+	protected VueloProyectiles miThread;
 	protected EntidadGraficaAtaque miGrafico;
 	protected Posicion posActual;
-	protected boolean block;
+	protected Posicion posFinal;
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	
-	public Proyectil (Posicion posActual) {
+	public Proyectil (Posicion posActual, Posicion posFinal) {
 		this.posActual = posActual;
+		this.posFinal = posFinal;
 	}
 	
 	/**
-	 * metodo que le dice al proyectil donde debe viajar 
-	 * @param p posicion a donde ir
+	 * Metodo que se encarga de mover el proyectil de a un paso
 	 * NOTA: Esto se hace en un contexto lógico
 	 */
-	public boolean volarAPosicion(Posicion p){
-		while(posActual.getX() != p.getX() || posActual.getY() != p.getY()) {
+	public void volar(){
 			System.out.println("estoy volando logicamente");
 			int x1 = posActual.getX();
 			int y1 = posActual.getY();
-			int x2 = p.getX();
-			int y2 = p.getY();
+			int x2 = posFinal.getX();
+			int y2 = posFinal.getY();
+			
+			if(miGrafico == null)
+				System.out.println("Grafico nulo");
+			if(posActual == null)
+				System.out.println("Posicion Nula");
+			if(velocidadMovimiento == 0)
+				System.out.println("Velocidad Nula");
 			
 			int or = calcularOrientacion(x1,y1,x2,y2);
 			
@@ -100,10 +108,9 @@ public abstract class Proyectil {
 				}
 			}
 			*/
+		if(posActual.equals(posFinal)) {
+			this.Morir();
 		}
-		
-		miGrafico.Morir(); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
-		return false;
 	}
 	
 	public void setPosicion(Posicion p) {
@@ -115,7 +122,15 @@ public abstract class Proyectil {
 	 */
 	public abstract void setGrafico(Posicion p);
 	
+	private void Morir() {
+		miThread.eliminarProyectil(this);
+		miThread = null;
+		posActual = null;
+		posFinal = null;
+		miGrafico.Morir(); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
+		miGrafico = null;
 	
+	}
 	//NOTA: asumo que la posicion donde el proyectil apunta hacia derecha es la posicion 1 del sprite y de ahi las demas se calculan siguiendo las agujas del reloj
 		/**
 		 * metodo que calcula como debe apuntar el sprite

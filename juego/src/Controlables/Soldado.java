@@ -29,8 +29,7 @@ public class Soldado extends Controlable {
 
 	@Override
 	public void atacar(Enemigo E) {
-		Proyectil municion = new Espadazo(pos);
-		municion.volarAPosicion(E.getPos());
+		Proyectil municion = new Espadazo(pos,E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 		
 	}

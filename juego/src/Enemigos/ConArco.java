@@ -30,16 +30,14 @@ public class ConArco extends Enemigo {
 
 	@Override
 	public void atacar(Controlable C) {
-		Proyectil municion = new Flecha(pos);
-		municion.volarAPosicion(C.getPos());
+		Proyectil municion = new Flecha(pos,C.getPos());
 		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
 		
 	}
 
 	@Override
 	public void atacar(Roca R) {
-		Proyectil municion = new Flecha(pos);
-		municion.volarAPosicion(R.getPos());
+		Proyectil municion = new Flecha(pos,R.getPos());
 		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 		
 	}
 }

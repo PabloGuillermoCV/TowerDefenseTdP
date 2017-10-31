@@ -8,8 +8,8 @@ public class Espadazo extends Proyectil {
 	
 	private String [] Graficos;
 	
-	public Espadazo (Posicion pos) {
-		super (pos);
+	public Espadazo (Posicion posI, Posicion posF) {
+		super (posI, posF);
 		velocidadMovimiento = 10;
 		Graficos = new String [8];
 		Graficos [0] = "src\\GUI\\Sprites Disparos\\Sprites Espadazo\\EspadazoAbajo.png";
@@ -20,6 +20,10 @@ public class Espadazo extends Proyectil {
 		Graficos [5] = "src\\GUI\\Sprites Disparos\\Sprites Espadazo\\EspadazoArribaIzquierda.png";
 		Graficos [6] = "src\\GUI\\Sprites Disparos\\Sprites Espadazo\\EspadazoDerecha.png";
 		Graficos [7] = "src\\GUI\\Sprites Disparos\\Sprites Espadazo\\EspadazoIzquierda.png";
+		miGrafico = new EntidadGraficaAtaque(Graficos, posI);
+		miThread = miThread.getInstance();
+		miThread.agregarProyectil(this);
+		miThread.notify();
 	}
 	
 	public void setGrafico(Posicion p) {
