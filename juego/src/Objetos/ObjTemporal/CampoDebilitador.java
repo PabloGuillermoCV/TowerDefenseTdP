@@ -10,7 +10,5 @@ public class CampoDebilitador extends ObjetoTemporal {
 		grafico = new EntidadGraficaNoEnemigo ("src\\Objetos\\ObjTemporal\\Sprites Temporales\\CampoDebilitador.png",Pos);
 	}
 
-	public void Afectar () {
-		
-	}
+	public void Afectar () {}
 }

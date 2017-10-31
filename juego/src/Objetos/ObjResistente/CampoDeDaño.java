@@ -10,7 +10,5 @@ public class CampoDeDaño extends ObjetoResistente {
 		grafico = new EntidadGraficaNoEnemigo ("src\\Objetos\\ObjResistente\\Sprites Resistentes\\CampoDeDaño.png",Pos);
 	}
 
-	public void Afectar () {
-		
-	}
+	public void Afectar () {}
 }

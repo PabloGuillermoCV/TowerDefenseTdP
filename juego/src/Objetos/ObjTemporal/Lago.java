@@ -12,7 +12,5 @@ public class Lago extends ObjetoTemporal {
 	}
 
 	//Este metodo serviria para modificar los estados de los enemigos que caminan?
-	public void Afectar () {
-		
-	}
+	public void Afectar () {}
 }

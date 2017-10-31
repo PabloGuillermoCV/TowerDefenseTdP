@@ -48,13 +48,10 @@ public class GUI extends JFrame {
 		oleada.addActionListener(new OyenteOleada(oleada, Instancia));
 		P = Jugador.InstanciaJugador ();
 		
-		
-		
 		this.getContentPane ().add (mapa);
 		this.getContentPane ().add (shop);
 		getContentPane().add (mapa);
 		getContentPane().add (shop);
-		
 	
 		nivel = new Nivel1 (this);
 		cont = new ContadorTiempo(nivel);

@@ -1,19 +1,16 @@
 package Objetos.PowerUpsDelMapa;
 
 import Logica.Posicion;
-import entidades.Enemigo;
 import entidades.Objeto;
+import entidades.Personaje;
 
 public abstract class PowerUpDelMapa extends Objeto {
 	
-	protected Enemigo ContieneEnemigo;
-	
-	public PowerUpDelMapa (String Nombre, Posicion Pos, Enemigo ContieneEnemigo) {
+	public PowerUpDelMapa (String Nombre, Posicion Pos) {
 		super (Nombre,Pos);
-		this.ContieneEnemigo = ContieneEnemigo;
 	}
 	
-	public Enemigo getEnem () {
-		return ContieneEnemigo;
-	}
+	public void Afectar () {}
+	
+	public abstract void Afectar (Personaje P);
 }
