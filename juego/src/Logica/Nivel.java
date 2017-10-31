@@ -1,5 +1,4 @@
 package Logica;
-
 import GUI.*;
 import entidades.Controlable;
 import entidades.Enemigo;

@@ -29,7 +29,7 @@ public class ContadorTiempo extends Thread {
 				nivel.moverEnemigos();
 				Thread.sleep (1000);
 				nivel.InteraccionControlableEnemigo();
-				
+							
 			} catch (InterruptedException e) {
 				System.out.println("error en el thread");
 				e.printStackTrace();
@@ -58,6 +58,5 @@ public class ContadorTiempo extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 	}
 }
