@@ -1,9 +1,6 @@
 package Logica;
-<<<<<<< HEAD
-=======
 
 import java.util.Iterator;
->>>>>>> 42de22c5cb26e647602b461befa1fa7d9e618853
 import GUI.*;
 import entidades.Controlable;
 import entidades.Enemigo;
