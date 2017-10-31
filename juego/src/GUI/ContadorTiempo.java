@@ -2,7 +2,6 @@ package GUI;
 
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -28,7 +27,6 @@ public class ContadorTiempo extends Thread {
 		while(!nivel.getMapa().getListaEnemigos().isEmpty()){
 			try {
 				nivel.moverEnemigos();
-				//System.out.println("estoy en ContadorTiempo");
 				Thread.sleep (1000);
 				nivel.InteraccionControlableEnemigo();
 				

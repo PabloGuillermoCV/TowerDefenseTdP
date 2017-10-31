@@ -21,6 +21,7 @@ public abstract class EntidadGrafica { //En este paquete estarán todos los gráfi
 		this.grafico.setVisible (true);
 	}
 	
+	public abstract void moverA (Posicion pos, int vel, int orientacion);
 	public abstract void moverA (Posicion pos, int vel);
 	
 	public JLabel getGrafico () {

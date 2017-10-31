@@ -20,6 +20,7 @@ public class Flecha extends Proyectil {
 		Graficos [5] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaArribaIzquierda.png";
 		Graficos [6] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaDerecha.png";
 		Graficos [7] = "src\\GUI\\Sprites Disparos\\Sprites Flecha\\FlechaIzquierda.png";
+		miGrafico = new EntidadGraficaAtaque(Graficos, pos);
 	}
 	
 	public void setGrafico (Posicion p) {

@@ -69,4 +69,6 @@ public class EntidadGraficaEnemigo  extends EntidadGrafica {
 			e.printStackTrace ();
 		}
 	}
+	
+	public void moverA (Posicion pos, int vel, int orientacion) {}
 }

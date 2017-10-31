@@ -9,4 +9,7 @@ public class EntidadGraficaNoEnemigo extends EntidadGrafica {
 	}
 
 	public void moverA (Posicion pos, int vel) {}
+
+	@Override
+	public void moverA(Posicion pos, int vel, int orientacion) {}
 }

@@ -9,6 +9,7 @@ public abstract class Proyectil {
 	protected int velocidadMovimiento;
 	protected EntidadGraficaAtaque miGrafico;
 	protected Posicion posActual;
+	protected boolean block;
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	
 	public Proyectil (Posicion posActual) {
@@ -21,19 +22,59 @@ public abstract class Proyectil {
 	 * NOTA: Esto se hace en un contexto lógico
 	 */
 	public boolean volarAPosicion(Posicion p){
-		while(posActual.getX() != p.getX() && posActual.getY() != p.getY()) {
+		while(posActual.getX() != p.getX() || posActual.getY() != p.getY()) {
+			System.out.println("estoy volando logicamente");
 			int x1 = posActual.getX();
 			int y1 = posActual.getY();
 			int x2 = p.getX();
 			int y2 = p.getY();
 			
-			//int or = calcularOrientacion(x1,y1,x2,y2);´//1 a 8
+			int or = calcularOrientacion(x1,y1,x2,y2);
 			
+			switch(or){
+				case 0:
+					this.posActual.setX(this.posActual.getX() + velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,0);
+					break;
+				case 1:
+					posActual.setX(posActual.getX() + velocidadMovimiento);
+					posActual.setY(posActual.getY() + velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,1);
+					break;
+				case 2:
+					posActual.setY(posActual.getY() + velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,2);
+					break;
+				case 3:
+					posActual.setX(posActual.getX() - velocidadMovimiento);
+					posActual.setY(posActual.getY() + velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,3);
+					break;
+				case 4:
+					posActual.setX(posActual.getX() - velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,4);
+					break;
+				case 5:
+					posActual.setX(posActual.getX() - velocidadMovimiento);
+					posActual.setY(posActual.getY() - velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,5);
+					break;
+				case 6:
+					posActual.setY(posActual.getY() - velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,6);
+					break;
+				case 7:
+					posActual.setX(posActual.getX() + velocidadMovimiento);
+					posActual.setY(posActual.getY() - velocidadMovimiento);
+					miGrafico.moverA(posActual, velocidadMovimiento,7);
+					break;
+					
+			}
+			/*
 			if(x1 > x2) { //la Posicion del disparador es mayor que la del disparado en X
 				if(y1 > y2) { //la Posicion del disparador es mayor que la del disparado en Y
 					posActual.setX(posActual.getX() - velocidadMovimiento);
 					posActual.setY(posActual.getY() - velocidadMovimiento);
-					System.out.println(posActual + " " + velocidadMovimiento);
 					miGrafico.moverA(posActual, velocidadMovimiento);  //una vez que me moví lógicamente, le digo a mi entidad gráfica que se mueva
 					//acá, el disparado estaria en el segundo cuadrante de coordenadas
 				}
@@ -58,6 +99,7 @@ public abstract class Proyectil {
 					miGrafico.moverA(posActual, velocidadMovimiento);
 				}
 			}
+			*/
 		}
 		
 		miGrafico.Morir(); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
@@ -72,4 +114,58 @@ public abstract class Proyectil {
 	 * @param p posicion inicial de la gráfica
 	 */
 	public abstract void setGrafico(Posicion p);
+	
+	
+	//NOTA: asumo que la posicion donde el proyectil apunta hacia derecha es la posicion 1 del sprite y de ahi las demas se calculan siguiendo las agujas del reloj
+		/**
+		 * metodo que calcula como debe apuntar el sprite
+		 * @param x1 coordenada x inicial
+		 * @param y1 coordenada y inicial
+		 * @param x2 coordenada x destino
+		 * @param y2 coordenada y destino
+		 * @return numero entre 0 a 7 que será usado en el arreglo de sprites
+		 */
+		private int calcularOrientacion(int x1, int y1, int x2, int y2) {
+			int ret = 1; //default
+			if(x1 == x2 && y1 != y2){
+				if(y1 < y2){ //estoy sobre el eje Y positivo (Recordar que acá las coordenadas suben para abajo)
+					ret = 3;
+				}
+				else{
+					ret = 7; //estoy sobre el eje Y negativo
+				}	
+			}
+			else{
+				if(x1 != x2 && y1 == y2){
+					if(x1 < x2){ //estoy en el eje X positivo
+						ret = 1;
+					}
+					else
+						ret = 5;
+				}
+				else{ //las cooredenadas pueden ser totalmente distintas o totalmente iguales
+					if(x1 != x2 && y1 != y2){
+						if(x1 < x2 && y1 < y2){ //estoy en la diagonal del cuarto cuadrante
+							ret = 2;
+						}
+						else{
+							if(x1 > x2 && y1 < y2){ //estoy en la diagonal del tercer cuadrante
+								ret = 4;
+							}
+							else{
+								if(x1 > x2 && y1 > y2){ //estoy en la diagonal del 2do cuadrante
+									ret = 6;
+								}
+								else
+									ret = 8; //si despues de todo terminé acá, es porque estoy en la diagonal del primer cuadrante
+							}
+						}
+							
+					}
+					
+				}
+			}
+			return ret - 1; //le resto 1 para no caerme del arreglo cuando el sprite levante este numero
+		}
+
 }
