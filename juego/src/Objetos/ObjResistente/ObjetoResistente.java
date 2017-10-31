@@ -1,6 +1,8 @@
-package entidades;
+package Objetos.ObjResistente;
 
 import Logica.Posicion;
+import entidades.Objeto;
+import entidades.Personaje;
 
 public abstract class ObjetoResistente extends Objeto {
 	

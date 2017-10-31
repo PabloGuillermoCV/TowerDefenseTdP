@@ -3,7 +3,7 @@ package Creadores.CreadoresLogicos;
 import Controlables.Arquero;
 import Logica.Posicion;
 import entidades.Controlable;
-import entidades.ObjDeLaTienda;
+import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 
 public class CreadorArqueroLogico implements FactoryLogica {
 	

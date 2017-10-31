@@ -1,19 +1,31 @@
 package Logica;
 
+import GUI.GUI;
+
 public class Nivel3 extends Nivel {
-
-	protected void generarListaEnemigos() {
+	
+	public Nivel3 (GUI gui) {
+		miGui = gui;
+		posInicialEnemies = new Posicion (440,300);
+		posFinalEnemies = new Posicion (140,120);
+		direccionMapa = "src\\GUI\\Sprites Mapas\\Mapa3.png";
+		mapaLogico = MapaLogico.InstanciaMapaLogico ();
+		mapaLogico.setMapaVisual (miGui.getMapaVisual());
+		mapaLogico.generarCaminoA (posFinalEnemies);
+		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
+		fabrica = new FabricaEnemigos ();
+		
+		generarListaEnemigos ();
+	}
+	
+	protected void generarListaEnemigos () {
 		
 	}
 
-	public MapaLogico getMapa() {
-		return null;
-	}
-
-
-	@Override
-	public void siguienteNivel() {
-		//decirle al usuario que ha completado el juego
-		
+	public void siguienteNivel () {
+		//Final Del Juego
+		Nivel sig = new Nivel3 (miGui);
+		sig.generarListaEnemigos();
+		miGui.setNivel (sig);
 	}
 }

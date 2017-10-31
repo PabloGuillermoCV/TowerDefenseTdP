@@ -20,9 +20,10 @@ public class MapaLogico {
 	private static MapaLogico Instancia;
 	private Celda [][] matriz;
 	private static int tamaño = 20;
-	private static int width=500;
-	private static int height =320;
+	private static int width = 500;
+	private static int height = 320;
 	private Camino miCamino;
+	private Jugador P;
 	
 	/**
 	 * constructor : inicializa la matriz de Celdas con un total de (el Ancho del Mapa)/20 por
@@ -40,6 +41,7 @@ public class MapaLogico {
 		miCamino = new Camino1 ();
 		enemigos = new LinkedList<Enemigo>();
 		unidadesEnMapa = new LinkedList<Controlable>();
+		P = Jugador.InstanciaJugador ();
 	}
 	
 	public static MapaLogico InstanciaMapaLogico () {
@@ -74,6 +76,10 @@ public class MapaLogico {
 	
 	public Camino getCamino () {
 		return miCamino;
+	}
+	
+	public Jugador getJugador () {
+		return P;
 	}
 	
 	public void generarCaminoA (Posicion pos) {
@@ -184,5 +190,12 @@ public class MapaLogico {
 	public void eliminarControlable(Controlable c) {
 		getCelda(c.getPos().getX(),c.getPos().getY()).eliminarControlable(c);
 		unidadesEnMapa.remove(c);
+	}
+	
+	public void restarVida () {
+		P.restarVida ();
+		if (P.getVidas () == 0) {
+			//Estado Perder
+		}
 	}
 }
