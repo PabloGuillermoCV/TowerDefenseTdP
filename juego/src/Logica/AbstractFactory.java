@@ -3,16 +3,16 @@ package Logica;
 import entidades.*;
 
 public interface AbstractFactory {
-	public Enemigo crearAPie();
 	
-	public Enemigo crearACaballo();
+	public Enemigo crearAPie (Posicion P);
 	
-	public Enemigo crearConArmadura();
+	public Enemigo crearACaballo (Posicion P);
 	
-	public Enemigo crearConArco();
+	public Enemigo crearConArmadura (Posicion P);
 	
-	public Enemigo crearConBallesta();
+	public Enemigo crearConArco (Posicion P);
 	
-	public Enemigo crearJefeFinal();
+	public Enemigo crearConBallesta (Posicion P);
 	
+	public Enemigo crearJefeFinal (Posicion P);
 }

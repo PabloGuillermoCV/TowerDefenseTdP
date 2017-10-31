@@ -1,6 +1,7 @@
-package entidades;
+package Objetos.ObjTemporal;
 
 import Logica.Posicion;
+import entidades.Objeto;
 
 public abstract class ObjetoTemporal extends Objeto {
 	

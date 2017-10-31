@@ -1,6 +1,7 @@
-package entidades;
+package Objetos.ObjsDeLaTienda;
 
 import Logica.Posicion;
+import entidades.Objeto;
 
 public abstract class ObjDeLaTienda extends Objeto {
 	

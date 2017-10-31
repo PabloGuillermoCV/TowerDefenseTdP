@@ -17,6 +17,7 @@ public class GUI extends JFrame {
 	private TiendaVisual shop;
 	private Nivel nivel;
 	private ContadorTiempo cont;
+	private Jugador P;
 	
 	/**
 	 * Launch the application.
@@ -45,14 +46,12 @@ public class GUI extends JFrame {
 		mapa.setGUI (this);
 		oleada = new JButton("Empezar Oleada");
 		oleada.addActionListener(new OyenteOleada(oleada, Instancia));
-		
-		
+		P = Jugador.InstanciaJugador ();
 		
 		this.getContentPane ().add (mapa);
 		this.getContentPane ().add (shop);
 		getContentPane().add (mapa);
 		getContentPane().add (shop);
-		
 	
 		nivel = new Nivel1 (this);
 		cont = new ContadorTiempo(nivel);
@@ -81,17 +80,20 @@ public class GUI extends JFrame {
 	public JFrame getVentana () {
 		return ventana;
 	}
+	
+	public Jugador getJugador () {
+		return P;
+	}
 
 	/**
 	 * metodo que cambia el nivel (en lógica, más o menos?)
 	 * @param n nivel a usar como nuevo nivel
 	 */
-	public void setNivel(Nivel n){
+	public void setNivel (Nivel n) {
+		P.reestablecerVidas ();
 		nivel = n;
 		mapa.setVisible(false);
 		mapa = nivel.getMapa().getMapaVisual();
 		mapa.setVisible(true);
 	}
-
-	
 }

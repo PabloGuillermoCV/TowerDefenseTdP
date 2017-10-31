@@ -2,7 +2,6 @@ package entidades;
 
 import Logica.Celda;
 import Logica.Posicion;
-import Objetos.ObjsDeLaTienda.Explosivo;
 
 public abstract class Controlable extends Personaje {
 	protected int Precio;
@@ -54,10 +53,11 @@ public abstract class Controlable extends Personaje {
 		for(int X = Alcance; X > -Alcance && ret == null; X--) {
 			for(int Y = Alcance; Y > -Alcance && ret == null; Y--) {
 				Celda C = miMapa.getCelda(pos.getX()+(X*20), pos.getY()+(Y*20));
-				//System.out.println ("ENTRO A ---------------------------------------------------");
+				System.out.println ("ENTRO A ---------------------------------------------------");
 				if(C != null) {
 					if(!C.getEnemigos().isEmpty()) {
-						ret = C.getEnemigos().getFirst();
+					     ret= C.getEnemigos().getFirst();
+						
 					}
 				}
 			}

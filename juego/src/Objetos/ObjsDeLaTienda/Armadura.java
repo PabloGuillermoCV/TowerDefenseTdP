@@ -1,7 +1,5 @@
 package Objetos.ObjsDeLaTienda;
 
-import entidades.ObjDeLaTienda;
-
 public class Armadura extends ObjDeLaTienda {
 	
 	public Armadura () {

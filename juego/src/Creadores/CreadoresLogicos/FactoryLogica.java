@@ -2,7 +2,7 @@ package Creadores.CreadoresLogicos;
 
 import Logica.Posicion;
 import entidades.Controlable;
-import entidades.ObjDeLaTienda;
+import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 
 public interface FactoryLogica {
 	
