@@ -3,7 +3,7 @@ package Logica;
 import Creadores.CreadoresLogicos.FactoryLogica;
 import Logica.Jugador;
 import entidades.Controlable;
-import entidades.ObjDeLaTienda;
+import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 import GUI.TiendaVisual;
 
 public class TiendaLogica {

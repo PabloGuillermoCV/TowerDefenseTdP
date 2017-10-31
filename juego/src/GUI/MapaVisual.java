@@ -10,7 +10,7 @@ import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
 import entidades.Controlable;
-import entidades.ObjDeLaTienda;
+import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 import entidades.Objeto;
 
 @SuppressWarnings("serial")

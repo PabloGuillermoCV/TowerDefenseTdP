@@ -1,6 +1,5 @@
 package Objetos.ObjsDeLaTienda;
 
-import entidades.ObjDeLaTienda;
 import entidades.Personaje;
 
 public class Explosivo extends ObjDeLaTienda {

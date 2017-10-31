@@ -1,6 +1,8 @@
-package entidades;
+package Objetos.PowerUpsDelMapa;
 
 import Logica.Posicion;
+import entidades.Enemigo;
+import entidades.Objeto;
 
 public abstract class PowerUpDelMapa extends Objeto {
 	
