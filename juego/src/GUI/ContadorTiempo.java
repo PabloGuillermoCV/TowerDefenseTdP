@@ -16,6 +16,7 @@ public class ContadorTiempo extends Thread {
 
 	private Nivel nivel;
 	private AudioInputStream audioInputStream;
+	private Clip clip;
 
 	ContadorTiempo(Nivel lvl) {
 		nivel = lvl;
@@ -26,8 +27,21 @@ public class ContadorTiempo extends Thread {
 	}
 
 	public void run() {
+		try {
+			clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+		} catch (LineUnavailableException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		while(!nivel.getMapa().getListaEnemigos().isEmpty() && nivel.getMapa().getJugador().getVidas() > 0){
 			try {
+				
+				clip.start();
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
 				nivel.moverEnemigos();
 				Thread.sleep (0);
 				nivel.InteraccionControlableEnemigo();
@@ -35,19 +49,21 @@ public class ContadorTiempo extends Thread {
 			} catch (InterruptedException e) {
 				System.out.println("error en el thread");
 				e.printStackTrace();
-			}
 		}
 		//bajo estas condiciones, si salgo del while por la primera condicion
 		//es porque gané la partida y debo pasar al siguiente Nivel
-		if (nivel.getMapa().getListaEnemigos().isEmpty()) {
+		if (nivel.getMapa().getListaEnemigos().isEmpty() && nivel.getMapa().getJugador().getVidas() > 0) {
+			clip.stop();
 			estadoVictoria ();
 		}
 		else {
 			//Sino sali por la segunda condicion y perdi la partida
 			if (nivel.getMapa().getJugador().getVidas() == 0) {
+				clip.stop();
 				estadoDerrota ();
 			}
 		}
+	}
 	}
 	
 	private void estadoVictoria () {
@@ -58,32 +74,16 @@ public class ContadorTiempo extends Thread {
 		catch (UnsupportedAudioFileException | IOException e) {
 			e.printStackTrace ();
 		}
-   	    Clip clip;
 		try {
 			clip = AudioSystem.getClip ();
 			if (audioInputStream != null) {
 				clip.open (audioInputStream);
 				clip.start ();
 			}
-<<<<<<< HEAD
 		}
-		-<<<<<<< HEAD
-		=======
-				}
-				catch (LineUnavailableException|IOException e) {
-					e.printStackTrace ();
-		@ -95,6 +93,5 @@ public class ContadorTiempo extends Thread {
 				catch (LineUnavailableException|IOException e) {
 					e.printStackTrace ();
 				}
-		>>>>>>> 42de22c5cb26e647602b461befa1fa7d9e618853
-			}
-=======
->>>>>>> da10a520f69cf5d76e93d02af5052e2d310a0639
-		}
-		catch (LineUnavailableException|IOException e) {
-			e.printStackTrace ();
-		}
 	}
 	
 	private void estadoDerrota () {
@@ -97,7 +97,6 @@ public class ContadorTiempo extends Thread {
 		catch (UnsupportedAudioFileException | IOException e) {
 			e.printStackTrace ();
 		}
-		Clip clip;
 		try {
 			clip = AudioSystem.getClip ();
 			if (audioInputStream != null) {
@@ -107,6 +106,15 @@ public class ContadorTiempo extends Thread {
 		}
 		catch (LineUnavailableException|IOException e) {
 			e.printStackTrace ();
+		}
+	}
+	
+	public void setAudio(File cancion){
+		try {
+			audioInputStream = AudioSystem.getAudioInputStream(cancion);
+		} catch (UnsupportedAudioFileException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

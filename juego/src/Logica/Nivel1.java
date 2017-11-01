@@ -1,5 +1,7 @@
 package Logica;
 
+import java.io.File;
+
 import GUI.GUI;
 
 public class Nivel1 extends Nivel {
@@ -14,6 +16,7 @@ public class Nivel1 extends Nivel {
 		mapaLogico.generarCaminoA (posFinalEnemies);
 		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
 		fabrica = new FabricaEnemigos ();
+		cancion = new File("src\\Audio\\Audio.Sonidos\\Level1BGM.WAV");
 		
 		generarListaEnemigos ();
 	}

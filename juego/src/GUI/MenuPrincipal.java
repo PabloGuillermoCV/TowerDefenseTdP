@@ -8,12 +8,19 @@ import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BoxLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.Component;
@@ -27,6 +34,8 @@ public class MenuPrincipal {
 	private JFrame frame;
 	private JTextField Autores;
 	private GUI siguienteNivel;
+	private Clip clip;
+	private AudioInputStream audio;
 
 	/**
 	 * Launch the application.
@@ -58,6 +67,21 @@ public class MenuPrincipal {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+			audio = AudioSystem.getAudioInputStream (new File("src\\Audio\\Audio.Sonidos\\MenuPrincipal.WAV").getAbsoluteFile());
+			clip = AudioSystem.getClip();
+			if(audio != null){
+				clip.open(audio);
+				clip.start();
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
+			}
+		} catch (UnsupportedAudioFileException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JLabel lblimagenDelTitulo = new JLabel("All your base are NOT belong to us");
 		lblimagenDelTitulo.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
@@ -71,6 +95,7 @@ public class MenuPrincipal {
 		jugar.setBounds(130, 56, 122, 23);
 		jugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				clip.stop();
 				frame.setVisible(false);
 				siguienteNivel = GUI.InstanciaGUI();
 				siguienteNivel.setVisible(true);

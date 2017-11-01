@@ -55,6 +55,7 @@ public class GUI extends JFrame {
 	
 		nivel = new Nivel1 (this);
 		cont = new ContadorTiempo(nivel);
+		cont.setAudio(nivel.getAudio());
 		cont.start();
 	}
 	
