@@ -76,10 +76,8 @@ public class MenuPrincipal {
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 			}
 		} catch (UnsupportedAudioFileException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -92,27 +90,25 @@ public class MenuPrincipal {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JButton jugar = new JButton("Empezar");
-		jugar.setBounds(130, 56, 122, 23);
+		jugar.setBounds(135, 56, 122, 23);
 		jugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clip.stop();
 				frame.setVisible(false);
 				siguienteNivel = GUI.InstanciaGUI();
 				siguienteNivel.setVisible(true);
-				siguienteNivel.setBounds(100,100,500,750);
-				
-				
+				siguienteNivel.setBounds(300,10,516,680);
 			}
 		});
 		panel.setLayout(null);
 		panel.add(jugar);
 		
 		JButton Opciones = new JButton("Opciones");
-		Opciones.setBounds(156, 110, 77, 23);
+		Opciones.setBounds(135, 110, 122, 23);
 		panel.add(Opciones);
 		
 		JButton EXIT = new JButton("Salir");
-		EXIT.setBounds(156, 164, 77, 23);
+		EXIT.setBounds(135, 164, 122, 23);
 		panel.add(EXIT);
 		
 		Autores = new JTextField();

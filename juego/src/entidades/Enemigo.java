@@ -14,6 +14,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	protected int VelocidadMov;
 	protected EstrategiaDeMovimiento EstadoCaminar;
 	protected int Puntaje;
+	protected boolean bloqueado; //boolean para sincronizar gráfica con lógica
 	
 	public Enemigo (String Nombre, Posicion Pos, int Vida, int Alcance,
 		   int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
@@ -84,7 +85,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		return is;
 	}
 	
-	public void Mover () {		
+	public void Mover () {
 		EstadoCaminar.mover ();
 	}
 	
@@ -135,6 +136,16 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 				miMapa.agregarObjeto (O);
 			}
 		}
+	}
+	
+	public void morirEnCastillo () {
+		miMapa.eliminarEnemigo (this);
+		this.grafico.Morir ();
+		this.miMapa = null;
+		this.EstadoCaminar = null;
+		this.miEstadoActual = null;
+		this.pos = null;
+		this.grafico = null;
 	}
 	
 	/**

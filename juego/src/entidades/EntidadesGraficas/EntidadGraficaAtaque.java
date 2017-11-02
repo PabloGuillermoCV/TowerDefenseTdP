@@ -1,8 +1,6 @@
 package entidades.EntidadesGraficas;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import GUI.MapaVisual;
 import Logica.Posicion;
 

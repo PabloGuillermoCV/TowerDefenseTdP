@@ -23,7 +23,6 @@ public class Espadazo extends Proyectil {
 		miGrafico = new EntidadGraficaAtaque(Graficos, posI);
 		miThread = miThread.getInstance();
 		miThread.agregarProyectil(this);
-		miThread.notify();
 	}
 	
 	public void setGrafico(Posicion p) {

@@ -3,13 +3,12 @@ package GUI;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import Logica.Nivel;
 import entidades.Proyectil;
 
 public class VueloProyectiles extends Thread {
 	
-	private Collection<Proyectil> proyectiles;
-	private Collection<Proyectil> proyectilesEliminar;
+	private volatile Collection<Proyectil> proyectiles;
+	private volatile Collection<Proyectil> proyectilesEliminar;
 	private static VueloProyectiles Yo;
 	
 	private VueloProyectiles() {
@@ -31,23 +30,30 @@ public class VueloProyectiles extends Thread {
 		if(proyectiles.contains(p))
 			proyectilesEliminar.add(p);
 	}
+	@SuppressWarnings("static-access")
 	public void run() {
+		while(true) {
 			Iterator<Proyectil> disp = proyectiles.iterator();
-			System.out.println("Estoy volando proyectiles");
+			
 			while(disp.hasNext()) {
 				Proyectil p = disp.next();
-				if(!proyectilesEliminar.contains(p))
+				if(!p.llegoAlFinal())
 					p.volar();
+				else
+					proyectilesEliminar.add(p);
 				try {
-					this.sleep(100);
+					this.sleep(20);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			for(Proyectil P: proyectilesEliminar) {
-				proyectiles.remove(P);
-			}	
-		}
+			disp = proyectilesEliminar.iterator();
+			while(disp.hasNext()) {
+				Proyectil p = disp.next();
+				proyectiles.remove(p);
+				proyectilesEliminar.remove(p);
+			}
+		}	
+	}
 	
 }

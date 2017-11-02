@@ -183,4 +183,8 @@ public abstract class Proyectil {
 			return ret - 1; //le resto 1 para no caerme del arreglo cuando el sprite levante este numero
 		}
 
+		public boolean llegoAlFinal() {
+			return posActual.getX() == posFinal.getX() && posActual.getY() == posFinal.getY();
+		}
+
 }

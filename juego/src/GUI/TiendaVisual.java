@@ -143,7 +143,8 @@ public class TiendaVisual extends JPanel {
         
         panelBotones = new JPanel ();
 		panelBotones.setLayout (new GridLayout (4,2,2,2));
-        for (int i = 0; i < 8; i++) {
+        
+		for (int i = 0; i < 8; i++) {
         	botones [i].setPreferredSize (new Dimension (10,10));
     		panelBotones.add (botones [i]);
     	}

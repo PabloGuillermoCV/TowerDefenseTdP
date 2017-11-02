@@ -1,4 +1,5 @@
 package Logica;
+
 import java.io.File;
 import java.util.Iterator;
 import GUI.*;
@@ -7,6 +8,7 @@ import entidades.Controlable;
 import entidades.Enemigo;
 
 public abstract class Nivel {
+	
 	protected AbstractFactory fabrica;
 	protected MapaLogico mapaLogico;
 	protected TiendaLogica tiendaLogica;
