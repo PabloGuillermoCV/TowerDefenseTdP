@@ -10,8 +10,8 @@ public class Roca extends ObjetoResistente {
 		grafico = new EntidadGraficaNoEnemigo ("src\\Objetos\\ObjResistente\\Sprites Resistentes\\Roca.png",Pos);
 	}
 
-	public void setVida (int i) {
-		Vida = i;
+	public void setVida (int I) {
+		Vida = I;
 	}
 	
 	public void Afectar () {}

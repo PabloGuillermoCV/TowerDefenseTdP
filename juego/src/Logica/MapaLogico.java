@@ -3,7 +3,6 @@ package Logica;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Random;
-
 import GUI.MapaVisual;
 import Objetos.ObjResistente.CampoDeDaño;
 import Objetos.ObjResistente.Roca;
@@ -14,9 +13,11 @@ import entidades.Enemigo;
 import entidades.Objeto;
 
 public class MapaLogico {
+	
 	private MapaVisual mapaVisual;
-	protected Collection<Controlable> unidadesEnMapa;
-	protected Collection <Enemigo> enemigos;
+	protected Collection <Controlable> unidadesEnMapa;
+	protected Collection <Enemigo> enemigosEnMapa;
+	protected Collection <Objeto> objetosEnMapa;
 	private static MapaLogico Instancia;
 	private Celda [][] matriz;
 	private static int tamaño = 20;
@@ -30,23 +31,23 @@ public class MapaLogico {
 	 * (alto del Mapa)/20. Usamos 20*20 por el tamaño del Sprite. Luego de inicializar la Matriz
 	 * creamos cada Celda perteneciente a la matriz y le enviamos la posicion de su esquina izq.
 	 */
-	
-	private MapaLogico (int w, int h) {
-		matriz = new Celda [w/tamaño][h/tamaño];
+	private MapaLogico () {
+		matriz = new Celda [width / tamaño] [height / tamaño];
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz [0].length; j++) {
 				matriz [i][j] = new Celda (i*tamaño,j*tamaño);
 			}
 		}
 		miCamino = new Camino1 ();
-		enemigos = new LinkedList<Enemigo>();
-		unidadesEnMapa = new LinkedList<Controlable>();
+		unidadesEnMapa = new LinkedList <Controlable> ();
+		enemigosEnMapa = new LinkedList <Enemigo> ();
+		objetosEnMapa = new LinkedList <Objeto> ();
 		P = Jugador.InstanciaJugador ();
 	}
 	
 	public static MapaLogico InstanciaMapaLogico () {
 		if (Instancia == null) {
-			Instancia = new MapaLogico (500,320);
+			Instancia = new MapaLogico ();
 		}
 		return Instancia;
 	}
@@ -86,22 +87,22 @@ public class MapaLogico {
 		miCamino.generarCamino ();
 	}
 
-	public Collection<Controlable> getListaControlables(){
+	public Collection <Controlable> getListaControlables () {
 		return unidadesEnMapa;
 	}
 
-	public Collection<Enemigo> getListaEnemigos(){
-		return enemigos;
+	public Collection <Enemigo> getListaEnemigos () {
+		return enemigosEnMapa;
+	}
+	
+	public Collection <Objeto> getListaObjetos () {
+		return objetosEnMapa;
 	}
 	
 	public boolean puedoAgregarControlable (Posicion pos) {
 		boolean Puedo;
-		//System.out.println("1 "+posicionValida (pos.getX(), pos.getY())); 
-		//System.out.println("2 "+ !miCamino.perteneceAlCamino(pos));
-		//System.out.println("3 "+matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null);
-		
-		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
-				matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null) {
+		if (posicionValida (pos.getX (), pos.getY ()) && !miCamino.perteneceAlCamino (pos) && 
+			matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null) {
 			Puedo = true;
 		}
 		else {
@@ -110,10 +111,10 @@ public class MapaLogico {
 		return Puedo;
 	}
 	
-	public boolean puedoAgregarObjeto (Posicion pos) {
+	public boolean puedoAgregarObjetoDeTienda (Posicion pos) {
 		boolean Puedo;
 		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
-				matriz[pos.getX()/20][pos.getY()/20].getPersonaje() != null) {
+			matriz[pos.getX()/20][pos.getY()/20].getPersonaje() != null) {
 			Puedo = true;
 		}
 		else {
@@ -123,24 +124,32 @@ public class MapaLogico {
 	}
 	
 	public void agregarControlable (Controlable c, Posicion pos) {
-		
-		//System.out.println("!! 1"+pos.getX()/20);
-		//System.out.println("!! 2"+pos.getY()/20);
-		matriz [pos.getX()/20][pos.getY()/20].addPersonaje (c);
-		unidadesEnMapa.add (c);	
+		if (posicionValida (pos.getX (), pos.getY ())) {
+			matriz [pos.getX()/20][pos.getY()/20].addPersonaje (c);
+			unidadesEnMapa.add (c);
+		}
 	}
 	
 	public void agregarEnemigo (Enemigo e) {
-		Posicion pos= e.getPos();
-		if (posicionValida(pos.getX(), pos.getY())) {
-			enemigos.add(e);
-			matriz[pos.getX()/20][pos.getY()/20].getEnemigos().add(e);
+		Posicion pos = e.getPos();
+		if (posicionValida (pos.getX (), pos.getY ())) {
+			enemigosEnMapa.add (e);
+			matriz [pos.getX()/20] [pos.getY()/20].getEnemigos ().add (e);
+		}
+	}
+	
+	public void agregarObjeto (Objeto O) {
+		Posicion pos = O.getPos ();
+		if (posicionValida (pos.getX (), pos.getY ())) {
+			objetosEnMapa.add (O);
+			matriz [pos.getX()/20] [pos.getY()/20].addObjeto (O);
 		}
 	}
 
 	private boolean posicionValida(int X, int Y) {
 		return X >= 0 && X <= width && Y >= 0 && Y <= height;
 	}
+	
 	/**
 	 * metodo que se encarga de, usando un Random, generar un objeto de mapa
 	 * (Lago,campo dañino, etc) y tirarlo en alguna posición del Camino de enemigos
@@ -155,47 +164,46 @@ public class MapaLogico {
 		Objeto k;
 		int r = rand.nextInt(4);
 		Posicion p = miCamino.getPosAleatoria();
-		switch(r){
-			
-		case 0:
-			k = new Roca(p);
-			matriz[p.getX()][p.getY()].addObjeto(k);
-			mapaVisual.agregarObjeto(k,p);
-			break;
-		case 1:
-			k = new CampoDeDaño(p);
-			matriz[p.getX()][p.getY()].addObjeto(k);
-			mapaVisual.agregarObjeto(k, p);
-			break;
-		case 2:
-			k = new Lago(p); //todos los objetos temporales tendrian asociados un contador Thread para contar el tiempo que tardan en irse
-			matriz[p.getX()][p.getY()].addObjeto(k);
-			mapaVisual.agregarObjeto(k, p);
-			break;
-		case 3:
-			k = new CampoDebilitador(p);
-			matriz[p.getX()][p.getY()].addObjeto(k);
-			mapaVisual.agregarObjeto(k, p);
-			break;
+		switch (r) {
+			case 0:
+				k = new Roca(p);
+				matriz[p.getX()][p.getY()].addObjeto(k);
+				mapaVisual.agregarObjeto(k,p);
+				break;
+			case 1:
+				k = new CampoDeDaño(p);
+				matriz[p.getX()][p.getY()].addObjeto(k);
+				mapaVisual.agregarObjeto(k, p);
+				break;
+			case 2:
+				k = new Lago(p); //todos los objetos temporales tendrian asociados un contador Thread para contar el tiempo que tardan en irse
+				matriz[p.getX()][p.getY()].addObjeto(k);
+				mapaVisual.agregarObjeto(k, p);
+				break;
+			case 3:
+				k = new CampoDebilitador(p);
+				matriz[p.getX()][p.getY()].addObjeto(k);
+				mapaVisual.agregarObjeto(k, p);
+				break;
 		}
-		
 	}
 	
-	public void eliminarEnemigo(Enemigo e) {
-		getCelda(e.getPos().getX(),e.getPos().getY()).EliminarEnemigo(e);
-		enemigos.remove(e);
-		
+	public void eliminarControlable (Controlable C) {
+		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C);
+		unidadesEnMapa.remove (C);
 	}
 	
-	public void eliminarControlable(Controlable c) {
-		getCelda(c.getPos().getX(),c.getPos().getY()).eliminarControlable(c);
-		unidadesEnMapa.remove(c);
+	public void eliminarEnemigo (Enemigo E) {
+		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E);
+		enemigosEnMapa.remove (E);
+	}
+	
+	public void eliminarObjeto (Objeto O) {
+		getCelda (O.getPos ().getX (), O.getPos ().getY ()).EliminarObjetoDeCelda (O);
+		objetosEnMapa.remove (O);
 	}
 	
 	public void restarVida () {
 		P.restarVida ();
-		if (P.getVidas () == 0) {
-			//Estado Perder
-		}
 	}
 }

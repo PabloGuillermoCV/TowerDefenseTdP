@@ -5,10 +5,6 @@ import Enemigos.*;
 
 public class FabricaEnemigos implements AbstractFactory {
 
-	/**
-	 * ver de si la fabrica los crearia a todos siempre en la posicion inicial (0,0) y si es asi
-	 * solo faltaria completar los otros metodos creando y deolviendo un soldado en pos inicial
-	 */
 	public Enemigo crearAPie (Posicion P) {
 		return new APie (new Posicion (P.getX (), P.getY ()));
 	}

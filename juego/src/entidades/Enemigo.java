@@ -1,15 +1,13 @@
 package entidades;
 
 import Logica.Celda;
-
 import Logica.MapaLogico;
 import Logica.Posicion;
-
 import java.util.Random;
-
 import Enemigos.*;
-import Objetos.ObjResistente.Roca;
-
+import Objetos.ObjResistente.*;
+import Objetos.ObjTemporal.*;
+import Objetos.PowerUpsDelMapa.*;
 
 public abstract class Enemigo extends Personaje implements Mejorable {
 	
@@ -91,6 +89,8 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morir () {
+		Random Rand = new Random ();
+		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
 		miMapa.eliminarEnemigo (this);
 		this.grafico.Morir ();
 		this.miMapa = null;
@@ -98,6 +98,43 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		this.miEstadoActual = null;
 		this.pos = null;
 		this.grafico = null;
+		if (I <= 20) { //20% de probabilidad de dejar caer uno
+			if (I < 12) { //12% de probabilidad de que el objeto sea un power up
+				I = Rand.nextInt (3) + 1; //Cual de los 3 voy a dejar
+				PowerUpDelMapa PU = null;
+				switch (I) {
+					case 1:
+						PU = new VidaPlus (pos);
+						break;
+					case 2:
+						PU = new AtaquePlus (pos);
+						break;
+					case 3:
+						PU = new EscudoPlus (pos);
+						break;
+				}
+				miMapa.agregarObjeto (PU);
+			}
+			else { //8% de probabilidad de que el objeto sea un obstaculo
+				I = Rand.nextInt (4) + 1; //Cual de los 4 voy a dejar
+				Objeto O = null;
+				switch (I) {
+					case 1:
+						O = new CampoDeDaño (pos);
+						break;
+					case 2:
+						O = new Roca (pos);
+						break;
+					case 3:
+						O = new CampoDebilitador (pos);
+						break;
+					case 4:
+						O = new Lago (pos);
+						break;
+				}
+				miMapa.agregarObjeto (O);
+			}
+		}
 	}
 	
 	/**

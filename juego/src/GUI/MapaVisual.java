@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
@@ -19,18 +18,17 @@ public class MapaVisual extends JPanel {
 	private static MapaVisual Instancia;
 	private GUI miGui;
 	private JLabel fondo;
-	private static int height = 320;
 	private static int width = 500;
+	private static int height = 320;
 	private TiendaLogica marketL;
 	private MapaLogico mapL;
-	
 	
 	private MapaVisual () {
 		this.setLayout (null);
 		this.setSize (width, height);
 		marketL = TiendaLogica.InstanciaTiendaLogica ();
 		mapL = MapaLogico.InstanciaMapaLogico ();
-		this.addMouseListener (new Tendero ());
+		this.addMouseListener (new Mapa ());
 	}
 	
 	public static MapaVisual InstanciaMapaVisual () {
@@ -44,12 +42,13 @@ public class MapaVisual extends JPanel {
 		this.miGui = miGui;
 	}
 	
-	private class Tendero implements MouseListener {
+	private class Mapa implements MouseListener {
 
 		public void mouseClicked (MouseEvent E) {
 			int X = E.getX ();
 			int Y = E.getY ();
-			Posicion P = new Posicion (X,Y);
+			System.out.println ("X: "+(X/20)*20+" Y: "+(Y/20)*20);
+			Posicion P = new Posicion ((X / 20) * 20, (Y / 20) * 20); //Redondeo el valor a un multiplo de 20
 			if (mapL.puedoAgregarControlable (P)) { //Si puedo poner un personaje y apreté el boton correcto
 				Controlable Cont;
 				Cont = marketL.createPersonaje (P);
@@ -61,7 +60,7 @@ public class MapaVisual extends JPanel {
 			}
 			//No esta entrando al else de abajo
 			else { //Sino verifico si apreté el botón correcto para objeto en un personaje
-				if (mapL.puedoAgregarObjeto (P)) {
+				if (mapL.puedoAgregarObjetoDeTienda (P)) {
 					ObjDeLaTienda Obj;
 					Obj = marketL.createObjeto (P);
 					if (Obj != null) {
@@ -121,9 +120,8 @@ public class MapaVisual extends JPanel {
 	 * @param k objeto a agregar
 	 * @param p posición donde el objeto debe ser agregado
 	 */
-	public void agregarObjeto(Objeto k, Posicion p) {
-		k.getGrafico().getGrafico().setBounds(p.getX(), p.getY(), 20, 20);
-		fondo.add(k.getGrafico().getGrafico());
-		
+	public void agregarObjeto (Objeto k, Posicion p) {
+		fondo.add (k.getGrafico ().getGrafico ());
+		k.getGrafico ().getGrafico ().setBounds (p.getX (), p.getY (), 20, 20);
 	}
 }

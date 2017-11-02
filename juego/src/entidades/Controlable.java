@@ -46,18 +46,17 @@ public abstract class Controlable extends Personaje {
 	 * metodo de visitor que permite a un controlable atacar una unidad concreta
 	 * @param E enemigo a atacar
 	 */
-	public abstract void atacar(Enemigo E);
+	public abstract void atacar (Enemigo E);
 	
-	public Enemigo verificarUnidad() {
+	public Enemigo verificarUnidad () {
 		Enemigo ret = null;
-		for(int X = Alcance; X > -Alcance && ret == null; X--) {
-			for(int Y = Alcance; Y > -Alcance && ret == null; Y--) {
-				Celda C = miMapa.getCelda(pos.getX()+(X*20), pos.getY()+(Y*20));
+		for (int X = Alcance; X > -Alcance && ret == null; X--) {
+			for (int Y = Alcance; Y > -Alcance && ret == null; Y--) {
+				Celda C = miMapa.getCelda (pos.getX()+(X*20), pos.getY()+(Y*20));
 				System.out.println ("ENTRO A ---------------------------------------------------");
-				if(C != null) {
-					if(!C.getEnemigos().isEmpty()) {
-					     ret= C.getEnemigos().getFirst();
-						
+				if (C != null) {
+					if (!C.getEnemigos().isEmpty()) {
+					     ret = C.getEnemigos().getFirst();
 					}
 				}
 			}
@@ -65,12 +64,12 @@ public abstract class Controlable extends Personaje {
 		return ret;
 	}
 
-	public void morir() {
-		miMapa.eliminarControlable(this);
-		this.grafico.Morir();
-		this.miMapa=null;
-		this.miEstadoActual=null;
-		this.pos=null;
-		this.grafico=null;
+	public void morir () {
+		miMapa.eliminarControlable (this);
+		this.grafico.Morir ();
+		this.miMapa = null;
+		this.miEstadoActual = null;
+		this.pos = null;
+		this.grafico = null;
 	}
 }

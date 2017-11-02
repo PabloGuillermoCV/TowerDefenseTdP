@@ -4,8 +4,8 @@ import java.util.*;
 import entidades.*;
 
 public class Celda {
-	private LinkedList <Enemigo> enemigos;
 	private Controlable personaje;
+	private LinkedList <Enemigo> enemigos;
 	private Objeto objeto;
 	private Posicion esquinaIzq;
 	private static MapaLogico mapa = MapaLogico.InstanciaMapaLogico ();
@@ -14,9 +14,9 @@ public class Celda {
 	 * Constructor : recibe el x e y que son las coordenadas de la esquina izquierda
 	 */
 	public Celda (int x, int y) {
-		esquinaIzq = new Posicion(x,y);
-		enemigos = new LinkedList<Enemigo>();
+		esquinaIzq = new Posicion (x,y);
 		personaje = null;
+		enemigos = new LinkedList<Enemigo>();
 	}
 	
 	public void addEnemigo (Enemigo e) {
@@ -53,14 +53,21 @@ public class Celda {
 		return mapa;
 	}
 	
-	public void EliminarEnemigo (Enemigo e) {
+	public void EliminarControlableDeCelda (Controlable c) {
+		if (c == personaje) {
+			personaje = null;
+		}
+	}
+	
+	public void EliminarEnemigoDeCelda (Enemigo e) {
 		if (enemigos.contains (e)) {
 			enemigos.remove (e);
 		}
 	}
 	
-	public void eliminarControlable(Controlable c) {
-		if(c==personaje)
-			personaje=null;
+	public void EliminarObjetoDeCelda (Objeto O) {
+		if (O == objeto) {
+			objeto = null;
+		}
 	}
 }

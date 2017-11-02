@@ -5,9 +5,14 @@ import Logica.TiendaLogica;
 import Audio.Sonido;
 import Creadores.CreadoresLogicos.*;
 import Creadores.CreadoresVisuales.*;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,8 +22,10 @@ public class TiendaVisual extends JPanel {
 	
 	private static TiendaVisual Instancia;
 	private JLabel fondo;
-	private static int height = 400;
+	private JPanel panelBotones;
+	private JPanel panelDisplay;
 	private static int width = 500;
+	private static int height = 400;
 	private FactoryVisual [] botones = new FactoryVisual [8];
 	private FactoryLogica [] creadores = new FactoryLogica [8];
 	private Sonido efectos;
@@ -28,7 +35,8 @@ public class TiendaVisual extends JPanel {
 	private TiendaLogica market;
 	
 	private TiendaVisual () {
-		this.setLayout (new FlowLayout ());
+		this.setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));
+		this.setBorder (BorderFactory.createLineBorder (Color.DARK_GRAY, 2));
 		this.setSize (width, height);
 		this.efectos = new Sonido ();
 		this.market = TiendaLogica.InstanciaTiendaLogica ();
@@ -132,10 +140,14 @@ public class TiendaVisual extends JPanel {
         botones [7] = new BotonArmadura ();
         OyenteBotonArmadura O7 = new OyenteBotonArmadura ();
         botones [7].addActionListener (O7);
-         
+        
+        panelBotones = new JPanel ();
+		panelBotones.setLayout (new GridLayout (4,2,2,2));
         for (int i = 0; i < 8; i++) {
-    		add (botones [i]);
+        	botones [i].setPreferredSize (new Dimension (10,10));
+    		panelBotones.add (botones [i]);
     	}
+        this.add (panelBotones);
         
         updateBotones ();
 	}
@@ -169,10 +181,14 @@ public class TiendaVisual extends JPanel {
 	}
 	
 	public void setNumeros () {
+		panelDisplay = new JPanel ();
+		panelDisplay.setLayout (new FlowLayout (FlowLayout.LEFT));
 		displayMonedas = new JLabel ("Monedas: " + P.getMonedas ());
 		displayPuntos = new JLabel ("Puntos: " + P.getPuntos ());
-		add (displayMonedas);
-		add (displayPuntos);
+		panelDisplay.add (displayMonedas);
+		panelDisplay.add (displayPuntos);
+		panelDisplay.setBorder (BorderFactory.createLineBorder (Color.DARK_GRAY, 2));
+		this.add (panelDisplay);
 	}
 	
 	public void modificarMonedas () {
