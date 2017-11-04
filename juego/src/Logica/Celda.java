@@ -24,7 +24,7 @@ public class Celda {
 	}
 	
 	public void addPersonaje (Controlable c) {
-		if (personaje != null) {
+		if (personaje == null) {
 			personaje = c;
 		}
 	}
