@@ -30,8 +30,5 @@ public class Arquero extends Controlable {
 	public void atacar(Enemigo E) {
 		Proyectil municion = new Flecha(pos,E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		if (E.getEstado ().getVida () <= 0) {
-			E.morir ();
-		}
 	}
 }
