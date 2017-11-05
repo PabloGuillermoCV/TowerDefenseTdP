@@ -1,6 +1,6 @@
 package Objetos.ObjTemporal;
 
-import Logica.HiloItemTemporal;
+import Hilos.HiloItemTemporal;
 import Logica.Posicion;
 import entidades.Objeto;
 
@@ -23,7 +23,6 @@ public abstract class ObjetoTemporal extends Objeto {
 	 * método que se encarga de romper todo vinculo del item para que "Desaparezca"
 	 * este método es llamado por el Hilo de Items Temporales
 	 */
-	public void morir() {
-		// TODO Auto-generated method stub
+	public void morir () {
 	}
 }
