@@ -219,6 +219,8 @@ public class MapaLogico {
 	
 	@SuppressWarnings("rawtypes")
 	public void interaccionControlableEnemigo () {
+		Collection<Enemigo> aSacarE = new LinkedList<Enemigo>(); //lista auxiliar para eliminar enemigos
+		Collection<Controlable> aSacarC = new LinkedList<Controlable>(); //lista auxiliar para eliminar Controlables
 		Iterator it = unidadesEnMapa.iterator ();
 		Controlable c;
 		Enemigo e;
@@ -227,7 +229,18 @@ public class MapaLogico {
 			e = c.verificarUnidad ();
 			if (e != null && e.estoyEnJuego ()) {
 				e.serAtacado (c);
+				if(e.getEstado().getVida() <= 0) //pregunto si despues de ser atacado, el enemigo murió
+					aSacarE.add(e);
+				if(c.getEstado().getVida() <= 0) //pregunto si en caso de ser contratacado, el controlable murió
+					aSacarC.add(c);
 			}
+		}
+		for(Enemigo h: aSacarE){
+			miNivel.murioEnemigo(h); //le digo al Nivel que murió un enemigo para que lo saque de su hilo correspondiente
+		}
+		for(Controlable C: aSacarC){
+			//avisarle al Nivel que se murió un Controlable
+			C.morir();
 		}
 	}
 }
