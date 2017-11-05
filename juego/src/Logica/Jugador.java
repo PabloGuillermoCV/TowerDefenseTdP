@@ -46,5 +46,7 @@ public class Jugador {
 	
 	public void reestablecerVidas () {
 		Vidas = 3;
+		if(Monedas < 1000)
+			Monedas = 1000;
 	}
 }
