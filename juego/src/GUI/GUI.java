@@ -10,7 +10,6 @@ public class GUI extends JFrame {
 	
 	private static GUI Instancia;
 	private JFrame ventana;
-	private JButton oleada;
 	private static String direccionM = "src\\GUI\\Sprites Mapas\\Mapa1.png";
 	private static String direccionS = "src\\GUI\\Sprites Mapas\\FondoTienda.png";
 	private MapaVisual mapa;
@@ -44,8 +43,6 @@ public class GUI extends JFrame {
 		shop = TiendaVisual.InstanciaTiendaVisual ();
 		shop.cargarFondo (direccionS);
 		mapa.setGUI (this);
-		oleada = new JButton("Empezar Oleada");
-		oleada.addActionListener(new OyenteOleada(oleada, Instancia));
 		P = Jugador.InstanciaJugador ();
 		
 		this.getContentPane ().add (mapa);

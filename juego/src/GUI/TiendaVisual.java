@@ -1,6 +1,7 @@
 package GUI;
 
 import Logica.Jugador;
+import Logica.OyenteOleada;
 import Logica.TiendaLogica;
 import Audio.Sonido;
 import Creadores.CreadoresLogicos.*;
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -32,6 +34,7 @@ public class TiendaVisual extends JPanel {
 	private Jugador P;
 	private JLabel displayMonedas;
 	private JLabel displayPuntos;
+	private JButton oleada;
 	private TiendaLogica market;
 	
 	private TiendaVisual () {
@@ -41,6 +44,8 @@ public class TiendaVisual extends JPanel {
 		this.efectos = new Sonido ();
 		this.market = TiendaLogica.InstanciaTiendaLogica ();
 		P = Jugador.InstanciaJugador ();
+		oleada = new JButton ("Empezar Oleada");
+		oleada.addActionListener (new OyenteOleada (oleada, Instancia));
 		setNumeros ();
 		setCreadores ();
 		setBotones ();
@@ -188,6 +193,7 @@ public class TiendaVisual extends JPanel {
 		displayPuntos = new JLabel ("Puntos: " + P.getPuntos ());
 		panelDisplay.add (displayMonedas);
 		panelDisplay.add (displayPuntos);
+		panelDisplay.add (oleada);
 		panelDisplay.setBorder (BorderFactory.createLineBorder (Color.DARK_GRAY, 2));
 		this.add (panelDisplay);
 	}

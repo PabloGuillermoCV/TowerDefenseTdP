@@ -2,25 +2,21 @@ package Logica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-
-import GUI.GUI;
+import GUI.TiendaVisual;
 
 public class OyenteOleada implements ActionListener {
 
 		private JButton ol;
 		@SuppressWarnings("unused")
-		private GUI juego;
+		private TiendaVisual juego;
 		
-		public OyenteOleada(JButton o, GUI jue){
+		public OyenteOleada(JButton o, TiendaVisual instancia){
 			ol = o;
-			juego = jue;
-		}
-		@Override
-		public void actionPerformed(ActionEvent E) {
-			//juego.run();
-			ol.setEnabled(false);
+			juego = instancia;
 		}
 		
+		public void actionPerformed (ActionEvent E) {
+			ol.setEnabled (false);
+		}
 }
