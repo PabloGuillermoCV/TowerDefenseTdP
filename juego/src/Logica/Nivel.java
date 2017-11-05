@@ -80,7 +80,7 @@ public abstract class Nivel {
 	/**
 	 * genera la lista de enemigos que van a estar en el nivel
 	 */
-	protected abstract void generarListaEnemigos ();
+	public abstract void generarListaEnemigos ();
 	
 	/**
 	 * Metodo que modifica la ventana para pasar al siguiente Nivel

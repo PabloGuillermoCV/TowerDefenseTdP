@@ -9,7 +9,7 @@ public class HiloEnemigo extends Thread {
 	public void setEnemigo (Enemigo e) {
 		this.e = e;
 	}
-
+	
 	public void run () {
 		while (true) {
 			if (e != null) {

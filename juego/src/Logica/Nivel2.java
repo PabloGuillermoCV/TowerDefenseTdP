@@ -23,8 +23,8 @@ public class Nivel2 extends Nivel {
 		hiloCreador.start ();
 	}
 	
-	protected void generarListaEnemigos () {
-		
+	public void generarListaEnemigos () {
+		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
 	}
 
 	public void siguienteNivel () {
