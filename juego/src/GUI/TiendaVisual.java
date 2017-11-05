@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class TiendaVisual extends JPanel {
 	
 	private static TiendaVisual Instancia;
-	private JLabel fondo;
+	private JLabel fondo = new JLabel (new ImageIcon ("src\\GUI\\Sprites Mapas\\FondoTienda.png"));
 	private JPanel panelBotones;
 	private JPanel panelDisplay;
 	private static int width = 500;
@@ -46,6 +46,7 @@ public class TiendaVisual extends JPanel {
 		P = Jugador.InstanciaJugador ();
 		oleada = new JButton ("Empezar Oleada");
 		oleada.addActionListener (new OyenteOleada (oleada, Instancia));
+		
 		setNumeros ();
 		setCreadores ();
 		setBotones ();
@@ -95,11 +96,15 @@ public class TiendaVisual extends JPanel {
 		return market;
 	}
 	
-	public void cargarFondo (String Direccion) {
-		ImageIcon Imagen = new ImageIcon (Direccion);
+	public void cargarFondo () {
+		ImageIcon Imagen = new ImageIcon ("");
 		fondo = new JLabel (Imagen);
 		fondo.setBounds(0, 0, width, height);
-		this.add(fondo);
+		this.add (fondo);
+	}
+	
+	public void updateFondo (String Direccion) {
+		fondo.setIcon (new ImageIcon (Direccion));
 	}
 	
 	private void setCreadores () {
@@ -153,18 +158,20 @@ public class TiendaVisual extends JPanel {
         	botones [i].setPreferredSize (new Dimension (10,10));
     		panelBotones.add (botones [i]);
     	}
+		panelBotones.setPreferredSize (new Dimension (100,250));
         this.add (panelBotones);
         
         updateBotones ();
 	}
 	
-	private void setBotonesOff () {
+	public void setBotonesOff () {
 		for (int i = 0; i < 8; i++) {
     		botones [i].setEnabled (false);
     	}
 	}
 	
-	public void setBotonesObjetosOff () { //Se llama cuando no hay personajes aliados en el mapa
+	public void setBotonesObjetosOff () {
+		//Se llama cuando no hay personajes aliados en el mapa
 		for (int i = 5; i < 8; i++) {
     		botones [i].setEnabled (false);
     	}
@@ -195,6 +202,7 @@ public class TiendaVisual extends JPanel {
 		panelDisplay.add (displayPuntos);
 		panelDisplay.add (oleada);
 		panelDisplay.setBorder (BorderFactory.createLineBorder (Color.DARK_GRAY, 2));
+		panelDisplay.setPreferredSize (new Dimension (10,10));
 		this.add (panelDisplay);
 	}
 	

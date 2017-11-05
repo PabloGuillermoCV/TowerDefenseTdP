@@ -1,8 +1,9 @@
-package Logica;
+package Logica.Caminos;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
+import Logica.Posicion;
 
 public class Camino2 implements Camino {
 	

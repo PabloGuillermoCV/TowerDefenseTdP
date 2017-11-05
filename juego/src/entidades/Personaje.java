@@ -11,6 +11,9 @@ public abstract class Personaje extends Entidad {
 	protected Estado miEstadoActual;
 	protected int Alcance;
 	protected MapaLogico miMapa;
+	protected int VidaMax;
+	protected int AtaqueMax;
+	protected int DefensaMax;
 	
 	public Personaje (String Nombre, Posicion Pos, int Vida, int Alcance, 
 			int Ataque, int Defensa) {
@@ -18,6 +21,9 @@ public abstract class Personaje extends Entidad {
 		this.Alcance = Alcance;
 		this.miEstadoActual = new EstadoNormal (Vida, Ataque, Defensa);
 		this.miMapa = MapaLogico.InstanciaMapaLogico ();
+		this.VidaMax = Vida;
+		this.AtaqueMax = Ataque;
+		this.DefensaMax = Defensa;
 	}
 	
 	public abstract void morir ();
@@ -36,5 +42,17 @@ public abstract class Personaje extends Entidad {
 	
 	public void serAtacado (Explosivo E){
 		E.Atacar (this);
+	}
+	
+	public int getVidaMax () {
+		return VidaMax;
+	}
+	
+	public int getAtaqueMax () {
+		return AtaqueMax;
+	}
+	
+	public int getDefensaMax () {
+		return DefensaMax;
 	}
 }

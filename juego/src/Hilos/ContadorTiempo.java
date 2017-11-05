@@ -8,8 +8,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
-
-import Logica.Nivel;
+import Logica.Niveles.Nivel;
 
 public class ContadorTiempo extends Thread {
 

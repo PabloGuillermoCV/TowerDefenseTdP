@@ -1,6 +1,7 @@
 package GUI;
 
 import Logica.*;
+import Logica.Niveles.*;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import javax.swing.*;
@@ -10,12 +11,9 @@ public class GUI extends JFrame {
 	
 	private static GUI Instancia;
 	private JFrame ventana;
-	private static String direccionM = "src\\GUI\\Sprites Mapas\\Mapa1.png";
-	private static String direccionS = "src\\GUI\\Sprites Mapas\\FondoTienda.png";
 	private MapaVisual mapa;
 	private TiendaVisual shop;
 	private Nivel nivel;
-	//private ContadorTiempo cont;
 	private Jugador P;
 	
 	/**
@@ -23,11 +21,12 @@ public class GUI extends JFrame {
 	 */
 	public static void main (String[] args) {
 		EventQueue.invokeLater (new Runnable() {
-			public void run() {
+			public void run () {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -39,9 +38,9 @@ public class GUI extends JFrame {
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		this.setSize (516, 680);
 		mapa = MapaVisual.InstanciaMapaVisual ();
-		mapa.cargarFondo (direccionM);
+		mapa.cargarFondo ();
 		shop = TiendaVisual.InstanciaTiendaVisual ();
-		shop.cargarFondo (direccionS);
+		shop.cargarFondo ();
 		mapa.setGUI (this);
 		P = Jugador.InstanciaJugador ();
 		
@@ -51,9 +50,6 @@ public class GUI extends JFrame {
 		getContentPane().add (shop);
 	
 		nivel = new Nivel1 (this);
-		/*cont = new ContadorTiempo(nivel);
-		cont.setAudio(nivel.getAudio());
-		cont.start();*/
 	}
 	
 	public static GUI InstanciaGUI () {
@@ -93,5 +89,9 @@ public class GUI extends JFrame {
 		mapa.setVisible(false);
 		mapa = nivel.getMapa().getMapaVisual();
 		mapa.setVisible(true);
+	}
+	
+	public void setGrafico (String dir) {
+		mapa.updateFondo (dir);
 	}
 }

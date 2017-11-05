@@ -1,6 +1,6 @@
 package Hilos;
 
-import Logica.Nivel;
+import Logica.Niveles.Nivel;
 
 public class HiloGenerarEnemigo extends Thread {
 	

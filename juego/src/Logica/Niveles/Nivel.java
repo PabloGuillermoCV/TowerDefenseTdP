@@ -1,9 +1,10 @@
-package Logica;
+package Logica.Niveles;
 
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 import GUI.*;
+import Logica.*;
 import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
 import Hilos.HiloInteraccion;

@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Logica.Celda;
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
@@ -44,30 +46,64 @@ public class MapaVisual extends JPanel {
 	
 	private class Mapa implements MouseListener {
 
+		@SuppressWarnings("unused")
 		public void mouseClicked (MouseEvent E) {
 			int X = E.getX ();
 			int Y = E.getY ();
-			//System.out.println ("X: "+(X/20)*20+" Y: "+(Y/20)*20);
-			Posicion P = new Posicion ((X / 20) * 20, (Y / 20) * 20); //Redondeo el valor a un multiplo de 20
-			if (mapL.puedoAgregarControlable (P)) { //Si puedo poner un personaje y apreté el boton correcto
-				Controlable Cont;
-				Cont = marketL.createPersonaje (P);
-				if (Cont != null) {
-					mapL.agregarControlable (Cont, P);
-					marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Cont.getPrecio ()); 
+			//Redondeo el valor a un multiplo de 20
+			Posicion P = new Posicion ((X / 20) * 20, (Y / 20) * 20);
+			//System.out.println ("X: "+P.getX()+" Y: "+P.getY());
+			if (E.getClickCount () == 2 && !E.isConsumed ()) {
+				//Hice dos clicks
+				Celda C = mapL.getCelda (P.getX (), P.getY ());
+				if (C.getPersonaje () != null) {
+					//Vender personaje
+					Controlable Cont = C.getPersonaje ();
+					if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) {
+						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ()); 
+					}
+					else {
+						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2));
+					}
+					
+					//Hay que sacar al personaje del hilo
+					//Es un problema parecido al que tenemos con enemigo
+					
+					Cont.morir ();
 					miGui.getTiendaVisual ().modificarMonedas ();
 					miGui.getTiendaVisual ().updateBotones ();
 				}
+				else {
+					if (C.getObjeto () != null) {
+						Objeto Obj = C.getObjeto ();
+						miGui.getTiendaVisual ().setBotonesOff ();
+						//Asi me estaria dejando agarrar cualquier objeto...
+					}
+				}
 			}
-			//No esta entrando al else de abajo
-			else { //Sino verifico si apreté el botón correcto para objeto en un personaje
-				if (mapL.puedoAgregarObjetoDeTienda (P)) {
-					ObjDeLaTienda Obj;
-					Obj = marketL.createObjeto (P);
-					if (Obj != null) {
-						marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Obj.getPrecio ());
+			else {
+				//Hice un solo click
+				if (mapL.puedoAgregarControlable (P)) {
+					//Si puedo poner un personaje y apreté el boton correcto
+					Controlable Cont;
+					Cont = marketL.createPersonaje (P);
+					if (Cont != null) {
+						mapL.agregarControlable (Cont, P);
+						marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Cont.getPrecio ());
 						miGui.getTiendaVisual ().modificarMonedas ();
 						miGui.getTiendaVisual ().updateBotones ();
+					}
+				}
+				else {
+					//Sino verifico si apreté el botón correcto para objeto en un personaje
+					if (mapL.puedoAgregarObjetoDeTienda (P)) {
+						ObjDeLaTienda Obj;
+						Obj = marketL.createObjeto (P);
+						if (Obj != null) {
+							marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Obj.getPrecio ());
+							miGui.getTiendaVisual ().modificarMonedas ();
+							miGui.getTiendaVisual ().updateBotones ();
+						}
 					}
 				}
 			}
@@ -109,11 +145,15 @@ public class MapaVisual extends JPanel {
 		return width;
 	}
 	
-	public void cargarFondo (String Direccion) {
-		ImageIcon Imagen = new ImageIcon (Direccion);
+	public void cargarFondo () {
+		ImageIcon Imagen = new ImageIcon ("");
 		fondo = new JLabel (Imagen);
 		fondo.setBounds (0, 0, width, height);
 		this.add (fondo);
+	}
+	
+	public void updateFondo (String Direccion) {
+		fondo.setIcon (new ImageIcon (Direccion));
 	}
 
 	/**

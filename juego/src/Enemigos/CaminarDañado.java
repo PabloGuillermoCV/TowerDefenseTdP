@@ -1,6 +1,5 @@
 package Enemigos;
 
-
 import Logica.Posicion;
 import entidades.Enemigo;
 import java.util.Random;

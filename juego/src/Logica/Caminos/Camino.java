@@ -1,6 +1,7 @@
-package Logica;
+package Logica.Caminos;
 
 import java.util.LinkedList;
+import Logica.Posicion;
 
 public interface Camino {
 	

@@ -1,19 +1,21 @@
-package Logica;
+package Logica.Niveles;
 
 import java.io.File;
 import GUI.GUI;
 import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
+import Logica.Posicion;
 
-public class Nivel3 extends Nivel {
+public class Nivel1 extends Nivel {
 	
-	public Nivel3 (GUI gui) {
+	public Nivel1 (GUI gui) {
 		super (gui);
-		posInicialEnemies = new Posicion (440,300);
-		posFinalEnemies = new Posicion (140,120);
-		direccionMapa = "src\\GUI\\Sprites Mapas\\Mapa3.png";
+		direccionMapa = "src\\GUI\\Sprites Mapas\\Mapa1.png";
+		gui.setGrafico (direccionMapa);
+		posInicialEnemies = new Posicion (0,0);
+		posFinalEnemies = new Posicion (480,300);
 		mapaLogico.generarCaminoA (posFinalEnemies);
-		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level3BGM.WAV");
+		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level1BGM.WAV");
 		hilosMovimientos = new HiloEnemigo [7];
 		
 		iniciarHilos ();
@@ -25,11 +27,12 @@ public class Nivel3 extends Nivel {
 	
 	public void generarListaEnemigos () {
 		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
 	}
-
+	
 	public void siguienteNivel () {
-		//Final Del Juego
-		Nivel sig = new Nivel3 (miGui);
+		Nivel sig = new Nivel2 (miGui);
 		sig.generarListaEnemigos();
 		miGui.setNivel (sig);
 	}

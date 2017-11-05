@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import GUI.MapaVisual;
+import Logica.Caminos.*;
+import Logica.Niveles.*;
 import Objetos.ObjResistente.CampoDeDaño;
 import Objetos.ObjResistente.Roca;
 import Objetos.ObjTemporal.CampoDebilitador;
