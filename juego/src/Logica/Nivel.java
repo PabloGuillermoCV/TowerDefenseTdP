@@ -110,6 +110,7 @@ public abstract class Nivel {
 	
 	public void murioEnemigo (Enemigo e) {
 		sacarDeHilo (e);
+		e.morir();
 	}
 	
 	public void llegoEnemigoABase (Enemigo e) {

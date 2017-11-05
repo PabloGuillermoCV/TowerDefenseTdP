@@ -204,7 +204,7 @@ public class MapaLogico {
 	}
 	
 	public void eliminarEnemigo (Enemigo E) {
-		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E);
+		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E); //me tira NullPointer acá
 		enemigosEnMapa.remove (E);
 	}
 	
@@ -236,8 +236,9 @@ public class MapaLogico {
 			}
 		}
 		for(Enemigo h: aSacarE){
-			enemigosEnMapa.remove(h);
-			miNivel.murioEnemigo(h); //le digo al Nivel que murió un enemigo para que lo saque de su hilo correspondiente
+			eliminarEnemigo(h);
+			miNivel.murioEnemigo(h);
+			//le digo al Nivel que murió un enemigo para que lo saque de su hilo correspondiente
 			//h.morir(); me tira NullPointer cuando le va a decir al Hilo que lo saque, ver esto que parece que va entre un Deadlock y un NullPointer
 		}
 		for(Controlable C: aSacarC){
