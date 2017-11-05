@@ -17,7 +17,7 @@ public class HiloEnemigo extends Thread {
 			}
 			else {
 				try {
-					Thread.sleep (50);
+					Thread.sleep (1000);
 				}
 				catch (InterruptedException e1) {
 					e1.printStackTrace();
@@ -28,5 +28,9 @@ public class HiloEnemigo extends Thread {
 	
 	public boolean estaLibre () {
 		return e == null;
+	}
+	
+	public Enemigo getEnemigo () {
+		return e;
 	}
 }

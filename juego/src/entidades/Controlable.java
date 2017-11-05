@@ -27,7 +27,11 @@ public abstract class Controlable extends Personaje {
 	 * @return daño a generar en el enemigo
 	 */
 	public int calcularGolpe(Enemigo e){
-		return e.getEstado().getVida() - (e.getEstado().getDefensa() - miEstadoActual.getAtaque());
+		int res = miEstadoActual.getAtaque() - e.getEstado().getDefensa();
+		if (res < 0) {
+			res = 0;
+		}
+		return res;
 	}
 	
 	public int getVelAt () {
@@ -52,11 +56,13 @@ public abstract class Controlable extends Personaje {
 		Enemigo ret = null;
 		for (int X = Alcance; X > -Alcance && ret == null; X--) {
 			for (int Y = Alcance; Y > -Alcance && ret == null; Y--) {
-				Celda C = miMapa.getCelda (pos.getX()+(X*20), pos.getY()+(Y*20));
-				System.out.println ("ENTRO A ---------------------------------------------------");
-				if (C != null) {
-					if (!C.getEnemigos().isEmpty()) {
-					     ret = C.getEnemigos().getFirst();
+				if (miMapa.posicionValida (pos.getX()+(X*20), pos.getY()+(Y*20))) {
+					Celda C = miMapa.getCelda (this.pos.getX()+(X*20), this.pos.getY()+(Y*20));
+					if (C != null) {
+						if (!C.getEnemigos ().isEmpty ()) {
+							//System.out.println ("X: "+(this.pos.getX()+(X*20))+" Y: "+(this.pos.getY()+(Y*20)));
+						    ret = C.getEnemigos ().getFirst ();
+						}
 					}
 				}
 			}

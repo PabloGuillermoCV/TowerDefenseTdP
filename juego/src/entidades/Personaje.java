@@ -34,8 +34,7 @@ public abstract class Personaje extends Entidad {
 		miEstadoActual = e;
 	}
 	
-	
-	public void serAtacado(Explosivo E){
-		E.Atacar(this);
+	public void serAtacado (Explosivo E){
+		E.Atacar (this);
 	}
 }

@@ -26,11 +26,12 @@ public class Caballero extends Controlable {
 		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif",pos);
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void atacar(Enemigo E) {
 		Proyectil municion = new Espadazo(pos,E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		
+		if (E.getEstado ().getVida () <= 0) {
+			E.morir ();
+		}
 	}
-
 }

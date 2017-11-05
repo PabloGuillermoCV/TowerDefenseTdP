@@ -1,6 +1,6 @@
 package Enemigos;
 
-import Logica.MapaLogico;
+
 import Logica.Posicion;
 import entidades.Enemigo;
 import java.util.Random;
@@ -58,9 +58,7 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 		if (posSig.getX () == CF.getX () && posSig.getY () == CF.getY ()) {
 			//Aca se borra el enemigo del mapa ya que llego al final
 			posSig = null;
-			MapaLogico miMapa = e.getMapa();
 			e.morirEnCastillo ();
-			miMapa.restarVida ();
 		}
 		
 		if (posSig != null) {

@@ -4,7 +4,6 @@ import Logica.*;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import javax.swing.*;
-import Hilos.ContadorTiempo;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame {
@@ -16,7 +15,7 @@ public class GUI extends JFrame {
 	private MapaVisual mapa;
 	private TiendaVisual shop;
 	private Nivel nivel;
-	private ContadorTiempo cont;
+	//private ContadorTiempo cont;
 	private Jugador P;
 	
 	/**
@@ -52,9 +51,9 @@ public class GUI extends JFrame {
 		getContentPane().add (shop);
 	
 		nivel = new Nivel1 (this);
-		cont = new ContadorTiempo(nivel);
+		/*cont = new ContadorTiempo(nivel);
 		cont.setAudio(nivel.getAudio());
-		cont.start();
+		cont.start();*/
 	}
 	
 	public static GUI InstanciaGUI () {

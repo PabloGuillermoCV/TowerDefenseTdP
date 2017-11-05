@@ -21,16 +21,17 @@ public class Soldado extends Controlable {
 	VelocidadAt = 4
 	*/
 	
-	
 	public Soldado (Posicion pos) {
 		super ("Soldado", pos, 100, 1, 50, 100, 200, 4);
 		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif",pos);
 	}
 
-	@Override
-	public void atacar(Enemigo E) {
-		Proyectil municion = new Espadazo(pos,E.getPos());
-		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		
+	@SuppressWarnings("unused")
+	public void atacar (Enemigo E) {
+		Proyectil municion = new Espadazo (pos,E.getPos());
+		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
+		if (E.getEstado ().getVida () <= 0) {
+			E.morir ();
+		}
 	}
 }

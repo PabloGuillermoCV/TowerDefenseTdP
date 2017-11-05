@@ -16,7 +16,7 @@ public class Celda {
 	public Celda (int x, int y) {
 		esquinaIzq = new Posicion (x,y);
 		personaje = null;
-		enemigos = new LinkedList<Enemigo>();
+		enemigos = new LinkedList <Enemigo> ();
 	}
 	
 	public void addEnemigo (Enemigo e) {

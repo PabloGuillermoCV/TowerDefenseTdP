@@ -90,6 +90,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morir () {
+		miMapa.getNivel ().murioEnemigo (this);
 		Random Rand = new Random ();
 		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
 		miMapa.eliminarEnemigo (this);
@@ -139,6 +140,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morirEnCastillo () {
+		miMapa.getNivel ().llegoEnemigoABase (this);
 		miMapa.eliminarEnemigo (this);
 		this.grafico.Morir ();
 		this.miMapa = null;
@@ -151,7 +153,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	/**
 	 * metodo que se encarga de mejorar al enemigo
 	 */
-	public void mejorar() {
+	public void mejorar () {
 		Random r = new Random();
 		int vPlus = r.nextInt(50 + 1);
 		int aPlus = r.nextInt(20 + 1);

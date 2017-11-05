@@ -8,6 +8,7 @@ public class Espadazo extends Proyectil {
 	
 	private String [] Graficos;
 	
+	@SuppressWarnings("static-access")
 	public Espadazo (Posicion posI, Posicion posF) {
 		super (posI, posF);
 		velocidadMovimiento = 10;

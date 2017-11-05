@@ -3,6 +3,7 @@ package Logica;
 import java.io.File;
 import GUI.GUI;
 import Hilos.HiloEnemigo;
+import Hilos.HiloGenerarEnemigo;
 
 public class Nivel2 extends Nivel {
 
@@ -17,6 +18,9 @@ public class Nivel2 extends Nivel {
 		
 		iniciarHilos ();
 		generarListaEnemigos ();
+		
+		hiloCreador = new HiloGenerarEnemigo (this);
+		hiloCreador.start ();
 	}
 	
 	protected void generarListaEnemigos () {

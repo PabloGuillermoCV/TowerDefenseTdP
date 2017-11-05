@@ -1,6 +1,7 @@
 package Logica;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import GUI.MapaVisual;
@@ -25,6 +26,7 @@ public class MapaLogico {
 	private static int height = 320;
 	private Camino miCamino;
 	private Jugador P;
+	private Nivel miNivel;
 	
 	/**
 	 * constructor : inicializa la matriz de Celdas con un total de (el Ancho del Mapa)/20 por
@@ -56,6 +58,10 @@ public class MapaLogico {
 		this.mapaVisual = MV;
 	}
 	
+	public void setNivel (Nivel miNivel) {
+		this.miNivel = miNivel;
+	}
+	
 	public MapaVisual getMapaVisual() {
 		return mapaVisual;
 	}
@@ -81,6 +87,10 @@ public class MapaLogico {
 	
 	public Jugador getJugador () {
 		return P;
+	}
+	
+	public Nivel getNivel () {
+		return miNivel;
 	}
 	
 	public void generarCaminoA (Posicion pos) {
@@ -134,7 +144,7 @@ public class MapaLogico {
 		Posicion pos = e.getPos();
 		if (posicionValida (pos.getX (), pos.getY ())) {
 			enemigosEnMapa.add (e);
-			matriz [pos.getX()/20] [pos.getY()/20].getEnemigos ().add (e);
+			matriz [pos.getX()/20] [pos.getY()/20].addEnemigo (e);
 		}
 	}
 	
@@ -146,8 +156,8 @@ public class MapaLogico {
 		}
 	}
 
-	private boolean posicionValida(int X, int Y) {
-		return X >= 0 && X <= width && Y >= 0 && Y <= height;
+	public boolean posicionValida (int X, int Y) {
+		return X >= 0 && X < width && Y >= 0 && Y < height;
 	}
 	
 	/**
@@ -205,5 +215,19 @@ public class MapaLogico {
 	
 	public void restarVida () {
 		P.restarVida ();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void interaccionControlableEnemigo () {
+		Iterator it = unidadesEnMapa.iterator ();
+		Controlable c;
+		Enemigo e;
+		while (it.hasNext ()) {
+			c = (Controlable) it.next ();
+			e = c.verificarUnidad ();
+			if (e != null && e.estoyEnJuego ()) {
+				e.serAtacado (c);
+			}
+		}
 	}
 }

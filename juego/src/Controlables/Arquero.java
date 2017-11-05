@@ -26,10 +26,12 @@ public class Arquero extends Controlable {
 		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void atacar(Enemigo E) {
 		Proyectil municion = new Flecha(pos,E.getPos());
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
-		
+		if (E.getEstado ().getVida () <= 0) {
+			E.morir ();
+		}
 	}
 }

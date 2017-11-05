@@ -28,17 +28,17 @@ public class JefeFinal extends Enemigo {
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\JefeFinal.gif",pos);
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void atacar(Controlable C) {
 		Proyectil municion = new Espadazo(pos,C.getPos());
 		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
+		
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void atacar(Roca R) {
 		Proyectil municion = new Espadazo(pos,R.getPos());
 		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
 		
 	}
-	
 }

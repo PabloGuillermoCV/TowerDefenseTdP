@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import GUI.*;
 import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
-import entidades.Controlable;
+import Hilos.HiloInteraccion;
 import entidades.Enemigo;
 
 public abstract class Nivel {
@@ -19,31 +19,21 @@ public abstract class Nivel {
 	protected Posicion posFinalEnemies;
 	protected String direccionMapa;
 	protected File cancion;
-	protected HiloEnemigo [] hilosMovimientos;
 	protected LinkedList <Enemigo> enemigosAMandar;
+	protected HiloEnemigo [] hilosMovimientos;
 	protected HiloGenerarEnemigo hiloCreador;
+	protected HiloInteraccion hiloAtaque;
 	
 	public Nivel (GUI gui) {
 		miGui = gui;
 		mapaLogico = MapaLogico.InstanciaMapaLogico ();
+		mapaLogico.setNivel (this);
 		mapaLogico.setMapaVisual (miGui.getMapaVisual());
 		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
 		fabrica = new FabricaEnemigos ();
 		enemigosAMandar = new LinkedList <Enemigo> ();
-	}
-	
-	/**
-	 * realiza la interaccion entre controlables y enemigos
-	 */
-	public void InteraccionControlableEnemigo () {
-		Enemigo e;
-		for (Controlable C : mapaLogico.getListaControlables ()) {
-			System.out.println ("ESTOY EN INTERACCION-----------------------");
-			e = C.verificarUnidad();
-			if (e != null && e.estoyEnJuego ()) {
-				e.serAtacado(C);
-			}
-		}
+		hiloAtaque = new HiloInteraccion ();
+		hiloAtaque.start ();
 	}
 	
 	public void moverEnemigos () {
@@ -114,6 +104,30 @@ public abstract class Nivel {
 					hilosMovimientos [I].setEnemigo (enemigosAMandar.removeFirst ());
 					corte = true;
 				}
+			}
+		}
+	}
+	
+	public void murioEnemigo (Enemigo e) {
+		sacarDeHilo (e);
+	}
+	
+	public void llegoEnemigoABase (Enemigo e) {
+		sacarDeHilo (e);
+		mapaLogico.restarVida ();
+		if (mapaLogico.getJugador ().getVidas () == 0) {
+			
+			
+			
+		}
+	}
+	
+	private void sacarDeHilo (Enemigo e) {
+		boolean corte = false;
+		for (int I = 0; I < hilosMovimientos.length && !corte; I++) {
+			if (hilosMovimientos [I].getEnemigo () == e) {
+				hilosMovimientos [I].setEnemigo (null);
+				corte = true;
 			}
 		}
 	}

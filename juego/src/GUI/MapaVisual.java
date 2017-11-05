@@ -47,7 +47,7 @@ public class MapaVisual extends JPanel {
 		public void mouseClicked (MouseEvent E) {
 			int X = E.getX ();
 			int Y = E.getY ();
-			System.out.println ("X: "+(X/20)*20+" Y: "+(Y/20)*20);
+			//System.out.println ("X: "+(X/20)*20+" Y: "+(Y/20)*20);
 			Posicion P = new Posicion ((X / 20) * 20, (Y / 20) * 20); //Redondeo el valor a un multiplo de 20
 			if (mapL.puedoAgregarControlable (P)) { //Si puedo poner un personaje y apreté el boton correcto
 				Controlable Cont;

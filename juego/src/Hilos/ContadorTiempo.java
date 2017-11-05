@@ -30,15 +30,12 @@ public class ContadorTiempo extends Thread {
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 		} catch (LineUnavailableException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		while(!nivel.getMapa().getListaEnemigos().isEmpty() && nivel.getMapa().getJugador().getVidas() > 0){
 			try {
-				
 				clip.start();
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 				//nivel.moverEnemigos();

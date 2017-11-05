@@ -1,6 +1,6 @@
 package Enemigos;
 
-import Logica.MapaLogico;
+
 import Logica.Posicion;
 import entidades.Enemigo;
 import java.util.Random;
@@ -53,17 +53,15 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 		if (posSig.getX () == CF.getX () && posSig.getY () == CF.getY ()) {
 			//Aca se borra el enemigo del mapa ya que llego al final
 			posSig = null;
-			MapaLogico miMapa = e.getMapa();
 			e.morirEnCastillo ();
-			miMapa.restarVida ();
 		}
 		
 		if (posSig != null) {
 			e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).EliminarEnemigoDeCelda (e);
-			e.getGrafico ().moverA (posSig, e.getVelMov ());
 			e.getPos ().setX (posSig.getX ());
 			e.getPos ().setY (posSig.getY ());
-			e.getMapa ().getCelda (posSig.getX (),posSig.getY ()).addEnemigo (e);
+			e.getMapa ().agregarEnemigo (e);
+			e.getGrafico ().moverA (posSig, e.getVelMov ());
 		}
 	}
 }

@@ -28,17 +28,17 @@ public class ConBallesta extends Enemigo {
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif",pos);
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void atacar(Controlable C) {
 		Proyectil municion = new Flecha(pos,C.getPos());
 		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
 		
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void atacar(Roca R) {
 		Proyectil municion = new Flecha(pos,R.getPos());
 		R.setVida(R.getVida() - miEstadoActual.getAtaque()); 
+		
 	}
-	
 }

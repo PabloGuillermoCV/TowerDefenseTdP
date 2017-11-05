@@ -8,6 +8,7 @@ public class CargaCatapulta extends Proyectil {
 	
 	private String [] Graficos;
 
+	@SuppressWarnings("static-access")
 	public CargaCatapulta (Posicion posI, Posicion posF) {
 		super (posI,posF);
 		velocidadMovimiento = 10;
