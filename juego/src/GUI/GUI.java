@@ -4,6 +4,7 @@ import Logica.*;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import javax.swing.*;
+import Hilos.ContadorTiempo;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame {

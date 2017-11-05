@@ -1,4 +1,4 @@
-package GUI;
+package Hilos;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,14 +11,13 @@ import javax.swing.JFrame;
 
 import Logica.Nivel;
 
-
 public class ContadorTiempo extends Thread {
 
 	private Nivel nivel;
 	private AudioInputStream audioInputStream;
 	private Clip clip;
 
-	ContadorTiempo(Nivel lvl) {
+	public ContadorTiempo (Nivel lvl) {
 		nivel = lvl;
 	}
 	
@@ -42,9 +41,9 @@ public class ContadorTiempo extends Thread {
 				
 				clip.start();
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
-				nivel.moverEnemigos();
+				//nivel.moverEnemigos();
 				Thread.sleep (0);
-				nivel.InteraccionControlableEnemigo();
+				//nivel.InteraccionControlableEnemigo();
 							
 			} catch (InterruptedException e) {
 				System.out.println("error en el thread");

@@ -2,9 +2,11 @@ package Logica;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.LinkedList;
 import GUI.*;
+import Hilos.HiloEnemigo;
+import Hilos.HiloGenerarEnemigo;
 import entidades.Controlable;
-
 import entidades.Enemigo;
 
 public abstract class Nivel {
@@ -17,6 +19,18 @@ public abstract class Nivel {
 	protected Posicion posFinalEnemies;
 	protected String direccionMapa;
 	protected File cancion;
+	protected HiloEnemigo [] hilosMovimientos;
+	protected LinkedList <Enemigo> enemigosAMandar;
+	protected HiloGenerarEnemigo hiloCreador;
+	
+	public Nivel (GUI gui) {
+		miGui = gui;
+		mapaLogico = MapaLogico.InstanciaMapaLogico ();
+		mapaLogico.setMapaVisual (miGui.getMapaVisual());
+		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
+		fabrica = new FabricaEnemigos ();
+		enemigosAMandar = new LinkedList <Enemigo> ();
+	}
 	
 	/**
 	 * realiza la interaccion entre controlables y enemigos
@@ -26,7 +40,7 @@ public abstract class Nivel {
 		for (Controlable C : mapaLogico.getListaControlables ()) {
 			System.out.println ("ESTOY EN INTERACCION-----------------------");
 			e = C.verificarUnidad();
-			if (e != null) {
+			if (e != null && e.estoyEnJuego ()) {
 				e.serAtacado(C);
 			}
 		}
@@ -85,5 +99,22 @@ public abstract class Nivel {
 	
 	public File getAudio(){
 		return cancion;
+	}
+	
+	public LinkedList <Enemigo> getListaEnemigos () {
+		return enemigosAMandar;
+	}
+	
+	public void mandarEnemigo () {
+		if (!enemigosAMandar.isEmpty ()) {
+			boolean corte = false;
+			for (int I = 0; I < hilosMovimientos.length && !corte; I++) {
+				if (hilosMovimientos [I].estaLibre ()) {
+					enemigosAMandar.getFirst ().activar ();
+					hilosMovimientos [I].setEnemigo (enemigosAMandar.removeFirst ());
+					corte = true;
+				}
+			}
+		}
 	}
 }

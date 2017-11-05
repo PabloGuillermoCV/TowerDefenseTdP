@@ -161,7 +161,13 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		miEstadoActual.setAtaque(miEstadoActual.getAtaque() + aPlus);
 		miEstadoActual.setDefensa(miEstadoActual.getDefensa() + dPlus);
 		VelocidadMov += velPlus;
-		
-		
+	}
+	
+	public boolean estoyEnJuego () {
+		return grafico.getGrafico ().isVisible () == true;
+	}
+	
+	public void activar () {
+		grafico.getGrafico ().setVisible (true);
 	}
 }

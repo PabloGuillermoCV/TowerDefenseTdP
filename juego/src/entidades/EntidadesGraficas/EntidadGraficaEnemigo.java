@@ -6,6 +6,7 @@ public class EntidadGraficaEnemigo  extends EntidadGrafica {
 	
 	public EntidadGraficaEnemigo (String File, Posicion pos) {
 		super (File, pos);
+		this.grafico.setVisible (false);
 	}
 	
 	public void moverA (Posicion pos, int vel) {

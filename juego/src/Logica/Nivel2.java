@@ -2,21 +2,20 @@ package Logica;
 
 import java.io.File;
 import GUI.GUI;
+import Hilos.HiloEnemigo;
 
 public class Nivel2 extends Nivel {
 
 	public Nivel2 (GUI gui) {
-		miGui = gui;
+		super (gui);
 		posInicialEnemies = new Posicion (0,40);
 		posFinalEnemies = new Posicion (460,100);
 		direccionMapa = "src\\GUI\\Sprites Mapas\\Mapa2.png";
-		mapaLogico = MapaLogico.InstanciaMapaLogico ();
-		mapaLogico.setMapaVisual (miGui.getMapaVisual());
 		mapaLogico.generarCaminoA (posFinalEnemies);
-		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
-		fabrica = new FabricaEnemigos ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level2BGM.WAV");
+		hilosMovimientos = new HiloEnemigo [7];
 		
+		iniciarHilos ();
 		generarListaEnemigos ();
 	}
 	
@@ -28,5 +27,12 @@ public class Nivel2 extends Nivel {
 		Nivel sig = new Nivel3 (miGui);
 		sig.generarListaEnemigos();
 		miGui.setNivel (sig);
+	}
+	
+	private void iniciarHilos () {
+		for (int I = 0; I < hilosMovimientos.length; I++) {
+			hilosMovimientos [I] = new HiloEnemigo ();
+			hilosMovimientos [I].start ();
+		}
 	}
 }
