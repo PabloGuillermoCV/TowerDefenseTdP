@@ -249,4 +249,21 @@ public class MapaLogico {
 			C.morir();
 		}
 	}
+	
+	/**
+	 * método que se encargará de eliminar todo lo que haya quedado en el nivel una vez que el mismo terminó (asumo que no hay más enemigos?)
+	 */
+	public void eliminarTodo(){
+		Iterator<Controlable> it1 = unidadesEnMapa.iterator();
+		Iterator<Objeto> it2 = objetosEnMapa.iterator();
+		while(it1.hasNext()){
+			Controlable C=it1.next();
+			C.morir();
+		}
+		while(it2.hasNext()){
+			Objeto O = it2.next();
+			//eliminar objeto del juego
+			objetosEnMapa.remove(O);
+		}
+	}
 }
