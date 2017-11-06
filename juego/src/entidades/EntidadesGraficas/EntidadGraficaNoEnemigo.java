@@ -12,4 +12,7 @@ public class EntidadGraficaNoEnemigo extends EntidadGrafica {
 
 	@Override
 	public void moverA(Posicion pos, int vel, int orientacion) {}
+
+	@Override //NO HACE NADA
+	public void desbloqueate() {}
 }

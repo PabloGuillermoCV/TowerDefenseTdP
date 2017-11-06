@@ -18,9 +18,9 @@ import entidades.Objeto;
 public class MapaLogico {
 	
 	private MapaVisual mapaVisual;
-	protected Collection <Controlable> unidadesEnMapa;
-	protected Collection <Enemigo> enemigosEnMapa;
-	protected Collection <Objeto> objetosEnMapa;
+	protected volatile Collection <Controlable> unidadesEnMapa;
+	protected volatile Collection <Enemigo> enemigosEnMapa;
+	protected volatile Collection <Objeto> objetosEnMapa;
 	private static MapaLogico Instancia;
 	private Celda [][] matriz;
 	private static int tamaño = 20;
@@ -206,7 +206,11 @@ public class MapaLogico {
 	}
 	
 	public void eliminarEnemigo (Enemigo E) {
-		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E); //me tira NullPointer acá
+		if(E != null)
+			System.out.println("Enemigo no nulo");
+		if(E.getPos() == null)
+			System.out.println("Posicion del enemigo a eliminar Nula");
+		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E); //me tira NullPointer acá, por lo que parece, la posición del enemigo es nula, no el enemigo en si
 		enemigosEnMapa.remove (E);
 	}
 	

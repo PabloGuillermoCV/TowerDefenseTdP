@@ -24,6 +24,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		this.Puntaje = Puntaje;
 		this.EstadoCaminar = new CaminarNormal(this);
 		this.miMapa.agregarEnemigo(this);
+		bloqueado = false;
 	}
 	
 	public int getVelMov () {
@@ -86,7 +87,17 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void Mover () {
-		EstadoCaminar.mover ();
+		if(!bloqueado){
+			EstadoCaminar.mover ();
+			bloqueado = true;
+			getGrafico().desbloqueate(); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
+		}
+	}
+	/**
+	 * método para desbloquear el enemigo lógicamente desde la gráfica
+	 */
+	public void desbloqueado(){
+		bloqueado = false;
 	}
 	
 	public void morir () {
@@ -171,5 +182,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	public void activar () {
 		grafico.getGrafico ().setVisible (true);
+		grafico.desbloqueate(); //cuando aparece la gráfica, la desbloqueo para que se pueda mover
 	}
 }

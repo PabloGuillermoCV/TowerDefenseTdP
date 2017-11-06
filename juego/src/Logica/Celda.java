@@ -5,7 +5,7 @@ import entidades.*;
 
 public class Celda {
 	private Controlable personaje;
-	private LinkedList <Enemigo> enemigos;
+	private volatile LinkedList <Enemigo> enemigos;
 	private Objeto objeto;
 	private Posicion esquinaIzq;
 	private static MapaLogico mapa = MapaLogico.InstanciaMapaLogico ();

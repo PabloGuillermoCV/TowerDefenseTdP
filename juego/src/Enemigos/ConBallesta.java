@@ -25,7 +25,7 @@ public class ConBallesta extends Enemigo {
 	
 	public ConBallesta (Posicion pos) {
 		super ("ConBallesta", pos, 150, 2, 150, 200, 2, false, 3000);
-		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif",pos);
+		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif",pos,this);
 	}
 
 	@SuppressWarnings("unused")

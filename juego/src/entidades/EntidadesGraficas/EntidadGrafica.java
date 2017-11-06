@@ -43,4 +43,9 @@ public abstract class EntidadGrafica { //En este paquete estarán todos los gráfi
 	public void setFile(String File){
 		grafico = new JLabel(new ImageIcon(File));
 	}
+
+	/**
+	 * metodo para desbloquear la parte gráfica desde afuera, solo lo usan los enemigos gráficos (y seguramente los proyectiles)
+	 */
+	public abstract void desbloqueate();
 }

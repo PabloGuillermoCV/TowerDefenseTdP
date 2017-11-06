@@ -4,7 +4,7 @@ import entidades.Enemigo;
 
 public class HiloEnemigo extends Thread {
 	
-	private Enemigo e;
+	private volatile Enemigo e;
 	
 	public void setEnemigo (Enemigo e) {
 		this.e = e;
