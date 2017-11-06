@@ -89,8 +89,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	public void Mover () {
 		if(!bloqueado){
 			EstadoCaminar.mover ();
-			bloqueado = true;
-			getGrafico().desbloqueate(); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
 		}
 	}
 	/**
@@ -183,5 +181,9 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	public void activar () {
 		grafico.getGrafico ().setVisible (true);
 		grafico.desbloqueate(); //cuando aparece la gráfica, la desbloqueo para que se pueda mover
+	}
+
+	public void bloqueate() {
+		bloqueado = true;
 	}
 }
