@@ -11,7 +11,9 @@ import javax.swing.JFrame;
 import Logica.Niveles.Nivel;
 
 public class ContadorTiempo extends Thread {
-
+	
+	//Ahora mismo no hay ninguna clase que use a contador tiempo
+	
 	private Nivel nivel;
 	private AudioInputStream audioInputStream;
 	private Clip clip;

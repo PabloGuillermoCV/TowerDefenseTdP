@@ -5,6 +5,7 @@ import GUI.GUI;
 import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
 import Logica.Posicion;
+import Logica.Caminos.Camino3;
 
 public class Nivel3 extends Nivel {
 	
@@ -14,7 +15,8 @@ public class Nivel3 extends Nivel {
 		gui.setGrafico (direccionMapa);
 		posInicialEnemies = new Posicion (440,300);
 		posFinalEnemies = new Posicion (140,120);
-		mapaLogico.generarCaminoA (posFinalEnemies);
+		miCamino = new Camino3 ();
+		miCamino.generarCamino ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level3BGM.WAV");
 		hilosMovimientos = new HiloEnemigo [7];
 		
@@ -31,9 +33,6 @@ public class Nivel3 extends Nivel {
 
 	public void siguienteNivel () {
 		//Final Del Juego
-		Nivel sig = new Nivel3 (miGui);
-		sig.generarListaEnemigos();
-		miGui.setNivel (sig);
 	}
 	
 	private void iniciarHilos () {

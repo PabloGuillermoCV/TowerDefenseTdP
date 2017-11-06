@@ -1,18 +1,22 @@
-package Enemigos;
-
+package Enemigos.Movimiento;
 
 import Logica.Posicion;
 import entidades.Enemigo;
 import java.util.Random;
 
-public class CaminarNormal implements EstrategiaDeMovimiento {
+public class CaminarDañado implements EstrategiaDeMovimiento {
 
 	private Enemigo e;
 	
-	public CaminarNormal (Enemigo e) {
+	public CaminarDañado (Enemigo e) {
 		this.e = e;
 	}
 	
+	/**
+	 * metodo que, asuminedo que el enemigo esta en un campo dañino,
+	 * le saca 5 de vida cada vez que se mueve
+	 * @param pos la posicion donde se moverá el enemigo
+	 */
 	public void mover () {
 		Posicion posSig;
 		Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
@@ -61,9 +65,15 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 			e.getPos ().setX (posSig.getX ());
 			e.getPos ().setY (posSig.getY ());
 			e.getMapa ().agregarEnemigo (e);
-			e.bloqueate();
-			e.getGrafico().desbloqueate(); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
+			e.bloqueate ();
+			e.getGrafico ().desbloqueate ();
 			e.getGrafico ().moverA (posSig, e.getVelMov ());
+			afectarVida ();
 		}
+	}
+	
+	private void afectarVida () {
+		int Porc = (e.getEstado ().getVida () * 10) / 100;
+		e.getEstado ().setVida (e.getEstado ().getVida () - Porc);
 	}
 }

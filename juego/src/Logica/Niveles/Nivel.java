@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import GUI.*;
 import Logica.*;
+import Logica.Caminos.Camino;
 import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
 import Hilos.HiloInteraccion;
@@ -16,6 +17,7 @@ public abstract class Nivel {
 	protected MapaLogico mapaLogico;
 	protected TiendaLogica tiendaLogica;
 	protected GUI miGui;
+	protected Camino miCamino;
 	protected Posicion posInicialEnemies;
 	protected Posicion posFinalEnemies;
 	protected String direccionMapa;
@@ -64,6 +66,10 @@ public abstract class Nivel {
 	 */
 	public TiendaLogica getTienda () {
 		return tiendaLogica;
+	}
+	
+	public Camino getCamino () {
+		return miCamino;
 	}
 	
 	public Posicion getPosicionInicial () {

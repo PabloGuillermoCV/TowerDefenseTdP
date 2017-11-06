@@ -1,4 +1,4 @@
-package Enemigos;
+package Enemigos.Movimiento;
 
 public interface EstrategiaDeMovimiento {
 	

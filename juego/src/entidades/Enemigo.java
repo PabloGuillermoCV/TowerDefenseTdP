@@ -5,6 +5,7 @@ import Logica.MapaLogico;
 import Logica.Posicion;
 import java.util.Random;
 import Enemigos.*;
+import Enemigos.Movimiento.*;
 import Objetos.ObjResistente.*;
 import Objetos.ObjTemporal.*;
 import Objetos.PowerUpsDelMapa.*;
@@ -91,12 +92,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 			EstadoCaminar.mover ();
 		}
 	}
-	/**
-	 * método para desbloquear el enemigo lógicamente desde la gráfica
-	 */
-	public void desbloqueado(){
-		bloqueado = false;
-	}
 	
 	public void morir () {
 		//miMapa.getNivel ().murioEnemigo (this);
@@ -182,8 +177,15 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		grafico.getGrafico ().setVisible (true);
 		grafico.desbloqueate(); //cuando aparece la gráfica, la desbloqueo para que se pueda mover
 	}
+	
+	/**
+	 * método para desbloquear el enemigo lógicamente desde la gráfica
+	 */
+	public void desbloqueado (){
+		bloqueado = false;
+	}
 
-	public void bloqueate() {
+	public void bloqueate () {
 		bloqueado = true;
 	}
 }

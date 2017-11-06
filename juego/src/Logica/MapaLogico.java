@@ -42,7 +42,6 @@ public class MapaLogico {
 				matriz [i][j] = new Celda (i*tamaño,j*tamaño);
 			}
 		}
-		miCamino = new Camino1 ();
 		unidadesEnMapa = new LinkedList <Controlable> ();
 		enemigosEnMapa = new LinkedList <Enemigo> ();
 		objetosEnMapa = new LinkedList <Objeto> ();
@@ -62,6 +61,7 @@ public class MapaLogico {
 	
 	public void setNivel (Nivel miNivel) {
 		this.miNivel = miNivel;
+		this.miCamino = miNivel.getCamino ();
 	}
 	
 	public MapaVisual getMapaVisual() {
@@ -93,10 +93,6 @@ public class MapaLogico {
 	
 	public Nivel getNivel () {
 		return miNivel;
-	}
-	
-	public void generarCaminoA (Posicion pos) {
-		miCamino.generarCamino ();
 	}
 
 	public Collection <Controlable> getListaControlables () {

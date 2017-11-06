@@ -60,10 +60,10 @@ public class MapaVisual extends JPanel {
 					//Vender personaje
 					Controlable Cont = C.getPersonaje ();
 					if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) {
-						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ()); 
+						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2)); 
 					}
 					else {
-						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2));
+						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ());
 					}
 					
 					//Hay que sacar al personaje del hilo
@@ -143,6 +143,10 @@ public class MapaVisual extends JPanel {
 	
 	public int getWidth () {
 		return width;
+	}
+	
+	public MapaLogico getMapa () {
+		return mapL;
 	}
 	
 	public void cargarFondo () {

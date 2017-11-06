@@ -1,22 +1,18 @@
-package Enemigos;
+package Enemigos.Movimiento;
+
 
 import Logica.Posicion;
 import entidades.Enemigo;
 import java.util.Random;
 
-public class CaminarMermado implements EstrategiaDeMovimiento {
+public class CaminarNormal implements EstrategiaDeMovimiento {
 
 	private Enemigo e;
 	
-	public CaminarMermado (Enemigo e) {
+	public CaminarNormal (Enemigo e) {
 		this.e = e;
 	}
 	
-	/**
-	 * metodo que, asumiendo que el personaje esta en el rio, 
-	 * hace que se mueva a la mitad de la velocidad
-	 * @param pos posicion a la que se moverá el enemigo
-	 */
 	public void mover () {
 		Posicion posSig;
 		Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
@@ -62,10 +58,12 @@ public class CaminarMermado implements EstrategiaDeMovimiento {
 		
 		if (posSig != null) {
 			e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).EliminarEnemigoDeCelda (e);
-			e.getGrafico ().moverA (posSig, e.getVelMov () - 2);
 			e.getPos ().setX (posSig.getX ());
 			e.getPos ().setY (posSig.getY ());
-			e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).addEnemigo (e);
+			e.getMapa ().agregarEnemigo (e);
+			e.bloqueate ();
+			e.getGrafico ().desbloqueate (); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
+			e.getGrafico ().moverA (posSig, e.getVelMov ());
 		}
 	}
 }

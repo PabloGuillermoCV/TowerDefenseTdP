@@ -1,21 +1,21 @@
-package Enemigos;
+package Enemigos.Movimiento;
 
 import Logica.Posicion;
 import entidades.Enemigo;
 import java.util.Random;
 
-public class CaminarDañado implements EstrategiaDeMovimiento {
+public class CaminarMermado implements EstrategiaDeMovimiento {
 
 	private Enemigo e;
 	
-	public CaminarDañado (Enemigo e) {
+	public CaminarMermado (Enemigo e) {
 		this.e = e;
 	}
 	
 	/**
-	 * metodo que, asuminedo que el enemigo esta en un campo dañino,
-	 * le saca 5 de vida cada vez que se mueve
-	 * @param pos la posicion donde se moverá el enemigo
+	 * metodo que, asumiendo que el personaje esta en el rio, 
+	 * hace que se mueva a la mitad de la velocidad
+	 * @param pos posicion a la que se moverá el enemigo
 	 */
 	public void mover () {
 		Posicion posSig;
@@ -62,16 +62,12 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 		
 		if (posSig != null) {
 			e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).EliminarEnemigoDeCelda (e);
-			e.getGrafico ().moverA (posSig, e.getVelMov ());
 			e.getPos ().setX (posSig.getX ());
 			e.getPos ().setY (posSig.getY ());
-			e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).addEnemigo (e);
-			afectarVida ();
+			e.getMapa ().agregarEnemigo (e);
+			e.bloqueate ();
+			e.getGrafico ().desbloqueate ();
+			e.getGrafico ().moverA (posSig, e.getVelMov () - 2);
 		}
-	}
-	
-	private void afectarVida () {
-		int Porc = (e.getEstado ().getVida () * 10) / 100;
-		e.getEstado ().setVida (e.getEstado ().getVida () - Porc);
 	}
 }

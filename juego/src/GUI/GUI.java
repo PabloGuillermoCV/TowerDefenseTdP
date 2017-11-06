@@ -50,6 +50,7 @@ public class GUI extends JFrame {
 		getContentPane().add (shop);
 	
 		nivel = new Nivel1 (this);
+		mapa.getMapa ().setNivel (nivel);
 	}
 	
 	public static GUI InstanciaGUI () {
@@ -89,6 +90,7 @@ public class GUI extends JFrame {
 		mapa.setVisible(false);
 		mapa = nivel.getMapa().getMapaVisual();
 		mapa.setVisible(true);
+		mapa.getMapa ().setNivel (nivel);
 	}
 	
 	public void setGrafico (String dir) {
