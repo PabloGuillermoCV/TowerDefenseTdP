@@ -238,8 +238,9 @@ public class MapaLogico {
 			}
 		}
 		for(Enemigo h: aSacarE){
-			eliminarEnemigo(h);
+			enemigosEnMapa.remove(h);
 			miNivel.murioEnemigo(h);
+			aSacarE.remove(h);
 			//le digo al Nivel que murió un enemigo para que lo saque de su hilo correspondiente
 			//h.morir(); me tira NullPointer cuando le va a decir al Hilo que lo saque, ver esto que parece que va entre un Deadlock y un NullPointer
 		}

@@ -9,14 +9,21 @@ public abstract class Proyectil {
 	//que tan rápido se mueve el proyectil
 	protected int velocidadMovimiento;
 	protected VueloProyectiles miThread;
+	protected boolean bloqueado;
 	protected EntidadGraficaAtaque miGrafico;
 	protected Posicion posActual;
 	protected Posicion posFinal;
+	
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	
 	public Proyectil (Posicion posActual, Posicion posFinal) {
 		this.posActual = posActual;
 		this.posFinal = posFinal;
+		bloqueado = true;
+	}
+	
+	public void desbloqueate() {
+		bloqueado = false;
 	}
 	
 	/**
@@ -24,6 +31,7 @@ public abstract class Proyectil {
 	 * NOTA: Esto se hace en un contexto lógico
 	 */
 	public void volar(){
+		if(!bloqueado) {
 			System.out.println("estoy volando logicamente");
 			int x1 = posActual.getX();
 			int y1 = posActual.getY();
@@ -47,69 +55,51 @@ public abstract class Proyectil {
 				case 1:
 					posActual.setX(posActual.getX() + velocidadMovimiento);
 					posActual.setY(posActual.getY() + velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,1);
 					break;
 				case 2:
 					posActual.setY(posActual.getY() + velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,2);
 					break;
 				case 3:
 					posActual.setX(posActual.getX() - velocidadMovimiento);
 					posActual.setY(posActual.getY() + velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,3);
 					break;
 				case 4:
 					posActual.setX(posActual.getX() - velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,4);
 					break;
 				case 5:
 					posActual.setX(posActual.getX() - velocidadMovimiento);
 					posActual.setY(posActual.getY() - velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,5);
 					break;
 				case 6:
 					posActual.setY(posActual.getY() - velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,6);
 					break;
 				case 7:
 					posActual.setX(posActual.getX() + velocidadMovimiento);
 					posActual.setY(posActual.getY() - velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,7);
 					break;
 					
 			}
-			/*
-			if(x1 > x2) { //la Posicion del disparador es mayor que la del disparado en X
-				if(y1 > y2) { //la Posicion del disparador es mayor que la del disparado en Y
-					posActual.setX(posActual.getX() - velocidadMovimiento);
-					posActual.setY(posActual.getY() - velocidadMovimiento);
-					miGrafico.moverA(posActual, velocidadMovimiento);  //una vez que me moví lógicamente, le digo a mi entidad gráfica que se mueva
-					//acá, el disparado estaria en el segundo cuadrante de coordenadas
-				}
-				else { //la posicion del disparado es mayor que la del disparador en Y
-					//acá, el disparado estaria en el tercer cuadrante de coordenadas
-					posActual.setX(posActual.getX() - velocidadMovimiento);
-					posActual.setY(posActual.getY() + velocidadMovimiento);
-					miGrafico.moverA(posActual, velocidadMovimiento);
-				}
-			}
-			else { //la Posicion del disparado es mayor que la del disparador en X
-				if(y1 > y2) {
-					//acá, el disparado estaria en el primer cuadrante de coordenadas
-					posActual.setX(posActual.getX() + velocidadMovimiento);
-					posActual.setY(posActual.getY() - velocidadMovimiento);
-					miGrafico.moverA(posActual, velocidadMovimiento);
-				}
-				else {
-					//acá, el disparado estaria en el cuarto cuadrante de coordenadas
-					posActual.setX(posActual.getX() + velocidadMovimiento);
-					posActual.setY(posActual.getY() + velocidadMovimiento);
-					miGrafico.moverA(posActual, velocidadMovimiento);
-				}
-			}
-			*/
-		if(posActual.equals(posFinal)) {
-			this.Morir();
 		}
 	}
 	
@@ -122,7 +112,7 @@ public abstract class Proyectil {
 	 */
 	public abstract void setGrafico(Posicion p);
 	
-	private void Morir() {
+	public void Morir() {
 		miThread.eliminarProyectil(this);
 		miThread = null;
 		posActual = null;

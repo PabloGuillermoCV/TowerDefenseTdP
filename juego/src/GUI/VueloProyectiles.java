@@ -19,6 +19,7 @@ public class VueloProyectiles extends Thread {
 	public static VueloProyectiles getInstance() {
 		if(Yo == null) {
 			Yo = new VueloProyectiles();
+			Yo.start();
 		}
 		return Yo;
 	}
@@ -42,18 +43,24 @@ public class VueloProyectiles extends Thread {
 				else
 					proyectilesEliminar.add(p);
 				try {
+					System.out.println("HOLA");
 					this.sleep(20);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-			disp = proyectilesEliminar.iterator();
-			while(disp.hasNext()) {
-				Proyectil p = disp.next();
-				proyectiles.remove(p);
-				proyectilesEliminar.remove(p);
-			}
+			eliminacion();
 		}	
+	}
+	
+	private synchronized void eliminacion() {
+		Iterator<Proyectil> disp = proyectilesEliminar.iterator();
+		while(disp.hasNext()) {
+			Proyectil p = disp.next();
+			proyectiles.remove(p);
+			proyectilesEliminar.remove(p);
+			p.Morir();
+		}
 	}
 	
 }

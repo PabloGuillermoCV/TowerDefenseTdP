@@ -94,6 +94,8 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morir () {
+		Posicion aux = pos;
+		MapaLogico auxm = miMapa;
 		//miMapa.getNivel ().murioEnemigo (this);
 		Random Rand = new Random ();
 		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
@@ -110,35 +112,35 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 				PowerUpDelMapa PU = null;
 				switch (I) {
 					case 1:
-						PU = new VidaPlus (pos);
+						PU = new VidaPlus (aux);
 						break;
 					case 2:
-						PU = new AtaquePlus (pos);
+						PU = new AtaquePlus (aux);
 						break;
 					case 3:
-						PU = new EscudoPlus (pos);
+						PU = new EscudoPlus (aux);
 						break;
 				}
-				miMapa.agregarObjeto (PU);
+				auxm.agregarObjeto (PU);
 			}
 			else { //8% de probabilidad de que el objeto sea un obstaculo
 				I = Rand.nextInt (4) + 1; //Cual de los 4 voy a dejar
 				Objeto O = null;
 				switch (I) {
 					case 1:
-						O = new CampoDeDaño (pos);
+						O = new CampoDeDaño (aux);
 						break;
 					case 2:
-						O = new Roca (pos);
+						O = new Roca (aux);
 						break;
 					case 3:
-						O = new CampoDebilitador (pos);
+						O = new CampoDebilitador (aux);
 						break;
 					case 4:
-						O = new Lago (pos);
+						O = new Lago (aux);
 						break;
 				}
-				miMapa.agregarObjeto (O);
+				auxm.agregarObjeto (O);
 			}
 		}
 	}
@@ -170,7 +172,9 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public boolean estoyEnJuego () {
-		return grafico.getGrafico ().isVisible () == true;
+		if(grafico != null)
+			return grafico.getGrafico ().isVisible () == true;
+		return false;
 	}
 	
 	public void activar () {
