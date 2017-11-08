@@ -1,8 +1,9 @@
 package Objetos.PowerUpsDelMapa;
 
 import Logica.Posicion;
+import entidades.Controlable;
+import entidades.Enemigo;
 import entidades.Objeto;
-import entidades.Personaje;
 
 public abstract class PowerUpDelMapa extends Objeto {
 	
@@ -10,12 +11,7 @@ public abstract class PowerUpDelMapa extends Objeto {
 		super (Nombre,Pos);
 	}
 	
-	public void Afectar () {}
+	public void Afectar (Controlable P) {}
 	
-	public abstract void Afectar (Personaje P);
-	
-	public void Agarrar () {
-		grafico.getGrafico ().setVisible (false);
-		
-	}
+	public void Afectar (Enemigo E) {}
 }

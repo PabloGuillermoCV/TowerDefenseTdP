@@ -22,7 +22,7 @@ public class Flecha extends Proyectil {
 		Graficos [6] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Flecha\\FlechaDerecha.png";
 		Graficos [7] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Flecha\\FlechaIzquierda.png";
 		miGrafico = new EntidadGraficaAtaque(Graficos, posI, this);
-		miThread = miThread.getInstance();
+		miThread = miThread.InstanciaHiloVueloProyectiles ();
 		miThread.agregarProyectil(this);
 	}
 	

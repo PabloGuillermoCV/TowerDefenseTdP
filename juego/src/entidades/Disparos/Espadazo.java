@@ -22,7 +22,7 @@ public class Espadazo extends Proyectil {
 		Graficos [6] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Espadazo\\EspadazoDerecha.png";
 		Graficos [7] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Espadazo\\EspadazoIzquierda.png";
 		miGrafico = new EntidadGraficaAtaque(Graficos, posI, this);
-		miThread = miThread.getInstance();
+		miThread = miThread.InstanciaHiloVueloProyectiles ();
 		miThread.agregarProyectil(this);
 	}
 	

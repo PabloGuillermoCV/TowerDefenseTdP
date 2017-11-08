@@ -46,7 +46,7 @@ public abstract class Personaje extends Entidad {
 	}
 	
 	public void serAtacado (Explosivo E){
-		E.Atacar (this);
+		E.Afectar (this);
 	}
 	
 	public int getVidaMax () {

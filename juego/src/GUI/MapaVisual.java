@@ -17,7 +17,6 @@ import entidades.Objeto;
 public class MapaVisual extends JPanel {
 	
 	private static MapaVisual Instancia;
-	//private GUI miGui;
 	private JLabel fondo;
 	private static int width = 500;
 	private static int height = 320;
@@ -42,10 +41,6 @@ public class MapaVisual extends JPanel {
 		return Instancia;
 	}
 	
-	/*public void setGUI (GUI miGui) {
-		this.miGui = miGui;
-	}*/
-	
 	private class Mapa implements MouseListener {
 
 		public void mouseClicked (MouseEvent E) {
@@ -58,24 +53,29 @@ public class MapaVisual extends JPanel {
 				Celda C = mapL.getCelda (P.getX (), P.getY ());
 				if (C.getPersonaje () != null) {
 					if (tengoPU == null) {
-						venderControlable (C); //si NO tengop un PowerUp para consumir y estoy haciendo doble click, vendo al controlable asuminedo que hay uno
+						//Al hacer doble click vendo al personaje (si no agarre un power up)
+						venderControlable (C);
 					}
 					else {
-						darPowerUp (C); //sino, le doy el powerup a ese personaje
+						//Si no, le doy un Power Up al personaje
+						darPowerUp (C);
 					}
 				}
 				else {
-					if (C.getObjeto () != null) {//si hago doble click sobre un objeto, lo levanto
+					if (C.getObjeto () != null) {
+						//Hago click en un Power Up y lo levanto
 						agarrarPowerUp (C);
 					}
 				}
 			}
 			else {
 				//Hice un solo click
-				if (mapL.puedoAgregarControlable (P)) { //agrego controlables
+				if (mapL.puedoAgregarControlable (P)) {
+					//Agrego un controlable a un espacio vacio
 					agregarControlable (P);
 				}
 				else {
+					//Agrego un objeto de la tienda
 					agregarObjetoTienda (P);
 				}
 			}
@@ -155,17 +155,15 @@ public class MapaVisual extends JPanel {
 	private void venderControlable (Celda C) {
 		//Condicion: doble click en un controlable sin nada "en la mano"
 		Controlable Cont = C.getPersonaje ();
-		if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) { //si el personaje está herido, el precio de reventa se reduce a la mitad
-			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2)); 
+		if (Cont.getEstado ().getVida () >= Cont.getVidaMax ()) {
+			//El personaje no esta herido y lo vendo al precio original
+			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ()); 
 		}
 		else {
-			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ()); //sino , la reventa se hace por el precio original de venta
+			//El personaje esta herido y lo vendo a la mitad
+			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2));
 		}
-		
-		//Hay que sacar al personaje del hilo
-		//Es un problema parecido al que tenemos con enemigo
-		
-		mapL.eliminarControlable(Cont); //le digo al mapa Logico que este controlable ya no existe
+		mapL.eliminarControlable(Cont); //Le digo al mapa logico que este controlable ya no existe
 		Cont.morir ();
 		marketV.modificarMonedas ();
 		marketV.updateBotones ();
@@ -173,8 +171,10 @@ public class MapaVisual extends JPanel {
 	
 	private void agarrarPowerUp (Celda C) {
 		//Condicion: doble click en un objeto power up
-		tengoPU.Agarrar (); //Saca el objeto del mapa
+		tengoPU = C.getObjeto ().Agarrar (); //Saca el objeto del mapa
 		if (tengoPU != null) {
+			//Si no es nulo, lo saco y me lo quedo
+			C.EliminarObjetoDeCelda (C.getObjeto ());
 			marketV.setBotonesOff ();
 			marketV.setBotonOleadaOff ();
 		}

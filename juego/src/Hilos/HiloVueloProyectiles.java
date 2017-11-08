@@ -1,27 +1,27 @@
-package GUI;
+package Hilos;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import entidades.Proyectil;
 
-public class VueloProyectiles extends Thread {
+public class HiloVueloProyectiles extends Thread {
 	
 	private volatile Collection<Proyectil> proyectiles;
 	private volatile Collection<Proyectil> proyectilesEliminar;
-	private static VueloProyectiles Yo;
+	private static HiloVueloProyectiles Instancia;
 	
-	private VueloProyectiles() {
+	private HiloVueloProyectiles() {
 		proyectiles = new LinkedList<Proyectil>();
 		proyectilesEliminar = new LinkedList<Proyectil>();
 	}
 	
-	public static VueloProyectiles getInstance() {
-		if(Yo == null) {
-			Yo = new VueloProyectiles();
-			Yo.start();
+	public static HiloVueloProyectiles InstanciaHiloVueloProyectiles () {
+		if(Instancia == null) {
+			Instancia = new HiloVueloProyectiles ();
+			Instancia.start ();
 		}
-		return Yo;
+		return Instancia;
 	}
 	public void agregarProyectil(Proyectil p) {
 		proyectiles.add(p);

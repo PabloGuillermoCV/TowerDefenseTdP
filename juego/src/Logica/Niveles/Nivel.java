@@ -3,7 +3,6 @@ package Logica.Niveles;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
-
 import Audio.Sonido;
 import GUI.*;
 import Logica.*;
@@ -50,9 +49,6 @@ public abstract class Nivel {
 			e.Mover ();
 			try {
 				Thread.sleep (100);
-				//si mi teoria es correcta, esto haria que las unidades se 
-				//muevan con cierta distancia entre ellas.
-				//Mi teoria era 75% correcta, genera una separación, pero despues se vuelven a juntar
 			}
 			catch (InterruptedException e1) {
 				e1.printStackTrace ();
@@ -98,7 +94,7 @@ public abstract class Nivel {
 	 */
 	public abstract void siguienteNivel ();
 	
-	public File getAudio(){
+	public File getAudio () {
 		return cancion;
 	}
 	
@@ -129,7 +125,7 @@ public abstract class Nivel {
 		mapaLogico.restarVida ();
 		if (mapaLogico.getJugador ().getVidas () == 0) {
 			
-			
+			//Aca se pondria en un panel un mensaje de game over
 			
 		}
 	}

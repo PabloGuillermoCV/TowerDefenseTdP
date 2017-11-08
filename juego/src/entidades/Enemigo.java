@@ -48,7 +48,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		return EstadoCaminar;
 	}
 	
-	public void setEstado (EstrategiaDeMovimiento estado) {
+	public void setEstrategia (EstrategiaDeMovimiento estado) {
 		EstadoCaminar = estado;
 	}
 	

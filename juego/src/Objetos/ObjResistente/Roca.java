@@ -1,6 +1,7 @@
 package Objetos.ObjResistente;
 
 import Logica.Posicion;
+import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class Roca extends ObjetoResistente {
@@ -14,5 +15,7 @@ public class Roca extends ObjetoResistente {
 		Vida = I;
 	}
 	
-	public void Afectar () {}
+	public void Afectar (Enemigo P) {
+		
+	}
 }

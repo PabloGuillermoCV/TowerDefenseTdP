@@ -1,6 +1,7 @@
 package Objetos.PowerUpsDelMapa;
 
 import Logica.Posicion;
+import entidades.Objeto;
 import entidades.Personaje;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 import entidades.Estados.EstadoVida;
@@ -17,7 +18,11 @@ public class VidaPlus extends PowerUpDelMapa {
 		int A = P.getEstado ().getAtaque ();
 		int D = P.getEstado ().getDefensa ();
 		P.setEstado (new EstadoVida (V, A, D));
+	}
+	
+	public Objeto Agarrar () {
 		this.grafico.Morir ();
 		this.grafico = null;
+		return this;
 	}
 }

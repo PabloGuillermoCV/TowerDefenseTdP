@@ -8,9 +8,15 @@ public abstract class Objeto extends Entidad {
 		super (Nombre, Pos);
 	}
 	
-	public abstract void Afectar ();
+	//Implementado por objetos que afecten a todos los personajes
+	public abstract void Afectar (Personaje P);
 	
-	public void Afectar (Personaje P) {}
+	//Implementado por objetos que afecten solamente a controlables
+	public abstract void Afectar (Controlable C);
 	
-	public abstract void Agarrar ();
+	//Implementado por objetos que afecten solamente a enemigos
+	public abstract void Afectar (Enemigo E);
+	
+	//Saca el objeto del mapa
+	public abstract Objeto Agarrar ();
 }

@@ -1,10 +1,16 @@
 package Objetos.ObjTemporal;
 
+import Enemigos.Movimiento.CaminarNormal;
 import Hilos.HiloItemTemporal;
 import Logica.Posicion;
+import entidades.Controlable;
+import entidades.Enemigo;
 import entidades.Objeto;
+import entidades.Personaje;
 
 public abstract class ObjetoTemporal extends Objeto {
+	
+	protected Enemigo auxiliar; //Lo uso para guardar el enemigo y recuperar su estrategia de movimiento
 	
 	/**
 	 * constructor del Item Temporal
@@ -15,6 +21,7 @@ public abstract class ObjetoTemporal extends Objeto {
 	 */
 	public ObjetoTemporal (String Nombre, Posicion Pos, int Tiempo) {
 		super (Nombre,Pos);
+		this.auxiliar = null;
 		HiloItemTemporal miHilo = new HiloItemTemporal(Tiempo);
 		miHilo.start();
 	}
@@ -24,8 +31,15 @@ public abstract class ObjetoTemporal extends Objeto {
 	 * este método es llamado por el Hilo de Items Temporales
 	 */
 	public void morir () {
-		
+		auxiliar.setEstrategia (new CaminarNormal (auxiliar));
+		auxiliar = null;
 	}
 	
-	public void Agarrar () {}
+	public void Afectar (Personaje P) {}
+	
+	public void Afectar (Controlable P) {}
+	
+	public Objeto Agarrar () {
+		return null;
+	}
 }

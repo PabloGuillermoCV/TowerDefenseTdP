@@ -264,11 +264,10 @@ public class MapaLogico {
 		aSacarC.removeAll(aSacarC);
 	}
 	
-	
-	
 	/**
 	 * método que se encargará de eliminar todo lo que haya quedado en el nivel una vez que el mismo terminó (asumo que no hay más enemigos?)
 	 */
+	@SuppressWarnings("unused")
 	public void eliminarTodo(){
 		Iterator<Controlable> it1 = unidadesEnMapa.iterator();
 		Iterator<Objeto> it2 = objetosEnMapa.iterator();

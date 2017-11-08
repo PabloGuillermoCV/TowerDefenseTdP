@@ -1,6 +1,6 @@
 package entidades;
 
-import GUI.VueloProyectiles;
+import Hilos.HiloVueloProyectiles;
 import Logica.Posicion;
 import entidades.EntidadesGraficas.EntidadGraficaAtaque;
 
@@ -8,7 +8,7 @@ public abstract class Proyectil {
 
 	//que tan rápido se mueve el proyectil
 	protected int velocidadMovimiento;
-	protected VueloProyectiles miThread;
+	protected HiloVueloProyectiles miThread;
 	protected boolean bloqueado;
 	protected EntidadGraficaAtaque miGrafico;
 	protected Posicion posActual;

@@ -22,7 +22,7 @@ public class CargaCatapulta extends Proyectil {
 		Graficos [6] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Carga Catapulta\\CargaCatapultaDerecha.png";
 		Graficos [7] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Carga Catapulta\\CargaCatapultaIzquierda.png";
 		miGrafico = new EntidadGraficaAtaque(Graficos, posI, this);
-		miThread = miThread.getInstance();
+		miThread = miThread.InstanciaHiloVueloProyectiles ();
 		miThread.agregarProyectil(this);
 	}
 
