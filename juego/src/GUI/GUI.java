@@ -40,8 +40,6 @@ public class GUI extends JFrame {
 		mapa = MapaVisual.InstanciaMapaVisual ();
 		mapa.cargarFondo ();
 		shop = TiendaVisual.InstanciaTiendaVisual ();
-		shop.cargarFondo ();
-		mapa.setGUI (this);
 		P = Jugador.InstanciaJugador ();
 		
 		this.getContentPane ().add (mapa);

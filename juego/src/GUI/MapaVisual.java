@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import Logica.Celda;
 import Logica.MapaLogico;
 import Logica.Posicion;
@@ -18,18 +17,21 @@ import entidades.Objeto;
 public class MapaVisual extends JPanel {
 	
 	private static MapaVisual Instancia;
-	private GUI miGui;
+	//private GUI miGui;
 	private JLabel fondo;
 	private static int width = 500;
 	private static int height = 320;
 	private TiendaLogica marketL;
 	private MapaLogico mapL;
+	private TiendaVisual marketV;
+	private Objeto tengoPU;
 	
 	private MapaVisual () {
 		this.setLayout (null);
 		this.setSize (width, height);
 		marketL = TiendaLogica.InstanciaTiendaLogica ();
 		mapL = MapaLogico.InstanciaMapaLogico ();
+		marketV = TiendaVisual.InstanciaTiendaVisual ();
 		this.addMouseListener (new Mapa ());
 	}
 	
@@ -40,95 +42,46 @@ public class MapaVisual extends JPanel {
 		return Instancia;
 	}
 	
-	public void setGUI (GUI miGui) {
+	/*public void setGUI (GUI miGui) {
 		this.miGui = miGui;
-	}
+	}*/
 	
 	private class Mapa implements MouseListener {
 
-		@SuppressWarnings("unused")
 		public void mouseClicked (MouseEvent E) {
 			int X = E.getX ();
 			int Y = E.getY ();
 			//Redondeo el valor a un multiplo de 20
 			Posicion P = new Posicion ((X / 20) * 20, (Y / 20) * 20);
-			//System.out.println ("X: "+P.getX()+" Y: "+P.getY());
 			if (E.getClickCount () == 2 && !E.isConsumed ()) {
 				//Hice dos clicks
 				Celda C = mapL.getCelda (P.getX (), P.getY ());
 				if (C.getPersonaje () != null) {
-					//Vender personaje
-					Controlable Cont = C.getPersonaje ();
-					if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) {
-						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2)); 
+					if (tengoPU == null) {
+						venderControlable (C);
 					}
 					else {
-						marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ());
+						darPowerUp (C);
 					}
-					
-					//Hay que sacar al personaje del hilo
-					//Es un problema parecido al que tenemos con enemigo
-					
-					Cont.morir ();
-					miGui.getTiendaVisual ().modificarMonedas ();
-					miGui.getTiendaVisual ().updateBotones ();
 				}
 				else {
 					if (C.getObjeto () != null) {
-						Objeto Obj = C.getObjeto ();
-						miGui.getTiendaVisual ().setBotonesOff ();
-						//Asi me estaria dejando agarrar cualquier objeto...
+						agarrarPowerUp (C);
 					}
 				}
 			}
 			else {
 				//Hice un solo click
 				if (mapL.puedoAgregarControlable (P)) {
-					//Si puedo poner un personaje y apreté el boton correcto
-					Controlable Cont;
-					Cont = marketL.createPersonaje (P);
-					if (Cont != null) {
-						mapL.agregarControlable (Cont, P);
-						marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Cont.getPrecio ());
-						miGui.getTiendaVisual ().modificarMonedas ();
-						miGui.getTiendaVisual ().updateBotones ();
-					}
+					agregarControlable (P);
 				}
 				else {
-					//Sino verifico si apreté el botón correcto para objeto en un personaje
-					if (mapL.puedoAgregarObjetoDeTienda (P)) {
-						ObjDeLaTienda Obj;
-						Obj = marketL.createObjeto (P);
-						if (Obj != null) {
-							marketL.getP ().setMonedas(marketL.getP ().getMonedas () - Obj.getPrecio ());
-							miGui.getTiendaVisual ().modificarMonedas ();
-							miGui.getTiendaVisual ().updateBotones ();
-						}
-					}
+					agregarObjetoTienda (P);
 				}
 			}
 		}
-		
-		/**
-		 * metodo que cuando detecta el mouse el creador NO es nulo, resalta la celda 
-		 * donde esta posado el mouse
-		 * Problema: NO pinta el recuadro, creo que tengo el problema que teniamos con los personajes
-		 */
-		public void mouseEntered(MouseEvent E) {
-			if(marketL.getCreator() != null){
-				int X = E.getX();
-				int Y = E.getY();
-				ImageIcon cuadro = new ImageIcon("RecuadroCeldas.png");
-				cuadro.paintIcon(fondo, fondo.getGraphics(), X, Y);
-			}
-		}
-		/**
-		 * metodo que detecta si el mouse salió de una celda y su creador NO era Nulo, 
-		 * elimina el recuadro creado anteriormente por mouseEntered
-		 */
-		public void mouseExited(MouseEvent E) {
-			if(marketL.getCreator() != null){}
-		}
+		public void mouseEntered(MouseEvent E) {}
+		public void mouseExited(MouseEvent E) {}
 		public void mousePressed(MouseEvent E) {}
 		public void mouseReleased(MouseEvent E) {}
 	}
@@ -168,5 +121,70 @@ public class MapaVisual extends JPanel {
 	public void agregarObjeto (Objeto k, Posicion p) {
 		fondo.add (k.getGrafico ().getGrafico ());
 		k.getGrafico ().getGrafico ().setBounds (p.getX (), p.getY (), 20, 20);
+	}
+	
+	//Metodos usados por el mouse listener
+	
+	private void agregarControlable (Posicion P) {
+		//Condicion: un click en el mapa despues de seleccionar un personaje de la tienda
+		Controlable Cont;
+		Cont = marketL.createPersonaje (P);
+		if (Cont != null) {
+			mapL.agregarControlable (Cont, P);
+			marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Cont.getPrecio ());
+			marketV.modificarMonedas ();
+			marketV.updateBotones ();
+			marketV.setBotonOleadaOn ();
+		}
+	}
+	
+	private void agregarObjetoTienda (Posicion P) {
+		//Condicion: un click en el mapa despues de seleccionar un objeto de la tienda
+		if (mapL.puedoAgregarObjetoDeTienda (P)) {
+			ObjDeLaTienda Obj;
+			Obj = marketL.createObjeto (P);
+			if (Obj != null) {
+				marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Obj.getPrecio ());
+				marketV.modificarMonedas ();
+				marketV.updateBotones ();
+				marketV.setBotonOleadaOn ();
+			}
+		}
+	}
+	
+	private void venderControlable (Celda C) {
+		//Condicion: doble click en un controlable sin nada "en la mano"
+		Controlable Cont = C.getPersonaje ();
+		if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) {
+			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2)); 
+		}
+		else {
+			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ());
+		}
+		
+		//Hay que sacar al personaje del hilo
+		//Es un problema parecido al que tenemos con enemigo
+		
+		Cont.morir ();
+		marketV.modificarMonedas ();
+		marketV.updateBotones ();
+	}
+	
+	private void agarrarPowerUp (Celda C) {
+		//Condicion: doble click en un objeto power up
+		tengoPU.Agarrar (); //Saca el objeto del mapa
+		if (tengoPU != null) {
+			marketV.setBotonesOff ();
+			marketV.setBotonOleadaOff ();
+		}
+	}
+	
+	private void darPowerUp (Celda C) {
+		//Condicion: doble click en un controlable con un power up "en la mano"
+		Controlable Cont = C.getPersonaje ();
+		tengoPU.Afectar (Cont); //Le da el PU al personaje
+		marketV.setBotonesOn ();
+		marketV.setBotonOleadaOn ();
+		tengoPU = null;
 	}
 }

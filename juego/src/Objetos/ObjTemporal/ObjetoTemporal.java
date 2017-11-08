@@ -24,5 +24,8 @@ public abstract class ObjetoTemporal extends Objeto {
 	 * este método es llamado por el Hilo de Items Temporales
 	 */
 	public void morir () {
+		
 	}
+	
+	public void Agarrar () {}
 }

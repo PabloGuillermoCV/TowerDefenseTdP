@@ -13,4 +13,9 @@ public abstract class PowerUpDelMapa extends Objeto {
 	public void Afectar () {}
 	
 	public abstract void Afectar (Personaje P);
+	
+	public void Agarrar () {
+		grafico.getGrafico ().setVisible (false);
+		
+	}
 }

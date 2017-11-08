@@ -9,4 +9,8 @@ public abstract class Objeto extends Entidad {
 	}
 	
 	public abstract void Afectar ();
+	
+	public void Afectar (Personaje P) {}
+	
+	public abstract void Agarrar ();
 }

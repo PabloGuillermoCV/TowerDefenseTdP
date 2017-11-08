@@ -21,12 +21,12 @@ public class Espadazo extends Proyectil {
 		Graficos [5] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Espadazo\\EspadazoArribaIzquierda.png";
 		Graficos [6] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Espadazo\\EspadazoDerecha.png";
 		Graficos [7] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Espadazo\\EspadazoIzquierda.png";
-		miGrafico = new EntidadGraficaAtaque(Graficos, posI);
+		miGrafico = new EntidadGraficaAtaque(Graficos, posI, this);
 		miThread = miThread.getInstance();
 		miThread.agregarProyectil(this);
 	}
 	
 	public void setGrafico(Posicion p) {
-		miGrafico = new EntidadGraficaAtaque (Graficos, p);
+		miGrafico = new EntidadGraficaAtaque (Graficos, p, this);
 	}
 }

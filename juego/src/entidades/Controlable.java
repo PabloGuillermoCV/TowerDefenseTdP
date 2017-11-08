@@ -71,7 +71,7 @@ public abstract class Controlable extends Personaje {
 	}
 
 	public void morir () {
-		miMapa.eliminarControlable (this);
+		this.miMapa.eliminarControlable (this);
 		this.grafico.Morir ();
 		this.miMapa = null;
 		this.miEstadoActual = null;

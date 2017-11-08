@@ -94,10 +94,9 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morir () {
-		estoyMuerto=true;
+		estoyMuerto = true;
 		
 		generarObjeto(new Posicion (this.pos.getX(),this.pos.getY()));
-				
 		
 		this.grafico.Morir ();
 		this.miMapa = null;
@@ -105,7 +104,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		this.miEstadoActual = null;
 		this.pos = null;
 		this.grafico = null;
-		
 	}
 	
 	private void generarObjeto(Posicion aux) {
@@ -152,8 +150,9 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morirEnCastillo () {
-		estoyMuerto=true;// si bien el enemigo llego a la base y no murio con esto me encargo de
-						// que no haya problemas con el hilo que los mueve y el metodo mover
+		estoyMuerto = true;
+		// si bien el enemigo llego a la base y no murio con esto me encargo de
+		// que no haya problemas con el hilo que los mueve y el metodo mover
 		miMapa.getNivel ().llegoEnemigoABase (this);
 		miMapa.eliminarEnemigo (this);
 		this.grafico.Morir ();

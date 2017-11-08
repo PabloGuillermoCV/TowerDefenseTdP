@@ -17,4 +17,6 @@ public abstract class ObjDeLaTienda extends Objeto {
 	public int getPrecio () {
 		return Precio;
 	}
+	
+	public void Agarrar () {}
 }

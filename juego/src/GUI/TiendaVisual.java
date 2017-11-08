@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +22,6 @@ import javax.swing.JPanel;
 public class TiendaVisual extends JPanel {
 	
 	private static TiendaVisual Instancia;
-	private JLabel fondo = new JLabel (new ImageIcon ("src\\GUI\\Sprites Mapas\\FondoTienda.png"));
 	private JPanel panelBotones;
 	private JPanel panelDisplay;
 	private static int width = 500;
@@ -60,10 +58,6 @@ public class TiendaVisual extends JPanel {
 		return Instancia;
 	}
 	
-	public JLabel getFondo () {
-		return fondo;
-	}
-	
 	public int getHeight () {
 		return height;
 	}
@@ -94,17 +88,6 @@ public class TiendaVisual extends JPanel {
 	
 	public TiendaLogica getMarket () {
 		return market;
-	}
-	
-	public void cargarFondo () {
-		ImageIcon Imagen = new ImageIcon ("");
-		fondo = new JLabel (Imagen);
-		fondo.setBounds(0, 0, width, height);
-		this.add (fondo);
-	}
-	
-	public void updateFondo (String Direccion) {
-		fondo.setIcon (new ImageIcon (Direccion));
 	}
 	
 	private void setCreadores () {
@@ -164,6 +147,12 @@ public class TiendaVisual extends JPanel {
         updateBotones ();
 	}
 	
+	public void setBotonesOn () {
+		for (int i = 0; i < 8; i++) {
+    		botones [i].setEnabled (true);
+    	}
+	}
+	
 	public void setBotonesOff () {
 		for (int i = 0; i < 8; i++) {
     		botones [i].setEnabled (false);
@@ -175,6 +164,14 @@ public class TiendaVisual extends JPanel {
 		for (int i = 5; i < 8; i++) {
     		botones [i].setEnabled (false);
     	}
+	}
+	
+	public void setBotonOleadaOn () {
+		oleada.setEnabled (true);
+	}
+	
+	public void setBotonOleadaOff () {
+		oleada.setEnabled (false);
 	}
 	
 	/**
@@ -219,6 +216,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [0]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -226,6 +224,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [1]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -233,6 +232,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [2]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -240,6 +240,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [3]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -247,6 +248,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [4]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -254,6 +256,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [5]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -261,6 +264,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [6]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 	
@@ -268,6 +272,7 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [7]);
 			setBotonesOff ();
+			setBotonOleadaOff ();
 		}
 	}
 }

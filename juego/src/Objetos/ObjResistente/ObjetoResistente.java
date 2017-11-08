@@ -20,4 +20,6 @@ public abstract class ObjetoResistente extends Objeto {
 	public void serAtacado (Personaje P) {
 		
 	}
+	
+	public void Agarrar () {}
 }
