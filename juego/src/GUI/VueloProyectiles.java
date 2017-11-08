@@ -27,18 +27,13 @@ public class VueloProyectiles extends Thread {
 		proyectiles.add(p);
 	}
 	
-	public void eliminarProyectil(Proyectil p) {
-		if(proyectiles.contains(p))
-			proyectilesEliminar.add(p);
-	}
 	@SuppressWarnings("static-access")
 	public void run() {
 		while(true) {
 			Iterator<Proyectil> disp = proyectiles.iterator();
-			
 			while(disp.hasNext()) {
 				Proyectil p = disp.next();
-				if(!p.llegoAlFinal())
+				if(!p.llegoAlFinal() && !proyectilesEliminar.contains(p))
 					p.volar();
 				else
 					proyectilesEliminar.add(p);
@@ -54,13 +49,11 @@ public class VueloProyectiles extends Thread {
 	}
 	
 	private synchronized void eliminacion() {
-		Iterator<Proyectil> disp = proyectilesEliminar.iterator();
-		while(disp.hasNext()) {
-			Proyectil p = disp.next();
-			proyectiles.remove(p);
-			proyectilesEliminar.remove(p);
-			p.Morir();
+		proyectiles.removeAll(proyectilesEliminar);
+		for(Proyectil P: proyectilesEliminar){
+			P.Morir();
 		}
+		proyectilesEliminar.removeAll(proyectilesEliminar); //le digo a la misma lista que elmine todos sus elementos
 	}
 	
 }

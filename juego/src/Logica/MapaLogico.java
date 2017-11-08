@@ -29,6 +29,8 @@ public class MapaLogico {
 	private Camino miCamino;
 	private Jugador P;
 	private Nivel miNivel;
+	private Collection<Enemigo> aSacarE = new LinkedList<Enemigo>(); //lista auxiliar para eliminar enemigos
+	private Collection<Controlable> aSacarC = new LinkedList<Controlable>(); //lista auxiliar para eliminar Controlables
 	
 	/**
 	 * constructor : inicializa la matriz de Celdas con un total de (el Ancho del Mapa)/20 por
@@ -207,7 +209,7 @@ public class MapaLogico {
 		if(E.getPos() == null)
 			System.out.println("Posicion del enemigo a eliminar Nula");
 		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E); //me tira NullPointer acá, por lo que parece, la posición del enemigo es nula, no el enemigo en si
-		enemigosEnMapa.remove (E);
+		enemigosEnMapa.remove(E);
 	}
 	
 	public void eliminarObjeto (Objeto O) {
@@ -221,8 +223,6 @@ public class MapaLogico {
 	
 	@SuppressWarnings("rawtypes")
 	public void interaccionControlableEnemigo () {
-		Collection<Enemigo> aSacarE = new LinkedList<Enemigo>(); //lista auxiliar para eliminar enemigos
-		Collection<Controlable> aSacarC = new LinkedList<Controlable>(); //lista auxiliar para eliminar Controlables
 		Iterator it = unidadesEnMapa.iterator ();
 		Controlable c;
 		Enemigo e;
@@ -230,7 +230,7 @@ public class MapaLogico {
 		while (it.hasNext ()) {
 			c = (Controlable) it.next ();
 			e = c.verificarUnidad ();
-			if (e != null && e.estoyEnJuego ()) {
+			if (e != null && e.estoyEnJuego () && !e.estoyMuerto()) {
 				e.serAtacado (c);
 				if(e.getEstado().getVida() <= 0) //pregunto si despues de ser atacado, el enemigo murió
 					aSacarE.add(e);
@@ -238,27 +238,27 @@ public class MapaLogico {
 					aSacarC.add(c);
 			}
 		}
-		sacarEnemigos(aSacarE);
+		sacarEnemigos();
 		
-		sacarControlables(aSacarC);
+		sacarControlables();
 	}
 	
-	private synchronized void sacarEnemigos(Collection<Enemigo> aSacarE) {
+	private synchronized void sacarEnemigos() {
 		Iterator<Enemigo> it =  aSacarE.iterator();
 		while(it.hasNext()) {
 			Enemigo aSacar =(Enemigo) it.next();
 			this.eliminarEnemigo(aSacar);
 			miNivel.murioEnemigo(aSacar);
-			aSacarE.remove(aSacar);
 		}
+		enemigosEnMapa.removeAll(aSacarE);
 	}
 	
-	private synchronized void sacarControlables (Collection<Controlable> aSacarC) {
+	private synchronized void sacarControlables () {
 		Iterator<Controlable> it = aSacarC.iterator();
 		while (it.hasNext()) {
 			Controlable aSacar = (Controlable) it.next();
 			this.eliminarControlable(aSacar);
-			aSacarC.remove(aSacar);
+			it.remove();
 			aSacar.morir();
 		}
 	}
@@ -274,11 +274,12 @@ public class MapaLogico {
 		while(it1.hasNext()){
 			Controlable C=it1.next();
 			C.morir();
+			it1.remove();
 		}
 		while(it2.hasNext()){
 			Objeto O = it2.next();
 			//eliminar objeto del juego
-			objetosEnMapa.remove(O);
+			it2.remove();
 		}
 	}
 }

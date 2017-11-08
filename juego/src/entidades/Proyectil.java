@@ -113,7 +113,6 @@ public abstract class Proyectil {
 	public abstract void setGrafico(Posicion p);
 	
 	public void Morir() {
-		miThread.eliminarProyectil(this);
 		miThread = null;
 		posActual = null;
 		posFinal = null;

@@ -58,21 +58,21 @@ public class MapaVisual extends JPanel {
 				Celda C = mapL.getCelda (P.getX (), P.getY ());
 				if (C.getPersonaje () != null) {
 					if (tengoPU == null) {
-						venderControlable (C);
+						venderControlable (C); //si NO tengop un PowerUp para consumir y estoy haciendo doble click, vendo al controlable asuminedo que hay uno
 					}
 					else {
-						darPowerUp (C);
+						darPowerUp (C); //sino, le doy el powerup a ese personaje
 					}
 				}
 				else {
-					if (C.getObjeto () != null) {
+					if (C.getObjeto () != null) {//si hago doble click sobre un objeto, lo levanto
 						agarrarPowerUp (C);
 					}
 				}
 			}
 			else {
 				//Hice un solo click
-				if (mapL.puedoAgregarControlable (P)) {
+				if (mapL.puedoAgregarControlable (P)) { //agrego controlables
 					agregarControlable (P);
 				}
 				else {
@@ -155,16 +155,17 @@ public class MapaVisual extends JPanel {
 	private void venderControlable (Celda C) {
 		//Condicion: doble click en un controlable sin nada "en la mano"
 		Controlable Cont = C.getPersonaje ();
-		if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) {
+		if (Cont.getEstado ().getVida () < Cont.getVidaMax ()) { //si el personaje está herido, el precio de reventa se reduce a la mitad
 			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2)); 
 		}
 		else {
-			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ());
+			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ()); //sino , la reventa se hace por el precio original de venta
 		}
 		
 		//Hay que sacar al personaje del hilo
 		//Es un problema parecido al que tenemos con enemigo
 		
+		mapL.eliminarControlable(Cont); //le digo al mapa Logico que este controlable ya no existe
 		Cont.morir ();
 		marketV.modificarMonedas ();
 		marketV.updateBotones ();

@@ -3,6 +3,8 @@ package Logica.Niveles;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import Audio.Sonido;
 import GUI.*;
 import Logica.*;
 import Logica.Caminos.Camino;
@@ -26,6 +28,7 @@ public abstract class Nivel {
 	protected HiloEnemigo [] hilosMovimientos;
 	protected HiloGenerarEnemigo hiloCreador;
 	protected HiloInteraccion hiloAtaque;
+	protected Sonido miBGM;
 	
 	public Nivel (GUI gui) {
 		miGui = gui;
@@ -37,6 +40,7 @@ public abstract class Nivel {
 		enemigosAMandar = new LinkedList <Enemigo> ();
 		hiloAtaque = new HiloInteraccion ();
 		hiloAtaque.start ();
+		miBGM = new Sonido();
 	}
 	
 	public void moverEnemigos () {

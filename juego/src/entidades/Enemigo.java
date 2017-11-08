@@ -96,7 +96,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	public void morir () {
 		estoyMuerto = true;
 		
-		generarObjeto(new Posicion (this.pos.getX(),this.pos.getY()));
+		generarObjeto(new Posicion (this.pos.getX(),this.pos.getY())); //porque una nueva posicion? noe xiste ya la posicion?
 		
 		this.grafico.Morir ();
 		this.miMapa = null;
@@ -198,5 +198,9 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 
 	public void bloqueate () {
 		bloqueado = true;
+	}
+	
+	public void meMori(){
+		estoyMuerto = true;
 	}
 }
