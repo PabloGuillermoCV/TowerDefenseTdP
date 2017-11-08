@@ -14,6 +14,7 @@ public abstract class Personaje extends Entidad {
 	protected int VidaMax;
 	protected int AtaqueMax;
 	protected int DefensaMax;
+	protected boolean estoyMuerto;
 	
 	public Personaje (String Nombre, Posicion Pos, int Vida, int Alcance, 
 			int Ataque, int Defensa) {
@@ -24,6 +25,10 @@ public abstract class Personaje extends Entidad {
 		this.VidaMax = Vida;
 		this.AtaqueMax = Ataque;
 		this.DefensaMax = Defensa;
+		estoyMuerto=false;
+	}
+	public boolean estoyMuerto() {
+		return estoyMuerto;
 	}
 	
 	public abstract void morir ();

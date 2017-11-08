@@ -94,20 +94,26 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void morir () {
-		Posicion aux = pos;
-		MapaLogico auxm = miMapa;
-		//miMapa.getNivel ().murioEnemigo (this);
-		Random Rand = new Random ();
-		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
-		//miMapa.eliminarEnemigo (this);
+		estoyMuerto=true;
+		
+		generarObjeto(new Posicion (this.pos.getX(),this.pos.getY()));
+				
+		
 		this.grafico.Morir ();
 		this.miMapa = null;
 		this.EstadoCaminar = null;
 		this.miEstadoActual = null;
 		this.pos = null;
 		this.grafico = null;
+		
+	}
+	
+	private void generarObjeto(Posicion aux) {
+		Random Rand = new Random ();
+		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
+		
 		if (I <= 20) { //20% de probabilidad de dejar caer uno
-			if (I < 12) { //12% de probabilidad de que el objeto sea un power up
+			if (I < 12) { //60% de probabilidad de que el objeto sea un power up
 				I = Rand.nextInt (3) + 1; //Cual de los 3 voy a dejar
 				PowerUpDelMapa PU = null;
 				switch (I) {
@@ -121,9 +127,9 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 						PU = new EscudoPlus (aux);
 						break;
 				}
-				auxm.agregarObjeto (PU);
+				miMapa.agregarObjeto (PU);
 			}
-			else { //8% de probabilidad de que el objeto sea un obstaculo
+			else { //40% de probabilidad de que el objeto sea un obstaculo
 				I = Rand.nextInt (4) + 1; //Cual de los 4 voy a dejar
 				Objeto O = null;
 				switch (I) {
@@ -140,12 +146,14 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 						O = new Lago (aux);
 						break;
 				}
-				auxm.agregarObjeto (O);
+				miMapa.agregarObjeto (O);
 			}
 		}
 	}
 	
 	public void morirEnCastillo () {
+		estoyMuerto=true;// si bien el enemigo llego a la base y no murio con esto me encargo de
+						// que no haya problemas con el hilo que los mueve y el metodo mover
 		miMapa.getNivel ().llegoEnemigoABase (this);
 		miMapa.eliminarEnemigo (this);
 		this.grafico.Morir ();

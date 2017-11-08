@@ -18,6 +18,7 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 	 * @param pos la posicion donde se moverá el enemigo
 	 */
 	public void mover () {
+		if (!e.estoyMuerto()) {
 		Posicion posSig;
 		Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
 		Posicion AF = e.getMapa ().getCamino ().getNextPC (AI); //Posicion de la separacion en rutas
@@ -69,6 +70,7 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 			e.getGrafico ().desbloqueate ();
 			e.getGrafico ().moverA (posSig, e.getVelMov ());
 			afectarVida ();
+		}
 		}
 	}
 	

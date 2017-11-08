@@ -201,7 +201,7 @@ public class MapaLogico {
 		unidadesEnMapa.remove (C);
 	}
 	
-	public void eliminarEnemigo (Enemigo E) {
+	public void  eliminarEnemigo (Enemigo E) {
 		if(E != null)
 			System.out.println("Enemigo no nulo");
 		if(E.getPos() == null)
@@ -226,6 +226,7 @@ public class MapaLogico {
 		Iterator it = unidadesEnMapa.iterator ();
 		Controlable c;
 		Enemigo e;
+		
 		while (it.hasNext ()) {
 			c = (Controlable) it.next ();
 			e = c.verificarUnidad ();
@@ -237,19 +238,34 @@ public class MapaLogico {
 					aSacarC.add(c);
 			}
 		}
-		for(Enemigo h: aSacarE){
-			enemigosEnMapa.remove(h);
-			miNivel.murioEnemigo(h);
-			aSacarE.remove(h);
-			//le digo al Nivel que murió un enemigo para que lo saque de su hilo correspondiente
-			//h.morir(); me tira NullPointer cuando le va a decir al Hilo que lo saque, ver esto que parece que va entre un Deadlock y un NullPointer
+		sacarEnemigos(aSacarE);
+		
+		sacarControlables(aSacarC);
+		
+	
+	}
+	
+	private synchronized void sacarEnemigos(Collection<Enemigo> aSacarE) {
+		Iterator<Enemigo> it =  aSacarE.iterator();
+		while(it.hasNext()) {
+			Enemigo aSacar =(Enemigo) it.next();
+			this.eliminarEnemigo(aSacar);
+			miNivel.murioEnemigo(aSacar);
+			aSacarE.remove(aSacar);
 		}
-		for(Controlable C: aSacarC){
-			unidadesEnMapa.remove(C);
-			//avisarle al Nivel que se murió un Controlable
-			C.morir();
+			}
+	
+	private synchronized void sacarControlables (Collection<Controlable> aSacarC) {
+		Iterator<Controlable> it = aSacarC.iterator();
+		while (it.hasNext()) {
+			Controlable aSacar = (Controlable) it.next();
+			this.eliminarControlable(aSacar);
+			aSacar.morir();
+			aSacarC.remove(aSacar);
 		}
 	}
+	
+	
 	
 	/**
 	 * método que se encargará de eliminar todo lo que haya quedado en el nivel una vez que el mismo terminó (asumo que no hay más enemigos?)

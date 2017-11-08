@@ -14,6 +14,7 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 	}
 	
 	public void mover () {
+		if (!e.estoyMuerto()) {
 		Posicion posSig;
 		Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
 		Posicion AF = e.getMapa ().getCamino ().getNextPC (AI); //Posicion de la separacion en rutas
@@ -65,5 +66,6 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 			e.getGrafico ().desbloqueate (); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
 			e.getGrafico ().moverA (posSig, e.getVelMov ());
 		}
+	}
 	}
 }

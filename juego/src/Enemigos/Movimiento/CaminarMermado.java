@@ -18,6 +18,7 @@ public class CaminarMermado implements EstrategiaDeMovimiento {
 	 * @param pos posicion a la que se moverá el enemigo
 	 */
 	public void mover () {
+		if (!e.estoyMuerto()) {
 		Posicion posSig;
 		Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
 		Posicion AF = e.getMapa ().getCamino ().getNextPC (AI); //Posicion de la separacion en rutas
@@ -69,5 +70,6 @@ public class CaminarMermado implements EstrategiaDeMovimiento {
 			e.getGrafico ().desbloqueate ();
 			e.getGrafico ().moverA (posSig, e.getVelMov () - 2);
 		}
+	}
 	}
 }
