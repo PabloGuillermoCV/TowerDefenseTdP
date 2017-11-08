@@ -247,10 +247,10 @@ public class MapaLogico {
 		Iterator<Enemigo> it =  aSacarE.iterator();
 		while(it.hasNext()) {
 			Enemigo aSacar =(Enemigo) it.next();
-			this.eliminarEnemigo(aSacar);
 			miNivel.murioEnemigo(aSacar);
 		}
 		enemigosEnMapa.removeAll(aSacarE);
+		aSacarE.removeAll(aSacarE);
 	}
 	
 	private synchronized void sacarControlables () {
@@ -258,9 +258,10 @@ public class MapaLogico {
 		while (it.hasNext()) {
 			Controlable aSacar = (Controlable) it.next();
 			this.eliminarControlable(aSacar);
-			it.remove();
 			aSacar.morir();
 		}
+		unidadesEnMapa.removeAll(aSacarC);
+		aSacarC.removeAll(aSacarC);
 	}
 	
 	

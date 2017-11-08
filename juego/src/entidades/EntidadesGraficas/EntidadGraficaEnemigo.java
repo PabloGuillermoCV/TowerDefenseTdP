@@ -64,9 +64,6 @@ public class EntidadGraficaEnemigo  extends EntidadGrafica {
 	
 	public void moverA (Posicion pos, int vel, int orientacion) {}
 
-	public void Morir(){
-		super.Morir();
-	}
 	
 	@Override
 	public void desbloqueate() {

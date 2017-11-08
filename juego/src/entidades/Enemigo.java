@@ -95,15 +95,15 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	public void morir () {
 		estoyMuerto = true;
-		
-		generarObjeto(new Posicion (this.pos.getX(),this.pos.getY())); //porque una nueva posicion? noe xiste ya la posicion?
-		
-		this.grafico.Morir ();
-		this.miMapa = null;
-		this.EstadoCaminar = null;
-		this.miEstadoActual = null;
-		this.pos = null;
-		this.grafico = null;
+		Posicion aux = pos;
+		generarObjeto(aux); //porque una nueva posicion? no existe ya la posicion?
+		if(grafico != null)
+			grafico.Morir ();
+		miMapa = null;
+		EstadoCaminar = null;
+		miEstadoActual = null;
+		pos = null;
+		grafico = null;
 	}
 	
 	private void generarObjeto(Posicion aux) {
