@@ -29,6 +29,7 @@ public class EntidadGraficaAtaque {
 	}
 
 	public void Morir () {
+		graficoActual.setVisible (false);
 		OrientacionSprite = null;
 	}
 	

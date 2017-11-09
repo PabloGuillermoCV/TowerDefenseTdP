@@ -35,19 +35,19 @@ public class HiloVueloProyectiles extends Thread {
 			Iterator<Proyectil> disp = proyectiles.iterator();
 			while(disp.hasNext()) {
 				Proyectil p = disp.next();
-				if(!p.llegoAlFinal() && !proyectilesEliminar.contains(p))
+				if(!p.estaMuerto() && !proyectilesEliminar.contains(p))
 					p.volar();
 				else
 					proyectilesEliminar.add(p);
 				try {
 					System.out.println("HOLA");
-					this.sleep(20);
+					this.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-			eliminacion();
-			Agregacion();
+			Eliminacion ();
+			Agregacion ();
 		}	
 	}
 	
@@ -58,11 +58,8 @@ public class HiloVueloProyectiles extends Thread {
 		}
 	}
 
-	private synchronized void eliminacion() {
+	private synchronized void Eliminacion() {
 		proyectiles.removeAll(proyectilesEliminar);
-		for(Proyectil P: proyectilesEliminar){
-			P.Morir();
-		}
 		proyectilesEliminar.removeAll(proyectilesEliminar); //le digo a la misma lista que elmine todos sus elementos
 	}
 	

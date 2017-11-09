@@ -13,6 +13,7 @@ public abstract class Proyectil {
 	protected EntidadGraficaAtaque miGrafico;
 	protected Posicion posActual;
 	protected Posicion posFinal;
+	protected boolean estoyMuerto;
 	
 	//el proyectil puede ir en cualquier dirección, eso daria a 8 sprrites distintos que varian en una rotación del sprite inicial (Idle)
 	
@@ -20,6 +21,7 @@ public abstract class Proyectil {
 		this.posActual = posActual;
 		this.posFinal = posFinal;
 		bloqueado = false;
+		estoyMuerto = false;
 	}
 	
 	public void desbloqueate () {
@@ -98,8 +100,11 @@ public abstract class Proyectil {
 					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,7);
 					break;
-					
 			}
+		}
+		if (posActual.getX() == posFinal.getX() && posActual.getY() == posFinal.getY()) {
+			estoyMuerto = true;
+			this.Morir ();
 		}
 	}
 	
@@ -112,11 +117,11 @@ public abstract class Proyectil {
 	 */
 	public abstract void setGrafico(Posicion p);
 	
-	public void Morir() {
+	public void Morir () {
 		miThread = null;
 		posActual = null;
 		posFinal = null;
-		miGrafico.Morir(); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
+		miGrafico.Morir (); //si sali del while es porque llegué a mi objetivo, le debo decir a mi entidad grafica que se suicide
 		miGrafico = null;
 	
 	}
@@ -172,8 +177,8 @@ public abstract class Proyectil {
 			return ret - 1; //le resto 1 para no caerme del arreglo cuando el sprite levante este numero
 		}
 
-		public boolean llegoAlFinal() {
-			return posActual.getX() == posFinal.getX() && posActual.getY() == posFinal.getY();
+		public boolean estaMuerto () {
+			return estoyMuerto;
 		}
 
 }
