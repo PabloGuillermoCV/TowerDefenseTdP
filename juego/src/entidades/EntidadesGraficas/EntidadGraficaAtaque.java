@@ -1,5 +1,6 @@
 package entidades.EntidadesGraficas;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import GUI.MapaVisual;
 import Logica.Posicion;
@@ -15,13 +16,15 @@ public class EntidadGraficaAtaque {
 	
 	public EntidadGraficaAtaque (String [] File, Posicion pos,Proyectil p) {
 		for (int I = 0; I < 8; I++) {
-			OrientacionSprite [I] = new JLabel (File [I]);
+			OrientacionSprite [I] = new JLabel (new ImageIcon (File [I]));
 		}
 		this.pos = pos;
 		miMapa = MapaVisual.InstanciaMapaVisual();
 		graficoActual = OrientacionSprite[0];
 		miProyectil = p;
 		bloqueado = true;
+		miMapa.getFondo ().add (graficoActual);
+		graficoActual.setBounds (pos.getX(),pos.getY(),20,20);
 	}
 
 	public void Morir() {
