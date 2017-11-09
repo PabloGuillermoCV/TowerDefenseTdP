@@ -19,7 +19,7 @@ public abstract class Proyectil {
 	public Proyectil (Posicion posActual, Posicion posFinal) {
 		this.posActual = posActual;
 		this.posFinal = posFinal;
-		bloqueado = true;
+		bloqueado = false;
 	}
 	
 	public void desbloqueate() {

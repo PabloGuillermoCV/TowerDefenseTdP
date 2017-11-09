@@ -9,11 +9,13 @@ public class HiloVueloProyectiles extends Thread {
 	
 	private volatile Collection<Proyectil> proyectiles;
 	private volatile Collection<Proyectil> proyectilesEliminar;
+	private volatile Collection<Proyectil> aAgregar;
 	private static HiloVueloProyectiles Instancia;
 	
 	private HiloVueloProyectiles() {
 		proyectiles = new LinkedList<Proyectil>();
 		proyectilesEliminar = new LinkedList<Proyectil>();
+		aAgregar = new LinkedList<Proyectil>();
 	}
 	
 	public static HiloVueloProyectiles InstanciaHiloVueloProyectiles () {
@@ -24,7 +26,7 @@ public class HiloVueloProyectiles extends Thread {
 		return Instancia;
 	}
 	public void agregarProyectil(Proyectil p) {
-		proyectiles.add(p);
+		aAgregar.add(p);
 	}
 	
 	@SuppressWarnings("static-access")
@@ -45,9 +47,17 @@ public class HiloVueloProyectiles extends Thread {
 				}
 			}
 			eliminacion();
+			Agregacion();
 		}	
 	}
 	
+	private void Agregacion() {
+		if(!aAgregar.isEmpty()) {
+			proyectiles.addAll(aAgregar);
+			aAgregar.removeAll(aAgregar);
+		}
+	}
+
 	private synchronized void eliminacion() {
 		proyectiles.removeAll(proyectilesEliminar);
 		for(Proyectil P: proyectilesEliminar){
