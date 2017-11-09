@@ -22,7 +22,7 @@ public abstract class Proyectil {
 		bloqueado = false;
 	}
 	
-	public void desbloqueate() {
+	public void desbloqueate () {
 		bloqueado = false;
 	}
 	
@@ -30,7 +30,7 @@ public abstract class Proyectil {
 	 * Metodo que se encarga de mover el proyectil de a un paso
 	 * NOTA: Esto se hace en un contexto lógico
 	 */
-	public void volar(){
+	public void volar () {
 		if(!bloqueado) {
 			System.out.println("estoy volando logicamente");
 			int x1 = posActual.getX();

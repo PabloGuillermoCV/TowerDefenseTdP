@@ -28,7 +28,7 @@ public class Caballero extends Controlable {
 
 	@SuppressWarnings("unused")
 	public void atacar(Enemigo E) {
-		Proyectil municion = new Espadazo(pos,E.getPos());
+		Proyectil municion = new Espadazo(pos, new Posicion (E.getPos().getX(), E.getPos().getY()));
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 	}
 }

@@ -61,7 +61,9 @@ public abstract class Controlable extends Personaje {
 					if (C != null) {
 						if (!C.getEnemigos ().isEmpty ()) {
 							//System.out.println ("X: "+(this.pos.getX()+(X*20))+" Y: "+(this.pos.getY()+(Y*20)));
-						    ret = C.getEnemigos ().getFirst ();
+						    if (!C.getEnemigos().getFirst().estoyMuerto()) {
+						    	ret = C.getEnemigos ().getFirst ();
+						    }
 						}
 					}
 				}
