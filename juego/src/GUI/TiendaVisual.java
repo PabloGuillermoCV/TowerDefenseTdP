@@ -208,7 +208,7 @@ public class TiendaVisual extends JPanel {
 	}
 	
 	public void modificarPuntaje () {
-		displayMonedas.setText ("Puntos: " + P.getPuntos ());
+		displayPuntos.setText ("Puntos: " + P.getPuntos ());
 	}
 	
 	

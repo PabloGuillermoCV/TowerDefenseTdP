@@ -62,12 +62,12 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 				e.getPos ().setX (posSig.getX ());
 				e.getPos ().setY (posSig.getY ());
 				e.getMapa ().agregarEnemigo (e);
-				e.bloqueate ();
-				e.getGrafico ().desbloqueate (); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
-				e.getGrafico ().moverA (posSig, e.getVelMov ());
 				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
 					e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Afectar (e);
 				}
+				e.bloqueate ();
+				e.getGrafico ().desbloqueate (); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
+				e.getGrafico ().moverA (posSig, e.getVelMov ());
 			}
 		}
 	}

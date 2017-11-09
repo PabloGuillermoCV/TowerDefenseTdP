@@ -12,7 +12,7 @@ public class HiloGenerarEnemigo extends Thread {
 	
 	public void run () {
 		int Cont = 0;
-		while (Cont < 3) {
+		while (Cont < this.miNivel.getCantidadEnemigos ()) {
 			miNivel.mandarEnemigo ();
 			Cont++;
 			try {

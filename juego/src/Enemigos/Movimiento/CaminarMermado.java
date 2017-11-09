@@ -66,12 +66,12 @@ public class CaminarMermado implements EstrategiaDeMovimiento {
 				e.getPos ().setX (posSig.getX ());
 				e.getPos ().setY (posSig.getY ());
 				e.getMapa ().agregarEnemigo (e);
-				e.bloqueate ();
-				e.getGrafico ().desbloqueate ();
-				e.getGrafico ().moverA (posSig, e.getVelMov () - 2);
 				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
 					e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Afectar (e);
 				}
+				e.bloqueate ();
+				e.getGrafico ().desbloqueate ();
+				e.getGrafico ().moverA (posSig, e.getVelMov () - 2);
 			}
 		}
 	}

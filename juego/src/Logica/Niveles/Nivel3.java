@@ -29,6 +29,7 @@ public class Nivel3 extends Nivel {
 	
 	public void generarListaEnemigos () {
 		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		CantidadEnemigos = enemigosAMandar.size ();
 	}
 
 	public void siguienteNivel () {

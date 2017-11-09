@@ -66,13 +66,13 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 				e.getPos ().setX (posSig.getX ());
 				e.getPos ().setY (posSig.getY ());
 				e.getMapa ().agregarEnemigo (e);
-				e.bloqueate ();
-				e.getGrafico ().desbloqueate ();
-				e.getGrafico ().moverA (posSig, e.getVelMov ());
 				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
 					e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Afectar (e);
 				}
 				afectarVida ();
+				e.bloqueate ();
+				e.getGrafico ().desbloqueate ();
+				e.getGrafico ().moverA (posSig, e.getVelMov ());
 			}
 		}
 	}

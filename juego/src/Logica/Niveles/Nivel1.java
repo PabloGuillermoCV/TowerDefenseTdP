@@ -31,6 +31,7 @@ public class Nivel1 extends Nivel {
 		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
 		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
 		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		CantidadEnemigos = enemigosAMandar.size ();
 	}
 	
 	public void siguienteNivel () {

@@ -29,8 +29,6 @@ public class MapaLogico {
 	private Camino miCamino;
 	private Jugador P;
 	private Nivel miNivel;
-	private Collection<Enemigo> aSacarE = new LinkedList<Enemigo>(); //lista auxiliar para eliminar enemigos
-	private Collection<Controlable> aSacarC = new LinkedList<Controlable>(); //lista auxiliar para eliminar Controlables
 	
 	/**
 	 * constructor : inicializa la matriz de Celdas con un total de (el Ancho del Mapa)/20 por
@@ -232,36 +230,23 @@ public class MapaLogico {
 			e = c.verificarUnidad ();
 			if (e != null && e.estoyEnJuego () && !e.estoyMuerto()) {
 				e.serAtacado (c);
-				if(e.getEstado().getVida() <= 0) //pregunto si despues de ser atacado, el enemigo murió
-					aSacarE.add(e);
-				if(c.getEstado().getVida() <= 0) //pregunto si en caso de ser contratacado, el controlable murió
-					aSacarC.add(c);
+				if(e.getEstado().getVida() <= 0) { //pregunto si despues de ser atacado, el enemigo murió
+					sacarEnemigo (e);
+				}
+				if(c.getEstado().getVida() <= 0) { //pregunto si en caso de ser contratacado, el controlable murió
+					sacarControlable (c);
+				}
 			}
 		}
-		sacarEnemigos();
-		
-		sacarControlables();
 	}
 	
-	private synchronized void sacarEnemigos() {
-		Iterator<Enemigo> it =  aSacarE.iterator();
-		while(it.hasNext()) {
-			Enemigo aSacar =(Enemigo) it.next();
-			miNivel.murioEnemigo(aSacar);
-		}
-		enemigosEnMapa.removeAll(aSacarE);
-		aSacarE.removeAll(aSacarE);
+	private synchronized void sacarEnemigo (Enemigo E) {
+		miNivel.murioEnemigo (E);
 	}
 	
-	private synchronized void sacarControlables () {
-		Iterator<Controlable> it = aSacarC.iterator();
-		while (it.hasNext()) {
-			Controlable aSacar = (Controlable) it.next();
-			this.eliminarControlable(aSacar);
-			aSacar.morir();
-		}
-		unidadesEnMapa.removeAll(aSacarC);
-		aSacarC.removeAll(aSacarC);
+	private synchronized void sacarControlable (Controlable C) {
+		this.eliminarControlable (C);
+		C.morir ();
 	}
 	
 	/**

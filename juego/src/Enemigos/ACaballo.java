@@ -24,7 +24,7 @@ public class ACaballo extends Enemigo {
 	*/
 	
 	public ACaballo (Posicion pos) {
-		super ("ACaballo", pos, 200, 2, 100, 90, 6, false, 5000);
+		super ("ACaballo", pos, 200, 2, 100, 90, 6, false, 500, 5000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ACaballo.gif",pos,this);
 	}
 

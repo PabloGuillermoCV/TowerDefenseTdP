@@ -25,6 +25,10 @@ public class TiendaLogica {
 		return Instancia;
 	}
 	
+	public void setTiendaVisual (TiendaVisual TV) {
+		market = TV;
+	}
+	
 	public Controlable createPersonaje (Posicion pos) {
 		if (creator == null) {
 			return null;
@@ -65,5 +69,10 @@ public class TiendaLogica {
 	 */
 	public FactoryLogica getCreator () {
 		return creator;
+	}
+	
+	public void ActualizarValores () {
+		market.modificarMonedas ();
+		market.modificarPuntaje ();
 	}
 }

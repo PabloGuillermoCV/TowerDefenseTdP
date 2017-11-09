@@ -32,6 +32,7 @@ public class MapaVisual extends JPanel {
 		mapL = MapaLogico.InstanciaMapaLogico ();
 		marketV = TiendaVisual.InstanciaTiendaVisual ();
 		this.addMouseListener (new Mapa ());
+		marketL.setTiendaVisual (marketV);
 	}
 	
 	public static MapaVisual InstanciaMapaVisual () {
@@ -100,6 +101,14 @@ public class MapaVisual extends JPanel {
 	
 	public MapaLogico getMapa () {
 		return mapL;
+	}
+	
+	public TiendaLogica getTiendaL () {
+		return marketL;
+	}
+	
+	public TiendaVisual getTiendaV () {
+		return marketV;
 	}
 	
 	public void cargarFondo () {
@@ -185,6 +194,7 @@ public class MapaVisual extends JPanel {
 		Controlable Cont = C.getPersonaje ();
 		tengoPU.Afectar (Cont); //Le da el PU al personaje
 		marketV.setBotonesOn ();
+		marketV.updateBotones ();
 		marketV.setBotonOleadaOn ();
 		tengoPU = null;
 	}

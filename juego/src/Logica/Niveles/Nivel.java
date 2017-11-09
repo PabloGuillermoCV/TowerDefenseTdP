@@ -24,10 +24,12 @@ public abstract class Nivel {
 	protected String direccionMapa;
 	protected File cancion;
 	protected LinkedList <Enemigo> enemigosAMandar;
+	protected int CantidadEnemigos;
 	protected HiloEnemigo [] hilosMovimientos;
 	protected HiloGenerarEnemigo hiloCreador;
 	protected HiloInteraccion hiloAtaque;
 	protected Sonido miBGM;
+	protected Jugador P;
 	
 	public Nivel (GUI gui) {
 		miGui = gui;
@@ -40,6 +42,7 @@ public abstract class Nivel {
 		hiloAtaque = new HiloInteraccion ();
 		hiloAtaque.start ();
 		miBGM = new Sonido();
+		P = Jugador.InstanciaJugador ();
 	}
 	
 	public void moverEnemigos () {
@@ -89,6 +92,10 @@ public abstract class Nivel {
 	 */
 	public abstract void generarListaEnemigos ();
 	
+	public int getCantidadEnemigos () {
+		return CantidadEnemigos;
+	}
+	
 	/**
 	 * Metodo que modifica la ventana para pasar al siguiente Nivel
 	 */
@@ -96,6 +103,10 @@ public abstract class Nivel {
 	
 	public File getAudio () {
 		return cancion;
+	}
+	
+	public Jugador getP () {
+		return P;
 	}
 	
 	public LinkedList <Enemigo> getListaEnemigos () {
@@ -117,6 +128,9 @@ public abstract class Nivel {
 	
 	public void murioEnemigo (Enemigo e) {
 		sacarDeHilo (e);
+		P.setMonedas (P.getMonedas () + e.getRecompensa ());
+		P.setPuntos (P.getPuntos () + e.getPuntaje());
+		tiendaLogica.ActualizarValores ();
 		e.morir();
 	}
 	

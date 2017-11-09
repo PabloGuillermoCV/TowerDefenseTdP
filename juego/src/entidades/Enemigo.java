@@ -14,14 +14,16 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	protected int VelocidadMov;
 	protected EstrategiaDeMovimiento EstadoCaminar;
+	protected int Recompensa;
 	protected int Puntaje;
 	protected boolean bloqueado; //boolean para sincronizar gráfica con lógica
 	
 	public Enemigo (String Nombre, Posicion Pos, int Vida, int Alcance,
-		   int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial,
-		   int Puntaje) {
+		   int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial, 
+		   int Recompensa, int Puntaje) {
 		super (Nombre,Pos,Vida,Alcance,Ataque,Defensa);
 		this.VelocidadMov = VelocidadMov;
+		this.Recompensa = Recompensa;
 		this.Puntaje = Puntaje;
 		this.EstadoCaminar = new CaminarNormal(this);
 		this.miMapa.agregarEnemigo(this);
@@ -30,6 +32,10 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	public int getVelMov () {
 		return VelocidadMov;
+	}
+	
+	public int getRecompensa () {
+		return Recompensa;
 	}
 	
 	public int getPuntaje () {
@@ -88,17 +94,19 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public void Mover () {
-		if(!bloqueado){
+		if(!bloqueado && !estoyMuerto){
 			EstadoCaminar.mover ();
 		}
 	}
 	
 	public void morir () {
 		estoyMuerto = true;
-		Posicion aux = pos;
-		generarObjeto(aux); //porque una nueva posicion? no existe ya la posicion?
+		System.out.println("ESTOY PASANDO POR MORIR");
+		Posicion aux = new Posicion (this.pos.getX (), this.pos.getY ());
+		generarObjeto (aux);
 		if(grafico != null)
 			grafico.Morir ();
+		miMapa.eliminarEnemigo (this);
 		miMapa = null;
 		EstadoCaminar = null;
 		miEstadoActual = null;
