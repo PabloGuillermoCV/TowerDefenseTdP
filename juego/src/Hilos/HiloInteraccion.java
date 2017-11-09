@@ -14,7 +14,7 @@ public class HiloInteraccion extends Thread {
 		while (true) {
 			miMapa.interaccionControlableEnemigo ();
 			try {
-				Thread.sleep (1500);
+				Thread.sleep (500);
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();

@@ -12,6 +12,8 @@ public abstract class Entidad {
 	public Entidad (String Nombre, Posicion pos) {
 		this.Nombre = Nombre;
 		this.pos = pos;
+		System.out.println("X "+pos.getX()+"Y "+pos.getY());
+		
 	}
 	
 	/**

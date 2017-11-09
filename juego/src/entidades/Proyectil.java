@@ -51,7 +51,9 @@ public abstract class Proyectil {
 			
 			switch(or){
 				case 0:
-					this.posActual.setX(this.posActual.getX() + velocidadMovimiento);
+					posActual.setX(this.posActual.getX() + velocidadMovimiento);
+					bloqueado = true;
+					miGrafico.desbloqueate();
 					miGrafico.moverA(posActual, velocidadMovimiento,0);
 					break;
 				case 1:
@@ -102,10 +104,17 @@ public abstract class Proyectil {
 					break;
 			}
 		}
-		if (posActual.getX() == posFinal.getX() && posActual.getY() == posFinal.getY()) {
+		if (mori()) {
 			estoyMuerto = true;
 			this.Morir ();
 		}
+	}
+	
+	private boolean mori() {
+		return 
+			( (posFinal.getX()+20 >=posActual.getX()) && (posActual.getX() >=posFinal.getX()-20)
+					&&
+				(posFinal.getY()+20>=posActual.getY()) && (posActual.getY()>=posFinal.getY()-20));
 	}
 	
 	public void setPosicion(Posicion p) {

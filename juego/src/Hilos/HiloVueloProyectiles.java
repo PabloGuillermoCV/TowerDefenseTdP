@@ -40,8 +40,8 @@ public class HiloVueloProyectiles extends Thread {
 				else
 					proyectilesEliminar.add(p);
 				try {
-					System.out.println("HOLA");
-					this.sleep(100);
+					//System.out.println("Estoy en el hilo volar proyectiles");
+					this.sleep(30);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

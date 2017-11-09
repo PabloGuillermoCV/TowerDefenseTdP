@@ -11,7 +11,7 @@ public class CargaCatapulta extends Proyectil {
 	@SuppressWarnings("static-access")
 	public CargaCatapulta (Posicion posI, Posicion posF) {
 		super (posI,posF);
-		velocidadMovimiento = 10;
+		velocidadMovimiento = 15;
 		Graficos = new String [8];
 		Graficos [0] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Carga Catapulta\\CargaCatapultaAbajo.png";
 		Graficos [1] = "src\\entidades\\Disparos\\Sprites Disparos\\Sprites Carga Catapulta\\CargaCatapultaAbajoDerecha.png";

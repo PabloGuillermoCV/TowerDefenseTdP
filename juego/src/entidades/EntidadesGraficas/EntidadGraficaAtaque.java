@@ -19,13 +19,14 @@ public class EntidadGraficaAtaque {
 			OrientacionSprite [I] = new JLabel (new ImageIcon (File [I]));
 		}
 		this.pos = pos;
+		System.out.println("Posicion del Proyectil"+"X "+pos.getX()+"Y "+pos.getY());
 		miMapa = MapaVisual.InstanciaMapaVisual();
 		graficoActual = OrientacionSprite[0];
 		graficoActual.setVisible (false);
 		miProyectil = p;
 		bloqueado = true;
 		miMapa.getFondo ().add (graficoActual);
-		graficoActual.setBounds (pos.getX(),pos.getY(),16,16);
+		graficoActual.setBounds (pos.getX()+16,pos.getY()+16,16,16);
 	}
 
 	public void Morir () {
@@ -35,6 +36,7 @@ public class EntidadGraficaAtaque {
 	
 	public void moverA (Posicion pos, int vel, int orientacion) {
 		if(!bloqueado) {
+			graficoActual.setVisible(false);
 			graficoActual = OrientacionSprite [orientacion];
 			graficoActual.setVisible(true);
 				System.out.println("Estoy volando graficamente");
