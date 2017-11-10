@@ -6,6 +6,7 @@ import Logica.Niveles.Nivel;
 public class HiloGenerarEnemigo extends Thread {
 	
 	protected Nivel miNivel;
+	protected boolean Bloqueo;
 	
 	public HiloGenerarEnemigo (Nivel miNivel) {
 		this.miNivel = miNivel;
@@ -15,32 +16,33 @@ public class HiloGenerarEnemigo extends Thread {
 		int ContTotal = 0;
 		Iterator <Integer> Oleada = miNivel.getEnemigosPorOleada ().iterator ();
 		int ContOleada = (Integer) Oleada.next ();
-		/*try {
-			miNivel.wait();
-		}
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
-		while (ContTotal < this.miNivel.getCantidadEnemigos () && Oleada.hasNext ()) {
-			if (ContTotal == ContOleada) {
-				ContOleada = (Integer) Oleada.next ();
-				miNivel.getTienda ().getMarket ().setBotonOleadaOn ();
-				//Espero a que se aprete el boton de Empezar Oleada
-				/*try {
-					miNivel.wait();
+		Bloqueo = true;
+		while (ContTotal < this.miNivel.getCantidadEnemigos ()) {
+			System.out.println ();
+			while (!Bloqueo) {
+				if (ContTotal == ContOleada) {
+					Bloqueo = true;
+					if (!Oleada.hasNext ()) {
+						break;
+					}
+					miNivel.getTienda ().getMarket ().setBotonOleadaOn ();
+					ContOleada = (Integer) Oleada.next ();
 				}
-				catch (InterruptedException e) {
-					e.printStackTrace();
-				}*/
-			}
-			miNivel.mandarEnemigo ();
-			ContTotal++;
-			try {
-				Thread.sleep (3000);
-			}
-			catch (InterruptedException e) {
-				e.printStackTrace();
+				else {
+					miNivel.mandarEnemigo ();
+					ContTotal++;
+					try {
+						Thread.sleep (3000);
+					}
+					catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
+	}
+	
+	public void Desbloquear () {
+		Bloqueo = false;
 	}
 }
