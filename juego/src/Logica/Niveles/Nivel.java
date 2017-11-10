@@ -159,4 +159,8 @@ public abstract class Nivel {
 			}
 		}
 	}
+	
+	public void comenzarOleada () {
+		//this.notify ();
+	}
 }

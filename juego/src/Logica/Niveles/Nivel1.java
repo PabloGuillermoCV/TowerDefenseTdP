@@ -35,6 +35,7 @@ public class Nivel1 extends Nivel {
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
+		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 3

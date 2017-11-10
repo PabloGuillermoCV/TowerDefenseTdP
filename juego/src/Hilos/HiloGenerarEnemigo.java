@@ -11,22 +11,27 @@ public class HiloGenerarEnemigo extends Thread {
 		this.miNivel = miNivel;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public void run () {
 		int ContTotal = 0;
-		Iterator Oleada = miNivel.getEnemigosPorOleada ().iterator ();
+		Iterator <Integer> Oleada = miNivel.getEnemigosPorOleada ().iterator ();
 		int ContOleada = (Integer) Oleada.next ();
+		/*try {
+			miNivel.wait();
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
 		while (ContTotal < this.miNivel.getCantidadEnemigos () && Oleada.hasNext ()) {
 			if (ContTotal == ContOleada) {
 				ContOleada = (Integer) Oleada.next ();
 				miNivel.getTienda ().getMarket ().setBotonOleadaOn ();
-				//Aca esperaria a que aprete el boton de siguiente oleada
-				try {
-					Thread.sleep (6000);
+				//Espero a que se aprete el boton de Empezar Oleada
+				/*try {
+					miNivel.wait();
 				}
 				catch (InterruptedException e) {
 					e.printStackTrace();
-				}
+				}*/
 			}
 			miNivel.mandarEnemigo ();
 			ContTotal++;

@@ -49,6 +49,7 @@ public class GUI extends JFrame {
 	
 		nivel = new Nivel1 (this);
 		mapa.getMapa ().setNivel (nivel);
+		shop.setGUI (this);
 	}
 	
 	public static GUI InstanciaGUI () {
@@ -93,5 +94,9 @@ public class GUI extends JFrame {
 	
 	public void setGrafico (String dir) {
 		mapa.updateFondo (dir);
+	}
+	
+	public void avisarNivel () {
+		nivel.comenzarOleada ();
 	}
 }

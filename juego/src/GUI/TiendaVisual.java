@@ -33,6 +33,7 @@ public class TiendaVisual extends JPanel {
 	private JLabel displayPuntos;
 	private JButton oleada;
 	private TiendaLogica market;
+	private GUI miGUI;
 	
 	private TiendaVisual () {
 		this.setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));
@@ -85,6 +86,14 @@ public class TiendaVisual extends JPanel {
 	
 	public TiendaLogica getMarket () {
 		return market;
+	}
+	
+	public GUI getGUI () {
+		return miGUI;
+	}
+	
+	public void setGUI (GUI miGUI) {
+		this.miGUI = miGUI;
 	}
 	
 	private void setCreadores () {
@@ -273,7 +282,7 @@ public class TiendaVisual extends JPanel {
 	private class OyenteBotonOleada implements ActionListener {
 		public void actionPerformed (ActionEvent E) {
 			oleada.setEnabled (false);
-			//Aca mandaria a que se inicie una nueva oleada
+			miGUI.avisarNivel ();
 		}
 	}
 }
