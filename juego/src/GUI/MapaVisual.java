@@ -143,7 +143,6 @@ public class MapaVisual extends JPanel {
 			marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Cont.getPrecio ());
 			marketV.modificarMonedas ();
 			marketV.updateBotones ();
-			marketV.setBotonOleadaOn ();
 		}
 	}
 	
@@ -156,7 +155,6 @@ public class MapaVisual extends JPanel {
 				marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Obj.getPrecio ());
 				marketV.modificarMonedas ();
 				marketV.updateBotones ();
-				marketV.setBotonOleadaOn ();
 			}
 		}
 	}
@@ -185,7 +183,6 @@ public class MapaVisual extends JPanel {
 			//Si no es nulo, lo saco y me lo quedo
 			C.EliminarObjetoDeCelda (C.getObjeto ());
 			marketV.setBotonesOff ();
-			marketV.setBotonOleadaOff ();
 		}
 	}
 	
@@ -195,7 +192,6 @@ public class MapaVisual extends JPanel {
 		tengoPU.Afectar (Cont); //Le da el PU al personaje
 		marketV.setBotonesOn ();
 		marketV.updateBotones ();
-		marketV.setBotonOleadaOn ();
 		tengoPU = null;
 	}
 }

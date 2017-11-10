@@ -18,8 +18,6 @@ public abstract class ObjetoResistente extends Objeto {
 		return Vida;
 	}
 	
-	public void Afectar (Personaje P) {}
-	
 	public void Afectar (Controlable P) {}
 	
 	public void serAtacado (Personaje P) {

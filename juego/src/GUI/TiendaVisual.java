@@ -1,7 +1,6 @@
 package GUI;
 
 import Logica.Jugador;
-import Logica.OyenteOleada;
 import Logica.TiendaLogica;
 import Audio.Sonido;
 import Creadores.CreadoresLogicos.*;
@@ -42,10 +41,8 @@ public class TiendaVisual extends JPanel {
 		this.efectos = new Sonido ();
 		this.market = TiendaLogica.InstanciaTiendaLogica ();
 		P = Jugador.InstanciaJugador ();
-		oleada = new JButton ("Empezar Oleada");
-		oleada.addActionListener (new OyenteOleada (oleada, Instancia));
 		
-		setNumeros ();
+		setDisplay ();
 		setCreadores ();
 		setBotones ();
 		setBotonesObjetosOff ();
@@ -190,11 +187,16 @@ public class TiendaVisual extends JPanel {
 		}
 	}
 	
-	public void setNumeros () {
+	public void setDisplay () {
 		panelDisplay = new JPanel ();
 		panelDisplay.setLayout (new FlowLayout (FlowLayout.LEFT));
+		
 		displayMonedas = new JLabel ("Monedas: " + P.getMonedas ());
 		displayPuntos = new JLabel ("Puntos: " + P.getPuntos ());
+		
+		oleada = new JButton ("Empezar Oleada");
+		oleada.addActionListener (new OyenteBotonOleada ());
+		
 		panelDisplay.add (displayMonedas);
 		panelDisplay.add (displayPuntos);
 		panelDisplay.add (oleada);
@@ -216,7 +218,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [0]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -224,7 +225,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [1]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -232,7 +232,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [2]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -240,7 +239,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [3]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -248,7 +246,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [4]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -256,7 +253,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [5]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -264,7 +260,6 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [6]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
 		}
 	}
 	
@@ -272,7 +267,13 @@ public class TiendaVisual extends JPanel {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [7]);
 			setBotonesOff ();
-			setBotonOleadaOff ();
+		}
+	}
+	
+	private class OyenteBotonOleada implements ActionListener {
+		public void actionPerformed (ActionEvent E) {
+			oleada.setEnabled (false);
+			//Aca mandaria a que se inicie una nueva oleada
 		}
 	}
 }

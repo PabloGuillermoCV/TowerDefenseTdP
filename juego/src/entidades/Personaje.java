@@ -2,7 +2,6 @@ package entidades;
 
 import Logica.MapaLogico;
 import Logica.Posicion;
-import Objetos.ObjsDeLaTienda.Explosivo;
 import entidades.Estados.Estado;
 import entidades.Estados.EstadoNormal;
 
@@ -45,9 +44,7 @@ public abstract class Personaje extends Entidad {
 		miEstadoActual = e;
 	}
 	
-	public void serAtacado (Explosivo E){
-		E.Afectar (this);
-	}
+	
 	
 	public int getVidaMax () {
 		return VidaMax;

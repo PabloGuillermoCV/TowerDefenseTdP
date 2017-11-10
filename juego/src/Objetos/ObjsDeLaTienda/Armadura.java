@@ -1,7 +1,7 @@
 package Objetos.ObjsDeLaTienda;
 
 import entidades.Controlable;
-import entidades.Personaje;
+import entidades.Enemigo;
 import Hilos.HiloItemTemporal;
 
 public class Armadura extends ObjDeLaTienda {
@@ -13,12 +13,12 @@ public class Armadura extends ObjDeLaTienda {
 		miHilo.start ();
 	}
 	
-	public void Afectar (Personaje P) {}
-	
 	public void Afectar (Controlable C) {
 		//Vuelve invencible al controlable por una cierta cantidad de tiempo, luego llama a fininvincibilidad
 		
 	}
+	
+	public void Afectar (Enemigo E) {}
 	
 	public void FinInvincibilidad (Controlable C) {
 		

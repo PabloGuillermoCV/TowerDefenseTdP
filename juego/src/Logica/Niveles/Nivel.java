@@ -25,6 +25,7 @@ public abstract class Nivel {
 	protected File cancion;
 	protected LinkedList <Enemigo> enemigosAMandar;
 	protected int CantidadEnemigos;
+	protected LinkedList <Integer> enemigosPorOleada;
 	protected HiloEnemigo [] hilosMovimientos;
 	protected HiloGenerarEnemigo hiloCreador;
 	protected HiloInteraccion hiloAtaque;
@@ -39,6 +40,7 @@ public abstract class Nivel {
 		tiendaLogica = TiendaLogica.InstanciaTiendaLogica ();
 		fabrica = new FabricaEnemigos ();
 		enemigosAMandar = new LinkedList <Enemigo> ();
+		enemigosPorOleada = new LinkedList <Integer> ();
 		hiloAtaque = new HiloInteraccion ();
 		hiloAtaque.start ();
 		miBGM = new Sonido();
@@ -94,6 +96,10 @@ public abstract class Nivel {
 	
 	public int getCantidadEnemigos () {
 		return CantidadEnemigos;
+	}
+	
+	public LinkedList <Integer> getEnemigosPorOleada () {
+		return enemigosPorOleada;
 	}
 	
 	/**

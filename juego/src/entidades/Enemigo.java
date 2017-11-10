@@ -8,6 +8,7 @@ import Enemigos.*;
 import Enemigos.Movimiento.*;
 import Objetos.ObjResistente.*;
 import Objetos.ObjTemporal.*;
+import Objetos.ObjsDeLaTienda.Explosivo;
 import Objetos.PowerUpsDelMapa.*;
 
 public abstract class Enemigo extends Personaje implements Mejorable {
@@ -64,6 +65,10 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 */
 	public void serAtacado(Controlable C) {
 		C.atacar(this);
+	}
+	
+	public void serAtacado (Explosivo E){
+		E.Afectar (this);
 	}
 	
 	/**

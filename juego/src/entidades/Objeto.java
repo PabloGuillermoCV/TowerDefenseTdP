@@ -8,9 +8,6 @@ public abstract class Objeto extends Entidad {
 		super (Nombre, Pos);
 	}
 	
-	//Implementado por objetos que afecten a todos los personajes
-	public abstract void Afectar (Personaje P);
-	
 	//Implementado por objetos que afecten solamente a controlables
 	public abstract void Afectar (Controlable C);
 	

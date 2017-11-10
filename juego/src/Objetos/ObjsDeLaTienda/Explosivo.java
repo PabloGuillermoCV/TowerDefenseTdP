@@ -1,7 +1,7 @@
 package Objetos.ObjsDeLaTienda;
 
 import entidades.Controlable;
-import entidades.Personaje;
+import entidades.Enemigo;
 
 public class Explosivo extends ObjDeLaTienda {
 	
@@ -13,10 +13,13 @@ public class Explosivo extends ObjDeLaTienda {
 		Rango = 4;
 	}
 	
-	public void Afectar (Personaje P) {
+	public void Afectar (Controlable C) {
 		//Va a entrar a este metodo a traves de un recorrido similar al de controlable
-		P.getEstado ().setVida (P.getEstado ().getVida () - Daño);
+		C.getEstado ().setVida (C.getEstado ().getVida () - Daño);
 	}
 	
-	public void Afectar (Controlable C) {}
+	public void Afectar (Enemigo E) {
+		//Va a entrar a este metodo a traves de un recorrido similar al de controlable
+		E.getEstado ().setVida (E.getEstado ().getVida () - Daño);
+	}
 }
