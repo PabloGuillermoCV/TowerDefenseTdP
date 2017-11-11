@@ -140,13 +140,12 @@ public abstract class Nivel {
 		e.morir();
 	}
 	
+	@SuppressWarnings("unused")
 	public void llegoEnemigoABase (Enemigo e) {
 		sacarDeHilo (e);
 		mapaLogico.restarVida ();
 		if (mapaLogico.getJugador ().getVidas () == 0) {
-			
-			//Aca se pondria en un panel un mensaje de game over
-			
+			EstadoDerrota Derrota = new EstadoDerrota (mapaLogico);
 		}
 	}
 	
@@ -160,7 +159,17 @@ public abstract class Nivel {
 		}
 	}
 	
+	public void iniciarNivel () {
+		//Se asegura de que el star del hilo creador solo se ejecute una vez
+		if (hiloCreador.yaEmpezoElNivel () == false) {
+			hiloCreador.IniciarNivel ();
+			hiloCreador.start ();
+		}
+	}
+	
 	public void comenzarOleada () {
+		//Esto es activado por el boton de empezar oleada
 		hiloCreador.Desbloquear ();
+		iniciarNivel ();
 	}
 }

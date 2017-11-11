@@ -16,4 +16,13 @@ public abstract class Objeto extends Entidad {
 	
 	//Saca el objeto del mapa
 	public abstract Objeto Agarrar ();
+	
+	//El objeto fue borrado sin ningun uso alguno
+	public void Morir () {
+		this.miMapa.eliminarObjeto (this);
+		this.grafico.Morir ();
+		this.miMapa = null;
+		this.grafico = null;
+		this.pos = null;
+	}
 }

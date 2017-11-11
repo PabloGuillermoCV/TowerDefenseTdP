@@ -90,6 +90,7 @@ public class GUI extends JFrame {
 		mapa = nivel.getMapa().getMapaVisual();
 		mapa.setVisible(true);
 		mapa.getMapa ().setNivel (nivel);
+		shop.setBotonOleadaOn ();
 	}
 	
 	public void setGrafico (String dir) {

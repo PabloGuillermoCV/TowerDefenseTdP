@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
+import GUI.EstadoVictoria;
 import GUI.MapaVisual;
 import Logica.Caminos.*;
 import Logica.Niveles.*;
@@ -167,7 +168,7 @@ public class MapaLogico {
 	 *  lo que hace ese Thread es mantener un contador y le va sumando 1 por cada segundo que pasa
 	 *  con un sleep de, justamente, un segundo
 	 */
-	public void generarElementoDeMapa() {
+	public void generarElementoDeMapa () {
 		Random rand = new Random();
 		Objeto k;
 		int r = rand.nextInt(4);
@@ -201,13 +202,13 @@ public class MapaLogico {
 		unidadesEnMapa.remove (C);
 	}
 	
-	public void  eliminarEnemigo (Enemigo E) {
-		if(E != null)
-			System.out.println("Enemigo no nulo");
-		if(E.getPos() == null)
-			System.out.println("Posicion del enemigo a eliminar Nula");
+	@SuppressWarnings("unused")
+	public void eliminarEnemigo (Enemigo E) {
 		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E); //me tira NullPointer acá, por lo que parece, la posición del enemigo es nula, no el enemigo en si
 		enemigosEnMapa.remove(E);
+		if (enemigosEnMapa.isEmpty () && P.getVidas() > 0) {
+			EstadoVictoria Victoria = new EstadoVictoria (this);
+		}
 	}
 	
 	public void eliminarObjeto (Objeto O) {
@@ -249,21 +250,24 @@ public class MapaLogico {
 		C.morir ();
 	}
 	
+	
+	//TIRA CONCURRENT MODIFICATION EXCEPTION
+	
 	/**
-	 * método que se encargará de eliminar todo lo que haya quedado en el nivel una vez que el mismo terminó (asumo que no hay más enemigos?)
+	 * método que se encargará de eliminar todo lo que haya quedado en el nivel una vez que el mismo terminó
+	 * asumo que no hay más enemigos
 	 */
-	@SuppressWarnings("unused")
-	public void eliminarTodo(){
-		Iterator<Controlable> it1 = unidadesEnMapa.iterator();
-		Iterator<Objeto> it2 = objetosEnMapa.iterator();
-		while(it1.hasNext()){
-			Controlable C=it1.next();
-			C.morir();
-			it1.remove();
+	public void eliminarTodo () {
+		Iterator <Controlable> it1 = unidadesEnMapa.iterator();
+		Iterator <Objeto> it2 = objetosEnMapa.iterator();
+		while (it1.hasNext()) {
+			Controlable C = it1.next();
+			C.morir ();
+			it1.remove ();
 		}
 		while(it2.hasNext()){
 			Objeto O = it2.next();
-			//eliminar objeto del juego
+			O.Morir ();
 			it2.remove();
 		}
 	}

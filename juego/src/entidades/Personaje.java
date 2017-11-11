@@ -9,7 +9,6 @@ public abstract class Personaje extends Entidad {
 	
 	protected Estado miEstadoActual;
 	protected int Alcance;
-	protected MapaLogico miMapa;
 	protected int VidaMax;
 	protected int AtaqueMax;
 	protected int DefensaMax;
@@ -24,9 +23,10 @@ public abstract class Personaje extends Entidad {
 		this.VidaMax = Vida;
 		this.AtaqueMax = Ataque;
 		this.DefensaMax = Defensa;
-		estoyMuerto=false;
+		estoyMuerto = false;
 	}
-	public boolean estoyMuerto() {
+	
+	public boolean estoyMuerto () {
 		return estoyMuerto;
 	}
 	
@@ -43,8 +43,6 @@ public abstract class Personaje extends Entidad {
 	public void setEstado (Estado e) {
 		miEstadoActual = e;
 	}
-	
-	
 	
 	public int getVidaMax () {
 		return VidaMax;

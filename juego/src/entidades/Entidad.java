@@ -1,5 +1,6 @@
 package entidades;
 
+import Logica.MapaLogico;
 import Logica.Posicion;
 import entidades.EntidadesGraficas.EntidadGrafica;
 
@@ -8,12 +9,12 @@ public abstract class Entidad {
 	protected String Nombre;
 	protected EntidadGrafica grafico;
 	protected Posicion pos;
+	protected MapaLogico miMapa;
 	
 	public Entidad (String Nombre, Posicion pos) {
 		this.Nombre = Nombre;
 		this.pos = pos;
-		//System.out.println("X "+pos.getX()+" Y "+pos.getY());
-		
+		this.miMapa = MapaLogico.InstanciaMapaLogico ();
 	}
 	
 	/**
@@ -32,13 +33,9 @@ public abstract class Entidad {
 		return grafico;
 	}
 	
-	/**
-	 * Metodo que cambia la imagen de la Entidad
-	 * @param una direccion al archivo donde esta la imagen
-	 */
-	/*public void setGrafico (String File) {
-		this.grafico = new JLabel (new ImageIcon ((File)));
-	}*/
+	public MapaLogico getMapa () {
+		return miMapa;
+	}
 	
 	public Posicion getPos () {
 		return pos;

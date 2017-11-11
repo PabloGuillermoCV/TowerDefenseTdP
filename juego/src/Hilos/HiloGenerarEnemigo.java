@@ -6,7 +6,8 @@ import Logica.Niveles.Nivel;
 public class HiloGenerarEnemigo extends Thread {
 	
 	protected Nivel miNivel;
-	protected boolean Bloqueo;
+	protected volatile boolean Bloqueo = true;
+	protected boolean Iniciar = false;
 	
 	public HiloGenerarEnemigo (Nivel miNivel) {
 		this.miNivel = miNivel;
@@ -16,10 +17,8 @@ public class HiloGenerarEnemigo extends Thread {
 		int ContTotal = 0;
 		Iterator <Integer> Oleada = miNivel.getEnemigosPorOleada ().iterator ();
 		int ContOleada = (Integer) Oleada.next ();
-		Bloqueo = true;
 		while (ContTotal < this.miNivel.getCantidadEnemigos ()) {
-			System.out.println ();
-			while (!Bloqueo) {
+			while (Bloqueo == false) {
 				if (ContTotal == ContOleada) {
 					Bloqueo = true;
 					if (!Oleada.hasNext ()) {
@@ -43,6 +42,17 @@ public class HiloGenerarEnemigo extends Thread {
 	}
 	
 	public void Desbloquear () {
+		//Desbloquea para poder mandar la siguiente oleada
 		Bloqueo = false;
+	}
+	
+	public boolean yaEmpezoElNivel () {
+		//Consulta si el metodo run ya se esta ejecutando
+		return Iniciar;
+	}
+	
+	public void IniciarNivel () {
+		//Este metodo solo se llama si aun no empezo la primera oleada del nivel
+		Iniciar = true;
 	}
 }

@@ -46,7 +46,8 @@ public class MenuPrincipal {
 				try {
 					MenuPrincipal window = new MenuPrincipal();
 					window.frame.setVisible(true);
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -56,8 +57,8 @@ public class MenuPrincipal {
 	/**
 	 * Create the application.
 	 */
-	public MenuPrincipal() {
-		initialize();
+	public MenuPrincipal () {
+		initialize ();
 	}
 
 	/**
@@ -75,9 +76,11 @@ public class MenuPrincipal {
 				clip.start();
 				clip.loop(Clip.LOOP_CONTINUOUSLY);
 			}
-		} catch (UnsupportedAudioFileException | IOException e) {
+		}
+		catch (UnsupportedAudioFileException | IOException e) {
 			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		}
+		catch (LineUnavailableException e) {
 			e.printStackTrace();
 		}
 		

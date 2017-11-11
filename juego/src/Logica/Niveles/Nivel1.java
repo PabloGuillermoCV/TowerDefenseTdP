@@ -24,24 +24,23 @@ public class Nivel1 extends Nivel {
 		generarListaEnemigos ();
 		
 		hiloCreador = new HiloGenerarEnemigo (this);
-		hiloCreador.start ();
 	}
 	
 	public void generarListaEnemigos () {
 		//Oleada 1
 		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
-		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
-		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		//enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		//enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
-		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
-		enemigosPorOleada.add (enemigosAMandar.size ());
+		//enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		//enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 3
-		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
-		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
-		enemigosPorOleada.add (enemigosAMandar.size ());
+		//enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		//enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		//enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		CantidadEnemigos = enemigosAMandar.size ();
 	}

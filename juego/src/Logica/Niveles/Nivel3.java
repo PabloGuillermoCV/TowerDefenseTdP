@@ -24,18 +24,21 @@ public class Nivel3 extends Nivel {
 		generarListaEnemigos ();
 		
 		hiloCreador = new HiloGenerarEnemigo (this);
-		hiloCreador.start ();
 	}
 	
 	public void generarListaEnemigos () {
 		//Oleada 1
-		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearConArmadura (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearConArmadura (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
+		enemigosAMandar.add (fabrica.crearConArmadura (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearConArmadura (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 				
 		//Oleada 3
+		enemigosAMandar.add (fabrica.crearJefeFinal (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		CantidadEnemigos = enemigosAMandar.size ();
