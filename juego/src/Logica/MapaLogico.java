@@ -1,9 +1,12 @@
 package Logica;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import GUI.EstadoVictoria;
 import GUI.MapaVisual;
 import Logica.Caminos.*;
@@ -43,9 +46,9 @@ public class MapaLogico {
 				matriz [i][j] = new Celda (i*tamaño,j*tamaño);
 			}
 		}
-		unidadesEnMapa = new LinkedList <Controlable> ();
-		enemigosEnMapa = new LinkedList <Enemigo> ();
-		objetosEnMapa = new LinkedList <Objeto> ();
+		unidadesEnMapa = new CopyOnWriteArrayList <Controlable> ();
+		enemigosEnMapa = new CopyOnWriteArrayList <Enemigo> ();
+		objetosEnMapa = new CopyOnWriteArrayList <Objeto> ();
 		P = Jugador.InstanciaJugador ();
 	}
 	
@@ -198,13 +201,17 @@ public class MapaLogico {
 	}
 	
 	public void eliminarControlable (Controlable C) {
-		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C);
-		unidadesEnMapa.remove (C);
+		if(C == null)
+			System.out.println("Controlable a eliminar nulo");
+		if(C.getPos() == null)
+			System.out.println("Posicion del controlable a eliminar nula");
+		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C); //me tira que la posicion del controlable es nula, no el controlable en si
+		//unidadesEnMapa.remove (C);
 	}
 	
 	@SuppressWarnings("unused")
 	public void eliminarEnemigo (Enemigo E) {
-		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E); //me tira NullPointer acá, por lo que parece, la posición del enemigo es nula, no el enemigo en si
+		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E);
 		enemigosEnMapa.remove(E);
 		if (enemigosEnMapa.isEmpty () && P.getVidas() > 0) {
 			EstadoVictoria Victoria = new EstadoVictoria (this);
@@ -258,17 +265,11 @@ public class MapaLogico {
 	 * asumo que no hay más enemigos
 	 */
 	public void eliminarTodo () {
-		Iterator <Controlable> it1 = unidadesEnMapa.iterator();
-		Iterator <Objeto> it2 = objetosEnMapa.iterator();
-		while (it1.hasNext()) {
-			Controlable C = it1.next();
-			C.morir ();
-			it1.remove ();
+		Iterator<Controlable> it = unidadesEnMapa.iterator();
+		while(it.hasNext()) {
+			Controlable C = it.next();
+			sacarControlable(C);
 		}
-		while(it2.hasNext()){
-			Objeto O = it2.next();
-			O.Morir ();
-			it2.remove();
-		}
+		unidadesEnMapa.clear();
 	}
 }
