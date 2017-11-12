@@ -24,6 +24,9 @@ public class TiendaLogica {
 		}
 		return Instancia;
 	}
+	public void habilitarOleada() {
+		this.market.setBotonOleadaOn();
+	}
 	
 	public void setTiendaVisual (TiendaVisual TV) {
 		market = TV;

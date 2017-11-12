@@ -18,10 +18,10 @@ public class Nivel2 extends Nivel {
 		miCamino = new Camino2 ();
 		miCamino.generarCamino ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level2BGM.WAV");
-		hilosMovimientos = new HiloEnemigo [7];
+		
 		miBGM.setAudio(cancion); //seteo la BGM con la cancion del nivel actual
 		miBGM.Activar();
-		iniciarHilos ();
+	
 		generarListaEnemigos ();
 		
 		hiloCreador = new HiloGenerarEnemigo (this);
@@ -49,12 +49,6 @@ public class Nivel2 extends Nivel {
 		miGui.setNivel (sig);
 	}
 	
-	private void iniciarHilos () {
-		for (int I = 0; I < hilosMovimientos.length; I++) {
-			hilosMovimientos [I] = new HiloEnemigo ();
-			hilosMovimientos [I].start ();
-		}
-	}
 
 	@Override
 	public void reiniciar() {

@@ -24,7 +24,7 @@ public class HiloGenerarEnemigo extends Thread {
 					if (!Oleada.hasNext ()) {
 						break;
 					}
-					miNivel.getTienda ().getMarket ().setBotonOleadaOn ();
+					miNivel.getTienda ().habilitarOleada();
 					ContOleada = (Integer) Oleada.next ();
 				}
 				else {

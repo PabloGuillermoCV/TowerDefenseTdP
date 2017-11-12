@@ -43,23 +43,20 @@ public abstract class Nivel {
 		enemigosPorOleada = new LinkedList <Integer> ();
 		hiloAtaque = new HiloInteraccion ();
 		hiloAtaque.start ();
+		hilosMovimientos = new HiloEnemigo [7];
+		iniciarHilos ();
+		
 		miBGM = new Sonido();
 		P = Jugador.InstanciaJugador ();
 	}
 	
-	public void moverEnemigos () {
-		Iterator <Enemigo> it = mapaLogico.getListaEnemigos ().iterator ();
-		while (it.hasNext ()) {
-			Enemigo e = it.next ();
-			e.Mover ();
-			try {
-				Thread.sleep (100);
-			}
-			catch (InterruptedException e1) {
-				e1.printStackTrace ();
-			}
+	private void iniciarHilos () {
+		for (int I = 0; I < hilosMovimientos.length; I++) {
+			hilosMovimientos [I] = new HiloEnemigo ();
+			hilosMovimientos [I].start ();
 		}
 	}
+	
 	/**
 	 * método usado para reiniciar el nivel cuando se pierde, depende de cada nivel porque reseteo con el constructor
 	 */
