@@ -139,7 +139,6 @@ public class MapaVisual extends JPanel {
 		Controlable Cont;
 		Cont = marketL.createPersonaje (P);
 		if (Cont != null) {
-			mapL.agregarControlable (Cont, P);
 			marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Cont.getPrecio ());
 			marketV.modificarMonedas ();
 			marketV.updateBotones ();

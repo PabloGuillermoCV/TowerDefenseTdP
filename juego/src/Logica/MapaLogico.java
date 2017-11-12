@@ -1,12 +1,9 @@
 package Logica;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import GUI.EstadoVictoria;
 import GUI.MapaVisual;
 import Logica.Caminos.*;
@@ -205,8 +202,7 @@ public class MapaLogico {
 			System.out.println("Controlable a eliminar nulo");
 		if(C.getPos() == null)
 			System.out.println("Posicion del controlable a eliminar nula");
-		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C); //me tira que la posicion del controlable es nula, no el controlable en si
-		//unidadesEnMapa.remove (C);
+		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C);
 	}
 	
 	@SuppressWarnings("unused")
@@ -253,23 +249,29 @@ public class MapaLogico {
 	}
 	
 	private synchronized void sacarControlable (Controlable C) {
-		this.eliminarControlable (C);
 		C.morir ();
 	}
 	
-	
-	//TIRA CONCURRENT MODIFICATION EXCEPTION
+	private synchronized void sacarObjeto (Objeto O) {
+		O.Morir ();
+	}
 	
 	/**
 	 * método que se encargará de eliminar todo lo que haya quedado en el nivel una vez que el mismo terminó
 	 * asumo que no hay más enemigos
 	 */
 	public void eliminarTodo () {
-		Iterator<Controlable> it = unidadesEnMapa.iterator();
-		while(it.hasNext()) {
-			Controlable C = it.next();
-			sacarControlable(C);
+		Iterator <Controlable> itC = unidadesEnMapa.iterator ();
+		Iterator <Objeto> itO = objetosEnMapa.iterator ();
+		while (itC.hasNext ()) {
+			Controlable C = itC.next ();
+			sacarControlable (C);
 		}
-		unidadesEnMapa.clear();
+		unidadesEnMapa.clear ();
+		while (itO.hasNext ()) {
+			Objeto O = itO.next ();
+			sacarObjeto (O);
+		}
+		objetosEnMapa.clear ();
 	}
 }
