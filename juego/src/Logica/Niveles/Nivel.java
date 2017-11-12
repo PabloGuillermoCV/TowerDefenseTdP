@@ -1,7 +1,6 @@
 package Logica.Niveles;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.LinkedList;
 import Audio.Sonido;
 import GUI.*;
@@ -45,7 +44,6 @@ public abstract class Nivel {
 		hiloAtaque.start ();
 		hilosMovimientos = new HiloEnemigo [7];
 		iniciarHilos ();
-		
 		miBGM = new Sonido();
 		P = Jugador.InstanciaJugador ();
 	}
@@ -56,12 +54,6 @@ public abstract class Nivel {
 			hilosMovimientos [I].start ();
 		}
 	}
-	
-	/**
-	 * método usado para reiniciar el nivel cuando se pierde, depende de cada nivel porque reseteo con el constructor
-	 */
-	public abstract void reiniciar();
-	
 	
 	public MapaLogico getMapa () {
 		return mapaLogico;
@@ -178,4 +170,6 @@ public abstract class Nivel {
 	public File getCancion() {
 		return cancion;
 	}
+	
+	public abstract void reiniciar ();
 }

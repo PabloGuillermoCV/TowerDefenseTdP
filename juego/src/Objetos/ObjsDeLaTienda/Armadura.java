@@ -15,12 +15,21 @@ public class Armadura extends ObjDeLaTienda {
 	
 	public void Afectar (Controlable C) {
 		//Vuelve invencible al controlable por una cierta cantidad de tiempo, luego llama a fininvincibilidad
-		
+		C.setInvulnerable (true);
+		try {
+			Thread.sleep (1000);
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		FinInvincibilidad (C);
 	}
 	
 	public void Afectar (Enemigo E) {}
 	
+	public void Afectar () {}
+	
 	public void FinInvincibilidad (Controlable C) {
-		
+		C.setInvulnerable (false);
 	}
 }

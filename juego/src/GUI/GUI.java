@@ -92,11 +92,7 @@ public class GUI extends JFrame {
 		mapa.getMapa ().setNivel (nivel);
 		shop.setBotonOleadaOn ();
 		nivel.getAudio().setAudio(nivel.getCancion());
-		//cuando cambio de nivel, reseteo las vidas y actualizo los valores de las monedas si es necesario
-		//la condición se verifica en ActualizarValores()
-		shop.getMarket().ActualizarValores();
-		shop.updateBotones(); //reseteo los botones de la tienda
-		
+		shop.setBotonesObjetosOff ();
 	}
 	
 	/**
@@ -112,5 +108,15 @@ public class GUI extends JFrame {
 	 */
 	public void avisarNivel () {
 		nivel.comenzarOleada ();
+	}
+	
+	/**
+	 * Metodo que se encarga de reestablecer todo a como estaba al inicio en el caso de perder
+	 */
+	public void reiniciarTodo () {
+		P.setMonedas (1000);
+		P.setPuntos (0);
+		shop.getMarket ().ActualizarValores ();
+		shop.updateBotones ();
 	}
 }

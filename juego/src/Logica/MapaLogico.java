@@ -231,7 +231,12 @@ public class MapaLogico {
 		
 		while (it.hasNext ()) {
 			c = (Controlable) it.next ();
-			e = c.verificarUnidad ();
+			if (c != null && c.getPos () != null) {
+				e = c.verificarUnidad ();
+			}
+			else {
+				e = null;
+			}
 			if (e != null && e.estoyEnJuego () && !e.estoyMuerto()) {
 				e.serAtacado (c);
 				if(e.getEstado().getVida() <= 0) { //pregunto si despues de ser atacado, el enemigo murió

@@ -31,8 +31,9 @@ public class ConBallesta extends Enemigo {
 	@SuppressWarnings("unused")
 	public void atacar(Controlable C) {
 		Proyectil municion = new Flecha(pos,C.getPos());
-		C.getEstado().setVida(C.getEstado().getVida() - calcularGolpe(C));
-		
+		if (C.getInvulnerable () == false) {
+			C.getEstado().setVida (C.getEstado ().getVida () - calcularGolpe (C));
+		}
 	}
 
 	@SuppressWarnings("unused")

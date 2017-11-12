@@ -148,10 +148,20 @@ public class MapaVisual extends JPanel {
 	private void agregarObjetoTienda (Posicion P) {
 		//Condicion: un click en el mapa despues de seleccionar un objeto de la tienda
 		if (mapL.puedoAgregarObjetoDeTienda (P)) {
+			Celda C = mapL.getCelda (P.getX (), P.getY ());
 			ObjDeLaTienda Obj;
 			Obj = marketL.createObjeto (P);
 			if (Obj != null) {
+				System.out.println("ghsjfdklghjfdksl");
 				marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Obj.getPrecio ());
+				marketV.modificarMonedas ();
+				marketV.updateBotones ();
+				if (C.getPersonaje () != null) {
+					Obj.Afectar (C.getPersonaje ());
+				}
+				else {
+					Obj.Afectar ();
+				}
 				marketV.modificarMonedas ();
 				marketV.updateBotones ();
 			}

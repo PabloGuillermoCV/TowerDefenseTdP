@@ -21,4 +21,7 @@ public abstract class ObjDeLaTienda extends Objeto {
 	public Objeto Agarrar () {
 		return null;
 	}
+	
+	//Un afectar extra necesario para Explosivo
+	public abstract void Afectar ();
 }

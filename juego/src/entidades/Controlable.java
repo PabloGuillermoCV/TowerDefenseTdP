@@ -7,7 +7,7 @@ import Objetos.ObjsDeLaTienda.Explosivo;
 public abstract class Controlable extends Personaje {
 	protected int Precio;
 	protected int VelocidadAt;
-	
+	protected boolean Invulnerable;
 	
 	public Controlable (String Nombre, Posicion Pos,
 			int Vida, int Alcance, int Ataque, int Defensa, int Precio,int VelocidadAt) {
@@ -39,6 +39,14 @@ public abstract class Controlable extends Personaje {
 		return VelocidadAt;
 	}
 	
+	public boolean getInvulnerable () {
+		return Invulnerable;
+	}
+	
+	public void setInvulnerable (boolean Invulnerable) {
+		this.Invulnerable = Invulnerable;
+	}
+	
 	/**
 	 * metodo que permite al controlable ser atacado por una unidad enemiga
 	 * @param e visitor que efectua el ataque
@@ -61,12 +69,11 @@ public abstract class Controlable extends Personaje {
 		Enemigo ret = null;
 		for (int X = Alcance; X > -Alcance && ret == null; X--) {
 			for (int Y = Alcance; Y > -Alcance && ret == null; Y--) {
-				if (miMapa.posicionValida (pos.getX()+(X*20), pos.getY()+(Y*20))) {
+				if (miMapa.posicionValida (pos.getX () + (X * 20), pos.getY () + (Y * 20))) {
 					Celda C = miMapa.getCelda (this.pos.getX()+(X*20), this.pos.getY()+(Y*20));
 					if (C != null) {
 						if (!C.getEnemigos ().isEmpty ()) {
-							//System.out.println ("X: "+(this.pos.getX()+(X*20))+" Y: "+(this.pos.getY()+(Y*20)));
-						    if (!C.getEnemigos().getFirst().estoyMuerto()) {
+							if (!C.getEnemigos().getFirst().estoyMuerto()) {
 						    	ret = C.getEnemigos ().getFirst ();
 						    }
 						}

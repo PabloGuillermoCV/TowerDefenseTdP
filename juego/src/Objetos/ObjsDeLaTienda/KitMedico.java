@@ -15,4 +15,6 @@ public class KitMedico extends ObjDeLaTienda {
 	}
 	
 	public void Afectar (Enemigo P) {}
+	
+	public void Afectar () {}
 }

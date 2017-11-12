@@ -2,7 +2,6 @@ package Logica.Niveles;
 
 import java.io.File;
 import GUI.GUI;
-import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
 import Logica.Posicion;
 import Logica.Caminos.Camino1;
@@ -18,12 +17,9 @@ public class Nivel1 extends Nivel {
 		miCamino = new Camino1 ();
 		miCamino.generarCamino ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level1BGM.WAV");
-		
-		miBGM.setAudio(cancion); //seteo la BGM con la cancion del nivel actual
-		miBGM.Activar();
-		
+		miBGM.setAudio (cancion);
+		miBGM.Activar ();
 		generarListaEnemigos ();
-		
 		hiloCreador = new HiloGenerarEnemigo (this);
 	}
 	
@@ -51,11 +47,10 @@ public class Nivel1 extends Nivel {
 		miGui.setNivel (sig);
 	}
 	
-	
-
-	@Override
-	public void reiniciar() {
-		miGui.setNivel(new Nivel1(miGui));
-		
+	public void reiniciar () {
+		miBGM.Desactivar ();
+		Nivel sig = new Nivel1 (miGui);
+		miGui.setNivel (sig);
+		miGui.reiniciarTodo ();
 	}
 }
