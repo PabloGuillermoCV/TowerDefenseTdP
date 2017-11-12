@@ -60,6 +60,11 @@ public abstract class Nivel {
 			}
 		}
 	}
+	/**
+	 * método usado para reiniciar el nivel cuando se pierde, depende de cada nivel porque reseteo con el constructor
+	 */
+	public abstract void reiniciar();
+	
 	
 	public MapaLogico getMapa () {
 		return mapaLogico;

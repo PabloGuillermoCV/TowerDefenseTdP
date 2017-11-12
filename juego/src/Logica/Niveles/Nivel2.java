@@ -55,4 +55,11 @@ public class Nivel2 extends Nivel {
 			hilosMovimientos [I].start ();
 		}
 	}
+
+	@Override
+	public void reiniciar() {
+		miBGM.Desactivar();
+		miGui.setNivel(new Nivel2(miGui)); //funciona de cierta forma, pero me deja todo el nivel anterior debajo
+		
+	}
 }

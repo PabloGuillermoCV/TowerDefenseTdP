@@ -71,6 +71,9 @@ public class TiendaLogica {
 		return creator;
 	}
 	
+	/**
+	 * método que se encarga de actualizar las monedas y el puntaje
+	 */
 	public void ActualizarValores () {
 		market.modificarMonedas ();
 		market.modificarPuntaje ();

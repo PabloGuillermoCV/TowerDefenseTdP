@@ -26,7 +26,7 @@ public class EstadoDerrota {
 	
 	public EstadoDerrota (MapaLogico Mapa) {
 		this.miMapa = Mapa;
-		miMapa.getNivel().getAudio().Desactivar();
+		miMapa.getNivel().getAudio().Desactivar(); //no me desactiva lña música no se porqué
 		Frame = new JFrame ();
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -58,6 +58,8 @@ public class EstadoDerrota {
 				Clip.stop ();
 				Frame.setVisible (false);
 				//Falta hacer que todo se reinicie
+				miMapa.eliminarTodo();
+				miMapa.getNivel().reiniciar();
 			}
 		});
 		Panel.add (Next, BorderLayout.CENTER);

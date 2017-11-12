@@ -57,4 +57,10 @@ public class Nivel1 extends Nivel {
 			hilosMovimientos [I].start ();
 		}
 	}
+
+	@Override
+	public void reiniciar() {
+		miGui.setNivel(new Nivel1(miGui));
+		
+	}
 }

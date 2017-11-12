@@ -80,7 +80,7 @@ public class GUI extends JFrame {
 	}
 
 	/**
-	 * metodo que cambia el nivel (en lógica, más o menos?)
+	 * metodo que cambia el nivel
 	 * @param n nivel a usar como nuevo nivel
 	 */
 	public void setNivel (Nivel n) {
@@ -92,12 +92,24 @@ public class GUI extends JFrame {
 		mapa.getMapa ().setNivel (nivel);
 		shop.setBotonOleadaOn ();
 		nivel.getAudio().setAudio(nivel.getCancion());
+		//cuando cambio de nivel, reseteo las vidas y actualizo los valores de las monedas si es necesario
+		//la condición se verifica en ActualizarValores()
+		shop.getMarket().ActualizarValores();
+		shop.updateBotones(); //reseteo los botones de la tienda
+		
 	}
 	
+	/**
+	 * método para modificar el fondo del mapa
+	 * @param dir dirección donde se encuentra la imagen a utilizar
+	 */
 	public void setGrafico (String dir) {
 		mapa.updateFondo (dir);
 	}
 	
+	/**
+	 * método para notificarle al nivel de que envie una oleada de enemigos
+	 */
 	public void avisarNivel () {
 		nivel.comenzarOleada ();
 	}

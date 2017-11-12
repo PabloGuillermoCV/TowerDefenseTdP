@@ -195,7 +195,10 @@ public class TiendaVisual extends JPanel {
 			}
 		}
 	}
-	
+	/**
+	 * método que construye la interfaz gráfica de la Tienda Visual
+	 * usa un FLow Layout justificando las componenetes a izquierda
+	 */
 	public void setDisplay () {
 		panelDisplay = new JPanel ();
 		panelDisplay.setLayout (new FlowLayout (FlowLayout.LEFT));

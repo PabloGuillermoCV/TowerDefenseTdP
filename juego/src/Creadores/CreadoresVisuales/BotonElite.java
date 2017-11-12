@@ -4,6 +4,6 @@ package Creadores.CreadoresVisuales;
 public class BotonElite extends FactoryVisual {
 
 	public BotonElite () {
-		super ("src\\GUI\\Sprites Botones\\Elite.png", "Elite", 650);
+		super ("src\\GUI\\Sprites Botones\\Elite.png", "Elite", 650,1);
 	}
 }

@@ -7,10 +7,10 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class FactoryVisual extends JButton {
 	
-	public FactoryVisual (String direccionIcono, String Nombre, int Costo) {
+	public FactoryVisual (String direccionIcono, String Nombre, int Costo, int alcance) {
 		setLayout (new GridLayout ());
 		setIcon (new ImageIcon (direccionIcono));
-		setText (Nombre + " (M: " + Costo + ")");
+		setText (Nombre + " (M: " + Costo + ")" +  "  \n(R: "  + alcance + ")" );
 		setSize (30, 20);
 	}
 }
