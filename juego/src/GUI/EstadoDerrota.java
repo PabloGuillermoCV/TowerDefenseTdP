@@ -26,6 +26,7 @@ public class EstadoDerrota {
 	
 	public EstadoDerrota (MapaLogico Mapa) {
 		this.miMapa = Mapa;
+		miMapa.getNivel().getAudio().Desactivar();
 		Frame = new JFrame ();
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);

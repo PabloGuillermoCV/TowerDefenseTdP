@@ -94,6 +94,7 @@ public class Sonido {
 	public void setAudio(File cancion){
 		try {
 			audioInputStream = AudioSystem.getAudioInputStream(cancion);
+			clip = AudioSystem.getClip();
 			clip.open(audioInputStream); //cuando seteo el audio lo abro, con esto manejamos el audio de los niveles
 			//despues se llama a Sonido.activar();
 		} catch (UnsupportedAudioFileException | IOException e) {

@@ -19,7 +19,8 @@ public class Nivel3 extends Nivel {
 		miCamino.generarCamino ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level3BGM.WAV");
 		hilosMovimientos = new HiloEnemigo [7];
-		
+		miBGM.setAudio(cancion); //seteo la BGM con la cancion del nivel actual
+		miBGM.Activar();
 		iniciarHilos ();
 		generarListaEnemigos ();
 		
