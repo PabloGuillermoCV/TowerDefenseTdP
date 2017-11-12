@@ -50,6 +50,7 @@ public class GUI extends JFrame {
 		nivel = new Nivel1 (this);
 		mapa.getMapa ().setNivel (nivel);
 		shop.setGUI (this);
+		nivel.getAudio().Activar();
 	}
 	
 	public static GUI InstanciaGUI () {
@@ -91,6 +92,7 @@ public class GUI extends JFrame {
 		mapa.setVisible(true);
 		mapa.getMapa ().setNivel (nivel);
 		shop.setBotonOleadaOn ();
+		nivel.getAudio().Activar();
 	}
 	
 	public void setGrafico (String dir) {

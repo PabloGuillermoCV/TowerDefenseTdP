@@ -107,8 +107,9 @@ public abstract class Nivel {
 	 */
 	public abstract void siguienteNivel ();
 	
-	public File getAudio () {
-		return cancion;
+	public Sonido getAudio () {
+		miBGM.setAudio(cancion); //seteo la BGM con la cancion del nivel actual
+		return miBGM;
 	}
 	
 	public Jugador getP () {
