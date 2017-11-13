@@ -205,12 +205,11 @@ public class MapaLogico {
 		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C);
 	}
 	
-	@SuppressWarnings("unused")
 	public void eliminarEnemigo (Enemigo E) {
 		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E);
 		enemigosEnMapa.remove(E);
 		if (enemigosEnMapa.isEmpty () && P.getVidas() > 0) {
-			EstadoVictoria Victoria = new EstadoVictoria (this);
+			miNivel.Victoria(); //delego la creación del Frame de victoria correspondiente al nivel en el que estoy (si estoy en el útlimo nivel, se creará el frame de FinDelJuego)
 		}
 	}
 	

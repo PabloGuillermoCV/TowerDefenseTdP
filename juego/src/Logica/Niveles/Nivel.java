@@ -44,7 +44,7 @@ public abstract class Nivel {
 		hiloAtaque.start ();
 		hilosMovimientos = new HiloEnemigo [7];
 		iniciarHilos ();
-		miBGM = new Sonido();
+		miBGM = Sonido.getInstancia();
 		P = Jugador.InstanciaJugador ();
 	}
 	
@@ -172,4 +172,6 @@ public abstract class Nivel {
 	}
 	
 	public abstract void reiniciar ();
+
+	public abstract void Victoria();
 }

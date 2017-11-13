@@ -1,6 +1,8 @@
 package Logica.Niveles;
 
 import java.io.File;
+
+import GUI.EstadoVictoria;
 import GUI.GUI;
 import Hilos.HiloGenerarEnemigo;
 import Logica.Posicion;
@@ -52,5 +54,12 @@ public class Nivel1 extends Nivel {
 		Nivel sig = new Nivel1 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();
+	}
+
+	@Override
+	public void Victoria() {
+		EstadoVictoria Victoria = new EstadoVictoria (miGui.getMapaVisual().getMapa());
+		
+		
 	}
 }

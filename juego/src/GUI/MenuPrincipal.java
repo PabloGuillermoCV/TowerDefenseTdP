@@ -98,6 +98,7 @@ public class MenuPrincipal {
 			public void actionPerformed(ActionEvent arg0) {
 				clip.stop();
 				frame.setVisible(false);
+				frame.dispose();
 				siguienteNivel = GUI.InstanciaGUI();
 				siguienteNivel.setVisible(true);
 				siguienteNivel.setBounds(300,10,516,680);
@@ -106,11 +107,12 @@ public class MenuPrincipal {
 		panel.setLayout(null);
 		panel.add(jugar);
 		
-		JButton Opciones = new JButton("Opciones");
-		Opciones.setBounds(135, 110, 122, 23);
-		panel.add(Opciones);
-		
 		JButton EXIT = new JButton("Salir");
+		EXIT.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		EXIT.setBounds(135, 164, 122, 23);
 		panel.add(EXIT);
 		

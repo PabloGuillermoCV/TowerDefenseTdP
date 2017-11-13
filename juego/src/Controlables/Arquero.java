@@ -28,7 +28,7 @@ public class Arquero extends Controlable {
 
 	@SuppressWarnings("unused")
 	public void atacar(Enemigo E) {
-		Proyectil municion = new Flecha(new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
+		//Proyectil municion = new Flecha(new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
 		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
 	}
 }

@@ -1,7 +1,10 @@
 package Logica.Niveles;
 
 import java.io.File;
+
+import GUI.FinDelJuego;
 import GUI.GUI;
+import GUI.MenuPrincipal;
 import Hilos.HiloGenerarEnemigo;
 import Logica.Posicion;
 import Logica.Caminos.Camino3;
@@ -42,7 +45,8 @@ public class Nivel3 extends Nivel {
 	}
 
 	public void siguienteNivel () {
-		//Final Del Juego
+		miGui.dispose(); //ELIMINO EL FRAME PARA LIBERRAR MEMORIA
+		MenuPrincipal menu = new MenuPrincipal();
 	}
 	
 	public void reiniciar () {
@@ -50,5 +54,11 @@ public class Nivel3 extends Nivel {
 		Nivel sig = new Nivel3 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();
+	}
+
+	@Override
+	public void Victoria() {
+		FinDelJuego Fin = new FinDelJuego(miGui.getMapaVisual().getMapa());
+		
 	}
 }

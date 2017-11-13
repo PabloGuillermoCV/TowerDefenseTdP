@@ -1,6 +1,8 @@
 package Logica.Niveles;
 
 import java.io.File;
+
+import GUI.EstadoVictoria;
 import GUI.GUI;
 import Hilos.HiloGenerarEnemigo;
 import Logica.Posicion;
@@ -29,13 +31,13 @@ public class Nivel2 extends Nivel {
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
-		enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
-		enemigosPorOleada.add (enemigosAMandar.size ());
+		//enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
+		//enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 3
-		enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
-		enemigosAMandar.add (fabrica.crearConBallesta (posInicialEnemies));
-		enemigosPorOleada.add (enemigosAMandar.size ());
+		//enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
+		//enemigosAMandar.add (fabrica.crearConBallesta (posInicialEnemies));
+		//enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		CantidadEnemigos = enemigosAMandar.size ();
 	}
@@ -50,5 +52,11 @@ public class Nivel2 extends Nivel {
 		Nivel sig = new Nivel2 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();
+	}
+
+	@Override
+	public void Victoria() {
+		EstadoVictoria Victoria = new EstadoVictoria (miGui.getMapaVisual().getMapa());
+		
 	}
 }

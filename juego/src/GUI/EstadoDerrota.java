@@ -14,6 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import Logica.MapaLogico;
+import javax.swing.JTextArea;
+import java.awt.Font;
+import java.awt.Color;
 
 public class EstadoDerrota {
 	
@@ -26,8 +29,8 @@ public class EstadoDerrota {
 	
 	public EstadoDerrota (MapaLogico Mapa) {
 		this.miMapa = Mapa;
-		miMapa.getNivel().getAudio().Desactivar(); //no me desactiva lña música no se porqué
-		Frame = new JFrame ();
+		miMapa.getNivel().getAudio().Desactivar(); //no me desactiva la música no se porque, pero solo a partir del Nivel 2
+		Frame = new JFrame ("Has Perdido");
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		
@@ -52,17 +55,29 @@ public class EstadoDerrota {
 		Panel.setLayout (null);
 		
 		Next = new JButton ("Reiniciar");
-		Next.setBounds (135, 56, 122, 23);
+		Next.setBounds (90, 127, 122, 23);
 		Next.addActionListener (new ActionListener() {
 			public void actionPerformed (ActionEvent arg0) {
 				Clip.stop ();
 				Frame.setVisible (false);
+				Frame.dispose();
 				//Falta hacer que todo se reinicie
 				miMapa.eliminarTodo();
 				miMapa.getNivel().reiniciar();
 			}
 		});
 		Panel.add (Next, BorderLayout.CENTER);
+		
+		JTextArea txtrpulsaElBotn = new JTextArea();
+		txtrpulsaElBotn.setLineWrap(true);
+		txtrpulsaElBotn.setWrapStyleWord(true);
+		txtrpulsaElBotn.setEnabled(false);
+		txtrpulsaElBotn.setBackground(Color.WHITE);
+		txtrpulsaElBotn.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		txtrpulsaElBotn.setEditable(false);
+		txtrpulsaElBotn.setText("Pulsa el bot\u00F3n de abajo para empezar el nivel de nuevo. \u00A1buena suerte, Comandante!");
+		txtrpulsaElBotn.setBounds(10, 25, 292, 78);
+		Panel.add(txtrpulsaElBotn);
 		Next.setVisible (true);
 		
 		Frame.setVisible (true);

@@ -35,9 +35,10 @@ public class Sonido {
 	 * método que detiene la música seteada PREVIAMENTE por el método setAudio(File)
 	 */
 	public void Desactivar() {
-		clip.stop();
+		clip.close();
 	}
 	
+	//este método no lo usamos
 	/**
 	 * método que reproduce la música de victoria
 	 */
@@ -61,6 +62,7 @@ public class Sonido {
 				}
 	}
 	
+	//este método no lo usamos
 	/**
 	 * método que reproduce la música de Derrota
 	 */
