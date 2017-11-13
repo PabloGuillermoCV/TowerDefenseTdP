@@ -19,8 +19,8 @@ public class Nivel1 extends Nivel {
 		miCamino = new Camino1 ();
 		miCamino.generarCamino ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level1BGM.WAV");
-		miBGM.setAudio (cancion);
-		miBGM.Activar ();
+		miBGM.setAudio(cancion);
+		miBGM.Activar();
 		generarListaEnemigos ();
 		hiloCreador = new HiloGenerarEnemigo (this);
 	}
@@ -28,13 +28,13 @@ public class Nivel1 extends Nivel {
 	public void generarListaEnemigos () {
 		//Oleada 1
 		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
-		//enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
-		//enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearACaballo (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
-		//enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
-		//enemigosPorOleada.add (enemigosAMandar.size ());
+		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 3
 		//enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
@@ -50,7 +50,6 @@ public class Nivel1 extends Nivel {
 	}
 	
 	public void reiniciar () {
-		miBGM.Desactivar ();
 		Nivel sig = new Nivel1 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();

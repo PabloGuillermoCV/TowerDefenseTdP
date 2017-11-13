@@ -20,8 +20,8 @@ public class Nivel3 extends Nivel {
 		miCamino = new Camino3 ();
 		miCamino.generarCamino ();
 		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level3BGM.WAV");
-		miBGM.setAudio (cancion);
-		miBGM.Activar ();
+		miBGM.setAudio(cancion);
+		miBGM.Activar();
 		generarListaEnemigos ();
 		hiloCreador = new HiloGenerarEnemigo (this);
 	}
@@ -50,7 +50,6 @@ public class Nivel3 extends Nivel {
 	}
 	
 	public void reiniciar () {
-		miBGM.Desactivar ();
 		Nivel sig = new Nivel3 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();

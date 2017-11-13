@@ -249,6 +249,7 @@ public class MapaLogico {
 	}
 	
 	private synchronized void sacarEnemigo (Enemigo E) {
+		
 		miNivel.murioEnemigo (E);
 	}
 	
@@ -267,15 +268,27 @@ public class MapaLogico {
 	public void eliminarTodo () {
 		Iterator <Controlable> itC = unidadesEnMapa.iterator ();
 		Iterator <Objeto> itO = objetosEnMapa.iterator ();
+		Iterator<Enemigo> itE = enemigosEnMapa.iterator();
 		while (itC.hasNext ()) {
 			Controlable C = itC.next ();
 			sacarControlable (C);
 		}
 		unidadesEnMapa.clear ();
+		
+		if(!enemigosEnMapa.isEmpty()) {
+			while(itE.hasNext()) {
+				Enemigo E = itE.next();
+				sacarEnemigo(E);
+			}
+		}
+		
+		enemigosEnMapa.clear();
 		while (itO.hasNext ()) {
 			Objeto O = itO.next ();
 			sacarObjeto (O);
 		}
 		objetosEnMapa.clear ();
+		
+		
 	}
 }

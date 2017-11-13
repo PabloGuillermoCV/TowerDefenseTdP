@@ -106,6 +106,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	public void morir () {
 		estoyMuerto = true;
+		miMapa.getMapaVisual().getTiendaV().updateBotones();
 		System.out.println("ESTOY PASANDO POR MORIR");
 		Posicion aux = new Posicion (this.pos.getX (), this.pos.getY ());
 		generarObjeto (aux);

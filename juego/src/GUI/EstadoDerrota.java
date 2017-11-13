@@ -29,7 +29,7 @@ public class EstadoDerrota {
 	
 	public EstadoDerrota (MapaLogico Mapa) {
 		this.miMapa = Mapa;
-		miMapa.getNivel().getAudio().Desactivar(); //no me desactiva la música no se porque, pero solo a partir del Nivel 2
+		miMapa.getNivel().desactivarAudio();
 		Frame = new JFrame ("Has Perdido");
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -71,7 +71,7 @@ public class EstadoDerrota {
 		JTextArea txtrpulsaElBotn = new JTextArea();
 		txtrpulsaElBotn.setLineWrap(true);
 		txtrpulsaElBotn.setWrapStyleWord(true);
-		txtrpulsaElBotn.setEnabled(false);
+		txtrpulsaElBotn.setEnabled(true);
 		txtrpulsaElBotn.setBackground(Color.WHITE);
 		txtrpulsaElBotn.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		txtrpulsaElBotn.setEditable(false);

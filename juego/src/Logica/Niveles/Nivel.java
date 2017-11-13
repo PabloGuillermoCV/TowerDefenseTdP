@@ -83,6 +83,9 @@ public abstract class Nivel {
 		return direccionMapa;
 	}
 	
+	public void desactivarAudio() {
+		miBGM.Desactivar();
+	}
 	/**
 	 * genera la lista de enemigos que van a estar en el nivel
 	 */
@@ -100,10 +103,6 @@ public abstract class Nivel {
 	 * Metodo que modifica la ventana para pasar al siguiente Nivel
 	 */
 	public abstract void siguienteNivel ();
-	
-	public Sonido getAudio () {
-		return miBGM;
-	}
 	
 	public Jugador getP () {
 		return P;

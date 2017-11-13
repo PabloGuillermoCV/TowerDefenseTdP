@@ -29,7 +29,7 @@ public class FinDelJuego {
 	
 	public FinDelJuego (MapaLogico Mapa) {
 		this.miMapa = Mapa;
-		miMapa.getNivel().getAudio().Desactivar();
+		miMapa.getNivel().desactivarAudio();	
 		Frame = new JFrame ("¡Te has dado vuelta el juego!");
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -68,7 +68,7 @@ public class FinDelJuego {
 		Panel.add (Next, BorderLayout.CENTER);
 		
 		txtrbienHechoComandante = new JTextArea();
-		txtrbienHechoComandante.setEnabled(false);
+		txtrbienHechoComandante.setEnabled(true);
 		txtrbienHechoComandante.setEditable(false);
 		txtrbienHechoComandante.setWrapStyleWord(true);
 		txtrbienHechoComandante.setLineWrap(true);

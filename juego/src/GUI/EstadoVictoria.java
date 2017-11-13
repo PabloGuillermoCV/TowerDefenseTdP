@@ -28,7 +28,7 @@ public class EstadoVictoria {
 	
 	public EstadoVictoria (MapaLogico Mapa) {
 		this.miMapa = Mapa;
-		miMapa.getNivel().getAudio().Desactivar();
+		miMapa.getNivel().desactivarAudio();
 		Frame = new JFrame ("Has Ganado!");
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);

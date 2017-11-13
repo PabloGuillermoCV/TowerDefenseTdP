@@ -18,10 +18,10 @@ public class Nivel2 extends Nivel {
 		posFinalEnemies = new Posicion (460,100);
 		miCamino = new Camino2 ();
 		miCamino.generarCamino ();
-		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level2BGM.WAV");
-		miBGM.setAudio (cancion);
-		miBGM.Activar ();
 		generarListaEnemigos ();
+		cancion = new File ("src\\Audio\\Audio.Sonidos\\Level2BGM.WAV");
+		miBGM.setAudio(cancion);
+		miBGM.Activar();
 		hiloCreador = new HiloGenerarEnemigo (this);
 	}
 	
@@ -48,7 +48,6 @@ public class Nivel2 extends Nivel {
 	}
 	
 	public void reiniciar () {
-		miBGM.Desactivar ();
 		Nivel sig = new Nivel2 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();

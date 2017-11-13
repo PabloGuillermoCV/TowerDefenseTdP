@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import javax.swing.*;
 
+import Audio.Sonido;
+
 @SuppressWarnings("serial")
 public class GUI extends JFrame {
 	
@@ -85,14 +87,15 @@ public class GUI extends JFrame {
 	 */
 	public void setNivel (Nivel n) {
 		P.reestablecerVidas ();
+		nivel.getTienda().ActualizarValores();
 		nivel = n;
 		mapa.setVisible(false);
 		mapa = nivel.getMapa().getMapaVisual();
 		mapa.setVisible(true);
 		mapa.getMapa ().setNivel (nivel);
 		shop.setBotonOleadaOn ();
-		nivel.getAudio().setAudio(nivel.getCancion());
-		shop.setBotonesObjetosOff ();
+		shop.updateBotones(); 
+		shop.setBotonesObjetosOff();
 	}
 	
 	/**
@@ -118,5 +121,6 @@ public class GUI extends JFrame {
 		P.setPuntos (0);
 		shop.getMarket ().ActualizarValores ();
 		shop.updateBotones ();
+		shop.setBotonesObjetosOff();
 	}
 }
