@@ -179,7 +179,7 @@ public class MapaVisual extends JPanel {
 			//El personaje esta herido y lo vendo a la mitad
 			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2));
 		}
-		mapL.eliminarControlable(Cont); //Le digo al mapa logico que este controlable ya no existe
+		//mapL.eliminarControlable(Cont); //Le digo al mapa logico que este controlable ya no existe
 		Cont.morir ();
 		marketV.modificarMonedas ();
 		marketV.updateBotones ();
@@ -190,7 +190,7 @@ public class MapaVisual extends JPanel {
 		tengoPU = C.getObjeto ().Agarrar (); //Saca el objeto del mapa
 		if (tengoPU != null) {
 			//Si no es nulo, lo saco y me lo quedo
-			C.EliminarObjetoDeCelda (C.getObjeto ());
+			//C.EliminarObjetoDeCelda (C.getObjeto ());
 			marketV.setBotonesOff ();
 		}
 	}

@@ -21,8 +21,9 @@ public class VidaPlus extends PowerUpDelMapa {
 	}
 	
 	public Objeto Agarrar () {
-		this.grafico.Morir ();
-		this.grafico = null;
+		this.miMapa.eliminarObjeto(this);
+		this.grafico.getGrafico().setVisible (false);
+		
 		return this;
 	}
 }

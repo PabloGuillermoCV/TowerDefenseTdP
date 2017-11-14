@@ -124,8 +124,8 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		Random Rand = new Random ();
 		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
 		
-		if (I <= 20) { //20% de probabilidad de dejar caer uno
-			if (I < 12) { //60% de probabilidad de que el objeto sea un power up
+		if (I <= 80) { //20% de probabilidad de dejar caer uno
+			if (I < 70) { //60% de probabilidad de que el objeto sea un power up
 				I = Rand.nextInt (3) + 1; //Cual de los 3 voy a dejar
 				PowerUpDelMapa PU = null;
 				switch (I) {

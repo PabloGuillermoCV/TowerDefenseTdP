@@ -203,6 +203,7 @@ public class MapaLogico {
 		if(C.getPos() == null)
 			System.out.println("Posicion del controlable a eliminar nula");
 		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C);
+		this.unidadesEnMapa.remove(C);
 	}
 	
 	public void eliminarEnemigo (Enemigo E) {

@@ -19,7 +19,9 @@ public abstract class Objeto extends Entidad {
 	
 	//El objeto fue borrado sin ningun uso alguno
 	public void Morir () {
+		System.out.println("estoy en el morir de Objeto-------------------");
 		this.miMapa.eliminarObjeto (this);
+		
 		this.grafico.Morir ();
 		this.miMapa = null;
 		this.grafico = null;

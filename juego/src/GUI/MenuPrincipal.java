@@ -121,5 +121,6 @@ public class MenuPrincipal {
 		Autores.setText("TdP 2017");
 		panel.add(Autores);
 		Autores.setColumns(10);
+		frame.setVisible(true);
 	}
 }
