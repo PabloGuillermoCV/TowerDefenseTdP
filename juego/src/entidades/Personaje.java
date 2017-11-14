@@ -1,6 +1,5 @@
 package entidades;
 
-import Logica.MapaLogico;
 import Logica.Posicion;
 import entidades.Estados.Estado;
 import entidades.Estados.EstadoNormal;
@@ -19,7 +18,6 @@ public abstract class Personaje extends Entidad {
 		super (Nombre, Pos);
 		this.Alcance = Alcance;
 		this.miEstadoActual = new EstadoNormal (Vida, Ataque, Defensa);
-		this.miMapa = MapaLogico.InstanciaMapaLogico ();
 		this.VidaMax = Vida;
 		this.AtaqueMax = Ataque;
 		this.DefensaMax = Defensa;

@@ -39,7 +39,7 @@ public class TiendaLogica {
 		}
 		else {
 			Controlable E = creator.crearCont (pos);
-			creator = null;
+			//creator = null;
 			return E;
 		}
 	}
@@ -73,6 +73,10 @@ public class TiendaLogica {
 	 */
 	public FactoryLogica getCreator () {
 		return creator;
+	}
+	
+	public void EliminarCreador () {
+		creator = null;
 	}
 	
 	/**

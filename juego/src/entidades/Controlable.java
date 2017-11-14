@@ -3,19 +3,24 @@ package entidades;
 import Logica.Celda;
 import Logica.Posicion;
 import Objetos.ObjsDeLaTienda.Explosivo;
+import entidades.EntidadesGraficas.EntidadGrafica;
 
 public abstract class Controlable extends Personaje {
+	
 	protected int Precio;
 	protected int VelocidadAt;
 	protected boolean Invulnerable;
+	protected Posicion Pos2;
+	protected EntidadGrafica GraficoAuxiliar;
 	
 	public Controlable (String Nombre, Posicion Pos,
-			int Vida, int Alcance, int Ataque, int Defensa, int Precio,int VelocidadAt) {
+			int Vida, int Alcance, int Ataque, int Defensa, int Precio, int VelocidadAt) {
 		super (Nombre,Pos,Vida,Alcance,Ataque,Defensa);
-		
 		this.Precio = Precio;
 		this.VelocidadAt = VelocidadAt;
 		this.miMapa.agregarControlable(this, Pos);
+		this.Pos2 = null;
+		this.GraficoAuxiliar = null;
 	}
 	
 	public int getPrecio () {
@@ -45,6 +50,14 @@ public abstract class Controlable extends Personaje {
 	
 	public void setInvulnerable (boolean Invulnerable) {
 		this.Invulnerable = Invulnerable;
+	}
+	
+	public Posicion getPos2 () {
+		return Pos2;
+	}
+	
+	public EntidadGrafica getGraficoAux () {
+		return GraficoAuxiliar;
 	}
 	
 	/**
@@ -85,7 +98,14 @@ public abstract class Controlable extends Personaje {
 	}
 
 	public void morir () {
-		System.out.println("-------------------------------------");
+		if (this.Pos2 != null) {
+			this.miMapa.getCelda (this.Pos2.getX (), this.Pos2.getY ()).EliminarControlableDeCelda (this);
+			this.Pos2 = null;
+		}
+		if (this.GraficoAuxiliar != null) {
+			this.GraficoAuxiliar.Morir ();
+			this.GraficoAuxiliar = null;
+		}
 		this.miMapa.eliminarControlable (this);
 		this.grafico.Morir ();
 		this.miMapa = null;

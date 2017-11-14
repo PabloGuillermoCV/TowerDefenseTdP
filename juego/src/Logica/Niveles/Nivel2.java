@@ -53,9 +53,8 @@ public class Nivel2 extends Nivel {
 		miGui.reiniciarTodo ();
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void Victoria() {
 		EstadoVictoria Victoria = new EstadoVictoria (miGui.getMapaVisual().getMapa());
-		
 	}
 }

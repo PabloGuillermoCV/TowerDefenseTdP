@@ -44,6 +44,7 @@ public class Nivel3 extends Nivel {
 		CantidadEnemigos = enemigosAMandar.size ();
 	}
 
+	@SuppressWarnings("unused")
 	public void siguienteNivel () {
 		miGui.dispose(); //ELIMINO EL FRAME PARA LIBERRAR MEMORIA
 		MenuPrincipal menu = new MenuPrincipal();
@@ -55,9 +56,8 @@ public class Nivel3 extends Nivel {
 		miGui.reiniciarTodo ();
 	}
 
-	@Override
+	@SuppressWarnings("unused")
 	public void Victoria() {
 		FinDelJuego Fin = new FinDelJuego(miGui.getMapaVisual().getMapa());
-		
 	}
 }

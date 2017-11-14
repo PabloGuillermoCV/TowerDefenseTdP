@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-import GUI.EstadoVictoria;
 import GUI.MapaVisual;
 import Logica.Caminos.*;
 import Logica.Niveles.*;
@@ -111,7 +110,7 @@ public class MapaLogico {
 	public boolean puedoAgregarControlable (Posicion pos) {
 		boolean Puedo;
 		if (posicionValida (pos.getX (), pos.getY ()) && !miCamino.perteneceAlCamino (pos) && 
-			matriz[pos.getX()/20][pos.getY()/20].getPersonaje() == null) {
+		matriz [pos.getX()/20] [pos.getY()/20].getPersonaje () == null) {
 			Puedo = true;
 		}
 		else {

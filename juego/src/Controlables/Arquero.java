@@ -7,6 +7,7 @@ import entidades.Enemigo;
 import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
+@SuppressWarnings("unused")
 public class Arquero extends Controlable {
 	
 	/*
@@ -23,12 +24,11 @@ public class Arquero extends Controlable {
 	
 	public Arquero (Posicion pos) {
 		super ("Arquero", pos, 100, 5, 50, 100, 300, 7);
-		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
+		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 
-	@SuppressWarnings("unused")
 	public void atacar(Enemigo E) {
 		//Proyectil municion = new Flecha(new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
-		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
+		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
 	}
 }

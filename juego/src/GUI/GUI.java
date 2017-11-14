@@ -6,8 +6,6 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import javax.swing.*;
 
-import Audio.Sonido;
-
 @SuppressWarnings("serial")
 public class GUI extends JFrame {
 	

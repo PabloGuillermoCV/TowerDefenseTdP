@@ -7,6 +7,7 @@ import entidades.Enemigo;
 import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
+@SuppressWarnings("unused")
 public class Caballero extends Controlable {
 	
 	/*
@@ -23,12 +24,11 @@ public class Caballero extends Controlable {
 	
 	public Caballero (Posicion pos) {
 		super ("Caballero", pos, 50, 2, 75, 90, 500, 9);
-		grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif",pos);
+		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif",pos);
 	}
 
-	@SuppressWarnings("unused")
 	public void atacar(Enemigo E) {
 		//Proyectil municion = new Espadazo(new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
-		E.getEstado().setVida( E.getEstado().getVida() - calcularGolpe(E));
+		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
 	}
 }

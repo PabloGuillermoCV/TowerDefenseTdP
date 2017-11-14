@@ -139,6 +139,7 @@ public class MapaVisual extends JPanel {
 		Controlable Cont;
 		Cont = marketL.createPersonaje (P);
 		if (Cont != null) {
+			marketL.EliminarCreador ();
 			marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Cont.getPrecio ());
 			marketV.modificarMonedas ();
 			marketV.updateBotones ();
@@ -152,7 +153,6 @@ public class MapaVisual extends JPanel {
 			ObjDeLaTienda Obj;
 			Obj = marketL.createObjeto (P);
 			if (Obj != null) {
-				System.out.println("ghsjfdklghjfdksl");
 				marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Obj.getPrecio ());
 				marketV.modificarMonedas ();
 				marketV.updateBotones ();
