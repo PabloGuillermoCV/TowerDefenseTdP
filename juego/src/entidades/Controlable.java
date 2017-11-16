@@ -76,7 +76,10 @@ public abstract class Controlable extends Personaje {
 	 * metodo de visitor que permite a un controlable atacar una unidad concreta
 	 * @param E enemigo a atacar
 	 */
-	public abstract void atacar (Enemigo E);
+	public void atacar (Enemigo E) {
+		miMapa.getMapaVisual ().pintarAtaque (pos.getX (), pos.getY (), E.getPos ().getX (), E.getPos (). getY ());
+		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
+	}
 	
 	public Enemigo verificarUnidad () {
 		Enemigo ret = null;
@@ -98,6 +101,7 @@ public abstract class Controlable extends Personaje {
 	}
 
 	public void morir () {
+		this.estoyMuerto = true;
 		if (this.Pos2 != null) {
 			this.miMapa.getCelda (this.Pos2.getX (), this.Pos2.getY ()).EliminarControlableDeCelda (this);
 			this.Pos2 = null;

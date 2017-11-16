@@ -30,9 +30,4 @@ public class Catapulta extends Controlable {
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CatapultaStatic.gif", pos);
 		this.GraficoAuxiliar = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CargaCatapulta.png", this.Pos2);
 	}
-
-	public void atacar(Enemigo E) {
-		//Proyectil municion = new CargaCatapulta(new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
-		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
-	}
 }

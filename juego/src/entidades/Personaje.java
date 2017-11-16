@@ -12,6 +12,7 @@ public abstract class Personaje extends Entidad {
 	protected int AtaqueMax;
 	protected int DefensaMax;
 	protected boolean estoyMuerto;
+	protected boolean estoyEnInteraccion;
 	
 	public Personaje (String Nombre, Posicion Pos, int Vida, int Alcance, 
 			int Ataque, int Defensa) {
@@ -21,11 +22,16 @@ public abstract class Personaje extends Entidad {
 		this.VidaMax = Vida;
 		this.AtaqueMax = Ataque;
 		this.DefensaMax = Defensa;
-		estoyMuerto = false;
+		this.estoyMuerto = false;
+		this.estoyEnInteraccion = false;
 	}
 	
 	public boolean estoyMuerto () {
 		return estoyMuerto;
+	}
+	
+	public boolean estoyEnInteraccion () {
+		return estoyEnInteraccion;
 	}
 	
 	public abstract void morir ();

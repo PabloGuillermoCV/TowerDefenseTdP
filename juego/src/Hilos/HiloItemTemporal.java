@@ -4,27 +4,22 @@ import Objetos.ObjTemporal.ObjetoTemporal;
 
 public class HiloItemTemporal extends Thread {
 
-	private ObjetoTemporal item;
-	private int cont;
+	private ObjetoTemporal miObjeto;
+	private int Time;
 	
-	public HiloItemTemporal (int time) {
-		cont = time;
-	}
-	
-	public void setItem (ObjetoTemporal o) {
-		item = o;
+	public HiloItemTemporal (ObjetoTemporal miObjeto, int Time) {
+		this.miObjeto = miObjeto;
+		this.Time = Time;
 	}
 	
 	public void run () {
-		while (cont > 0) {
-			cont--;
-			try {
-				HiloItemTemporal.sleep(1000);
-			}
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		Time = Time * 1000;
+		try {
+			HiloItemTemporal.sleep (Time);
 		}
-		item.morir();
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		miObjeto.morir();
 	}
 }

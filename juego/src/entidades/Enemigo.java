@@ -63,11 +63,11 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * metodo de visitor que permite a un enemigo ser atacado por algo que desconoce
 	 * @param C Visitante a aceptar
 	 */
-	public void serAtacado(Controlable C) {
+	public void serAtacado (Controlable C) {
 		C.atacar(this);
 	}
 	
-	public void serAtacado (Explosivo E){
+	public void serAtacado (Explosivo E) {
 		E.Afectar (this);
 	}
 	
@@ -75,13 +75,22 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
 	 * @param C Controlable a atacar
 	 */
-	public abstract void atacar(Controlable C);
+	public void atacar(Controlable C) {
+		if (C.getInvulnerable () == false) {
+			C.getEstado().setVida (C.getEstado ().getVida () - calcularGolpe (C));
+		}
+	}
 	
 	/**
 	 * metodo de visitor que permite a un enemigo atacar el objeto que bloquea su camino
 	 * @param R Roca a atacar
 	 */
-	public abstract void atacar(Roca R);
+	public void atacar (Roca R) {
+		R.setVida (R.getVida () - miEstadoActual.getAtaque ());
+		if (R.getVida () <= 0) {
+			R.Morir ();
+		}
+	}
 	
 	public boolean verficiarAliadoEnRango(Controlable C){
 		boolean is = false;
@@ -107,7 +116,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	public void morir () {
 		estoyMuerto = true;
 		miMapa.getMapaVisual().getTiendaV().updateBotones();
-		System.out.println("ESTOY PASANDO POR MORIR");
 		Posicion aux = new Posicion (this.pos.getX (), this.pos.getY ());
 		generarObjeto (aux);
 		if(grafico != null)
@@ -125,7 +133,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		int I = Rand.nextInt (100) + 1; //Probabilidad de dejar caer un objeto
 		
 		if (I <= 80) { //20% de probabilidad de dejar caer uno
-			if (I < 70) { //60% de probabilidad de que el objeto sea un power up
+			if (I < 10) { //60% de probabilidad de que el objeto sea un power up
 				I = Rand.nextInt (3) + 1; //Cual de los 3 voy a dejar
 				PowerUpDelMapa PU = null;
 				switch (I) {

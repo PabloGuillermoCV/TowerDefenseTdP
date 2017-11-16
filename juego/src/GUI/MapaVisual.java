@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -24,6 +25,10 @@ public class MapaVisual extends JPanel {
 	private MapaLogico mapL;
 	private TiendaVisual marketV;
 	private Objeto tengoPU;
+	private int X1;
+	private int Y1;
+	private int X2;
+	private int Y2;
 	
 	private MapaVisual () {
 		this.setLayout (null);
@@ -76,8 +81,10 @@ public class MapaVisual extends JPanel {
 					agregarControlable (P);
 				}
 				else {
-					//Agrego un objeto de la tienda
-					agregarObjetoTienda (P);
+					if (mapL.puedoAgregarObjetoDeTienda (P)) {
+						//Agrego un objeto de la tienda
+						agregarObjetoTienda (P);
+					}
 				}
 			}
 		}
@@ -103,7 +110,6 @@ public class MapaVisual extends JPanel {
 		return mapL;
 	}
 	
-	
 	public TiendaVisual getTiendaV () {
 		return marketV;
 	}
@@ -127,6 +133,20 @@ public class MapaVisual extends JPanel {
 	public void agregarObjeto (Objeto k, Posicion p) {
 		fondo.add (k.getGrafico ().getGrafico ());
 		k.getGrafico ().getGrafico ().setBounds (p.getX (), p.getY (), 20, 20);
+	}
+	
+	public void pintarAtaque (int X1, int Y1, int X2, int Y2) {
+		this.X1 = X1;
+		this.Y1 = Y1;
+		this.X2 = X2;
+		this.Y2 = Y2;
+		repaint (X1, Y1, X2, Y2);
+	}
+	
+	public synchronized void paint (Graphics G) {
+		super.paint (G);
+		G.drawLine (X1,Y1,X2,Y2);
+		G.dispose ();
 	}
 	
 	//Metodos usados por el mouse listener

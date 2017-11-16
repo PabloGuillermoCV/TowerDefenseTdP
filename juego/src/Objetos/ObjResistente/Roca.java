@@ -1,5 +1,6 @@
 package Objetos.ObjResistente;
 
+import Enemigos.Movimiento.Inmovil;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
@@ -16,6 +17,15 @@ public class Roca extends ObjetoResistente {
 	}
 	
 	public void Afectar (Enemigo P) {
+		P.setEstrategia (new Inmovil ());
+	}
+	
+	public void Morir () {
 		
+		this.miMapa.eliminarObjeto (this);
+		this.grafico.Morir ();
+		this.miMapa = null;
+		this.grafico = null;
+		this.pos = null;
 	}
 }

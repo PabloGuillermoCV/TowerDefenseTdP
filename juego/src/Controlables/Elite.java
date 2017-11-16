@@ -26,9 +26,4 @@ public class Elite extends Controlable {
 		super ("Elite", pos, 300, 1, 150, 300, 650, 6);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\EliteStatic.gif",pos);
 	}
-
-	public void atacar(Enemigo E) {
-		//Proyectil municion = new Espadazo(new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
-		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
-	}
 }

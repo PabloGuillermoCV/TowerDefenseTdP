@@ -26,9 +26,4 @@ public class Soldado extends Controlable {
 		super ("Soldado", pos, 100, 1, 50, 100, 200, 4);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\SoldadoStatic.gif",pos);
 	}
-
-	public void atacar (Enemigo E) {
-		//Proyectil municion = new Espadazo (new Posicion (pos.getX(),pos.getY()), new Posicion (E.getPos().getX(), E.getPos().getY()));
-		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
-	}
 }

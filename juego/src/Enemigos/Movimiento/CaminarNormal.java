@@ -1,8 +1,9 @@
 package Enemigos.Movimiento;
 
-
 import Logica.Posicion;
 import entidades.Enemigo;
+import entidades.Objeto;
+
 import java.util.Random;
 
 public class CaminarNormal implements EstrategiaDeMovimiento {
@@ -58,13 +59,16 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 			}
 			
 			if (posSig != null) {
+				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
+					Objeto miPU = e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Agarrar ();
+					if (miPU != null) {
+						miPU.Afectar (e);
+					}
+				}
 				e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).EliminarEnemigoDeCelda (e);
 				e.getPos ().setX (posSig.getX ());
 				e.getPos ().setY (posSig.getY ());
 				e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).addEnemigo (e);
-				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
-					e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Afectar (e);
-				}
 				e.bloqueate ();
 				e.getGrafico ().desbloqueate (); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
 				e.getGrafico ().moverA (posSig, e.getVelMov ());

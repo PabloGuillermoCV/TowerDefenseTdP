@@ -121,8 +121,8 @@ public class MapaLogico {
 	
 	public boolean puedoAgregarObjetoDeTienda (Posicion pos) {
 		boolean Puedo;
-		if (posicionValida (pos.getX(), pos.getY()) && !miCamino.perteneceAlCamino(pos) && 
-			matriz[pos.getX()/20][pos.getY()/20].getPersonaje() != null) {
+		if (posicionValida (pos.getX (), pos.getY ()) && !miCamino.perteneceAlCamino (pos) && 
+		matriz [pos.getX()/20] [pos.getY()/20].getPersonaje () != null) {
 			Puedo = true;
 		}
 		else {
@@ -230,11 +230,13 @@ public class MapaLogico {
 		
 		while (it.hasNext ()) {
 			c = (Controlable) it.next ();
-			if (c != null && c.getPos () != null) {
+			if (c != null && c.getPos () != null && !c.estoyEnInteraccion ()) {
+				//c.interaccion on
 				e = c.verificarUnidad ();
 			}
 			else {
 				e = null;
+				//interaccion off
 			}
 			if (e != null && e.estoyEnJuego () && !e.estoyMuerto()) {
 				e.serAtacado (c);
@@ -244,6 +246,7 @@ public class MapaLogico {
 				if(c.getEstado().getVida() <= 0) { //pregunto si en caso de ser contratacado, el controlable murió
 					sacarControlable (c);
 				}
+				//interaccion off
 			}
 		}
 	}
