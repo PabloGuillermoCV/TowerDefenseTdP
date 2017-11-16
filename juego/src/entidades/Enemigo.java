@@ -1,7 +1,6 @@
 package entidades;
 
 import Logica.Celda;
-import Logica.MapaLogico;
 import Logica.Posicion;
 import java.util.Random;
 import Enemigos.*;
@@ -47,10 +46,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		return C.getEstado().getVida() - (C.getEstado().getDefensa() - miEstadoActual.getAtaque());
 	}
 	
-	public MapaLogico getMapa () {
-		return miMapa;
-	}
-	
 	public EstrategiaDeMovimiento getEstadoCaminar () {
 		return EstadoCaminar;
 	}
@@ -75,7 +70,8 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
 	 * @param C Controlable a atacar
 	 */
-	public void atacar(Controlable C) {
+	public void atacar (Controlable C) {
+		miMapa.pintarAtaque (pos.getX (), pos.getY (), C.getPos ().getX (), C.getPos (). getY ());
 		if (C.getInvulnerable () == false) {
 			C.getEstado().setVida (C.getEstado ().getVida () - calcularGolpe (C));
 		}
@@ -86,19 +82,20 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * @param R Roca a atacar
 	 */
 	public void atacar (Roca R) {
+		miMapa.pintarAtaque (pos.getX (), pos.getY (), R.getPos ().getX (), R.getPos (). getY ());
 		R.setVida (R.getVida () - miEstadoActual.getAtaque ());
 		if (R.getVida () <= 0) {
 			R.Morir ();
 		}
 	}
 	
-	public boolean verficiarAliadoEnRango(Controlable C){
+	public boolean verficiarAliadoEnRango (Controlable C) {
 		boolean is = false;
 		for(int X = Alcance; X > -Alcance && !is; X--) {
 			for(int Y = Alcance; Y > -Alcance && !is; Y--) {
-				Celda cel = miMapa.getCelda(pos.getX(),pos.getY());
-				if(C != null) {
-					if(cel.getPersonaje() == C) {
+				Celda cel = miMapa.getCelda (pos.getX(),pos.getY());
+				if (C != null) {
+					if (cel.getPersonaje() == C) {
 						is = true;
 					}
 				}
@@ -183,6 +180,22 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		this.miEstadoActual = null;
 		this.pos = null;
 		this.grafico = null;
+	}
+	
+	/**
+	 * Uso este metodo para que al reiniciar, evito crear objetos que pueden dejar caer los enemigos
+	 */
+	public void resetear () {
+		estoyMuerto = true;
+		miMapa.getMapaVisual().getTiendaV().updateBotones();
+		if(grafico != null)
+			grafico.Morir ();
+		miMapa.eliminarEnemigo (this);
+		miMapa = null;
+		EstadoCaminar = null;
+		miEstadoActual = null;
+		pos = null;
+		grafico = null;
 	}
 	
 	/**

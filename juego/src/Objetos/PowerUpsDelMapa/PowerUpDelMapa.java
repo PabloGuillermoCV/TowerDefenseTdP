@@ -11,7 +11,7 @@ public abstract class PowerUpDelMapa extends Objeto {
 		super (Nombre,Pos);
 	}
 	
-	public void Afectar (Controlable P) {}
+	public void Afectar (Controlable C) {}
 	
 	public void Afectar (Enemigo E) {}
 }

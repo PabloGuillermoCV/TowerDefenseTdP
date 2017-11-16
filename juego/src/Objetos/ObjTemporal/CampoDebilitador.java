@@ -1,11 +1,13 @@
 package Objetos.ObjTemporal;
 
-import Enemigos.Movimiento.CaminarDañado;
+import Hilos.HiloReducirDaño;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 public class CampoDebilitador extends ObjetoTemporal {
+	
+	private HiloReducirDaño miHilo;
 
 	public CampoDebilitador (Posicion Pos) {
 		super ("CampoDebilitador", Pos, 60);
@@ -13,7 +15,7 @@ public class CampoDebilitador extends ObjetoTemporal {
 	}
 
 	public void Afectar (Enemigo E) {
-		E.setEstrategia (new CaminarDañado (E));
-		auxiliar = E;
+		miHilo = new HiloReducirDaño (E);
+		miHilo.run ();
 	}
 }

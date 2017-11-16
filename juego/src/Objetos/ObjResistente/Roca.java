@@ -16,16 +16,7 @@ public class Roca extends ObjetoResistente {
 		Vida = I;
 	}
 	
-	public void Afectar (Enemigo P) {
-		P.setEstrategia (new Inmovil ());
-	}
-	
-	public void Morir () {
-		
-		this.miMapa.eliminarObjeto (this);
-		this.grafico.Morir ();
-		this.miMapa = null;
-		this.grafico = null;
-		this.pos = null;
+	public void Afectar (Enemigo E) {
+		E.setEstrategia (new Inmovil (E));
 	}
 }

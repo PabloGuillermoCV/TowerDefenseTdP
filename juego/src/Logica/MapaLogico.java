@@ -184,7 +184,7 @@ public class MapaLogico {
 				mapaVisual.agregarObjeto(k, p);
 				break;
 			case 2:
-				k = new Lago(p); //todos los objetos temporales tendrian asociados un contador Thread para contar el tiempo que tardan en irse
+				k = new Lago(p);
 				matriz[p.getX()][p.getY()].addObjeto(k);
 				mapaVisual.agregarObjeto(k, p);
 				break;
@@ -197,10 +197,6 @@ public class MapaLogico {
 	}
 	
 	public void eliminarControlable (Controlable C) {
-		if(C == null)
-			System.out.println("Controlable a eliminar nulo");
-		if(C.getPos() == null)
-			System.out.println("Posicion del controlable a eliminar nula");
 		getCelda (C.getPos ().getX (), C.getPos ().getY ()).EliminarControlableDeCelda (C);
 		this.unidadesEnMapa.remove(C);
 	}
@@ -231,12 +227,12 @@ public class MapaLogico {
 		while (it.hasNext ()) {
 			c = (Controlable) it.next ();
 			if (c != null && c.getPos () != null && !c.estoyEnInteraccion ()) {
-				//c.interaccion on
+				c.setInteraccion (true);
 				e = c.verificarUnidad ();
 			}
 			else {
 				e = null;
-				//interaccion off
+				c.setInteraccion (false);
 			}
 			if (e != null && e.estoyEnJuego () && !e.estoyMuerto()) {
 				e.serAtacado (c);
@@ -246,14 +242,21 @@ public class MapaLogico {
 				if(c.getEstado().getVida() <= 0) { //pregunto si en caso de ser contratacado, el controlable murió
 					sacarControlable (c);
 				}
-				//interaccion off
+				c.setInteraccion (false);
 			}
 		}
 	}
 	
+	public void pintarAtaque (int X1, int Y1, int X2, int Y2) {
+		mapaVisual.pintarAtaque (X1, Y1, X2, Y2);
+	}
+	
 	private synchronized void sacarEnemigo (Enemigo E) {
-		
 		miNivel.murioEnemigo (E);
+	}
+	
+	private synchronized void resetearEnemigos (Enemigo E) {
+		miNivel.murioEnemigoSinDrop (E);
 	}
 	
 	private synchronized void sacarControlable (Controlable C) {
@@ -271,7 +274,8 @@ public class MapaLogico {
 	public void eliminarTodo () {
 		Iterator <Controlable> itC = unidadesEnMapa.iterator ();
 		Iterator <Objeto> itO = objetosEnMapa.iterator ();
-		Iterator<Enemigo> itE = enemigosEnMapa.iterator();
+		Iterator <Enemigo> itE = enemigosEnMapa.iterator ();
+		
 		while (itC.hasNext ()) {
 			Controlable C = itC.next ();
 			sacarControlable (C);
@@ -281,17 +285,15 @@ public class MapaLogico {
 		if(!enemigosEnMapa.isEmpty()) {
 			while(itE.hasNext()) {
 				Enemigo E = itE.next();
-				sacarEnemigo(E);
+				resetearEnemigos (E);
 			}
 		}
-		
 		enemigosEnMapa.clear();
+		
 		while (itO.hasNext ()) {
 			Objeto O = itO.next ();
 			sacarObjeto (O);
 		}
 		objetosEnMapa.clear ();
-		
-		
 	}
 }

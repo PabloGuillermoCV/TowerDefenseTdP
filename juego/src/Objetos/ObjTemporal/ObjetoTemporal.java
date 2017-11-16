@@ -5,7 +5,6 @@ import Logica.Posicion;
 import entidades.Controlable;
 import entidades.Enemigo;
 import entidades.Objeto;
-import entidades.Personaje;
 
 public abstract class ObjetoTemporal extends Objeto {
 	
@@ -34,9 +33,7 @@ public abstract class ObjetoTemporal extends Objeto {
 		auxiliar = null;
 	}
 	
-	public void Afectar (Personaje P) {}
-	
-	public void Afectar (Controlable P) {}
+	public void Afectar (Controlable E) {}
 	
 	public Objeto Agarrar () {
 		return null;

@@ -133,6 +133,11 @@ public abstract class Nivel {
 		e.morir();
 	}
 	
+	public void murioEnemigoSinDrop (Enemigo e) {
+		sacarDeHilo (e);
+		e.resetear ();
+	}
+	
 	@SuppressWarnings("unused")
 	public void llegoEnemigoABase (Enemigo e) {
 		sacarDeHilo (e);

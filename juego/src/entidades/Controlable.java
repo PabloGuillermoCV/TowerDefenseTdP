@@ -77,8 +77,11 @@ public abstract class Controlable extends Personaje {
 	 * @param E enemigo a atacar
 	 */
 	public void atacar (Enemigo E) {
-		miMapa.getMapaVisual ().pintarAtaque (pos.getX (), pos.getY (), E.getPos ().getX (), E.getPos (). getY ());
+		miMapa.pintarAtaque (pos.getX (), pos.getY (), E.getPos ().getX (), E.getPos (). getY ());
 		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
+		if (E != null) {
+			this.serAtacado (E);
+		}
 	}
 	
 	public Enemigo verificarUnidad () {

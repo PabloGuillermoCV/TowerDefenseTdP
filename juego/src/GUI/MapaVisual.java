@@ -58,7 +58,7 @@ public class MapaVisual extends JPanel {
 				//Hice dos clicks
 				Celda C = mapL.getCelda (P.getX (), P.getY ());
 				if (C.getPersonaje () != null) {
-					if (tengoPU == null) {
+					if (tengoPU == null && C.getPersonaje().estoyEnInteraccion() == false) {
 						//Al hacer doble click vendo al personaje (si no agarre un power up)
 						venderControlable (C);
 					}

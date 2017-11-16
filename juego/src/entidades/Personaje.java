@@ -34,6 +34,10 @@ public abstract class Personaje extends Entidad {
 		return estoyEnInteraccion;
 	}
 	
+	public void setInteraccion (boolean estoy) {
+		estoyEnInteraccion = estoy;
+	}
+	
 	public abstract void morir ();
 	
 	public Estado getEstado () {

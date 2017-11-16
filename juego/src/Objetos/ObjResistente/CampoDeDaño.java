@@ -1,5 +1,6 @@
 package Objetos.ObjResistente;
 
+import Enemigos.Movimiento.CaminarDañado;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
@@ -15,7 +16,7 @@ public class CampoDeDaño extends ObjetoResistente {
 		Vida = I;
 	}
 	
-	public void Afectar (Enemigo P) {
-		
+	public void Afectar (Enemigo E) {
+		E.setEstrategia (new CaminarDañado (E));
 	}
 }
