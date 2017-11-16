@@ -27,7 +27,6 @@ public class TiendaVisual extends JPanel {
 	private static int height = 400;
 	private FactoryVisual [] botones = new FactoryVisual [8];
 	private FactoryLogica [] creadores = new FactoryLogica [8];
-	private Sonido efectos;
 	private Jugador P;
 	private JLabel displayMonedas;
 	private JLabel displayPuntos;
@@ -39,7 +38,7 @@ public class TiendaVisual extends JPanel {
 		this.setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));
 		this.setBorder (BorderFactory.createLineBorder (Color.DARK_GRAY, 2));
 		this.setSize (width, height);
-		this.efectos = new Sonido ();
+		
 		this.market = TiendaLogica.InstanciaTiendaLogica ();
 		P = Jugador.InstanciaJugador ();
 		
@@ -68,9 +67,7 @@ public class TiendaVisual extends JPanel {
 		return botones;
 	}
 	
-	public Sonido getAudio () {
-		return efectos;
-	}
+	
 	
 	public Jugador getP () {
 		return P;

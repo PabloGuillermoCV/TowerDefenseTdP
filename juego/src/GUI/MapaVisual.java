@@ -103,9 +103,6 @@ public class MapaVisual extends JPanel {
 		return mapL;
 	}
 	
-	public TiendaLogica getTiendaL () {
-		return marketL;
-	}
 	
 	public TiendaVisual getTiendaV () {
 		return marketV;

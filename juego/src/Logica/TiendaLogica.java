@@ -79,6 +79,17 @@ public class TiendaLogica {
 		creator = null;
 	}
 	
+	public void setMonedasJugador(int m) {
+		P.setMonedas(P.getMonedas() + m);
+	}
+	
+	public void setPuntajeJugador(int j) {
+		P.setPuntos(P.getPuntos() + j);
+	}
+	
+	public void restablecerVidaJugador(int v) {
+		P.reestablecerVidas();
+	}
 	/**
 	 * método que se encarga de actualizar las monedas y el puntaje
 	 */
