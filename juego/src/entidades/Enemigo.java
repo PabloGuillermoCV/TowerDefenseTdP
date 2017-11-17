@@ -90,7 +90,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * metodo de visitor que permite a un enemigo atacar el objeto que bloquea su camino
 	 * @param R Roca a atacar
 	 */
-	public void atacar (Roca R) {
+	public void atacar (ObjetoResistente R) {
 		Posicion destino = R.getPos();
 		hiloGolpes.agregarALista(destino);
 		R.setVida (R.getVida () - miEstadoActual.getAtaque ());

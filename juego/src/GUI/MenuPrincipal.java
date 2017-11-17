@@ -117,8 +117,10 @@ public class MenuPrincipal {
 		panel.add(EXIT);
 		
 		Autores = new JTextField();
-		Autores.setBounds(156, 216, 86, 20);
-		Autores.setText("TdP 2017");
+		Autores.setHorizontalAlignment(SwingConstants.CENTER);
+		Autores.setEditable(false);
+		Autores.setBounds(22, 216, 388, 20);
+		Autores.setText("Sacomani Franco, Gomez Tom\u00E1s, Ceballos Vitale Pablo Guillermo");
 		panel.add(Autores);
 		Autores.setColumns(10);
 		frame.setVisible(true);
