@@ -160,6 +160,7 @@ public class MapaVisual extends JPanel {
 			if (Obj != null) {
 				if (C.getPersonaje () != null) {
 					Obj.Afectar (C.getPersonaje ());
+					marketL.EliminarCreador ();
 					marketL.setMonedasJugador(- Obj.getPrecio ()) ;
 					marketV.modificarMonedas ();
 					marketV.updateBotones ();
