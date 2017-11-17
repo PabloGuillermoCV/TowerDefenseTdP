@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -10,6 +9,7 @@ import Logica.Celda;
 import Logica.MapaLogico;
 import Logica.Posicion;
 import Logica.TiendaLogica;
+import Logica.TiendaLogicaI;
 import entidades.Controlable;
 import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 import entidades.Objeto;
@@ -21,16 +21,16 @@ public class MapaVisual extends JPanel {
 	private JLabel fondo;
 	private static int width = 500;
 	private static int height = 320;
-	private TiendaLogica marketL;
+	private TiendaLogicaI marketL;
 	private MapaLogico mapL;
 	private TiendaVisual marketV;
 	private Objeto tengoPU;
-	private int X1;
-	private int Y1;
-	private int X2;
-	private int Y2;
+	
+	
+	
 	
 	private MapaVisual () {
+		
 		this.setLayout (null);
 		this.setSize (width, height);
 		marketL = TiendaLogica.InstanciaTiendaLogica ();
@@ -63,6 +63,7 @@ public class MapaVisual extends JPanel {
 						venderControlable (C);
 					}
 					else {
+						if(tengoPU!=null)
 						//Si no, le doy un Power Up al personaje
 						darPowerUp (C);
 					}
@@ -135,19 +136,6 @@ public class MapaVisual extends JPanel {
 		k.getGrafico ().getGrafico ().setBounds (p.getX (), p.getY (), 20, 20);
 	}
 	
-	public void pintarAtaque (int X1, int Y1, int X2, int Y2) {
-		this.X1 = X1;
-		this.Y1 = Y1;
-		this.X2 = X2;
-		this.Y2 = Y2;
-		repaint (X1, Y1, X2, Y2);
-	}
-	
-	public synchronized void paint (Graphics G) {
-		super.paint (G);
-		G.drawLine (X1,Y1,X2,Y2);
-		G.dispose ();
-	}
 	
 	//Metodos usados por el mouse listener
 	
@@ -157,7 +145,7 @@ public class MapaVisual extends JPanel {
 		Cont = marketL.createPersonaje (P);
 		if (Cont != null) {
 			marketL.EliminarCreador ();
-			marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Cont.getPrecio ());
+			marketL.setMonedasJugador(- Cont.getPrecio ());
 			marketV.modificarMonedas ();
 			marketV.updateBotones ();
 		}
@@ -170,17 +158,12 @@ public class MapaVisual extends JPanel {
 			ObjDeLaTienda Obj;
 			Obj = marketL.createObjeto (P);
 			if (Obj != null) {
-				marketL.getP ().setMonedas (marketL.getP ().getMonedas () - Obj.getPrecio ());
-				marketV.modificarMonedas ();
-				marketV.updateBotones ();
 				if (C.getPersonaje () != null) {
 					Obj.Afectar (C.getPersonaje ());
+					marketL.setMonedasJugador(- Obj.getPrecio ()) ;
+					marketV.modificarMonedas ();
+					marketV.updateBotones ();
 				}
-				else {
-					Obj.Afectar ();
-				}
-				marketV.modificarMonedas ();
-				marketV.updateBotones ();
 			}
 		}
 	}
@@ -190,11 +173,11 @@ public class MapaVisual extends JPanel {
 		Controlable Cont = C.getPersonaje ();
 		if (Cont.getEstado ().getVida () >= Cont.getVidaMax ()) {
 			//El personaje no esta herido y lo vendo al precio original
-			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + Cont.getPrecio ()); 
+			marketL.setMonedasJugador(Cont.getPrecio ()) ; 
 		}
 		else {
 			//El personaje esta herido y lo vendo a la mitad
-			marketL.getP ().setMonedas(marketL.getP ().getMonedas () + (Cont.getPrecio () / 2));
+			marketL.setMonedasJugador(Cont.getPrecio () / 2) ;
 		}
 		//mapL.eliminarControlable(Cont); //Le digo al mapa logico que este controlable ya no existe
 		Cont.morir ();

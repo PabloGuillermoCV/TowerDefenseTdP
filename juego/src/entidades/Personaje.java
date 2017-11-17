@@ -1,5 +1,6 @@
 package entidades;
 
+import Hilos.HiloGolpes;
 import Logica.Posicion;
 import entidades.Estados.Estado;
 import entidades.Estados.EstadoNormal;
@@ -7,6 +8,7 @@ import entidades.Estados.EstadoNormal;
 public abstract class Personaje extends Entidad {
 	
 	protected Estado miEstadoActual;
+	protected HiloGolpes hiloGolpes;
 	protected int Alcance;
 	protected int VidaMax;
 	protected int AtaqueMax;
@@ -22,6 +24,7 @@ public abstract class Personaje extends Entidad {
 		this.VidaMax = Vida;
 		this.AtaqueMax = Ataque;
 		this.DefensaMax = Defensa;
+		this.hiloGolpes= miMapa.getNivel().getHiloGolpes();
 		this.estoyMuerto = false;
 		this.estoyEnInteraccion = false;
 	}

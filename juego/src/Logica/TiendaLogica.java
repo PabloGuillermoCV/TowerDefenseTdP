@@ -6,7 +6,7 @@ import entidades.Controlable;
 import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 import GUI.TiendaVisual;
 
-public class TiendaLogica {
+public class TiendaLogica implements TiendaLogicaI {
 	
 	private static TiendaLogica Instancia;
 	protected TiendaVisual market;
@@ -87,8 +87,8 @@ public class TiendaLogica {
 		P.setPuntos(P.getPuntos() + j);
 	}
 	
-	public void restablecerVidaJugador(int v) {
-		P.reestablecerVidas();
+	public void restablecerVidaJugador() {
+		P.restablecerVidas();
 	}
 	/**
 	 * método que se encarga de actualizar las monedas y el puntaje
@@ -97,4 +97,6 @@ public class TiendaLogica {
 		market.modificarMonedas ();
 		market.modificarPuntaje ();
 	}
+
+
 }

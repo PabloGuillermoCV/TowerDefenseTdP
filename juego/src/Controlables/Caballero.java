@@ -14,16 +14,16 @@ public class Caballero extends Controlable {
 	Nombre = "Caballero"
 	JLabel = Caballero.gif
 	Posicion = pos
-	Vida = 50
-	Alcance = 2
-	Ataque = 75
-	Defensa = 90
+	Vida = 300
+	Alcance = 3
+	Ataque = 150
+	Defensa = 200
 	Precio = 500
 	VelocidadAt = 9
 	*/
 	
 	public Caballero (Posicion pos) {
-		super ("Caballero", pos, 50, 2, 75, 90, 500, 9);
+		super ("Caballero", pos, 300, 3, 150, 200, 500, 9);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CaballeroStatic.gif",pos);
 	}
 }

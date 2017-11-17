@@ -7,7 +7,6 @@ import Enemigos.*;
 import Enemigos.Movimiento.*;
 import Objetos.ObjResistente.*;
 import Objetos.ObjTemporal.*;
-import Objetos.ObjsDeLaTienda.Explosivo;
 import Objetos.PowerUpsDelMapa.*;
 
 public abstract class Enemigo extends Personaje implements Mejorable {
@@ -17,6 +16,7 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	protected int Recompensa;
 	protected int Puntaje;
 	protected boolean bloqueado; //boolean para sincronizar gráfica con lógica
+	protected boolean fuiAfectado;
 	
 	public Enemigo (String Nombre, Posicion Pos, int Vida, int Alcance,
 		   int Ataque, int Defensa, int VelocidadMov, boolean EfectoEspecial, 
@@ -28,6 +28,13 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		this.EstadoCaminar = new CaminarNormal(this);
 		this.miMapa.agregarEnemigo(this);
 		bloqueado = false;
+		fuiAfectado=false;
+	}
+	public void setAfectado(boolean s) {
+		fuiAfectado=s;
+	}
+	public boolean afectado() {
+		return fuiAfectado;
 	}
 	
 	public int getVelMov () {
@@ -43,7 +50,12 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	}
 	
 	public int calcularGolpe(Controlable C){
-		return C.getEstado().getVida() - (C.getEstado().getDefensa() - miEstadoActual.getAtaque());
+		int res =  (miEstadoActual.getAtaque() - ((25 * C.getEstado().getDefensa())/100));
+		
+		if (res < 0) {
+			res = 0;
+		}
+		return res;
 	}
 	
 	public EstrategiaDeMovimiento getEstadoCaminar () {
@@ -62,17 +74,14 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 		C.atacar(this);
 	}
 	
-	public void serAtacado (Explosivo E) {
-		E.Afectar (this);
-	}
-	
 	/**
 	 * metodo de visitor que permite a un enemigo atacar a una unidad concreta
 	 * @param C Controlable a atacar
 	 */
 	public void atacar (Controlable C) {
-		miMapa.pintarAtaque (pos.getX (), pos.getY (), C.getPos ().getX (), C.getPos (). getY ());
-		if (C.getInvulnerable () == false) {
+		if (C.getInvulnerable () == false && verificarAliadoEnRango(C)) {
+			Posicion destino = new Posicion (C.getPos().getX(), C.getPos().getY());
+			hiloGolpes.agregarALista(destino);
 			C.getEstado().setVida (C.getEstado ().getVida () - calcularGolpe (C));
 		}
 	}
@@ -82,19 +91,18 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * @param R Roca a atacar
 	 */
 	public void atacar (Roca R) {
-		miMapa.pintarAtaque (pos.getX (), pos.getY (), R.getPos ().getX (), R.getPos (). getY ());
 		R.setVida (R.getVida () - miEstadoActual.getAtaque ());
 		if (R.getVida () <= 0) {
 			R.Morir ();
 		}
 	}
 	
-	public boolean verficiarAliadoEnRango (Controlable C) {
+	public boolean verificarAliadoEnRango (Controlable C) {
 		boolean is = false;
 		for(int X = Alcance; X > -Alcance && !is; X--) {
 			for(int Y = Alcance; Y > -Alcance && !is; Y--) {
-				Celda cel = miMapa.getCelda (pos.getX(),pos.getY());
-				if (C != null) {
+				Celda cel = miMapa.getCelda (pos.getX()+(X*20),pos.getY()+(Y*20));
+				if (cel != null) {
 					if (cel.getPersonaje() == C) {
 						is = true;
 					}

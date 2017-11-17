@@ -10,17 +10,17 @@ public class ConArmadura extends Enemigo {
 	Nombre = "ConArmadura"
 	JLabel = ConArmadura.gif
 	Posicion = pos
-	Vida = 450
-	Alcance = 1
+	Vida = 500
+	Alcance = 2
 	Ataque = 200
-	Defensa = 75
-	VelocidadMov = 3
+	Defensa = 300
+	VelocidadMov = 2
 	PowerUp = False
 	Puntaje = 4500
 	*/
 	
 	public ConArmadura (Posicion pos) {
-		super ("ConArmadura", pos, 450, 1, 200, 75, 3, false, 450, 4500);
+		super ("ConArmadura", pos, 500, 2, 200, 300, 2, false, 450, 4500);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConArmadura.gif",pos,this);
 	}
 }

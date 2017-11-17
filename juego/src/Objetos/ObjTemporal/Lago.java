@@ -14,6 +14,7 @@ public class Lago extends ObjetoTemporal {
 	
 	public void Afectar (Enemigo E) {
 		E.setEstrategia (new CaminarMermado (E));
+		E.setAfectado(true);
 		auxiliar = E;
 	}
 }

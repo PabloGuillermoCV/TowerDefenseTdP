@@ -1,16 +1,16 @@
 package Creadores.CreadoresLogicos;
 
 import Logica.Posicion;
-import Objetos.ObjsDeLaTienda.Explosivo;
 import entidades.Controlable;
 import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
+import Objetos.ObjsDeLaTienda.SuperAlcance;
 
-public class CreadorExplosivoLogico implements FactoryLogica {
+public class CreadorSuperAlcanceLogico implements FactoryLogica {
 	
 	private static int Costo = 450;
 
 	public ObjDeLaTienda crearObj (Posicion pos) {
-		Explosivo E = new Explosivo ();
+		SuperAlcance E = new SuperAlcance ();
 		return E;
 	}
 	

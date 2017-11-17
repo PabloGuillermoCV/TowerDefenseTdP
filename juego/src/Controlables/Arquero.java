@@ -14,16 +14,16 @@ public class Arquero extends Controlable {
 	Nombre = "Arquero"
 	JLabel = Arquero.gif
 	Posicion = pos
-	Vida = 100
+	Vida = 200
 	Alcance = 5
-	Ataque = 50
-	Defensa = 100
+	Ataque = 100
+	Defensa = 125
 	Precio = 300
 	VelocidadAt = 7
 	*/
 	
 	public Arquero (Posicion pos) {
-		super ("Arquero", pos, 100, 5, 50, 100, 300, 7);
+		super ("Arquero", pos, 200, 5, 50, 125, 300, 7);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 }

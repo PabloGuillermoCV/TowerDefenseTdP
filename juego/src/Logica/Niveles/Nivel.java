@@ -8,14 +8,15 @@ import Logica.*;
 import Logica.Caminos.Camino;
 import Hilos.HiloEnemigo;
 import Hilos.HiloGenerarEnemigo;
+import Hilos.HiloGolpes;
 import Hilos.HiloInteraccion;
 import entidades.Enemigo;
 
 public abstract class Nivel {
 	
 	protected AbstractFactory fabrica;
-	protected MapaLogico mapaLogico;
-	protected TiendaLogica tiendaLogica;
+	protected MapaLogicoI mapaLogico;
+	protected TiendaLogicaI tiendaLogica;
 	protected GUI miGui;
 	protected Camino miCamino;
 	protected Posicion posInicialEnemies;
@@ -28,8 +29,9 @@ public abstract class Nivel {
 	protected HiloEnemigo [] hilosMovimientos;
 	protected HiloGenerarEnemigo hiloCreador;
 	protected HiloInteraccion hiloAtaque;
+	protected HiloGolpes hiloGolpes;
 	protected Sonido miBGM;
-	protected Jugador P;
+	protected JugadorI P;
 	
 	public Nivel (GUI gui) {
 		miGui = gui;
@@ -44,6 +46,8 @@ public abstract class Nivel {
 		hiloAtaque.start ();
 		hilosMovimientos = new HiloEnemigo [7];
 		iniciarHilos ();
+		hiloGolpes= new HiloGolpes();
+		hiloGolpes.start();
 		miBGM = Sonido.getInstancia();
 		P = Jugador.InstanciaJugador ();
 	}
@@ -55,7 +59,7 @@ public abstract class Nivel {
 		}
 	}
 	
-	public MapaLogico getMapa () {
+	public MapaLogicoI getMapa () {
 		return mapaLogico;
 	}
 	
@@ -63,7 +67,7 @@ public abstract class Nivel {
 	 * Metodo que devuelve la TiendaLogica asociada
 	 * @return TiendaLogica del  nivel (seria única, por eso la mandé para arriba)
 	 */
-	public TiendaLogica getTienda () {
+	public TiendaLogicaI getTienda () {
 		return tiendaLogica;
 	}
 	
@@ -104,7 +108,7 @@ public abstract class Nivel {
 	 */
 	public abstract void siguienteNivel ();
 	
-	public Jugador getP () {
+	public JugadorI getP () {
 		return P;
 	}
 	
@@ -141,9 +145,9 @@ public abstract class Nivel {
 	@SuppressWarnings("unused")
 	public void llegoEnemigoABase (Enemigo e) {
 		sacarDeHilo (e);
-		mapaLogico.restarVida ();
-		if (mapaLogico.getJugador ().getVidas () == 0) {
-			EstadoDerrota Derrota = new EstadoDerrota (mapaLogico);
+		P.restarVida ();
+		if (P.getVida () == 0) {
+			EstadoDerrota Derrota = new EstadoDerrota (this);
 		}
 	}
 	
@@ -155,6 +159,9 @@ public abstract class Nivel {
 				corte = true;
 			}
 		}
+	}
+	public HiloGolpes getHiloGolpes() {
+		return hiloGolpes;
 	}
 	
 	public void iniciarNivel () {

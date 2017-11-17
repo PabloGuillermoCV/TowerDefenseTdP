@@ -10,17 +10,17 @@ public class APie extends Enemigo {
 	Nombre = "APie"
 	JLabel = APie.gif
 	Posicion = pos
-	Vida = 50
-	Alcance = 1
-	Ataque = 50
+	Vida = 100
+	Alcance = 2
+	Ataque = 100
 	Defensa = 100
-	VelocidadMov = 5
+	VelocidadMov = 2
 	PowerUp = False
 	Puntaje = 1000
 	*/
 	
 	public APie (Posicion pos) {
-		super ("APie", pos, 50, 1, 50, 100, 5, false, 100, 1000);
+		super ("APie", pos, 100, 2, 100, 100, 2, false, 100, 1000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\APie.gif",pos,this);
 	}
 }

@@ -13,7 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Logica.MapaLogico;
+import Logica.Niveles.Nivel;
 import javax.swing.JTextArea;
 import java.awt.Font;
 import java.awt.Color;
@@ -21,15 +21,15 @@ import java.awt.Color;
 public class EstadoDerrota {
 	
 	protected JFrame Frame;
-	protected MapaLogico miMapa;
+	protected Nivel nivel;
 	protected JPanel Panel;
 	protected JButton Next;
 	private Clip Clip;
 	private AudioInputStream Audio;
 	
-	public EstadoDerrota (MapaLogico Mapa) {
-		this.miMapa = Mapa;
-		miMapa.getNivel().desactivarAudio();
+	public EstadoDerrota (Nivel nivel) {
+		this.nivel = nivel;
+		nivel.desactivarAudio();
 		Frame = new JFrame ("Has Perdido");
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -62,8 +62,8 @@ public class EstadoDerrota {
 				Frame.setVisible (false);
 				Frame.dispose();
 				//Falta hacer que todo se reinicie
-				miMapa.eliminarTodo();
-				miMapa.getNivel().reiniciar();
+				nivel.getMapa().eliminarTodo();
+				nivel.reiniciar();
 			}
 		});
 		Panel.add (Next, BorderLayout.CENTER);

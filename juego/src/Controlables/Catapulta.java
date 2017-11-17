@@ -16,15 +16,15 @@ public class Catapulta extends Controlable {
 	JLabel = Catapulta.gif
 	Posicion = pos
 	Vida = 200
-	Alcance = 3
-	Ataque = 50
+	Alcance = 5
+	Ataque = 200
 	Defensa = 100
 	Precio = 500
 	VelocidadAt = 2
 	*/
 	
 	public Catapulta (Posicion pos) {
-		super ("Caballero", pos, 200, 3, 5000, 100, 500, 2);
+		super ("Caballero", pos, 200, 5, 200, 100, 500, 2);
 		this.Pos2 = new Posicion (pos.getX () + 20, pos.getY ());
 		this.miMapa.getCelda (this.Pos2.getX (), this.Pos2.getY ()).addPersonaje (this);;
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CatapultaStatic.gif", pos);

@@ -2,6 +2,7 @@ package GUI;
 
 import Logica.Jugador;
 import Logica.TiendaLogica;
+import Logica.TiendaLogicaI;
 import Creadores.CreadoresLogicos.*;
 import Creadores.CreadoresVisuales.*;
 import java.awt.Color;
@@ -30,7 +31,7 @@ public class TiendaVisual extends JPanel {
 	private JLabel displayMonedas;
 	private JLabel displayPuntos;
 	private JButton oleada;
-	private TiendaLogica market;
+	private TiendaLogicaI market;
 	private GUI miGUI;
 	
 	private TiendaVisual () {
@@ -80,7 +81,7 @@ public class TiendaVisual extends JPanel {
 		return displayPuntos;
 	}
 	
-	public TiendaLogica getMarket () {
+	public TiendaLogicaI getMarket () {
 		return market;
 	}
 	
@@ -98,7 +99,7 @@ public class TiendaVisual extends JPanel {
 		creadores [2] = new CreadorCaballeroLogico ();
 		creadores [3] = new CreadorCatapultaLogica ();
 		creadores [4] = new CreadorEliteLogico ();
-		creadores [5] = new CreadorExplosivoLogico ();
+		creadores [5] = new CreadorSuperAlcanceLogico ();
 		creadores [6] = new CreadorKitMedicoLogico ();
 		creadores [7] = new CreadorArmaduraLogica ();
 	}
@@ -124,8 +125,8 @@ public class TiendaVisual extends JPanel {
         OyenteBotonElite O4 = new OyenteBotonElite ();
         botones [4].addActionListener (O4);
         
-        botones [5] = new BotonExplosivo ();
-        OyenteBotonExplosivo O5 = new OyenteBotonExplosivo ();
+        botones [5] = new BotonSuperAlcance ();
+        OyenteBotonSuperAlcance O5 = new OyenteBotonSuperAlcance ();
         botones [5].addActionListener (O5);
         
         botones [6] = new BotonKitMedico ();
@@ -257,7 +258,7 @@ public class TiendaVisual extends JPanel {
 		}
 	}
 	
-	private class OyenteBotonExplosivo implements ActionListener {
+	private class OyenteBotonSuperAlcance implements ActionListener {
 		public void actionPerformed (ActionEvent E) {
 			market.setCreador (creadores [5]);
 			setBotonesOff ();

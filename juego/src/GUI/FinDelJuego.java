@@ -14,22 +14,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import Logica.MapaLogico;
+import Logica.Niveles.Nivel;
 
 public class FinDelJuego {
 	
 	protected JFrame Frame;
-	protected MapaLogico miMapa;
+	protected Nivel nivel;
 	protected JPanel Panel;
 	protected JButton Next;
 	private Clip Clip;
 	private AudioInputStream Audio;
 	private JTextArea txtrbienHechoComandante;
 	
-	public FinDelJuego (MapaLogico Mapa) {
-		this.miMapa = Mapa;
-		miMapa.getNivel().desactivarAudio();	
+	public FinDelJuego (Nivel nivel) {
+		this.nivel = nivel;
+		nivel.desactivarAudio();	
 		Frame = new JFrame ("¡Te has dado vuelta el juego!");
 		Frame.setBounds (100, 100, 350, 200);
 		Frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -61,8 +60,8 @@ public class FinDelJuego {
 				Clip.stop ();
 				Frame.setVisible (false);
 				Frame.dispose();
-				miMapa.eliminarTodo ();
-				miMapa.getNivel().siguienteNivel();
+				nivel.getMapa().eliminarTodo ();
+				nivel.siguienteNivel();
 			}
 		});
 		Panel.add (Next, BorderLayout.CENTER);

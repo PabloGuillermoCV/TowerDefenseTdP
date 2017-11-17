@@ -58,6 +58,6 @@ public class Nivel3 extends Nivel {
 
 	@SuppressWarnings("unused")
 	public void Victoria() {
-		FinDelJuego Fin = new FinDelJuego(miGui.getMapaVisual().getMapa());
+		FinDelJuego Fin = new FinDelJuego(this);
 	}
 }

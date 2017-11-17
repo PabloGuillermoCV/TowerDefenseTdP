@@ -1,6 +1,7 @@
 package Objetos.ObjsDeLaTienda;
 
 import Logica.Posicion;
+import entidades.Enemigo;
 import entidades.Objeto;
 
 public abstract class ObjDeLaTienda extends Objeto {
@@ -18,10 +19,9 @@ public abstract class ObjDeLaTienda extends Objeto {
 		return Precio;
 	}
 	
+	public void Afectar (Enemigo E) {}
+	
 	public Objeto Agarrar () {
 		return null;
 	}
-	
-	//Un afectar extra necesario para Explosivo
-	public abstract void Afectar ();
 }

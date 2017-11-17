@@ -1,7 +1,6 @@
 package Objetos.ObjsDeLaTienda;
 
 import entidades.Controlable;
-import entidades.Enemigo;
 import Hilos.HiloInvencibilidad;
 
 public class Armadura extends ObjDeLaTienda {
@@ -17,10 +16,6 @@ public class Armadura extends ObjDeLaTienda {
 		miHilo = new HiloInvencibilidad (this, C);
 		miHilo.run ();
 	}
-	
-	public void Afectar (Enemigo E) {}
-	
-	public void Afectar () {}
 	
 	public void ActivarInvincibilidad (Controlable C) {
 		C.setInvulnerable (true);

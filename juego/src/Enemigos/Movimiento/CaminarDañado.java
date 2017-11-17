@@ -2,8 +2,6 @@ package Enemigos.Movimiento;
 
 import Logica.Posicion;
 import entidades.Enemigo;
-import entidades.Objeto;
-
 import java.util.Random;
 
 public class CaminarDañado implements EstrategiaDeMovimiento {
@@ -20,6 +18,7 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 	 * @param pos la posicion donde se moverá el enemigo
 	 */
 	public void mover () {
+		e.setAfectado(false);
 		if (!e.estoyMuerto()) {
 			Posicion posSig;
 			Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
@@ -64,10 +63,8 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 			}
 			
 			if (posSig != null) {
-				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
-					Objeto miPU = e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Agarrar ();
-					miPU.Afectar (e);
-				}
+				
+				if(!e.afectado()) {
 				e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).EliminarEnemigoDeCelda (e);
 				e.getPos ().setX (posSig.getX ());
 				e.getPos ().setY (posSig.getY ());
@@ -77,7 +74,8 @@ public class CaminarDañado implements EstrategiaDeMovimiento {
 				e.getGrafico ().desbloqueate ();
 				e.getGrafico ().moverA (posSig, e.getVelMov ());
 				e.setEstrategia (new CaminarNormal (e));
-			}
+				}
+				}
 		}
 	}
 	

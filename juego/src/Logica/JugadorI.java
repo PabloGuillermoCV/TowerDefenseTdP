@@ -1,7 +1,9 @@
 package Logica;
 
 public interface JugadorI {
-	public JugadorI getInstance();
+	public static JugadorI getInstance() {
+		return null;
+	}
 	
 	public int getMonedas();
 	public int getPuntos();

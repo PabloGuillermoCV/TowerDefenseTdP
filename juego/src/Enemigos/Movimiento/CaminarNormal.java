@@ -12,9 +12,11 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 	
 	public CaminarNormal (Enemigo e) {
 		this.e = e;
+		
 	}
 	
 	public void mover () {
+		e.setAfectado(false);
 		if (!e.estoyMuerto()) {
 			Posicion posSig;
 			Posicion AI = e.getMapa ().getCamino ().getPosClave ().getFirst(); //Posicion de inicio de enemigos
@@ -60,11 +62,14 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 			
 			if (posSig != null) {
 				if (e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto () != null) {
-					Objeto miPU = e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Agarrar ();
+					Objeto miPU = e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ();
+					e.getMapa ().getCelda (posSig.getX (), posSig.getY ()).getObjeto ().Agarrar();
 					if (miPU != null) {
 						miPU.Afectar (e);
 					}
 				}
+				
+				if(!e.afectado()) {
 				e.getMapa ().getCelda (e.getPos ().getX (), e.getPos ().getY ()).EliminarEnemigoDeCelda (e);
 				e.getPos ().setX (posSig.getX ());
 				e.getPos ().setY (posSig.getY ());
@@ -72,7 +77,9 @@ public class CaminarNormal implements EstrategiaDeMovimiento {
 				e.bloqueate ();
 				e.getGrafico ().desbloqueate (); //una vez que bloqueo la lógica, desbloqueo la gráfica para que se mueva
 				e.getGrafico ().moverA (posSig, e.getVelMov ());
-			}
+				}
+				
+				}
 		}
 	}
 }

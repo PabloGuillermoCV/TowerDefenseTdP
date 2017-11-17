@@ -2,7 +2,6 @@ package entidades;
 
 import Logica.Celda;
 import Logica.Posicion;
-import Objetos.ObjsDeLaTienda.Explosivo;
 import entidades.EntidadesGraficas.EntidadGrafica;
 
 public abstract class Controlable extends Personaje {
@@ -33,7 +32,8 @@ public abstract class Controlable extends Personaje {
 	 * @return daño a generar en el enemigo
 	 */
 	public int calcularGolpe(Enemigo e){
-		int res = miEstadoActual.getAtaque() - e.getEstado().getDefensa();
+		int res =  (miEstadoActual.getAtaque() - ((25 * e.getEstado().getDefensa())/100));
+		
 		if (res < 0) {
 			res = 0;
 		}
@@ -52,6 +52,10 @@ public abstract class Controlable extends Personaje {
 		this.Invulnerable = Invulnerable;
 	}
 	
+	public void aumentarAlcance () {
+		this.Alcance += 2;
+	}
+	
 	public Posicion getPos2 () {
 		return Pos2;
 	}
@@ -68,16 +72,13 @@ public abstract class Controlable extends Personaje {
 		e.atacar(this);
 	}
 	
-	public void serAtacado (Explosivo E){
-		E.Afectar (this);
-	}
-	
 	/**
 	 * metodo de visitor que permite a un controlable atacar una unidad concreta
 	 * @param E enemigo a atacar
 	 */
 	public void atacar (Enemigo E) {
-		miMapa.pintarAtaque (pos.getX (), pos.getY (), E.getPos ().getX (), E.getPos (). getY ());
+		Posicion destino = new Posicion (E.getPos().getX(), E.getPos().getY());
+		hiloGolpes.agregarALista(destino);
 		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
 		if (E != null) {
 			this.serAtacado (E);
@@ -88,7 +89,7 @@ public abstract class Controlable extends Personaje {
 		Enemigo ret = null;
 		for (int X = Alcance; X > -Alcance && ret == null; X--) {
 			for (int Y = Alcance; Y > -Alcance && ret == null; Y--) {
-				if (miMapa.posicionValida (pos.getX () + (X * 20), pos.getY () + (Y * 20))) {
+				if (miMapa.posicionValidaEnMapa (pos.getX () + (X * 20), pos.getY () + (Y * 20))) {
 					Celda C = miMapa.getCelda (this.pos.getX()+(X*20), this.pos.getY()+(Y*20));
 					if (C != null) {
 						if (!C.getEnemigos ().isEmpty ()) {

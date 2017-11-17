@@ -14,7 +14,7 @@ public class GUI extends JFrame {
 	private MapaVisual mapa;
 	private TiendaVisual shop;
 	private Nivel nivel;
-	private Jugador P;
+	private JugadorI P;
 	
 	/**
 	 * Launch the application.
@@ -75,7 +75,7 @@ public class GUI extends JFrame {
 		return ventana;
 	}
 	
-	public Jugador getJugador () {
+	public JugadorI getJugador () {
 		return P;
 	}
 
@@ -84,7 +84,7 @@ public class GUI extends JFrame {
 	 * @param n nivel a usar como nuevo nivel
 	 */
 	public void setNivel (Nivel n) {
-		P.reestablecerVidas ();
+		P.restablecerVidas ();
 		nivel.getTienda().ActualizarValores();
 		nivel = n;
 		mapa.setVisible(false);

@@ -1,13 +1,11 @@
 package Objetos.ObjTemporal;
 
-import Hilos.HiloReducirDaño;
 import Logica.Posicion;
 import entidades.Enemigo;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
+import entidades.Estados.EstadoDebil;
 
 public class CampoDebilitador extends ObjetoTemporal {
-	
-	private HiloReducirDaño miHilo;
 
 	public CampoDebilitador (Posicion Pos) {
 		super ("CampoDebilitador", Pos, 60);
@@ -15,7 +13,9 @@ public class CampoDebilitador extends ObjetoTemporal {
 	}
 
 	public void Afectar (Enemigo E) {
-		miHilo = new HiloReducirDaño (E);
-		miHilo.run ();
+		int V = E.getEstado ().getVida ();
+		int A = E.getEstado ().getAtaque ();
+		int D = E.getEstado ().getDefensa ();
+		E.setEstado (new EstadoDebil (V,A,D));
 	}
 }

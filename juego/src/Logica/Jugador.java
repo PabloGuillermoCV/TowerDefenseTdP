@@ -1,6 +1,6 @@
 package Logica;
 
-public class Jugador {
+public class Jugador implements JugadorI{
 	
 	private static Jugador Instancia;
 	protected int Monedas;
@@ -28,7 +28,7 @@ public class Jugador {
 		return Puntos;
 	}
 	
-	public int getVidas () {
+	public int getVida () {
 		return Vidas;
 	}
 	
@@ -44,9 +44,13 @@ public class Jugador {
 		Vidas = Vidas - 1;
 	}
 	
-	public void reestablecerVidas () {
+	public void restablecerVidas () {
 		Vidas = 3;
 		if(Monedas < 1000) 
 			Monedas = 1000;
 	}
+
+	
+
+	
 }

@@ -1,7 +1,6 @@
 package Objetos.ObjsDeLaTienda;
 
 import entidades.Controlable;
-import entidades.Enemigo;
 
 public class KitMedico extends ObjDeLaTienda {
 	
@@ -9,12 +8,8 @@ public class KitMedico extends ObjDeLaTienda {
 		super ("KitMedico", null, 200, 50);
 	}
 	
-	public void Afectar (Controlable P) {
+	public void Afectar (Controlable C) {
 		//Recupera toda la vida
-		P.getEstado ().setVida (P.getVidaMax ());
+		C.getEstado ().setVida (C.getVidaMax ());
 	}
-	
-	public void Afectar (Enemigo P) {}
-	
-	public void Afectar () {}
 }

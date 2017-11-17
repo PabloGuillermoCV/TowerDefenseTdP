@@ -18,5 +18,6 @@ public class CampoDeDaño extends ObjetoResistente {
 	
 	public void Afectar (Enemigo E) {
 		E.setEstrategia (new CaminarDañado (E));
+		E.setAfectado(true);
 	}
 }

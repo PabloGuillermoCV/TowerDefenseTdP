@@ -6,7 +6,9 @@ import Objetos.ObjsDeLaTienda.ObjDeLaTienda;
 import entidades.Controlable;
 
 public interface TiendaLogicaI {
-	public TiendaLogica InstanciaTiendaLogica ();
+	public static  TiendaLogica InstanciaTiendaLogica () {
+		return null;
+	}
 	public void habilitarOleada ();
 	public void setTiendaVisual (TiendaVisual TV);
 	public Controlable createPersonaje (Posicion pos);
