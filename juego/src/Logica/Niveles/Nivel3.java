@@ -51,6 +51,7 @@ public class Nivel3 extends Nivel {
 		aux.desactivarAudio();
 		miGui.setVisible(false);
 		miGui.dispose();
+		aux.getP().setPuntos(0);
 		MenuPrincipal menu = new MenuPrincipal();
 	}
 	

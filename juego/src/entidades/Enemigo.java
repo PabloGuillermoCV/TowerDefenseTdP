@@ -91,6 +91,8 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	 * @param R Roca a atacar
 	 */
 	public void atacar (Roca R) {
+		Posicion destino = R.getPos();
+		hiloGolpes.agregarALista(destino);
 		R.setVida (R.getVida () - miEstadoActual.getAtaque ());
 		if (R.getVida () <= 0) {
 			R.Morir ();

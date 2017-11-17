@@ -1,10 +1,8 @@
 package Controlables;
 
-import entidades.Disparos.Flecha;
 import Logica.Posicion;
 import entidades.Controlable;
 import entidades.Enemigo;
-import entidades.Proyectil;
 import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 
 @SuppressWarnings("unused")

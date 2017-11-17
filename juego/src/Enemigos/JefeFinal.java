@@ -20,7 +20,7 @@ public class JefeFinal extends Enemigo {
 	*/
 	
 	public JefeFinal (Posicion pos) {
-		super ("JefeFinal", pos, 750, 4, 250, 500, 5, false, 1000, 10000);
+		super ("JefeFinal", pos, 750, 4, 175, 500, 5, false, 1000, 10000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\JefeFinal.gif",pos,this);
 	}
 }
