@@ -31,13 +31,13 @@ public class Nivel2 extends Nivel {
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
-		//enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
-		//enemigosPorOleada.add (enemigosAMandar.size ());
+		enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
+		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 3
-		//enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
-		//enemigosAMandar.add (fabrica.crearConBallesta (posInicialEnemies));
-		//enemigosPorOleada.add (enemigosAMandar.size ());
+		enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
+		enemigosAMandar.add (fabrica.crearConBallesta (posInicialEnemies));
+		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		CantidadEnemigos = enemigosAMandar.size ();
 	}

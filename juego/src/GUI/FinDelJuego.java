@@ -62,6 +62,7 @@ public class FinDelJuego {
 				Frame.dispose();
 				nivel.getMapa().eliminarTodo ();
 				nivel.siguienteNivel();
+				nivel.desactivarAudio();
 			}
 		});
 		Panel.add (Next, BorderLayout.CENTER);

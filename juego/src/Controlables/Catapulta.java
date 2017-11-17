@@ -24,7 +24,7 @@ public class Catapulta extends Controlable {
 	*/
 	
 	public Catapulta (Posicion pos) {
-		super ("Caballero", pos, 200, 5, 200, 100, 500, 2);
+		super ("Caballero", pos, 200, 3, 100, 100, 500, 2);
 		this.Pos2 = new Posicion (pos.getX () + 20, pos.getY ());
 		this.miMapa.getCelda (this.Pos2.getX (), this.Pos2.getY ()).addPersonaje (this);;
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\CatapultaStatic.gif", pos);

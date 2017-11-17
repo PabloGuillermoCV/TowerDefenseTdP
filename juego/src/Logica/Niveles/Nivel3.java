@@ -46,14 +46,18 @@ public class Nivel3 extends Nivel {
 
 	@SuppressWarnings("unused")
 	public void siguienteNivel () {
-		miGui.dispose(); //ELIMINO EL FRAME PARA LIBERRAR MEMORIA
+		Nivel aux = new Nivel1(miGui);
+		miGui.setNivel(aux);
+		aux.desactivarAudio();
+		miGui.setVisible(false);
+		miGui.dispose();
 		MenuPrincipal menu = new MenuPrincipal();
 	}
 	
 	public void reiniciar () {
 		Nivel sig = new Nivel3 (miGui);
 		miGui.setNivel (sig);
-		miGui.reiniciarTodo ();
+		
 	}
 
 	@SuppressWarnings("unused")

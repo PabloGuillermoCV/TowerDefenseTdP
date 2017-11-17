@@ -17,7 +17,6 @@ public class HiloGolpes extends Thread {
 	public HiloGolpes () {
 		GIF = new JLabel (new ImageIcon ("src\\entidades\\Disparos\\Sprites Disparos\\Animacion Golpe.gif"));
 		miMapa = MapaVisual.InstanciaMapaVisual ();
-		miMapa.getFondo ().add (GIF);
 		miLista = new LinkedList <Posicion> ();
 		miListaParaAgregar = new LinkedList<Posicion>();
 	}
@@ -27,6 +26,7 @@ public class HiloGolpes extends Thread {
 			if (!miLista.isEmpty ()) {
 				while (!miLista.isEmpty ()) {
 					Posicion P = miLista.removeFirst();
+					miMapa.getFondo ().add (GIF);
 					GIF.setBounds(P.getX(), P.getY(), 20, 20);
 					GIF.setVisible(true);
 					try {
