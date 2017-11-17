@@ -21,7 +21,7 @@ public class Arquero extends Controlable {
 	*/
 	
 	public Arquero (Posicion pos) {
-		super ("Arquero", pos, 200, 5, 50, 125, 300, 7);
+		super ("Arquero", pos, 200, 5, 100, 125, 300, 7);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 }

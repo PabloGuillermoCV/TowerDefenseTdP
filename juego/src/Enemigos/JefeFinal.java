@@ -12,15 +12,15 @@ public class JefeFinal extends Enemigo {
 	Posicion = pos
 	Vida = 750
 	Alcance = 4
-	Ataque = 250
-	Defensa = 500
-	VelocidadMov = 5
+	Ataque = 150
+	Defensa = 350
+	VelocidadMov = 4
 	PowerUp = False
 	Puntaje = 10000
 	*/
 	
 	public JefeFinal (Posicion pos) {
-		super ("JefeFinal", pos, 750, 4, 175, 500, 5, false, 1000, 10000);
+		super ("JefeFinal", pos, 750, 4, 150, 350, 4, false, 1000, 10000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\JefeFinal.gif",pos,this);
 	}
 }

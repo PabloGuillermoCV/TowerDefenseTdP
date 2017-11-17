@@ -52,6 +52,7 @@ public class Nivel3 extends Nivel {
 		miGui.setVisible(false);
 		miGui.dispose();
 		aux.getP().setPuntos(0);
+		miGui.getTiendaVisual().modificarPuntaje();
 		MenuPrincipal menu = new MenuPrincipal();
 	}
 	
