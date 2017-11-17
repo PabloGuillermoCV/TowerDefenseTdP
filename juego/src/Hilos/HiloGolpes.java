@@ -38,7 +38,7 @@ public class HiloGolpes extends Thread {
 					
 					GIF.setVisible(true);
 					try {
-						HiloGolpes.sleep(40);
+						HiloGolpes.sleep(150);
 						GIF.setVisible(false);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
