@@ -54,7 +54,7 @@ public class FinDelJuego {
 		Panel.setLayout (null);
 		
 		Next = new JButton ("Volver al Menu Principal");
-		Next.setBounds (86, 127, 145, 23);
+		Next.setBounds (86, 127, 162, 23);
 		Next.addActionListener (new ActionListener() {
 			public void actionPerformed (ActionEvent arg0) {
 				Clip.stop ();
