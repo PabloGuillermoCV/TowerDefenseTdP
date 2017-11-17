@@ -17,6 +17,10 @@ public abstract class ObjetoResistente extends Objeto {
 		return Vida;
 	}
 	
+	public void setVida (int I) {
+		Vida = I;
+	}
+	
 	public void Afectar (Controlable C) {}
 	
 	public Objeto Agarrar () {

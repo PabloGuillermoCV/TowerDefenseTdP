@@ -12,10 +12,6 @@ public class CampoDeDaño extends ObjetoResistente {
 		grafico = new EntidadGraficaNoEnemigo ("src\\Objetos\\ObjResistente\\Sprites Resistentes\\CampoDeDaño.png",Pos);
 	}
 	
-	public void setVida (int I) {
-		Vida = I;
-	}
-	
 	public void Afectar (Enemigo E) {
 		E.setEstrategia (new CaminarDañado (E));
 		E.setAfectado(true);

@@ -15,7 +15,7 @@ public class HiloGolpes extends Thread {
 	private volatile LinkedList <Posicion> miLista;
 	private volatile LinkedList <Posicion> miListaParaAgregar;
 	public HiloGolpes () {
-		GIF = new JLabel (new ImageIcon ("src\\entidades\\Disparos\\Sprites Disparos\\Animacion Golpe.gif"));
+		GIF = new JLabel (new ImageIcon ("src\\entidades\\Sprites Golpes\\Animacion Golpe.gif"));
 		
 		miMapa = MapaVisual.InstanciaMapaVisual ();
 		miLista = new LinkedList <Posicion> ();
