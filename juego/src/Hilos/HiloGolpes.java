@@ -38,7 +38,7 @@ public class HiloGolpes extends Thread {
 					
 					GIF.setVisible(true);
 					try {
-						HiloGolpes.sleep(150);
+						HiloGolpes.sleep(50);
 						GIF.setVisible(false);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -59,10 +59,12 @@ public class HiloGolpes extends Thread {
 		}
 	}
 	private synchronized void cambiarLista() {
-		while(!miListaParaAgregar.isEmpty())
-			miLista.add(miListaParaAgregar.removeFirst());
+		while(!miListaParaAgregar.isEmpty()) {
+			Posicion aux = miListaParaAgregar.removeFirst();
+			if(aux!=null) 
+			   miLista.add(aux);
 	}
-	
+	}
 	public void agregarALista(Posicion P) {
 		miListaParaAgregar.addLast(P);
 	}
