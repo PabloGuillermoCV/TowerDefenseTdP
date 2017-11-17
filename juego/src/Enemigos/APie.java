@@ -12,7 +12,7 @@ public class APie extends Enemigo {
 	Posicion = pos
 	Vida = 100
 	Alcance = 2
-	Ataque = 100
+	Ataque = 70
 	Defensa = 100
 	VelocidadMov = 2
 	PowerUp = False
@@ -20,7 +20,7 @@ public class APie extends Enemigo {
 	*/
 	
 	public APie (Posicion pos) {
-		super ("APie", pos, 100, 2, 100, 100, 2, false, 100, 1000);
+		super ("APie", pos, 100, 2, 70, 100, 2, false, 100, 1000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\APie.gif",pos,this);
 	}
 }

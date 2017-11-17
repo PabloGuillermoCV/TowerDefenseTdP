@@ -14,14 +14,14 @@ public class Arquero extends Controlable {
 	Posicion = pos
 	Vida = 200
 	Alcance = 5
-	Ataque = 100
+	Ataque = 40
 	Defensa = 125
 	Precio = 300
 	VelocidadAt = 7
 	*/
 	
 	public Arquero (Posicion pos) {
-		super ("Arquero", pos, 200, 5, 100, 125, 300, 7);
+		super ("Arquero", pos, 200, 5, 40, 125, 300, 7);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\ArqueroStatic.gif",pos);
 	}
 }

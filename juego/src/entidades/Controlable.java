@@ -78,6 +78,7 @@ public abstract class Controlable extends Personaje {
 	 */
 	public void atacar (Enemigo E) {
 		Posicion destino = new Posicion (E.getPos().getX(), E.getPos().getY());
+		
 		hiloGolpes.agregarALista(destino);
 		E.getEstado ().setVida (E.getEstado ().getVida () - calcularGolpe (E));
 		if (E != null) {

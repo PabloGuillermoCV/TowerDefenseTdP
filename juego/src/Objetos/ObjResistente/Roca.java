@@ -8,7 +8,7 @@ import entidades.EntidadesGraficas.EntidadGraficaNoEnemigo;
 public class Roca extends ObjetoResistente {
 
 	public Roca (Posicion Pos) {
-		super ("Roca", Pos, 2000);
+		super ("Roca", Pos, 500);
 		grafico = new EntidadGraficaNoEnemigo ("src\\Objetos\\ObjResistente\\Sprites Resistentes\\Roca.png",Pos);
 	}
 

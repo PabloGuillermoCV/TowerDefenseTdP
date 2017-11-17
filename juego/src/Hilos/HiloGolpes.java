@@ -16,21 +16,29 @@ public class HiloGolpes extends Thread {
 	private volatile LinkedList <Posicion> miListaParaAgregar;
 	public HiloGolpes () {
 		GIF = new JLabel (new ImageIcon ("src\\entidades\\Disparos\\Sprites Disparos\\Animacion Golpe.gif"));
+		
 		miMapa = MapaVisual.InstanciaMapaVisual ();
 		miLista = new LinkedList <Posicion> ();
 		miListaParaAgregar = new LinkedList<Posicion>();
+		miMapa.getFondo ().add (GIF);
+		
+		
 	}
 	
 	public void run () {
 		while (true) {
 			if (!miLista.isEmpty ()) {
 				while (!miLista.isEmpty ()) {
+					
+					
 					Posicion P = miLista.removeFirst();
-					miMapa.getFondo ().add (GIF);
-					GIF.setBounds(P.getX(), P.getY(), 20, 20);
+					
+					GIF.setBounds(P.getX(),P.getY() , 30, 30);
+					
+					
 					GIF.setVisible(true);
 					try {
-						HiloGolpes.sleep(350);
+						HiloGolpes.sleep(40);
 						GIF.setVisible(false);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -40,8 +48,9 @@ public class HiloGolpes extends Thread {
 			}
 			else {
 				try {
-					cambiarLista();
 					HiloGolpes.sleep(20);
+					cambiarLista();
+					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

@@ -12,7 +12,7 @@ public class ConBallesta extends Enemigo {
 	Posicion = pos
 	Vida = 250
 	Alcance = 5
-	Ataque = 150
+	Ataque = 50
 	Defensa = 175
 	VelocidadMov = 2
 	PowerUp = False
@@ -20,7 +20,7 @@ public class ConBallesta extends Enemigo {
 	*/
 	
 	public ConBallesta (Posicion pos) {
-		super ("ConBallesta", pos, 250, 2, 75, 175, 2, false, 300, 3000);
+		super ("ConBallesta", pos, 250, 5, 50, 175, 2, false, 300, 3000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConBallesta.gif",pos,this);
 	}
 }

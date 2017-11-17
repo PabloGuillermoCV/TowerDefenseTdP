@@ -12,7 +12,7 @@ public class ConArco extends Enemigo {
 	Posicion = pos
 	Vida = 200
 	Alcance = 5
-	Ataque = 100
+	Ataque = 45
 	Defensa = 125
 	VelocidadMov = 2
 	PowerUp = False
@@ -20,7 +20,7 @@ public class ConArco extends Enemigo {
 	*/
 	
 	public ConArco (Posicion pos) {
-		super ("ConArco", pos, 200, 5, 50, 125, 2, false, 250, 2500);
+		super ("ConArco", pos, 200, 5, 45, 125, 2, false, 250, 2500);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\ConArco.gif",pos,this);
 	}
 }
