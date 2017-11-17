@@ -46,6 +46,7 @@ public class Nivel3 extends Nivel {
 
 	@SuppressWarnings("unused")
 	public void siguienteNivel () {
+		miGui.getTiendaVisual().getMarket().setCreador(null);
 		Nivel aux = new Nivel1(miGui);
 		miGui.setNivel(aux);
 		aux.desactivarAudio();
@@ -57,6 +58,7 @@ public class Nivel3 extends Nivel {
 	}
 	
 	public void reiniciar () {
+		miGui.getTiendaVisual().getMarket().setCreador(null);
 		Nivel sig = new Nivel3 (miGui);
 		miGui.setNivel (sig);
 		

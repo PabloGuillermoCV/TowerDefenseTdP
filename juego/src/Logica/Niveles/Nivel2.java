@@ -43,11 +43,13 @@ public class Nivel2 extends Nivel {
 	}
 
 	public void siguienteNivel () {
+		miGui.getTiendaVisual().getMarket().setCreador(null);
 		Nivel sig = new Nivel3 (miGui);
 		miGui.setNivel (sig);
 	}
 	
 	public void reiniciar () {
+		miGui.getTiendaVisual().getMarket().setCreador(null);
 		Nivel sig = new Nivel2 (miGui);
 		miGui.setNivel (sig);
 		miGui.reiniciarTodo ();

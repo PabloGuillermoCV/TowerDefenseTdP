@@ -155,6 +155,7 @@ public class MapaLogico implements MapaLogicoI{
 		getCelda (E.getPos ().getX (), E.getPos ().getY ()).EliminarEnemigoDeCelda (E);
 		enemigosEnMapa.remove(E);
 		if (enemigosEnMapa.isEmpty () && miNivel.getP().getVida() > 0) {
+			miNivel.getTienda().getMarket().setBotonesOff();
 			miNivel.Victoria(); //delego la creación del Frame de victoria correspondiente al nivel en el que estoy (si estoy en el útlimo nivel, se creará el frame de FinDelJuego)
 		}
 	}
