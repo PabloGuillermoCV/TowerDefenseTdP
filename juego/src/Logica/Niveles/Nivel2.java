@@ -28,14 +28,21 @@ public class Nivel2 extends Nivel {
 	public void generarListaEnemigos () {
 		//Oleada 1
 		enemigosAMandar.add (fabrica.crearAPie (posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearConArco(posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearACaballo(posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 2
 		enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearConArco(posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearConArco(posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearACaballo(posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
 		//Oleada 3
 		enemigosAMandar.add (fabrica.crearConArco (posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearACaballo(posInicialEnemies));
+		enemigosAMandar.add(fabrica.crearACaballo(posInicialEnemies));
 		enemigosAMandar.add (fabrica.crearConBallesta (posInicialEnemies));
 		enemigosPorOleada.add (enemigosAMandar.size ());
 		
