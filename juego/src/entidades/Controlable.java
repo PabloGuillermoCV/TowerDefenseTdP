@@ -11,6 +11,7 @@ public abstract class Controlable extends Personaje {
 	protected boolean Invulnerable;
 	protected Posicion Pos2;
 	protected EntidadGrafica GraficoAuxiliar;
+	int Hits;
 	
 	public Controlable (String Nombre, Posicion Pos,
 			int Vida, int Alcance, int Ataque, int Defensa, int Precio, int VelocidadAt) {
@@ -48,8 +49,16 @@ public abstract class Controlable extends Personaje {
 		return Invulnerable;
 	}
 	
-	public void setInvulnerable (boolean Invulnerable) {
-		this.Invulnerable = Invulnerable;
+	public void setInvulnerable () {
+		this.Invulnerable = true;
+		this.Hits = 5;
+	}
+	
+	public void reducirEscudo () {
+		Hits--;
+		if (Hits == 0) {
+			this.Invulnerable = false;
+		}
 	}
 	
 	public void aumentarAlcance () {

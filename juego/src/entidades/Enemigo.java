@@ -84,6 +84,11 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 			hiloGolpes.agregarALista(destino);
 			C.getEstado().setVida (C.getEstado ().getVida () - calcularGolpe (C));
 		}
+		else {
+			if (C.getInvulnerable () == true) {
+				C.reducirEscudo ();
+			}
+		}
 	}
 	
 	/**
