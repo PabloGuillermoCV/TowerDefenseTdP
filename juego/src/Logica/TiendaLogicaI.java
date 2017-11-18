@@ -15,7 +15,7 @@ public interface TiendaLogicaI {
 	public ObjDeLaTienda createObjeto (Posicion pos);
 	public TiendaVisual getMarket ();
 	
-	//los 3 set Acontinuacion tienen como requerimiento recibir un entero positivo en caso de 
+	//los 3 set a continuacion tienen como requerimiento recibir un entero positivo en caso de 
 	//que se le sume y un entero negativo en caso de que se le reste.
 	public void setMonedasJugador(int m);
 	public void restablecerVidaJugador();

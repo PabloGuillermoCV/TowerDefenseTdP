@@ -39,7 +39,6 @@ public class TiendaLogica implements TiendaLogicaI {
 		}
 		else {
 			Controlable E = creator.crearCont (pos);
-			//creator = null;
 			return E;
 		}
 	}

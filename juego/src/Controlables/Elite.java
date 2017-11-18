@@ -15,13 +15,13 @@ public class Elite extends Controlable {
 	Vida = 400
 	Alcance = 4
 	Ataque = 85
-	Defensa = 300
+	Defensa = 200
 	Precio = 650
 	VelocidadAt = 6
 	*/
 	
 	public Elite (Posicion pos) {
-		super ("Elite", pos, 400, 3, 75, 250, 650, 6);
+		super ("Elite", pos, 400, 3, 75, 200, 650, 6);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\EliteStatic.gif",pos);
 	}
 }

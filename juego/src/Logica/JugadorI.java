@@ -1,6 +1,7 @@
 package Logica;
 
 public interface JugadorI {
+	
 	public static JugadorI getInstance() {
 		return null;
 	}

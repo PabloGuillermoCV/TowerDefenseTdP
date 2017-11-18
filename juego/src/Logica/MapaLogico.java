@@ -40,7 +40,6 @@ public class MapaLogico implements MapaLogicoI{
 		unidadesEnMapa = new CopyOnWriteArrayList <Controlable> ();
 		enemigosEnMapa = new CopyOnWriteArrayList <Enemigo> ();
 		objetosEnMapa = new CopyOnWriteArrayList <Objeto> ();
-		//P = Jugador.InstanciaJugador ();
 	}
 	
 	
