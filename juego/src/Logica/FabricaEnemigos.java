@@ -5,6 +5,10 @@ import entidades.Estados.*;
 import java.util.Random;
 import Enemigos.*;
 
+/**
+ * Fábrica concreta que implementa la Abstract Factory
+ * Esta se encargará de crear a los enemigos
+ */
 public class FabricaEnemigos implements AbstractFactory {
 
 	public Enemigo crearAPie (Posicion P) {

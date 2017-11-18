@@ -2,6 +2,10 @@ package Logica;
 
 import entidades.*;
 
+/**
+ * Abstract factory que luego será usada para crear unidades enemigas sin explicitar constructores donde sea necesario
+ *
+ */
 public interface AbstractFactory {
 	
 	public Enemigo crearAPie (Posicion P);

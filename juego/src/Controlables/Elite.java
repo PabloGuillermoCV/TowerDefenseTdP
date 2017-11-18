@@ -21,7 +21,7 @@ public class Elite extends Controlable {
 	*/
 	
 	public Elite (Posicion pos) {
-		super ("Elite", pos, 400, 4, 85, 300, 650, 6);
+		super ("Elite", pos, 400, 3, 75, 250, 650, 6);
 		this.grafico = new EntidadGraficaNoEnemigo ("src\\Controlables\\Sprites Controlables\\EliteStatic.gif",pos);
 	}
 }
