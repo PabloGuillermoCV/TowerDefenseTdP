@@ -60,8 +60,7 @@ public class EstadoDerrota {
 			public void actionPerformed (ActionEvent arg0) {
 				Clip.stop ();
 				Frame.setVisible (false);
-				Frame.dispose();
-				//Falta hacer que todo se reinicie
+				Frame.dispose(); //BORRÓ EL FRAME PARA LIBERAR MEMORIA
 				nivel.getMapa().eliminarTodo();
 				nivel.reiniciar();
 			}

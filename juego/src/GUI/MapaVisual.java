@@ -180,7 +180,7 @@ public class MapaVisual extends JPanel {
 			//El personaje esta herido y lo vendo a la mitad
 			marketL.setMonedasJugador(Cont.getPrecio () / 2) ;
 		}
-		//mapL.eliminarControlable(Cont); //Le digo al mapa logico que este controlable ya no existe
+		//Le digo al mapa logico que este controlable ya no existe
 		Cont.morir ();
 		marketV.modificarMonedas ();
 		marketV.updateBotones ();

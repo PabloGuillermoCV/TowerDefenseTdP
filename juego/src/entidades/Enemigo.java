@@ -185,8 +185,6 @@ public abstract class Enemigo extends Personaje implements Mejorable {
 	
 	public void morirEnCastillo () {
 		estoyMuerto = true;
-		// si bien el enemigo llego a la base y no murio con esto me encargo de
-		// que no haya problemas con el hilo que los mueve y el metodo mover
 		miMapa.getNivel ().llegoEnemigoABase (this);
 		miMapa.eliminarEnemigo (this);
 		this.grafico.Morir ();

@@ -17,7 +17,7 @@ public class GUI extends JFrame {
 	private JugadorI P;
 	
 	/**
-	 * Launch the application.
+	 * Launch the game Interface
 	 */
 	public static void main (String[] args) {
 		EventQueue.invokeLater (new Runnable() {

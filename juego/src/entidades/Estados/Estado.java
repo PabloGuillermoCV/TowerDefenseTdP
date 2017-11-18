@@ -1,5 +1,8 @@
 package entidades.Estados;
 
+/**
+ * Clase abstracta usada para manjear las estadísticas de los personajes y como los powerUp los afectan
+ */
 public abstract class Estado {
 	
 	protected int Vida;
