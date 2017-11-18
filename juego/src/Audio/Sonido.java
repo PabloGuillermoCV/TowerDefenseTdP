@@ -7,7 +7,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JFrame;
 
 public class Sonido {
 	
@@ -36,57 +35,6 @@ public class Sonido {
 	 */
 	public void Desactivar() {
 		clip.close();
-	}
-	
-	//este método no lo usamos
-	/**
-	 * método que reproduce la música de victoria
-	 */
-	public void Victoria() {
-		audioInputStream = null;
-		try {
-			audioInputStream = AudioSystem.getAudioInputStream (new File("src\\Audio\\Audio.Sonidos\\Victoria.WAV").getAbsoluteFile());
-		}
-		catch (UnsupportedAudioFileException | IOException e) {
-			e.printStackTrace ();
-		}
-		try {
-			clip = AudioSystem.getClip ();
-			if (audioInputStream != null) {
-				clip.open (audioInputStream);
-				clip.start ();
-			}
-		}
-				catch (LineUnavailableException|IOException e) {
-					e.printStackTrace ();
-				}
-	}
-	
-	//este método no lo usamos
-	/**
-	 * método que reproduce la música de Derrota
-	 */
-	public void Derrota() {
-		audioInputStream = null;
-		JFrame frame = new JFrame ();
-		frame.setBounds (100, 100, 450, 300); //VER ESTO
-		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		try {
-			audioInputStream = AudioSystem.getAudioInputStream (new File("src\\Audio\\Audio.Sonidos\\Derrota.WAV").getAbsoluteFile());
-		}
-		catch (UnsupportedAudioFileException | IOException e) {
-			e.printStackTrace ();
-		}
-		try {
-			clip = AudioSystem.getClip ();
-			if (audioInputStream != null) {
-				clip.open (audioInputStream);
-				clip.start ();
-			}
-		}
-		catch (LineUnavailableException|IOException e) {
-			e.printStackTrace ();
-		}
 	}
 	
 	/**
