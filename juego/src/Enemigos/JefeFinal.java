@@ -10,7 +10,7 @@ public class JefeFinal extends Enemigo {
 	Nombre = "JefeFinal"
 	JLabel = JefeFinal.gif
 	Posicion = pos
-	Vida = 600
+	Vida = 500
 	Alcance = 4
 	Ataque = 85
 	Defensa = 250
@@ -20,7 +20,7 @@ public class JefeFinal extends Enemigo {
 	*/
 	
 	public JefeFinal (Posicion pos) {
-		super ("JefeFinal", pos, 600, 4, 85, 250, 4, false, 1000, 10000);
+		super ("JefeFinal", pos, 500, 4, 85, 250, 4, false, 1000, 10000);
 		grafico = new EntidadGraficaEnemigo ("src\\Enemigos\\Sprites Enemigos\\JefeFinal.gif",pos,this);
 	}
 }
